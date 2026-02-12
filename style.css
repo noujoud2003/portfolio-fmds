@@ -24,20 +24,20 @@ body {
     height: 100vh; /* full viewport height */
 
     /* Background image */
-    background-image: url('maintenance1.png'); /* <--- ton image PNG */
-    background-size: cover;        /* cover entire section */
-    background-position: center;   /* center image */
-    background-repeat: no-repeat;  /* no tiling */
+    background-image: url('maintenance1.png'); /* ton image PNG */
+    background-size: cover;        
+    background-position: center;   
+    background-repeat: no-repeat;  
 
     display: flex;
-    align-items: center;           /* vertical center */
-    justify-content: flex-end;     /* text to the right */
-    padding: 40px;
+    align-items: center;           
+    justify-content: flex-start;  /* <-- texte à gauche */
+    padding: 40px;                 
 }
 
-/* Overlay for readability */
+/* Overlay pour lisibilité du texte */
 .project-info {
-    background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+    background: rgba(0, 0, 0, 0.6); 
     padding: 30px;
     border-radius: 15px;
     max-width: 500px;
@@ -45,7 +45,7 @@ body {
 }
 
 /* =============================
-   TEXT AND ANIMATIONS
+   TEXTE ET ANIMATIONS
    ============================= */
 .project-info h1 {
     font-size: 2.8rem;
@@ -75,7 +75,7 @@ body {
 }
 
 /* =============================
-   FADE-IN ANIMATION
+   ANIMATION FADE-IN
    ============================= */
 @keyframes fadeInUp {
     to {
@@ -85,11 +85,11 @@ body {
 }
 
 /* =============================
-   RESPONSIVE DESIGN
+   RESPONSIVE
    ============================= */
 @media (max-width: 768px) {
     .hero {
-        justify-content: center; /* center text on smaller screens */
+        justify-content: center; /* texte centré sur mobile */
         padding: 20px;
     }
 
