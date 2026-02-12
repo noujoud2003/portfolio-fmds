@@ -2,60 +2,62 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio FMDS - Analyse et Maintenance Industrielle</title>
-    <!-- Cache-buster ajouté pour forcer le navigateur à prendre la dernière version -->
-    <link rel="stylesheet" href="style.css?v=1.0">
+    <title>Portfolio FMDS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- =============================
-         NAVBAR FIXE EN HAUT
-    ============================= -->
+    <!-- NAVIGATION -->
     <nav class="navbar">
-        <ul>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#planning">Planning</a></li>
-            <li><a href="#analyse">Analyse</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('introduction')">Introduction</button>
+        <button onclick="showSection('planning')">Planning</button>
+        <button onclick="showSection('methodology')">Methodology</button>
+        <button onclick="showSection('analyse')">Analyse</button>
+        <button onclick="showSection('contact')">Contact</button>
     </nav>
 
-    <!-- =============================
-         HERO SECTION
-    ============================= -->
-    <section class="hero">
-        <div class="project-info">
-            <h1>Analyse FMDS et Maintenance Industrielle</h1>
-            <p class="subtitle">Étude comparative des stratégies de maintenance : corrective, préventive et prédictive</p>
-            <p class="module">Module : Fiabilité, Maintenabilité, Disponibilité et Sécurité (FMDS)</p>
-            <p class="authors">Réalisé par : Raouaa Meliti – Noujoud Ouni – Sami Hasni</p>
-            <p class="year">Année universitaire : 2025 / 2026</p>
-        </div>
+    <!-- SECTIONS -->
+    <section id="home" class="content active">
+        <h1>Analyse FMDS et Maintenance Industrielle</h1>
+        <p>Projet FMDS – 2025/2026</p>
     </section>
 
-    <!-- =============================
-         SECTIONS POUR NAVIGATION
-    ============================= -->
-    <section id="introduction" class="section">
+    <section id="introduction" class="content">
         <h2>Introduction</h2>
         <p>Contenu de l’introduction...</p>
     </section>
 
-    <section id="planning" class="section">
+    <section id="planning" class="content">
         <h2>Planning</h2>
         <p>Contenu du planning...</p>
     </section>
 
-    <section id="analyse" class="section">
+    <section id="methodology" class="content">
+        <h2>Methodology</h2>
+        <p>Contenu de la méthodologie...</p>
+    </section>
+
+    <section id="analyse" class="content">
         <h2>Analyse</h2>
         <p>Contenu de l’analyse...</p>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="content">
         <h2>Contact</h2>
-        <p>Informations de contact...</p>
+        <p>Email : exemple@email.com</p>
     </section>
+
+<script>
+function showSection(sectionId) {
+    let sections = document.querySelectorAll('.content');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+
+    document.getElementById(sectionId).classList.add('active');
+}
+</script>
 
 </body>
 </html>
