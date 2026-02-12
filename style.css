@@ -1,85 +1,91 @@
-body {
+* {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(-45deg, #5f2c82, #7b4397, #6a11cb, #8e2de2);
-    background-size: 400% 400%;
-    animation: gradientBG 12s ease infinite;
-    color: white;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Animation du fond */
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* SECTION ACCUEIL */
-.hero {
-    height: 100vh;
+body {
+    font-family: 'Arial', sans-serif;
+    background: #1a1a2e;
+    color: #fff;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+}
+
+.hero {
     text-align: center;
-    padding: 40px;
-
-    /* Effet moderne */
-    backdrop-filter: blur(8px);
-    background: rgba(0, 0, 0, 0.15);
+    max-width: 900px;
+    width: 100%;
 }
 
-/* Animation d’apparition */
-.hero h1,
-.subtitle,
-.module,
-.authors,
-.year {
-    animation: fadeUp 1.2s ease forwards;
-    opacity: 0;
+.title-container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
 }
 
-/* Délais pour effet stylé */
-.hero h1 { animation-delay: 0.2s; }
-.subtitle { animation-delay: 0.4s; }
-.module { animation-delay: 0.6s; }
-.authors { animation-delay: 0.8s; }
-.year { animation-delay: 1s; }
-
-/* Animation texte */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.title-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 500px;
+    object-fit: cover;
 }
 
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.project-info {
+    background: rgba(26, 26, 46, 0.85);
+    padding: 25px;
+    border-radius: 0 0 10px 10px;
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
 }
 
 .subtitle {
-    font-size: 20px;
-    margin-bottom: 15px;
-    max-width: 700px;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.module, .authors, .year {
+    font-size: 1.1rem;
+    margin: 15px 0;
     line-height: 1.6;
 }
 
 .module {
-    font-size: 16px;
-    margin-bottom: 20px;
-    font-style: italic;
-    opacity: 0.9;
+    font-weight: bold;
+    color: #4cc9f0;
 }
 
-.authors, .year {
-    font-size: 16px;
-    margin-top: 10px;
-    opacity: 0.85;
+.authors {
+    font-style: italic;
+}
+
+.year {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .project-info {
+        padding: 20px 15px;
+    }
 }
