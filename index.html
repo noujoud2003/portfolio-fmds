@@ -7,46 +7,54 @@
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav class="navbar">
-        <button onclick="showSection('home')">Home</button>
-        <button onclick="showSection('introduction')">Introduction</button>
-        <button onclick="showSection('planning')">Planning</button>
-        <button onclick="showSection('methodology')">Methodology</button>
-        <button onclick="showSection('analyse')">Analyse</button>
-        <button onclick="showSection('contact')">Contact</button>
-    </nav>
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('introduction')">Introduction</button>
+    <button onclick="showSection('planning')">Planning</button>
+    <button onclick="showSection('methodology')">Methodology</button>
+    <button onclick="showSection('analyse')">Analyse</button>
+    <button onclick="showSection('contact')">Contact</button>
+</nav>
 
-    <!-- SECTIONS -->
-    <section id="home" class="content active">
-        <h1>Analyse FMDS et Maintenance Industrielle</h1>
-        <p>Projet FMDS – 2025/2026</p>
-    </section>
+<!-- HOME AVEC IMAGE -->
+<section id="home" class="content active">
+    <div class="overlay">
+        <h1>Projet pratique sur l’analyse FMDS et la maintenance prédictive</h1>
 
-    <section id="introduction" class="content">
-        <h2>Introduction</h2>
-        <p>Contenu de l’introduction...</p>
-    </section>
+        <p>Module : Fiabilité, Maintenabilité, Disponibilité et Sécurité (FMDS)</p>
 
-    <section id="planning" class="content">
-        <h2>Planning</h2>
-        <p>Contenu du planning...</p>
-    </section>
+        <p>Réalisé par : Noujoud Ouni – Sami Hasni – Raoua Meliti</p>
 
-    <section id="methodology" class="content">
-        <h2>Methodology</h2>
-        <p>Contenu de la méthodologie...</p>
-    </section>
+        <p>Année universitaire : 2025 – 2026</p>
+    </div>
+</section>
 
-    <section id="analyse" class="content">
-        <h2>Analyse</h2>
-        <p>Contenu de l’analyse...</p>
-    </section>
+<!-- AUTRES SECTIONS -->
+<section id="introduction" class="content">
+    <h2>Introduction</h2>
+    <p>Contenu de l’introduction...</p>
+</section>
 
-    <section id="contact" class="content">
-        <h2>Contact</h2>
-        <p>Email : exemple@email.com</p>
-    </section>
+<section id="planning" class="content">
+    <h2>Planning</h2>
+    <p>Contenu du planning...</p>
+</section>
+
+<section id="methodology" class="content">
+    <h2>Méthodologie</h2>
+    <p>Contenu de la méthodologie...</p>
+</section>
+
+<section id="analyse" class="content">
+    <h2>Analyse</h2>
+    <p>Contenu de l’analyse...</p>
+</section>
+
+<section id="contact" class="content">
+    <h2>Contact</h2>
+    <p>Email : exemple@email.com</p>
+</section>
 
 <script>
 function showSection(sectionId) {
@@ -54,7 +62,6 @@ function showSection(sectionId) {
     sections.forEach(section => {
         section.classList.remove('active');
     });
-
     document.getElementById(sectionId).classList.add('active');
 }
 </script>
