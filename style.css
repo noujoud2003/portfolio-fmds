@@ -1,125 +1,60 @@
-/* =============================
-   RESET
-============================= */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* =============================
-   BODY
-============================= */
+/* BODY */
 body {
-    font-family: 'Arial', sans-serif;
-    background: #0d1b2a;
-    color: #fff;
-    scroll-behavior: smooth; /* smooth scroll pour liens de navbar */
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: white;
+    text-align: center;
 }
 
-/* =============================
-   NAVBAR FIXE EN HAUT
-============================= */
+/* NAVBAR */
 .navbar {
-    width: 100%;
-    background: rgba(27, 42, 71, 0.9);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-}
-
-.navbar ul {
+    background: #1b263b;
+    padding: 15px;
     display: flex;
-    justify-content: flex-start;
-    list-style: none;
-    padding: 10px 20px;
+    justify-content: center;
+    gap: 15px;
 }
 
-.navbar ul li {
-    margin-right: 20px;
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background 0.3s;
-}
-
-.navbar ul li a:hover {
+/* BOUTONS */
+.navbar button {
     background: #4cc9f0;
-    color: #000;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* =============================
-   HERO SECTION
-============================= */
-.hero {
-    width: 100%;
-    height: 100vh;
-    background-image: url('maintenance1.png'); /* ton image PNG */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;  /* texte à gauche */
-    padding-left: 40px;
-    padding-top: 60px;           /* pour ne pas être caché par navbar */
+.navbar button:hover {
+    background: #00b4d8;
+    transform: scale(1.05);
 }
 
-.project-info {
-    background: rgba(0,0,0,0.6);
-    padding: 30px;
-    border-radius: 15px;
-    max-width: 500px;
+/* CONTENU */
+.content {
+    display: none;
+    padding: 60px 20px;
 }
 
-/* =============================
-   TEXTE HERO
-============================= */
-.project-info h1 { 
-    font-size: 2.8rem; 
-    color: #4cc9f0; 
-    margin-bottom: 20px; 
+.content.active {
+    display: block;
 }
 
-.project-info .subtitle { 
-    font-size: 1.2rem; 
-    margin-bottom: 20px; 
-    color: #fff; 
+/* TITRES */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
-.project-info .module,
-.project-info .authors,
-.project-info .year { 
-    font-size: 1rem; 
-    margin-bottom: 10px; 
-    color: #a8dadc; 
-}
-
-/* =============================
-   SECTIONS
-============================= */
-.section {
-    padding: 100px 40px;
-    background: #1b2a47;
-    margin-top: 20px;
-    border-radius: 10px;
-}
-
-.section:nth-child(even) {
-    background: #16213e;
-}
-
-/* =============================
-   RESPONSIVE
-============================= */
-@media(max-width:768px) {
-    .navbar ul { flex-direction: column; }
-    .navbar ul li { margin-bottom: 10px; }
-    .hero { justify-content: center; padding-left: 20px; padding-top: 60px; }
-    .project-info { max-width: 90%; }
+h2 {
+    margin-bottom: 15px;
+    color: #4cc9f0;
 }
