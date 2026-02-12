@@ -2,75 +2,28 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio FMDS</title>
+    <title>Accueil - FMDS</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
-    <button onclick="showSection('home')">Home</button>
-    <button onclick="showSection('introduction')">Introduction</button>
-    <button onclick="showSection('planning')">Planning</button>
-    <button onclick="showSection('methodology')">Methodology</button>
-    <button onclick="showSection('analyse')">Analyse</button>
-    <button onclick="showSection('contact')">Contact</button>
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="planning.html">Planning</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="analyse.html">Analyse</a>
+    <a href="contact.html">Contact</a>
 </nav>
 
-<!-- PAGE HOME AVEC IMAGE -->
-<section id="home" class="content active">
+<section class="home-page">
     <div class="overlay">
         <h1>Projet pratique sur l’analyse FMDS et la maintenance prédictive</h1>
-
-        <p class="info">
-            Module : Fiabilité, Maintenabilité, Disponibilité et Sécurité (FMDS)
-        </p>
-
-        <p class="info">
-            Réalisé par : Noujoud Ouni – Sami Hasni – Raoua Meliti
-        </p>
-
-        <p class="info">
-            Année universitaire : 2025 – 2026
-        </p>
+        <p>Module : Fiabilité, Maintenabilité, Disponibilité et Sécurité (FMDS)</p>
+        <p>Réalisé par : Noujoud Ouni – Sami Hasni – Raoua Meliti</p>
+        <p>Année universitaire : 2025 – 2026</p>
     </div>
 </section>
-
-<!-- AUTRES SECTIONS -->
-<section id="introduction" class="content">
-    <h2>Introduction</h2>
-    <p>Contenu de l’introduction...</p>
-</section>
-
-<section id="planning" class="content">
-    <h2>Planning</h2>
-    <p>Contenu du planning...</p>
-</section>
-
-<section id="methodology" class="content">
-    <h2>Méthodologie</h2>
-    <p>Contenu de la méthodologie...</p>
-</section>
-
-<section id="analyse" class="content">
-    <h2>Analyse</h2>
-    <p>Contenu de l’analyse...</p>
-</section>
-
-<section id="contact" class="content">
-    <h2>Contact</h2>
-    <p>Email : exemple@email.com</p>
-</section>
-
-<script>
-function showSection(sectionId) {
-    let sections = document.querySelectorAll('.content');
-    sections.forEach(section => {
-        section.classList.remove('active');
-    });
-    document.getElementById(sectionId).classList.add('active');
-}
-</script>
 
 </body>
 </html>
