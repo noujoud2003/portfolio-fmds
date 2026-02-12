@@ -8,69 +8,56 @@
 /* BODY */
 body {
     font-family: 'Arial', sans-serif;
-    background: #0d1b2a; /* bleu foncé pro */
-    color: #fff;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    background: #0d1b2a; /* bleu foncé */
 }
 
 /* HERO SECTION */
 .hero {
     width: 100%;
-    max-width: 1000px;
-}
-
-.hero-container {
+    height: 100vh; /* pleine hauteur de l'écran */
+    background-image: url('maintenance1.jpg'); /* image de fond */
+    background-size: cover;      /* couvre tout l'espace */
+    background-position: center; /* centre l'image */
+    background-repeat: no-repeat;
     display: flex;
-    flex-wrap: wrap;
-    background: #1b2a47; /* bleu secondaire */
+    align-items: center;
+    justify-content: flex-end; /* texte à droite */
+    position: relative;
+}
+
+/* OVERLAY POUR TEXTE */
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5); /* fondu noir pour contraste */
+    padding: 40px;
+    max-width: 500px;
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-/* IMAGE À CÔTÉ */
-.hero-image {
-    flex: 1;
-    min-width: 300px;
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 /* TEXTE */
-.hero-text {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* TITRE & ANIMATIONS */
-h1 {
+.project-info h1 {
     font-size: 2.8rem;
-    color: #4cc9f0; /* bleu clair professionnel */
+    color: #4cc9f0;
     margin-bottom: 20px;
     opacity: 0;
     transform: translateY(-20px);
     animation: fadeInUp 1s forwards;
 }
 
-.subtitle {
+.project-info .subtitle {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    color: #ffffff;
     opacity: 0;
     animation: fadeInUp 1s 0.3s forwards;
 }
 
-.module, .authors, .year {
+.project-info .module,
+.project-info .authors,
+.project-info .year {
     font-size: 1rem;
     margin-bottom: 10px;
     color: #a8dadc;
@@ -88,19 +75,21 @@ h1 {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column;
+    .hero {
+        justify-content: center; /* texte centré sur mobile */
+        padding: 20px;
     }
 
-    h1 {
+    .hero-overlay {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .project-info h1 {
         font-size: 2rem;
     }
 
-    .subtitle {
+    .project-info .subtitle {
         font-size: 1rem;
-    }
-
-    .hero-text {
-        padding: 20px;
     }
 }
