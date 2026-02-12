@@ -13,7 +13,7 @@
 body {
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
-    background: #0d1b2a; /* fallback color if background image fails */
+    background: #0d1b2a; /* fallback color */
 }
 
 /* =============================
@@ -24,21 +24,20 @@ body {
     height: 100vh; /* full viewport height */
 
     /* Background image */
-    background-image: url('maintenance1.png'); /* Make sure PNG file is in same folder */
-    background-size: cover;        /* Cover entire hero area */
-    background-position: center;   /* Center the image */
-    background-repeat: no-repeat;  /* Prevent tiling */
+    background-image: url('maintenance1.png'); /* <--- ton image PNG */
+    background-size: cover;        /* cover entire section */
+    background-position: center;   /* center image */
+    background-repeat: no-repeat;  /* no tiling */
 
     display: flex;
-    align-items: center;           /* Vertically center text */
-    justify-content: flex-end;     /* Align text to the right */
-
-    padding: 40px;                 /* Space around text */
+    align-items: center;           /* vertical center */
+    justify-content: flex-end;     /* text to the right */
+    padding: 40px;
 }
 
-/* Overlay for project info text */
+/* Overlay for readability */
 .project-info {
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black for readability */
+    background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
     padding: 30px;
     border-radius: 15px;
     max-width: 500px;
@@ -46,35 +45,31 @@ body {
 }
 
 /* =============================
-   TEXT STYLES AND ANIMATIONS
+   TEXT AND ANIMATIONS
    ============================= */
-
-/* Title */
 .project-info h1 {
     font-size: 2.8rem;
-    color: #4cc9f0;               /* Light professional blue */
+    color: #4cc9f0;
     margin-bottom: 20px;
     opacity: 0;
-    transform: translateY(-20px); /* Animation start */
+    transform: translateY(-20px);
     animation: fadeInUp 1s forwards;
 }
 
-/* Subtitle */
 .project-info .subtitle {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: #fff;
     opacity: 0;
-    animation: fadeInUp 1s 0.3s forwards; /* Slight delay */
+    animation: fadeInUp 1s 0.3s forwards;
 }
 
-/* Module, authors, and year info */
 .project-info .module,
 .project-info .authors,
 .project-info .year {
     font-size: 1rem;
     margin-bottom: 10px;
-    color: #a8dadc; /* Soft blue */
+    color: #a8dadc;
     opacity: 0;
     animation: fadeInUp 1s 0.6s forwards;
 }
@@ -94,7 +89,7 @@ body {
    ============================= */
 @media (max-width: 768px) {
     .hero {
-        justify-content: center; /* Center text on smaller screens */
+        justify-content: center; /* center text on smaller screens */
         padding: 20px;
     }
 
