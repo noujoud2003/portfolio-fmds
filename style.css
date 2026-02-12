@@ -1,75 +1,98 @@
-/* RESET */
-* {
+/* --- Styles généraux --- */
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* BODY GENERAL */
-body {
     font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
 }
 
-/* ===== NAVBAR ===== */
+/* --- Navbar --- */
 .navbar {
-    background: #1b263b;
+    background-color: #2c3e50;
     padding: 15px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .navbar a {
-    background: #4cc9f0;
+    color: white;
     text-decoration: none;
-    color: black;
-    padding: 10px 18px;
-    border-radius: 8px;
     font-weight: bold;
-    transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
 }
 
 .navbar a:hover {
-    background: #00b4d8;
-    transform: scale(1.05);
+    background-color: #34495e;
 }
 
-/* ===== HOME PAGE ===== */
+/* --- Section accueil --- */
 .home-page {
-    background: url('images/maintenance1.png') no-repeat center center/cover;
+    position: relative;
     height: 100vh;
+    background: url('maintenance1.png') no-repeat center center/cover; /* image de fond accueil */
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
 }
 
-.overlay {
-    background: rgba(0, 0, 0, 0.65);
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 750px;
+.home-page .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
 }
 
-/* ===== AUTRES PAGES (FOND BLEU) ===== */
-.blue-page {
-    background: linear-gradient(135deg, #0d1b2a, #1b263b);
-    min-height: 100vh;
-    padding: 60px 20px;
-}
-
-h1 {
-    font-size: 2rem;
+.home-page h1 {
+    font-size: 2.5em;
     margin-bottom: 20px;
 }
 
-h2 {
-    color: #4cc9f0;
-    margin-bottom: 15px;
+.home-page p {
+    font-size: 1.2em;
+    margin: 5px 0;
 }
 
-p {
+/* --- Pages de contenu (Introduction et Plan) --- */
+.content-page {
+    padding: 50px;
+    max-width: 900px;
+    margin: auto;
+    text-align: left;
+    background-color: #3498db; /* fond bleu pour autres pages */
+    color: white; /* texte blanc sur bleu */
+    min-height: 100vh;
+}
+
+.content-page h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.content-page p, .content-page li {
+    font-size: 1.1em;
     margin-bottom: 10px;
-    line-height: 1.6;
+}
+
+.content-page ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .home-page h1 {
+        font-size: 2em;
+    }
+
+    .home-page p {
+        font-size: 1em;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
