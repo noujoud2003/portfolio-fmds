@@ -9,35 +9,33 @@
 body {
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #0d1b2a; /* bleu foncé */
+    background: #0d1b2a;
 }
 
 /* HERO SECTION */
 .hero {
     width: 100%;
-    height: 100vh; /* pleine hauteur de l'écran */
+    height: 100vh; /* prend toute la hauteur de l'écran */
     background-image: url('maintenance1.jpg'); /* image de fond */
-    background-size: cover;      /* couvre tout l'espace */
-    background-position: center; /* centre l'image */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: flex-end; /* texte à droite */
-    position: relative;
-}
-
-/* OVERLAY POUR TEXTE */
-.hero-overlay {
-    background: rgba(0, 0, 0, 0.5); /* fondu noir pour contraste */
     padding: 40px;
-    max-width: 500px;
-    border-radius: 15px;
 }
 
-/* TEXTE */
+/* PROJECT INFO */
+.project-info {
+    background: rgba(0, 0, 0, 0.6); /* overlay pour lisibilité */
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    color: #fff;
+}
+
+/* TITRE ET TEXTE */
 .project-info h1 {
     font-size: 2.8rem;
     color: #4cc9f0;
@@ -76,11 +74,11 @@ body {
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .hero {
-        justify-content: center; /* texte centré sur mobile */
+        justify-content: center;
         padding: 20px;
     }
 
-    .hero-overlay {
+    .project-info {
         max-width: 90%;
         padding: 20px;
     }
