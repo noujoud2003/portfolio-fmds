@@ -1,77 +1,397 @@
-/* RESET */
+/* =============================
+   RESET & VARIABLES
+============================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0d1b2a, #1b263b);
-    color: white;
-    text-align: center;
+    font-family: 'Inter', 'Arial', sans-serif;
+    background: #0a192f;
+    color: #f0f6fc;
+    scroll-behavior: smooth;
+    line-height: 1.6;
 }
 
-/* NAVBAR */
+/* =============================
+   NAVBAR - BOUTONS CLAIRS
+============================= */
 .navbar {
-    background: #1b263b;
-    padding: 15px;
+    width: 100%;
+    background: rgba(10, 25, 47, 0.92);
+    backdrop-filter: blur(6px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border-bottom: 1px solid #2a3a5e;
+    padding: 0 30px;
+}
+
+.nav-container {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
-.navbar button {
-    background: #4cc9f0;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: bold;
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #64ffda;
+    letter-spacing: 1px;
+}
+
+.logo i {
+    margin-right: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 12px 0;
+}
+
+/* BOUTONS STYLE */
+.btn-nav {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid #64ffda;
+    color: #64ffda;
+    padding: 10px 24px;
+    margin: 0 4px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.navbar button:hover {
-    background: #00b4d8;
-    transform: scale(1.05);
+.btn-nav i {
+    margin-right: 8px;
 }
 
-/* CONTENU GENERAL */
-.content {
-    display: none;
-    padding: 60px 20px;
+.btn-nav:hover {
+    background: #64ffda;
+    color: #0a192f;
+    border-color: #64ffda;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -8px #64ffda80;
 }
 
-.content.active {
-    display: block;
+.btn-nav:active {
+    transform: scale(0.97);
 }
 
-/* TITRES */
-h1 {
+/* =============================
+   HERO SECTION
+============================= */
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(10,25,47,0.9), rgba(2,12,27,0.92)), url('maintenance1.png');
+    background-size: cover;
+    background-position: center 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 8%;
+    margin-top: 0;
+    padding-top: 80px;
+}
+
+.hero-card {
+    background: rgba(16, 36, 64, 0.75);
+    backdrop-filter: blur(8px);
+    padding: 40px 48px;
+    border-radius: 32px;
+    border: 1px solid #2e4b6e;
+    box-shadow: 0 20px 36px -8px black;
+    max-width: 700px;
+    width: 100%;
+    animation: fadeIn 0.9s;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #ccf0ff;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    color: #b3eaf2;
+    margin-bottom: 24px;
+    border-left: 6px solid #64ffda;
+    padding-left: 20px;
+}
+
+.hero .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    margin-top: 20px;
+    color: #ccf0f0;
+    font-size: 1.1rem;
+    background: rgba(0,0,0,0.25);
+    padding: 18px 22px;
+    border-radius: 20px;
+}
+
+.hero .meta i {
+    color: #64ffda;
+    width: 26px;
+}
+
+/* =============================
+   SECTIONS (contenu)
+============================= */
+.section {
+    padding: 100px 8%;
+    background: #0f1d30;
+    border-bottom: 1px solid #1f3a57;
+    scroll-margin-top: 90px;
+}
+
+.section:nth-child(even) {
+    background: #0b1a2c;
+}
+
+.section h2 {
+    font-size: 2.6rem;
+    color: #a0f0e6;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid #3a5a7a;
+    padding-bottom: 15px;
+}
+
+.section h2 i {
+    color: #64ffda;
     font-size: 2.2rem;
+}
+
+.card-content {
+    background: rgba(255,255,255,0.04);
+    padding: 30px 40px;
+    border-radius: 28px;
+    border: 1px solid #32586f;
+    box-shadow: 0 6px 14px #00000030;
+    font-size: 1.2rem;
+    color: #e6f1ff;
+}
+
+.section-lead {
+    font-size: 1.3rem;
     margin-bottom: 20px;
 }
 
-h2 {
-    margin-bottom: 15px;
-    color: #4cc9f0;
+.highlight {
+    margin-top: 30px;
+    background: #0e2a3b;
+    padding: 18px;
+    border-radius: 16px;
 }
 
-/* ===== HOME AVEC IMAGE ===== */
-#home {
-    background: url('maintenance1.png') no-repeat center center/cover;
-    height: 100vh;
+.footnote {
+    margin-top: 30px;
+    border-top: 1px solid #2c5772;
+    padding-top: 20px;
+}
+
+/* listes */
+.card-content ul {
+    list-style: none;
+}
+
+.card-content li {
+    margin: 18px 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    align-items: baseline;
+    gap: 16px;
 }
 
-/* Overlay sombre */
-.overlay {
-    background: rgba(0, 0, 0, 0.65);
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 700px;
+.card-content li i {
+    color: #64ffda;
+    width: 26px;
+    text-align: center;
+}
+
+/* =============================
+   PLANNING GRID
+============================= */
+.planning-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.planning-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.planning-col h3 {
+    color: #a8f0e6;
+    margin-bottom: 12px;
+}
+
+.planning-col h3 i {
+    margin-right: 10px;
+    color: #64ffda;
+}
+
+/* =============================
+   STRATEGIES GRID
+============================= */
+.strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.strategy-card {
+    background: #0d2c3a;
+    padding: 22px;
+    border-radius: 18px;
+}
+
+.strategy-card i {
+    font-size: 2.2rem;
+    color: #8ac6ff;
+    margin-bottom: 10px;
+}
+
+.strategy-card h3 {
+    color: #b0e0ff;
+    margin: 10px 0;
+}
+
+/* couleurs spécifiques pour chaque stratégie */
+.strategy-card:nth-child(1) i { color: #ffb86b; }
+.strategy-card:nth-child(1) h3 { color: #ffd966; }
+.strategy-card:nth-child(2) i { color: #6cc4a1; }
+.strategy-card:nth-child(2) h3 { color: #a0f0b0; }
+.strategy-card:nth-child(3) i { color: #8ac6ff; }
+.strategy-card:nth-child(3) h3 { color: #b0e0ff; }
+
+/* =============================
+   CONTACT GRID
+============================= */
+.contact-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    background: #112b3f;
+    padding: 26px 34px;
+    border-radius: 24px;
+    flex: 1 1 200px;
+    text-align: center;
+    border: 1px solid #3a7a7a;
+}
+
+.contact-card i {
+    font-size: 2.8rem;
+    color: #64ffda;
+    margin-bottom: 12px;
+}
+
+.contact-card h3 {
+    color: #b3f0e0;
+    margin-bottom: 8px;
+}
+
+.contact-card .role {
+    color: #b0d0ff;
+    margin-bottom: 12px;
+}
+
+/* =============================
+   FOOTER
+============================= */
+footer {
+    background: #05111f;
+    text-align: center;
+    padding: 30px;
+    color: #85aac1;
+}
+
+footer span {
+    color: #64ffda;
+    margin-left: 10px;
+}
+
+footer i {
+    margin-right: 8px;
+}
+
+/* =============================
+   ANIMATIONS
+============================= */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+@media (max-width: 800px) {
+    .nav-container {
+        flex-direction: column;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .btn-nav {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+    
+    .hero-card {
+        padding: 30px 20px;
+    }
+    
+    .section {
+        padding: 80px 20px;
+    }
+    
+    .section h2 {
+        font-size: 2rem;
+    }
+    
+    .card-content {
+        padding: 20px;
+    }
+}
+
+/* =============================
+   IMAGE DE FOND (fallback)
+============================= */
+.hero {
+    background-image: url('maintenance1.png'), linear-gradient(145deg, #041421, #0b1f2e);
+    background-blend-mode: overlay;
 }
