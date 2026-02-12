@@ -24,7 +24,7 @@ body {
     height: 100vh;
 
     /* Background image */
-    background-image: url('man.png');
+    background-image: url('main.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -110,5 +110,6 @@ body {
         font-size: 1rem;
     }
 }
+
 
 
