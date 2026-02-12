@@ -22,22 +22,22 @@ body {
 .hero {
     width: 100%;
     height: 100vh; /* full viewport height */
-
+    
     /* Background image */
     background-image: url('maintenance1.png'); /* ton image PNG */
-    background-size: cover;        
-    background-position: center;   
-    background-repeat: no-repeat;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     display: flex;
-    align-items: center;           
-    justify-content: flex-start;  /* <-- texte à gauche */
-    padding: 40px;                 
+    align-items: center;           /* vertical center */
+    justify-content: flex-start;   /* <-- texte aligné à gauche */
+    padding-left: 40px;            /* espace à gauche */
 }
 
 /* Overlay pour lisibilité du texte */
 .project-info {
-    background: rgba(0, 0, 0, 0.6); 
+    background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
     padding: 30px;
     border-radius: 15px;
     max-width: 500px;
