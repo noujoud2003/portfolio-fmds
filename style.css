@@ -1,13 +1,11 @@
-/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== BODY ===== */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background: #1a1a2e;
     color: #fff;
     min-height: 100vh;
@@ -17,23 +15,12 @@ body {
     padding: 20px;
 }
 
-/* ===== LOGO EN HAUT GAUCHE ===== */
-.logo {
-    position: fixed;
-    top: 15px;
-    left: 20px;
-    height: 70px;
-    z-index: 1000;
-}
-
-/* ===== HERO SECTION ===== */
 .hero {
     text-align: center;
     max-width: 900px;
     width: 100%;
 }
 
-/* ===== IMAGE + CONTAINER ===== */
 .title-container {
     position: relative;
     border-radius: 10px;
@@ -42,7 +29,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* ===== IMAGE ===== */
 .title-image {
     width: 100%;
     height: auto;
@@ -51,52 +37,55 @@ body {
     object-fit: cover;
 }
 
-/* ===== INFO BOX ===== */
 .project-info {
     background: rgba(26, 26, 46, 0.85);
     padding: 25px;
     border-radius: 0 0 10px 10px;
 }
 
-/* ===== TITRE ===== */
 h1 {
-    font-size: 2.6rem;
-    margin-bottom: 20px;
-    color: #4cc9f0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
 }
 
-/* ===== TEXTES ===== */
+.subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.module, .authors, .year {
+    font-size: 1.1rem;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
 .module {
     font-weight: bold;
-    color: #90e0ef;
-    margin: 15px 0;
-    font-size: 1.2rem;
+    color: #4cc9f0;
 }
 
 .authors {
     font-style: italic;
-    margin: 10px 0;
-    font-size: 1.1rem;
 }
 
 .year {
     opacity: 0.8;
-    font-size: 1.1rem;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-
     h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
-
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
     .project-info {
         padding: 20px 15px;
-    }
-
-    .logo {
-        height: 50px;
     }
 }
