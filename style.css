@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -37,7 +38,7 @@ body {
 .home-page {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                url('images/main.png') center/cover no-repeat;
+                url('main.png') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,6 +88,14 @@ body {
     padding-left: 20px;
 }
 
+/* ===== IMAGES DANS PAGES ===== */
+.content-page img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .overlay h1 {
@@ -100,5 +109,9 @@ body {
     .navbar {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .content-page {
+        padding: 120px 20px 50px 20px;
     }
 }
