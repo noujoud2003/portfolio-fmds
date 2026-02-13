@@ -4,88 +4,101 @@
     box-sizing: border-box;
 }
 
+/* ===== BODY ===== */
 body {
     font-family: 'Arial', sans-serif;
-    background: #1a1a2e;
-    color: #fff;
-    min-height: 100vh;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #0f3460;
+    padding: 15px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    gap: 25px;
+    z-index: 1000;
 }
 
-.hero {
-    text-align: center;
-    max-width: 900px;
-    width: 100%;
-}
-
-.title-container {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    margin-bottom: 40px;
-}
-
-.title-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    max-height: 500px;
-    object-fit: cover;
-}
-
-.project-info {
-    background: rgba(26, 26, 46, 0.85);
-    padding: 25px;
-    border-radius: 0 0 10px 10px;
-}
-
-h1 {
-    font-size: 2.8rem;
-    margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 1px;
-}
-
-.subtitle {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    line-height: 1.5;
-    opacity: 0.9;
-}
-
-.module, .authors, .year {
-    font-size: 1.1rem;
-    margin: 15px 0;
-    line-height: 1.6;
-}
-
-.module {
+.navbar a {
+    color: white;
+    text-decoration: none;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
     color: #4cc9f0;
 }
 
-.authors {
-    font-style: italic;
+/* ===== PAGE ACCUEIL (IMAGE BACKGROUND) ===== */
+.home-page {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('maintenance1.png') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 80px;
 }
 
-.year {
-    opacity: 0.8;
+.overlay {
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 12px;
 }
 
+.overlay h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.overlay p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* ===== PAGES PLAN & INTRODUCTION ===== */
+.content-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    color: white;
+    padding: 120px 50px 50px 50px;
+}
+
+.content-page h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #4cc9f0;
+}
+
+.content-page p,
+.content-page li {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.content-page ul {
+    padding-left: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2.2rem;
+    .overlay h1 {
+        font-size: 1.8rem;
     }
-    
-    .subtitle {
-        font-size: 1.1rem;
+
+    .overlay p {
+        font-size: 1rem;
     }
-    
-    .project-info {
-        padding: 20px 15px;
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
     }
 }
