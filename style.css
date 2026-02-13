@@ -6,7 +6,7 @@
 
 /* ===== BODY ===== */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 /* ===== NAVBAR ===== */
@@ -33,11 +33,11 @@ body {
     color: #4cc9f0;
 }
 
-/* ===== PAGE ACCUEIL (IMAGE BACKGROUND) ===== */
+/* ===== PAGE ACCUEIL ===== */
 .home-page {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                url('maintenance1.png') center/cover no-repeat;
+                url('images/main.png') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +62,7 @@ body {
     margin: 10px 0;
 }
 
-/* ===== PAGES PLAN & INTRODUCTION ===== */
+/* ===== PAGES BLEUES (INTRO + PLAN) ===== */
 .content-page {
     min-height: 100vh;
     background: linear-gradient(135deg, #0f3460, #16213e);
