@@ -114,7 +114,170 @@
         Les indicateurs clés : MTTR (Mean Time To Repair), MWT (Mean Waiting Time), taux de maintenance préventive vs corrective...
     </p>
     <img src="indi.png" alt="Indicateurs Maintenabilité" width="80%">
+<!-- ===== 3.3 DISPONIBILITÉ ===== -->
+<section class="content-page">
+    <h2>3.3 Disponibilité</h2>
+    <p>
+        La disponibilité correspond à la probabilité qu’un système soit en état de fonctionnement
+        au moment où il est requis. Elle dépend directement de la fiabilité et de la maintenabilité.
+    </p>
+
+    <h3>Types de disponibilité</h3>
+    <ul>
+        <li>Disponibilité instantanée : disponibilité à un instant donné</li>
+        <li>Disponibilité opérationnelle : tient compte des conditions réelles d’exploitation</li>
+        <li>Disponibilité intrinsèque : basée uniquement sur les paramètres techniques</li>
+    </ul>
+
+    <p class="formula-box">
+        <strong>A = MTBF / (MTBF + MTTR)</strong>
+    </p>
 </section>
+
+<!-- ===== 3.4 SÉCURITÉ ===== -->
+<section class="content-page">
+    <h2>3.4 Sécurité</h2>
+    <p>
+        La sécurité vise à garantir que les défaillances, même si elles se produisent,
+        ne présentent pas de danger pour les personnes, l’environnement ou les équipements.
+    </p>
+
+    <ul>
+        <li>Évaluation des risques (AMDEC, HAZOP, arbres de défaillances)</li>
+        <li>Conception intrinsèquement sécurisée</li>
+        <li>Atténuation des effets par des dispositifs de sécurité</li>
+    </ul>
+</section>
+
+<!-- ===== 3.5 INDICATEURS CLÉS FMDS ===== -->
+<section class="content-page">
+    <h2>3.5 Indicateurs clés des concepts FMDS</h2>
+
+    <table border="1" width="100%" cellpadding="8">
+        <tr>
+            <th>Concept FMDS</th>
+            <th>Indicateur clé</th>
+            <th>Formule / Description</th>
+        </tr>
+        <tr>
+            <td>Fiabilité</td>
+            <td>MTBF</td>
+            <td>Temps total de fonctionnement / Nombre de pannes</td>
+        </tr>
+        <tr>
+            <td>Fiabilité</td>
+            <td>Taux de défaillance (λ)</td>
+            <td>λ = 1 / MTBF</td>
+        </tr>
+        <tr>
+            <td>Fiabilité</td>
+            <td>Courbes de fiabilité</td>
+            <td>Lois probabilistes : Weibull, exponentielle, log-normale</td>
+        </tr>
+        <tr>
+            <td>Maintenabilité</td>
+            <td>MTTR</td>
+            <td>Temps total de réparation / Nombre de réparations</td>
+        </tr>
+        <tr>
+            <td>Maintenabilité</td>
+            <td>MWT</td>
+            <td>Temps moyen d’attente avant intervention</td>
+        </tr>
+        <tr>
+            <td>Maintenabilité</td>
+            <td>Taux préventif / correctif</td>
+            <td>(Nb interventions préventives / Nb total) × 100%</td>
+        </tr>
+        <tr>
+            <td>Disponibilité</td>
+            <td>A</td>
+            <td>A = MTBF / (MTBF + MTTR)</td>
+        </tr>
+    </table>
+</section>
+
+<!-- ===== 3.6 IMPORTANCE DE LA FMDS ===== -->
+<section class="content-page">
+    <h2>3.6 Importance de la FMDS dans les systèmes industriels</h2>
+    <p>
+        L’approche FMDS occupe une place essentielle dans les systèmes industriels modernes.
+        Elle permet d’améliorer la performance globale des équipements et d’optimiser la prise de décision.
+    </p>
+
+    <ul>
+        <li>Optimisation de la disponibilité des installations</li>
+        <li>Réduction des coûts globaux de maintenance (TCO)</li>
+        <li>Amélioration de la continuité et de la qualité de production</li>
+        <li>Prévention des incidents et amélioration de la sécurité</li>
+        <li>Conformité aux normes internationales</li>
+    </ul>
+
+    <p>
+        La FMDS est largement utilisée dans des secteurs critiques tels que :
+        le nucléaire, la pétrochimie, l’énergie, le transport, l’aéronautique et l’industrie manufacturière.
+    </p>
+</section>
+
+<!-- ===== 4. MAINTENANCE PRÉDICTIVE ===== -->
+<section class="content-page">
+    <h1>4. Maintenance Prédictive</h1>
+
+    <h2>4.1 Définition et objectifs</h2>
+    <p>
+        La maintenance prédictive consiste à surveiller l’état des équipements afin d’anticiper
+        les pannes avant qu’elles ne surviennent.
+    </p>
+
+    <ul>
+        <li>Éviter les arrêts imprévus</li>
+        <li>Optimiser la disponibilité</li>
+        <li>Réduire les coûts de maintenance</li>
+        <li>Améliorer la sécurité</li>
+    </ul>
+
+    <h2>4.2 Avantages</h2>
+    <ul>
+        <li>Diminution des défaillances inattendues</li>
+        <li>Amélioration de la durée de vie des équipements</li>
+        <li>Organisation plus efficace des interventions</li>
+    </ul>
+
+    <h2>4.3 Avantages par rapport aux approches traditionnelles</h2>
+    <ul>
+        <li>Moins d’arrêts non planifiés</li>
+        <li>Interventions basées sur l’état réel des machines</li>
+        <li>Optimisation des coûts par rapport à la maintenance corrective ou préventive</li>
+    </ul>
+
+    <h2>4.4 Méthodes et techniques</h2>
+    <ul>
+        <li>Surveillance conditionnelle (capteurs : vibration, température, pression)</li>
+        <li>Analyse de données et intelligence artificielle</li>
+        <li>IoT industriel et systèmes SCADA</li>
+    </ul>
+
+    <h2>4.5 Processus de mise en œuvre</h2>
+    <ol>
+        <li>Identification des équipements critiques</li>
+        <li>Collecte des données</li>
+        <li>Analyse et détection des anomalies</li>
+        <li>Planification des interventions</li>
+        <li>Amélioration continue</li>
+    </ol>
+</section>
+
+<!-- ===== CONCLUSION ===== -->
+<section class="content-page">
+    <h1>Conclusion</h1>
+    <p>
+        L’association de la FMDS et de la maintenance prédictive permet une gestion
+        intelligente et proactive des équipements industriels, améliorant la performance,
+        la sécurité et la compétitivité globale.
+    </p>
+</section>
+
 
 </body>
 </html>
+
