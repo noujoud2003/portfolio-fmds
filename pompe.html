@@ -1,0 +1,78 @@
+<section class="data-collection">
+    <h2>3.2 Données Simulées - Génération via Python</h2>
+
+    <h3>3.2.1 Simulation des Défaillances de Pompes</h3>
+    <p>
+        Pour entraîner les modèles de maintenance prédictive, nous générons des données simulées représentant 
+        différents types de défauts de pompe : cavitation, usure des joints, désalignement de l’axe et vibrations 
+        excessives. Ces données sont générées avec Python, en utilisant des bibliothèques comme <strong>NumPy</strong> 
+        et <strong>Pandas</strong> pour créer des séries temporelles réalistes correspondant aux capteurs de 
+        vibration, pression, débit et température.
+    </p>
+
+    <h3>3.2.2 Avantages des Données Simulées</h3>
+    <ul>
+        <li>Contrôle précis des paramètres de défaillance (vitesse, pression, débit, vibrations).</li>
+        <li>Génération rapide de grands volumes de données pour l'entraînement des modèles.</li>
+        <li>Labels exacts pour l’apprentissage supervisé (fonctionnement normal ou défaillance).</li>
+        <li>Reproductibilité totale des expériences et possibilité de tester différents scénarios.</li>
+    </ul>
+
+    <h2>3.3 Données Réelles Utilisées</h2>
+
+    <h3>3.3.1 Dataset Principal : Pompes Industrielles</h3>
+    <p>
+        Pour compléter les données simulées, nous utilisons un dataset réel provenant d’installations industrielles de pompes,
+        contenant des mesures de capteurs pendant le fonctionnement normal et jusqu’à la défaillance (run-to-failure).
+    </p>
+    <ul>
+        <li>50 unités d’entraînement (pompes différentes)</li>
+        <li>50 unités de test</li>
+        <li>20 à 25 variables de capteurs par pompe : vibrations axiale et radiale, pression entrée/sortie, débit, température</li>
+        <li>Données run-to-failure complètes</li>
+        <li>Variables clés utilisées : vibrations 1-3, pression, débit, température</li>
+        <li>Conditions opérationnelles variables pour simuler différents régimes de pompe</li>
+        <li>RUL (Remaining Useful Life) pour validation des modèles</li>
+    </ul>
+
+    <h3>3.3.2 Avantages par rapport aux autres datasets</h3>
+    <table border="1" width="100%" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Dataset</th>
+                <th>Avantages</th>
+                <th>Limites</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Données simulées Python</td>
+                <td>Contrôle total des défauts, volume illimité, labels exacts</td>
+                <td>Peuvent ne pas refléter toutes les variations réelles d’une pompe</td>
+            </tr>
+            <tr>
+                <td>Dataset réel Pompes Industrielles</td>
+                <td>Données représentatives des conditions réelles de fonctionnement</td>
+                <td>Volume limité, certaines défaillances rares</td>
+            </tr>
+            <tr>
+                <td>PHM Society</td>
+                <td>Données réelles sur machines tournantes</td>
+                <td>Volume limité</td>
+            </tr>
+            <tr>
+                <td>Kaggle / IEEE DataPort</td>
+                <td>Accessibilité et variété de cas</td>
+                <td>Qualité variable, format parfois hétérogène</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.4 Conclusion</h3>
+    <p>
+        La collecte et la préparation des données pour les pompes, combinant simulations Python et datasets réels, 
+        fournissent une base solide et diversifiée pour le développement de modèles prédictifs robustes. 
+        Cette approche assure à la fois la maîtrise des paramètres critiques de défaillance et la représentativité 
+        des conditions industrielles réelles, essentielles pour améliorer la fiabilité et la disponibilité des pompes.
+    </p>
+</section>
