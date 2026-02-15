@@ -41,7 +41,7 @@ body {
     text-decoration: none;
     font-weight: bold;
     padding: 10px 16px;
-    border-radius: 6px; /* carré doux */
+    border-radius: 6px;
     background: linear-gradient(-45deg, #082240, #0b2c55, #0d3b66);
     background-size: 300% 300%;
     animation: blueMove 10s ease infinite;
@@ -168,4 +168,14 @@ td, th {
     .content-page {
         padding: 130px 20px 50px 20px;
     }
+}
+
+/* ========================================= */
+/* ✅ ✅ ✅ AJOUT POUR IMAGE GANTT */
+/* ========================================= */
+
+.gantt-img {
+    max-width: 70%;
+    display: block;
+    margin: 25px auto;
 }
