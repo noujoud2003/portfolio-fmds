@@ -8,6 +8,8 @@
 /* ===== BODY ===== */
 body {
     font-family: Arial, sans-serif;
+    background-color: #0b2c55; /* BLEU ROI UNIQUE */
+    color: white;
 }
 
 /* ===== NAVBAR ===== */
@@ -15,7 +17,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #0f3460;
+    background-color: #082240;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -24,31 +26,29 @@ body {
 }
 
 .navbar a {
-    color: white;
+    color: #6ecbff; /* bleu ciel */
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
 }
 
 .navbar a:hover {
-    color: #4cc9f0;
+    color: white;
 }
 
 /* ===== PAGE ACCUEIL ===== */
 .home-page {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                url('main.png') center/cover no-repeat;
+    background-color: #0b2c55; /* même couleur */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
     padding-top: 80px;
 }
 
 .overlay {
-    background: rgba(0,0,0,0.6);
+    background-color: #082240;
     padding: 40px;
     border-radius: 12px;
 }
@@ -56,6 +56,7 @@ body {
 .overlay h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #6ecbff;
 }
 
 .overlay p {
@@ -63,52 +64,80 @@ body {
     margin: 10px 0;
 }
 
-/* ===== PAGES BLEUES (INTRO + PLAN) ===== */
+/* ===== PAGES CONTENU ===== */
 .content-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #0f3460, #16213e);
+    background-color: #0b2c55; /* COULEUR UNIQUE */
     color: white;
     padding: 120px 50px 50px 50px;
 }
 
-.content-page h1 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    color: #4cc9f0;
+/* ===== TITRES ===== */
+.content-page h1,
+.content-page h2,
+.content-page h3 {
+    color: #6ecbff; /* BLEU CIEL */
+    margin-bottom: 15px;
+    margin-top: 30px;
 }
 
+/* ===== TEXTE ===== */
 .content-page p,
 .content-page li {
     font-size: 1.1rem;
     margin-bottom: 12px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-.content-page ul {
-    padding-left: 20px;
+.content-page ul,
+.content-page ol {
+    padding-left: 25px;
 }
 
-/* ===== IMAGES DANS PAGES ===== */
+/* ===== IMAGES ===== */
 .content-page img {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: 25px auto;
     border-radius: 8px;
-    margin: 15px 0;
+    background-color: #0b2c55;
+}
+
+/* ===== TABLEAUX ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background-color: #082240;
+    color: white;
+}
+
+th {
+    background-color: #0d3b66;
+    color: #6ecbff;
+}
+
+td, th {
+    border: 1px solid #6ecbff;
+    padding: 10px;
+    text-align: center;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
     .overlay h1 {
         font-size: 1.8rem;
     }
 
     .overlay p {
         font-size: 1rem;
-    }
-
-    .navbar {
-        flex-direction: column;
-        gap: 10px;
     }
 
     .content-page {
