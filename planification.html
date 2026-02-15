@@ -4,6 +4,51 @@
     <meta charset="UTF-8">
     <title>Planification du Projet - FMDS</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f7fa;
+        }
+        .navbar {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background-color: #0d47a1; /* bleu foncé pour la navbar */
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .methodology {
+            background-color: #1E3A8A; /* bleu roi */
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .methodology h2 {
+            color: #87ceeb; /* bleu ciel */
+            margin-top: 30px;
+        }
+        .methodology h3 {
+            color: #87ceeb; /* bleu ciel */
+            margin-top: 20px;
+        }
+        .methodology img {
+            width: 80%;
+            margin: 15px 0 30px 0;
+            border-radius: 5px;
+        }
+        .methodology ul {
+            margin-left: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,55 +67,55 @@
 </nav>
 
 <!-- ===== CONTENU PRINCIPAL ===== -->
-<section class="methodology" style="background-color: #1E3A8A; padding: 20px; border-radius: 10px; color: white;">
+<section class="methodology">
 
-    <h2 style="color: #87ceeb;">1 Choix de la méthodologie de développement</h2>
+    <h2>1 Choix de la méthodologie de développement</h2>
     <p>
         Pour gérer un projet efficacement, nous devons choisir la méthode adéquate pour le pilotage de ce projet. 
         Les méthodes de gestion de projet aident à gérer chaque étape, de la planification à la mise en œuvre. 
         Le choix du processus de développement a un effet direct sur le bon déroulement du projet.
- 
-    
+    </p>
+    <p>
         La méthodologie de travail fait référence à l’ensemble des méthodes, techniques et processus utilisés pour 
         organiser et structurer un projet. Elle vise à établir une approche systématique permettant de garantir 
         l’efficacité, la gestion du temps et la qualité des résultats. Une méthodologie appropriée assure une 
         progression cohérente et mesurable, tout en répondant aux objectifs fixés.
     </p>
-    
+    <img src="images/methodology_overview.png" alt="Vue générale de la méthodologie">
 
-    <h3 style="color: #87ceeb;">2 Objectif et méthodologie choisie</h3>
+    <h3>2 Objectif et méthodologie choisie</h3>
     <p>
         Pour ce projet, une approche hybride combinant la méthodologie Agile (Scrum) et le cycle en V a été choisie 
         afin de répondre aux besoins spécifiques et aux contraintes du projet. Cette approche hybride permet de 
         tirer parti des avantages de chaque méthode : flexibilité et adaptabilité de Scrum pour le développement 
         itératif, rigueur du cycle en V pour la validation des étapes clés.
     </p>
-   
+    <img src="images/hybrid_methodology.png" alt="Méthodologie hybride">
 
-    <h3 style="color: #87ceeb;">3 Méthodologie Scrum</h3>
+    <h3>3 Méthodologie Scrum</h3>
     <p>
         La méthodologie Scrum est un cadre de gestion de projet agile qui repose sur des itérations courtes 
-        appelées sprints  permettant d’assurer flexibilité et adaptation rapide aux besoins 
+        appelées sprints, permettant d’assurer flexibilité et adaptation rapide aux besoins 
         du projet. Chaque sprint, d’une durée fixe, permet de livrer une partie du travail complet, tout en 
         favorisant la collaboration et la communication entre les membres de l’équipe.
     </p>
-    <img src="scc.png" alt="FMDS général" width="80%">
+    <img src="images/scrum_cycle.png" alt="Cycle Scrum">
 
-    <h3 style="color: #87ceeb;">4 Cycle en V</h3>
+    <h3>4 Cycle en V</h3>
     <p>
         Le cycle en V est une approche méthodique de gestion de projet qui repose sur une progression 
         structurée et linéaire. Il organise le travail en une série d’étapes séquentielles, allant de 
         l’analyse des besoins jusqu’à la validation finale, tout en assurant une phase de vérification 
-        après chaque étape majeure . Les trois phases principales sont :
+        après chaque étape majeure. Les trois phases principales sont :
     </p>
     <ul>
         <li><strong>Conception :</strong> recherches préliminaires, étude du projet, conception de la carte PCB.</li>
         <li><strong>Réalisation :</strong> collecte et traitement des données, entraînement du modèle IA.</li>
         <li><strong>Validation :</strong> évaluation des performances du modèle IA, robustesse et généralisation.</li>
     </ul>
-    <img src="cvv.png" alt="FMDS général" width="80%">
+    <img src="images/v_cycle.png" alt="Cycle en V">
 
-    <h2 style="color: #87ceeb;">5 Planification du projet</h2>
+    <h2>5 Planification du projet</h2>
     <p>
         Après avoir structuré notre projet en combinant Agile Scrum et le cycle en V, il a été essentiel 
         d’adopter un outil de planification visuelle pour coordonner efficacement les différentes tâches. 
@@ -78,14 +123,9 @@
         chevauchements et de gérer les priorités. Il constitue un support clair pour suivre la progression, 
         anticiper les retards et garantir une organisation fluide.
     </p>
-     <img src="ganttt.png" alt="FMDS général" width="80%">
+    <img src="images/ganttt.jpeg" alt="Diagramme de Gantt">
 
 </section>
 
-
 </body>
 </html>
-
-
-
-
