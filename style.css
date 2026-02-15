@@ -5,10 +5,19 @@
     box-sizing: border-box;
 }
 
+/* ===== ANIMATION BLEU ROI ===== */
+@keyframes blueMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 /* ===== BODY ===== */
 body {
     font-family: Arial, sans-serif;
-    background-color: #0b2c55; /* BLEU ROI UNIQUE */
+    background: linear-gradient(-45deg, #0b2c55, #0d3b66, #082240, #0b2c55);
+    background-size: 400% 400%;
+    animation: blueMove 18s ease infinite;
     color: white;
 }
 
@@ -17,40 +26,57 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #082240;
+    background-color: #061b33;
     padding: 15px;
     display: flex;
     justify-content: center;
-    gap: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
     z-index: 1000;
 }
 
+/* ===== BOUTONS NAVBAR (CARREAUX ANIMÉS) ===== */
 .navbar a {
-    color: #6ecbff; /* bleu ciel */
+    color: #6ecbff;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    padding: 10px 16px;
+    border-radius: 6px; /* carré doux */
+    background: linear-gradient(-45deg, #082240, #0b2c55, #0d3b66);
+    background-size: 300% 300%;
+    animation: blueMove 10s ease infinite;
+    border: 1px solid #6ecbff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* ===== HOVER ANIMATION ===== */
 .navbar a:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 15px rgba(110, 203, 255, 0.7);
     color: white;
 }
 
 /* ===== PAGE ACCUEIL ===== */
 .home-page {
     height: 100vh;
-    background-color: #0b2c55; /* même couleur */
+    background:
+        linear-gradient(rgba(11,44,85,0.75), rgba(11,44,85,0.75)),
+        url("main.png") center / cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 100px;
 }
 
+/* ===== BLOC CENTRAL ===== */
 .overlay {
-    background-color: #082240;
-    padding: 40px;
-    border-radius: 12px;
+    background: linear-gradient(-45deg, #082240, #0b2c55, #0d3b66);
+    background-size: 300% 300%;
+    animation: blueMove 12s ease infinite;
+    padding: 40px 60px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.6);
 }
 
 .overlay h1 {
@@ -67,26 +93,27 @@ body {
 /* ===== PAGES CONTENU ===== */
 .content-page {
     min-height: 100vh;
-    background-color: #0b2c55; /* COULEUR UNIQUE */
-    color: white;
-    padding: 120px 50px 50px 50px;
+    background: linear-gradient(-45deg, #0b2c55, #0d3b66, #082240, #0b2c55);
+    background-size: 400% 400%;
+    animation: blueMove 20s ease infinite;
+    padding: 130px 50px 50px 50px;
 }
 
 /* ===== TITRES ===== */
 .content-page h1,
 .content-page h2,
 .content-page h3 {
-    color: #6ecbff; /* BLEU CIEL */
-    margin-bottom: 15px;
+    color: #6ecbff;
     margin-top: 30px;
+    margin-bottom: 15px;
 }
 
 /* ===== TEXTE ===== */
 .content-page p,
 .content-page li {
     font-size: 1.1rem;
-    margin-bottom: 12px;
     line-height: 1.7;
+    margin-bottom: 12px;
 }
 
 .content-page ul,
@@ -97,11 +124,10 @@ body {
 /* ===== IMAGES ===== */
 .content-page img {
     max-width: 100%;
-    height: auto;
     display: block;
     margin: 25px auto;
-    border-radius: 8px;
-    background-color: #0b2c55;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
 /* ===== TABLEAUX ===== */
@@ -110,7 +136,6 @@ table {
     border-collapse: collapse;
     margin: 30px 0;
     background-color: #082240;
-    color: white;
 }
 
 th {
@@ -129,7 +154,7 @@ td, th {
 
     .navbar {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
     }
 
     .overlay h1 {
@@ -141,6 +166,6 @@ td, th {
     }
 
     .content-page {
-        padding: 120px 20px 50px 20px;
+        padding: 130px 20px 50px 20px;
     }
 }
