@@ -3,110 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Planification du Projet - FMDS</title>
-    <style>
-        /* ===== Style général ===== */
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(-45deg, #1E3A8A, #2C5282, #3B5998, #1E3A8A);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: white;
-        }
 
-        /* Animation du fond */
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* ===== Navbar ===== */
-        .navbar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            padding: 15px;
-            background-color: rgba(13, 71, 161, 0.9); /* bleu foncé semi-transparent */
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        .navbar a:hover {
-            background-color: #1565c0;
-        }
-
-        /* ===== Contenu principal ===== */
-        .methodology {
-            background-color: rgba(30, 58, 138, 0.85); /* bleu roi semi-transparent */
-            padding: 50px 25px 25px 25px; /* espace autour du texte */
-            border-radius: 10px;
-            max-width: 1200px;
-            margin: 120px auto 50px auto; /* espace pour navbar fixe */
-        }
-
-        .methodology h2 {
-            color: #87ceeb; /* bleu ciel */
-            margin-top: 30px;
-        }
-
-        .methodology h3 {
-            color: #87ceeb; /* bleu ciel */
-            margin-top: 20px;
-        }
-
-        .methodology p {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .methodology img {
-            width: 80%;
-            margin: 20px 0;
-            border-radius: 5px;
-            display: block;
-        }
-
-        .methodology ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .methodology li {
-            margin-bottom: 10px;
-        }
-
-        /* Table si nécessaire */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border: 1px solid white;
-            color: white;
-        }
-
-        th {
-            background-color: #1565c0;
-        }
-    </style>
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<!-- IMPORTANT : même classe que les autres pages -->
+<body class="content-page">
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
@@ -121,42 +24,46 @@
     <a href="contact.html">Contact</a>
 </nav>
 
-<!-- ===== CONTENU PRINCIPAL ===== -->
-<section class="methodology">
+<!-- ===== CONTENU ===== -->
+<section>
 
-   
-
-    <h3>1 Objectif et méthodologie choisie</h3>
+    <h3>1. Objectif et méthodologie choisie</h3>
     <p>
-        Pour ce projet, nous avons adopté une approche hybride combinant la méthodologie Agile (Scrum) et le cycle en V. 
-        Cette combinaison permet de bénéficier de la flexibilité de Scrum pour les itérations rapides 
-        et de la rigueur du cycle en V pour la validation à chaque étape clé.
+        Pour ce projet, nous avons adopté une approche hybride combinant la méthodologie Agile (Scrum)
+        et le cycle en V. Cette combinaison permet de bénéficier de la flexibilité de Scrum pour les
+        itérations rapides et de la rigueur du cycle en V pour la validation à chaque étape clé.
     </p>
 
-    <h3>2 Méthodologie Scrum</h3>
+    <h3>2. Méthodologie Scrum</h3>
     <p>
-        Scrum est une méthode agile basée sur des itérations courtes appelées sprints. 
-        Chaque sprint permet de livrer une partie du travail, favorisant la collaboration, la communication et l’adaptabilité.
+        Scrum est une méthode agile basée sur des itérations courtes appelées sprints.
+        Chaque sprint permet de livrer une partie du travail, favorisant la collaboration,
+        la communication et l’adaptabilité.
     </p>
+
     <img src="srcum.png" alt="Méthodologie Scrum">
 
-    <h3>3 Cycle en V</h3>
+    <h3>3. Cycle en V</h3>
     <p>
-        Le cycle en V est une méthode linéaire et structurée qui assure la vérification à chaque étape. 
+        Le cycle en V est une méthode linéaire et structurée qui assure la vérification à chaque étape.
         Il se compose de trois phases principales :
     </p>
+
     <ul>
         <li><strong>Conception :</strong> recherches préliminaires, étude du projet, conception de la carte PCB.</li>
         <li><strong>Réalisation :</strong> collecte et traitement des données, entraînement du modèle IA.</li>
         <li><strong>Validation :</strong> évaluation des performances, robustesse et généralisation du modèle IA.</li>
     </ul>
+
     <img src="cyclev.png" alt="Cycle en V">
 
-    <h2>4 Planification du projet</h2>
+    <h2>4. Planification du projet</h2>
     <p>
-        Après avoir structuré le projet, nous avons utilisé un diagramme de Gantt pour planifier visuellement les tâches, 
-        identifier les chevauchements et gérer les priorités, assurant ainsi une organisation fluide et un suivi efficace.
+        Après avoir structuré le projet, nous avons utilisé un diagramme de Gantt pour planifier
+        visuellement les tâches, identifier les chevauchements et gérer les priorités,
+        assurant ainsi une organisation fluide et un suivi efficace.
     </p>
+
     <img src="ganttt.jpeg" alt="Diagramme de Gantt">
 
 </section>
