@@ -2,37 +2,171 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Accueil - FMDS</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - FMDS & Maintenance Prédictive</title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ecf0f1;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientAnimation 18s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: rgba(52, 152, 219, 0.25);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
+            padding: 10px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .home-page {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1581092160560-1c1e428e9d65?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.65);
+            padding: 60px 40px;
+            border-radius: 16px;
+            max-width: 900px;
+            backdrop-filter: blur(6px);
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .overlay h1 {
+            font-size: 3.5em;
+            margin: 0 0 20px;
+            color: #ecf0f1;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            animation: pulse 3s infinite;
+        }
+
+        .overlay p {
+            font-size: 1.4em;
+            margin: 10px 0;
+            color: #bdc3c7;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.6);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <a href="index.html">Accueil</a>
-    <a href="introduction.html">Introduction Générale</a>
-    <a href="planification.html">Planification & Scrum</a>
-    <a href="pompe.html">Étude de cas 1 - Pompe</a>
-    <a href="roulement.html">Étude de cas 2 - Roulement</a>
-    <a href="moteur.html">Étude de cas 3 - Moteur</a>
-    <a href="Conclusion Générale.html">Conclusion Générale</a>
-    <a href="resultats.html">Résultats</a>
-    <a href="contact.html">Contact</a>
-</nav>
+    <!-- Barre de navigation (identique à ta page batteries) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn active">Accueil</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="batteries.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulement</a>
+            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteur</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
 
-<section class="home-page">
-    <div class="overlay">
-        <h1>Projet pratique sur l’analyse FMDS et la maintenance prédictive</h1>
-        <p>Réalisé par : Noujoud Ouni – Sami Hasni – Raoua Meliti</p>
-        <p>Année universitaire : 2025 – 2026</p>
-    </div>
-</section>
+    <!-- Section d'accueil animée -->
+    <section class="home-page">
+        <div class="overlay">
+            <h1>Projet FMDS & Maintenance Prédictive</h1>
+            <p>Réalisé par : Noujoud Ouni – Sami Hasni – Raoua Meliti</p>
+            <p>Année universitaire : 2025 – 2026</p>
+
+            <a href="introduction.html" class="btn">Découvrir le projet</a>
+            <a href="resultats.html" class="btn">Voir les résultats</a>
+        </div>
+
+        <div class="footer">
+            Maintenance Prédictive – Batteries • Roulements • Moteurs
+        </div>
+    </section>
 
 </body>
 </html>
-
-
-
-
-
-
-
