@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Maintenance Prédictive | Noujoud</title>
+    <title>Étude de cas 1 - Batteries | Noujoud</title>
     <style>
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
@@ -40,19 +40,19 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .nav-btn {
             background: rgba(52, 152, 219, 0.25);
             color: #ecf0f1;
             border: 1px solid #3498db;
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95em;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .nav-btn:hover {
@@ -69,7 +69,7 @@
         .container {
             max-width: 1100px;
             margin: 120px auto 60px;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
@@ -128,15 +128,21 @@
             color: white;
         }
 
-        .image-placeholder {
-            background: rgba(236, 240, 241, 0.6);
-            border: 2px dashed #95a5a6;
-            padding: 30px;
-            margin: 25px 0;
-            text-align: center;
+        img.result-img {
+            width: 100%;
+            max-width: 900px;
             border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            margin: 25px auto;
+            display: block;
+        }
+
+        .img-caption {
+            text-align: center;
             font-style: italic;
             color: #7f8c8d;
+            margin-top: -5px;
+            margin-bottom: 35px;
         }
 
         .footer {
@@ -151,16 +157,16 @@
 </head>
 <body>
 
-    <!-- Barre de navigation animée -->
+    <!-- Barre de navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-btn">Accueil</a>
-            <a href="#" class="nav-btn">Introduction Générale</a>
-            <a href="#" class="nav-btn">Planification & Scrum</a>
-            <a href="#" class="nav-btn active">Étude de cas 1 - Batteries</a>
-            <a href="#" class="nav-btn">Étude de cas 2 - Roulement</a>
-            <a href="#" class="nav-btn">Étude de cas 3 - Moteur</a>
-            <a href="#" class="nav-btn">Conclusion Générale</a>
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="introduction-generale.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification-scrum.html" class="nav-btn">Planification & Scrum</a>
+            <a href="etude-cas-batteries.html" class="nav-btn active">Étude de cas 1 - Batteries</a>
+            <a href="etude-cas-roulement.html" class="nav-btn">Étude de cas 2 - Roulement</a>
+            <a href="etude-cas-moteur.html" class="nav-btn">Étude de cas 3 - Moteur</a>
+            <a href="conclusion-generale.html" class="nav-btn">Conclusion Générale</a>
             <a href="#" class="nav-btn">Résultats</a>
             <a href="#" class="nav-btn">Contact</a>
         </div>
@@ -198,10 +204,6 @@
             <strong>Métriques clés</strong> : RMSE, MAE, PHM score, Brier score, courbe de calibration</p>
         </section>
 
-        <!-- Les autres sections restent identiques à ton contenu original -->
-        <!-- Colle ici le reste du contenu que tu avais (Présentation du dataset, Méthodologie, etc.) -->
-
-        <!-- Exemple rapide de la suite (tu peux copier-coller le reste depuis ton précédent message) -->
         <section id="dataset">
             <h2>2. Présentation du dataset</h2>
             <ul>
@@ -210,14 +212,107 @@
                 <li>Seuil de fin de vie (EOL) : 70 % de la capacité initiale</li>
                 <li>Conversion cycles → heures : calculée via durée moyenne récente par batterie</li>
             </ul>
-            <div class="image-placeholder">
-                <strong>Image 1 à insérer ici</strong><br>
-                Capture d’écran du tableau récapitulatif des RUL prédits<br>
-                <em>Légende : « Tableau des RUL prédits en cycles et heures pour les 30 batteries »</em>
-            </div>
+
+            <img src="tableau-rul-predits.jpg" alt="Tableau RUL prédits" class="result-img">
+            <p class="img-caption">Image 1 : Tableau des RUL prédits en cycles et heures pour les 30 batteries</p>
         </section>
 
-        <!-- ... Colle ici toutes les autres sections (3. Méthodologie, 4. Résultats, etc.) exactement comme dans ton message précédent ... -->
+        <section id="methodo">
+            <h2>3. Méthodologie</h2>
+
+            <h3>3.1. Prétraitement et création des fenêtres</h3>
+            <ul>
+                <li>Fenêtres glissantes de 10 cycles sur le ratio capacité/capacité initiale</li>
+                <li>Normalisation StandardScaler sur X et y</li>
+                <li>Split train/test par batteries (80/20)</li>
+            </ul>
+
+            <h3>3.2. Architecture du modèle CNN+GRU</h3>
+            <ul>
+                <li>Conv1D (64 filtres, kernel 3)</li>
+                <li>GRU (64 → 32) avec Dropout 0.1</li>
+                <li>Dense final → 1 sortie (RUL en cycles normalisé)</li>
+                <li>Loss : MSE, Optimizer : Adam</li>
+                <li>Early Stopping (patience 15)</li>
+            </ul>
+
+            <img src="perte-evolution.jpg" alt="Évolution de la perte" class="result-img">
+            <p class="img-caption">Image 2 : Évolution de la perte MSE – CNN+GRU (20 epochs)</p>
+
+            <h3>3.3. Calibration des probabilités</h3>
+            <ul>
+                <li>Probabilité brute : 1 - (RUL prédit / RUL max observé)</li>
+                <li>Méthodes testées : Temperature Scaling puis Beta Calibration (2 paramètres a, b)</li>
+                <li>Objectif : minimiser le Brier score et rapprocher la courbe de calibration de la diagonale</li>
+            </ul>
+
+            <img src="calibration-beta.jpg" alt="Courbe de calibration" class="result-img">
+            <p class="img-caption">Image 3 : Courbe de calibration – Modèle Beta calibré (Brier = 0.0947)</p>
+        </section>
+
+        <section id="regression">
+            <h2>4. Résultats – Performances de régression</h2>
+            <ul>
+                <li>R² = 0.8720</li>
+                <li>RMSE = 9.62 cycles</li>
+                <li>MAE = 7.72 cycles</li>
+                <li>PHM score = 167.17</li>
+            </ul>
+
+            <img src="rul-comparaison-toutes.jpg" alt="RUL réel vs prédit toutes batteries" class="result-img">
+            <p class="img-caption">Image 4 : Comparaison RUL réel vs prédit – Modèle CNN+GRU</p>
+
+            <img src="rul-groupes-4.jpg" alt="RUL groupés par 4" class="result-img">
+            <p class="img-caption">Image 5 : RUL réel vs prédit – 4 groupes de batteries pour meilleure lisibilité</p>
+        </section>
+
+        <section id="proba">
+            <h2>5. Résultats – Performances probabilistes et calibration</h2>
+            <ul>
+                <li>ROC-AUC = 0.9529</li>
+                <li>Average Precision = 0.9590</li>
+                <li><strong>Brier score (après Beta Calibration)</strong> = 0.0947</li>
+                <li>Meilleur seuil (coût FN×5 + FP×1) = 0.150</li>
+                <li>Matrice de confusion : 61 TP / 19 FP / 1 FN / 42 TN</li>
+            </ul>
+
+            <img src="confusion-matrix.jpg" alt="Matrice de confusion" class="result-img">
+            <p class="img-caption">Image 6 : Matrice de confusion (seuil = 0.150) – après Beta Calibration</p>
+
+            <img src="precision-recall.jpg" alt="Courbe Precision-Recall" class="result-img">
+            <p class="img-caption">Image 7 : Courbe Precision-Recall (AP = 0.959)</p>
+
+            <img src="roc-curve.jpg" alt="Courbe ROC" class="result-img">
+            <p class="img-caption">Image 8 : Courbe ROC (AUC = 0.953)</p>
+        </section>
+
+        <section id="weibull">
+            <h2>6. Analyse de fiabilité (loi de Weibull)</h2>
+            <ul>
+                <li>MTTF moyen = 621.02 heures</li>
+                <li>Paramètres Weibull : β = 0.786 (défaillances précoces), η = 527.72 h</li>
+                <li>Fiabilité R(100 h) = 85.13 %</li>
+                <li>Disponibilité globale estimée = 96.28 %</li>
+            </ul>
+
+            <img src="hazard-rate-weibull.jpg" alt="Hazard Rate Weibull" class="result-img">
+            <p class="img-caption">Image 9 : Taux de défaillance (Hazard Rate) – Loi Weibull</p>
+
+            <img src="fiabilite-courbes.jpg" alt="Comparaison courbes fiabilité" class="result-img">
+            <p class="img-caption">Image 10 : Comparaison des courbes de fiabilité</p>
+        </section>
+
+        <section id="predictions">
+            <h2>7. Prédictions individuelles par batterie (extrait)</h2>
+            <ul>
+                <li>Batteries critiques : B0005 (15.22 h), B0041 (37.33 h), B0047 (47.14 h)</li>
+                <li>Batteries longue durée : B0025–B0028 (~2766–2789 h)</li>
+                <li>Batteries moyennes : B0007, B0018, B0050, etc.</li>
+            </ul>
+
+            <img src="tableau-rul-par-batterie.jpg" alt="RUL par batterie" class="result-img">
+            <p class="img-caption">Image 11 : RUL prédits et classification risque par batterie</p>
+        </section>
 
         <section id="conclusion">
             <h2>8. Conclusion et perspectives</h2>
