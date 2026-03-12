@@ -16,12 +16,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.06); }
-            100% { transform: scale(1); }
-        }
-
         body {
             margin: 0;
             padding: 0;
@@ -90,46 +84,24 @@
 
         .overlay {
             background: rgba(0, 0, 0, 0.68);
-            padding: 70px 50px;
+            padding: 80px 60px;
             border-radius: 20px;
-            max-width: 950px;
+            max-width: 1000px;
             backdrop-filter: blur(10px);
             animation: fadeInUp 1.4s ease-out;
         }
 
         .overlay h1 {
-            font-size: 4em;
-            margin: 0 0 25px;
+            font-size: 4.2em;
+            margin: 0 0 30px;
             color: #ecf0f1;
             text-shadow: 0 5px 15px rgba(0,0,0,0.7);
-            animation: pulse 4s infinite;
         }
 
         .overlay p {
-            font-size: 1.6em;
+            font-size: 1.7em;
             margin: 15px 0;
             color: #bdc3c7;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin: 30px 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5);
-            animation: pulse 3s infinite;
-        }
-
-        .btn:hover {
-            background: #2980b9;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.7);
         }
 
         .footer {
@@ -143,9 +115,9 @@
         }
 
         @media (max-width: 768px) {
-            .overlay h1 { font-size: 2.8em; }
-            .overlay p { font-size: 1.3em; }
-            .btn { padding: 14px 30px; font-size: 1em; }
+            .overlay h1 { font-size: 3em; }
+            .overlay p { font-size: 1.4em; }
+            .overlay { padding: 50px 30px; }
         }
     </style>
 </head>
@@ -157,7 +129,7 @@
             <a href="index.html" class="nav-btn active">Accueil</a>
             <a href="introduction.html" class="nav-btn">Introduction Générale</a>
             <a href="planification.html" class="nav-btn">Planification & Scrum</a>
-            <a href="batteries.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
             <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulement</a>
             <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteur</a>
             <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
@@ -166,15 +138,12 @@
         </div>
     </nav>
 
-    <!-- Section d'accueil avec fond main.png -->
+    <!-- Section d'accueil avec fond main.png - sans boutons centraux -->
     <section class="home-page">
         <div class="overlay">
             <h1>Projet FMDS & Maintenance Prédictive</h1>
             <p>Réalisé par : Noujoud Ouni – Sami Hasni – Raoua Meliti</p>
             <p>Année universitaire : 2025 – 2026</p>
-
-            <a href="batteries.html" class="btn">Commencer l’étude des batteries</a>
-            <a href="resultats.html" class="btn">Voir les résultats complets</a>
         </div>
 
         <div class="footer">
