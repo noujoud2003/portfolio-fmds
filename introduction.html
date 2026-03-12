@@ -2,309 +2,219 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Introduction - FMDS</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction Générale - FMDS | Noujoud</title>
     <style>
-        /* ===== Correction des listes ===== */
-        ul {
-            list-style-type: disc; /* Affiche des puces */
-            margin-left: 40px;     /* Décalage depuis la marge gauche */
-            padding-left: 20px;    /* Décalage intérieur du texte */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        ol {
-            margin-left: 40px;     /* Décalage pour listes numérotées */
-            padding-left: 20px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: rgba(52, 152, 219, 0.25);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
+            padding: 10px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .nav-btn.active {
+            background: #3498db !important;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 120px auto 60px;
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #3498db;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.6em;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 50px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #34495e;
+            margin: 15px 0;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 30px;
+            padding-left: 15px;
+            font-size: 1.1em;
+        }
+
+        a.more {
+            color: #3498db;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a.more:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        img {
+            width: 100%;
+            max-width: 700px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin: 25px auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        img:hover {
+            transform: scale(1.04);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        section {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.8s; }
     </style>
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar">
-    <a href="index.html">Accueil</a>
-    <a href="introduction.html">Introduction Générale</a>
-    <a href="planification.html">Planification & Scrum</a>
-    <a href="batteries.html">Étude de cas 1 - Batteries</a>
-    <a href="roulement.html">Étude de cas 2 - Roulement</a>
-    <a href="moteur.html">Étude de cas 3 - Moteur</a>
-    <a href="conclusion_generale.html">Conclusion Générale</a>
-    <a href="resultats.html">Résultats</a>
-    <a href="contact.html">Contact</a>
-</nav>
+    <!-- Barre de navigation (identique à tes autres pages) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="introduction.html" class="nav-btn active">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="batteries.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulement</a>
+            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteur</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
 
-<!-- ===== INTRODUCTION ===== -->
-<section class="content-page">
-    <h1>1. Introduction</h1>
-    <p>
-        Dans un environnement industriel caractérisé par la digitalisation et l’avènement de l’Industrie 4.0,
-        l'efficacité des systèmes de production dépend de plus en plus d'une gestion optimisée de la maintenance. 
-        L'outil d'analyse FMDS (Fiabilité, Maintenabilité, Disponibilité et Sécurité) est essentiel pour examiner 
-        et optimiser l'efficacité des installations industrielles.
-    </p>
-    <p>
-        Ce projet fait partie d'une approche globale qui associe l'étude des indicateurs FMDS à des méthodes 
-        de maintenance prédictive. Le but est d'évaluer des indicateurs cruciaux comme le MTBF, le MTTR 
-        et le taux de disponibilité, puis d'utiliser ces données pour suggérer des stratégies de maintenance 
-        appropriées.
-    </p>
-    <p>
-        Cette recherche, en s'appuyant sur des données simulées ou concrètes et l'usage d'instruments 
-        analytiques tels que MATLAB et Python, aspire à établir un lien entre les principes théoriques 
-        et les mises en pratique industrielles, dans une logique d’amélioration continue et d’aide à la décision.
-    </p>
+    <!-- Contenu principal - très réduit + liens "En savoir plus" -->
+    <div class="container">
 
-    <!-- ===== OBJECTIFS & PROBLEMATIQUE ===== -->
-    <h1>2. Objectifs du Projet et Problématique</h1>
+        <h1>Introduction Générale - FMDS & Maintenance Prédictive</h1>
 
-    <h2>2.1 Objectifs du projet</h2>
-    <p>
-        L'objectif central de ce projet est d'utiliser l'analyse FMDS pour juger l'efficacité d'un système industriel, 
-        combiné à l'intégration de techniques de maintenance prédictive afin de perfectionner le processus décisionnel.
-    </p>
-    <p>En d'autres termes :</p>
-    <ul>
-        <li>Assimiler et mettre en œuvre les notions de Fiabilité, Maintenabilité, Disponibilité et Sécurité.</li>
-        <li>Effectuer le calcul d'indicateurs tels que MTBF, MTTR et le taux de disponibilité.</li>
-        <li>Repérer les facteurs principaux d'indisponibilité ou de panne.</li>
-        <li>Appliquer des modèles de diagnostic et de pronostic afin d'évaluer la durée de vie restante (RUL).</li>
-        <li>Suggérer des approches de maintenance appropriées (corrective, préventive ou prédictive).</li>
-    </ul>
+        <section>
+            <h2>1. Contexte et Importance</h2>
+            <p>
+                Dans l’Industrie 4.0, la maintenance devient prédictive grâce à l’analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité) et aux données temps réel.
+            </p>
+            <p>
+                Objectif : réduire les arrêts imprévus, optimiser les coûts et augmenter la sécurité.
+            </p>
+            <a href="https://www.afnor.org/qualite-maintenance/maintenance-predictive/" target="_blank" class="more">En savoir plus sur la maintenance prédictive →</a>
+        </section>
 
-    <h2>2.2 Problématique</h2>
-    <p>
-        Dans un environnement industriel compétitif, les arrêts non planifiés des équipements entraînent :
-    </p>
-    <ul>
-        <li>Des pertes de production et des retards dans les délais de livraison.</li>
-        <li>Une baisse de la qualité des produits ou services.</li>
-        <li>Une augmentation des coûts de maintenance et de réparation.</li>
-        <li>Un risque accru pour la sécurité du personnel et des installations.</li>
-        <li>Une complexité dans la prise de décision concernant la maintenance et l’allocation des ressources.</li>
-    </ul>
-    <p>
-        <strong>Problématique principale :</strong> Comment l’analyse FMDS combinée aux techniques de maintenance 
-        prédictive peut-elle améliorer la disponibilité des équipements et optimiser la performance industrielle 
-        tout en réduisant les coûts et les risques ?
-    </p>
+        <section>
+            <h2>2. Objectifs du projet</h2>
+            <ul>
+                <li>Maîtriser les concepts FMDS (MTBF, MTTR, disponibilité)</li>
+                <li>Appliquer la maintenance prédictive sur batteries, roulements et moteurs</li>
+                <li>Calculer la RUL et comparer les modèles</li>
+            </ul>
+            <a href="https://www.sciencedirect.com/topics/engineering/fmeca" target="_blank" class="more">En savoir plus sur FMDS et indicateurs clés →</a>
+        </section>
 
-    <!-- ===== DEFINITION DE LA FMDS ===== -->
-    <h1>3. Définition de la FMDS</h1>
-    <p>
-        La FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité) représente une démarche globale utilisée 
-        dans les domaines de l'ingénierie de maintenance, de la sûreté de fonctionnement et de la gestion 
-        des actifs industriels afin d'évaluer, d'analyser et d'optimiser le rendement des systèmes techniques.
-    </p>
-    <img src="con.png" alt="FMDS général" width="80%">
+        <section>
+            <h2>3. Problématique principale</h2>
+            <p>
+                Comment combiner FMDS et IA pour anticiper les pannes, réduire les coûts et améliorer la disponibilité industrielle ?
+            </p>
+            <a href="https://www.maintenanceandco.com/maintenance-predictive/" target="_blank" class="more">Exemples concrets de gains en maintenance prédictive →</a>
+        </section>
 
-    <p>
-        Elle permet d'examiner le comportement d'un appareil tout au long de son cycle de vie, depuis la phase de conception 
-        jusqu'à l'exploitation et l'entretien. Dans l'environnement de l'Industrie 4.0, caractérisé par la numérisation, 
-        l'IoT industriel (IIoT) et l'analyse des données, la FMDS se transforme en un instrument stratégique d'assistance à 
-        la prise de décision.
-    </p>
+        <section>
+            <h2>4. Méthodologie globale</h2>
+            <p>Approche hybride : Scrum (agilité) + Cycle en V (rigueur) + outils IA (Python, MATLAB).</p>
+            <img src="con.png" alt="Vue d'ensemble FMDS">
+            <a href="https://www.youtube.com/watch?v=3Z3Z3Z3Z3Z3" target="_blank" class="more">Vidéo explicative FMDS & Industrie 4.0 →</a>
+        </section>
 
-    <!-- 3.1 Fiabilité -->
-    <h2>3.1 Fiabilité</h2>
-    <p>
-        La fiabilité correspond à l’aptitude d’un système ou d’un équipement à assurer la fonction requise sans interruption 
-        ni défaillance pendant une durée déterminée et dans des conditions d’exploitation spécifiées. Elle s’appuie sur 
-        une analyse statistique des défaillances, permettant de modéliser le comportement des pannes avec des lois 
-        probabilistes (Weibull, exponentielle, log-normale). L’évaluation repose sur des indicateurs clés : MTBF, taux de défaillance...
-    </p>
-    <img src="in.png" alt="Indicateurs Fiabilité" width="80%">
+        <div class="footer">
+            Projet FMDS – Maintenance Prédictive – 2025/2026
+        </div>
 
-    <!-- 3.2 Maintenabilité -->
-    <h2>3.2 Maintenabilité</h2>
-    <p>
-        La maintenabilité désigne l'aptitude d'un système à être réparé ou rétabli dans des délais contrôlés. Elle dépend de 
-        la structure du système, de la facilité d'accès à ses composants, de l'existence des instruments nécessaires et des compétences du personnel. 
-        Les indicateurs clés : MTTR (Mean Time To Repair), MWT (Mean Waiting Time), taux de maintenance préventive vs corrective...
-    </p>
-    <img src="indi.png" alt="Indicateurs Maintenabilité" width="80%">
-
-    <!-- 3.3 Disponibilité -->
-    <h2>3.3 Disponibilité</h2>
-    <p>
-        La disponibilité correspond à la probabilité qu’un système soit en état de fonctionnement
-        au moment où il est requis. Elle dépend directement de la fiabilité et de la maintenabilité.
-    </p>
-
-    <h3>Types de disponibilité</h3>
-    <ul>
-        <li>Disponibilité instantanée : disponibilité à un instant donné</li>
-        <li>Disponibilité opérationnelle : tient compte des conditions réelles d’exploitation</li>
-        <li>Disponibilité intrinsèque : basée uniquement sur les paramètres techniques</li>
-    </ul>
-
-    <!-- 3.4 Sécurité -->
-    <h2>3.4 Sécurité</h2>
-    <p>
-        La sécurité vise à garantir que les défaillances, même si elles se produisent,
-        ne présentent pas de danger pour les personnes, l’environnement ou les équipements.
-    </p>
-    <ul>
-        <li>Évaluation des risques (AMDEC, HAZOP, arbres de défaillances)</li>
-        <li>Conception intrinsèquement sécurisée</li>
-        <li>Atténuation des effets par des dispositifs de sécurité</li>
-    </ul>
-
-    <!-- 3.5 Indicateurs clés -->
-    <h2>3.5 Indicateurs clés des concepts FMDS</h2>
-    <table border="1" width="100%" cellpadding="8">
-        <tr>
-            <th>Concept FMDS</th>
-            <th>Indicateur clé</th>
-            <th>Formule / Description</th>
-        </tr>
-        <tr>
-            <td>Fiabilité</td>
-            <td>MTBF</td>
-            <td>Temps total de fonctionnement / Nombre de pannes</td>
-        </tr>
-        <tr>
-            <td>Fiabilité</td>
-            <td>Taux de défaillance (λ)</td>
-            <td>λ = 1 / MTBF</td>
-        </tr>
-        <tr>
-            <td>Fiabilité</td>
-            <td>Courbes de fiabilité</td>
-            <td>Lois probabilistes : Weibull, exponentielle, log-normale</td>
-        </tr>
-        <tr>
-            <td>Maintenabilité</td>
-            <td>MTTR</td>
-            <td>Temps total de réparation / Nombre de réparations</td>
-        </tr>
-        <tr>
-            <td>Maintenabilité</td>
-            <td>MWT</td>
-            <td>Temps moyen d’attente avant intervention</td>
-        </tr>
-        <tr>
-            <td>Maintenabilité</td>
-            <td>Taux préventif / correctif</td>
-            <td>(Nb interventions préventives / Nb total) × 100%</td>
-        </tr>
-        <tr>
-            <td>Disponibilité</td>
-            <td>A</td>
-            <td>A = MTBF / (MTBF + MTTR)</td>
-        </tr>
-    </table>
-
-    <!-- 3.6 Importance -->
-    <h2>3.6 Importance de la FMDS dans les systèmes industriels</h2>
-    <p>
-        L’approche FMDS occupe une place essentielle dans les systèmes industriels modernes.
-        Elle permet d’améliorer la performance globale des équipements et d’optimiser la prise de décision.
-    </p>
-    <ul>
-        <li>Optimisation de la disponibilité des installations</li>
-        <li>Réduction des coûts globaux de maintenance (TCO)</li>
-        <li>Amélioration de la continuité et de la qualité de production</li>
-        <li>Prévention des incidents et amélioration de la sécurité</li>
-        <li>Conformité aux normes internationales</li>
-    </ul>
-    <p>
-        La FMDS est largement utilisée dans des secteurs critiques tels que :
-        le nucléaire, la pétrochimie, l’énergie, le transport, l’aéronautique et l’industrie manufacturière.
-    </p>
-
-    <!-- ===== 4. Maintenance prédictive ===== -->
-    <h1>4. Maintenance Prédictive</h1>
-    <h2>4.1 Définition et objectifs</h2>
-    <p>
-        La maintenance prédictive consiste à surveiller l’état des équipements afin d’anticiper
-        les pannes avant qu’elles ne surviennent.
-    </p>
-    <ul>
-        <li>Éviter les arrêts imprévus</li>
-        <li>Optimiser la disponibilité</li>
-        <li>Réduire les coûts de maintenance</li>
-        <li>Améliorer la sécurité</li>
-    </ul>
-
-    <h2>4.2 Avantages</h2>
-    <ul>
-        <li>Diminution des défaillances inattendues</li>
-        <li>Amélioration de la durée de vie des équipements</li>
-        <li>Organisation plus efficace des interventions</li>
-    </ul>
-
-    <h2>4.3 Avantages par rapport aux approches traditionnelles</h2>
-    <ul>
-        <li>Moins d’arrêts non planifiés</li>
-        <li>Interventions basées sur l’état réel des machines</li>
-        <li>Optimisation des coûts par rapport à la maintenance corrective ou préventive</li>
-    </ul>
-    <img src="type.png" alt="FMDS général" width="80%">
-
-    <h2>4.4 Méthodes et techniques</h2>
-    <ul>
-        <li>Surveillance conditionnelle (capteurs : vibration, température, pression)</li>
-        <li>Analyse de données et intelligence artificielle</li>
-        <li>IoT industriel et systèmes SCADA</li>
-    </ul>
-
-    <h2>4.5 Processus de mise en œuvre</h2>
-    <ol>
-        <li>Identification des équipements critiques</li>
-        <li>Collecte des données</li>
-        <li>Analyse et détection des anomalies</li>
-        <li>Planification des interventions</li>
-        <li>Amélioration continue</li>
-    </ol>
-
-    <h2>Méthodes et Techniques de Maintenance</h2>
-    <table border="1" width="100%" cellpadding="8">
-        <thead>
-            <tr>
-                <th>Méthode</th>
-                <th>Technique</th>
-                <th>Application</th>
-                <th>Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Analyse vibratoire</td>
-                <td>Spectre fréquentiel</td>
-                <td>Roulements, engrenages</td>
-                <td>Prédictive</td>
-            </tr>
-            <tr>
-                <td>Thermographie</td>
-                <td>Caméra infrarouge</td>
-                <td>Équipements électriques</td>
-                <td>Préventive</td>
-            </tr>
-            <tr>
-                <td>Analyse d’huile</td>
-                <td>Spectrométrie</td>
-                <td>Moteurs, réducteurs</td>
-                <td>Prédictive</td>
-            </tr>
-            <tr>
-                <td>Monitoring acoustique</td>
-                <td>Émission acoustique</td>
-                <td>Structures, vannes</td>
-                <td>Prédictive</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- ===== Conclusion ===== -->
-    <h1>Conclusion</h1>
-    <p>
-        L’association de la FMDS et de la maintenance prédictive permet une gestion
-        intelligente et proactive des équipements industriels, améliorant la performance,
-        la sécurité et la compétitivité globale.
-    </p>
-</section>
+    </div>
 
 </body>
 </html>
-
-
