@@ -112,15 +112,16 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 25px 0;
             background: #fff;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 0.95em;
         }
 
         th, td {
             border: 1px solid #bdc3c7;
             padding: 12px;
-            text-align: left;
+            text-align: center;
         }
 
         th {
@@ -188,6 +189,7 @@
             <li><a href="#methodo">Méthodologie</a></li>
             <li><a href="#regression">Résultats – Performances de régression</a></li>
             <li><a href="#proba">Résultats – Performances probabilistes et calibration</a></li>
+            <li><a href="#comparaison">Comparaison des 3 modèles</a></li>
             <li><a href="#weibull">Analyse de fiabilité (loi de Weibull)</a></li>
             <li><a href="#predictions">Prédictions individuelles par batterie</a></li>
             <li><a href="#conclusion">Conclusion et perspectives</a></li>
@@ -284,6 +286,59 @@
 
             <img src="roc-curve.jpg" alt="Courbe ROC" class="result-img">
             <p class="img-caption">Image 8 : Courbe ROC (AUC = 0.953)</p>
+        </section>
+
+        <!-- NOUVELLE SECTION : Comparaison des 3 modèles -->
+        <section id="comparaison">
+            <h2>Comparaison des 3 modèles</h2>
+            <p>Nous avons comparé trois modèles sur le même jeu de test pour évaluer leur performance sur la prédiction de RUL :</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modèle</th>
+                        <th>R²</th>
+                        <th>RMSE (cycles)</th>
+                        <th>MAE (cycles)</th>
+                        <th>PHM score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CNN+GRU (avec Beta Calibration)</td>
+                        <td>0.8720</td>
+                        <td>9.62</td>
+                        <td>7.72</td>
+                        <td>167.17</td>
+                    </tr>
+                    <tr>
+                        <td>LSTM</td>
+                        <td>0.7726</td>
+                        <td>12.82</td>
+                        <td>9.64</td>
+                        <td>299.27</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>0.7826</td>
+                        <td>12.54</td>
+                        <td>9.76</td>
+                        <td>302.91</td>
+                    </tr>
+                    <tr>
+                        <td>XGBoost</td>
+                        <td>0.6334</td>
+                        <td>16.28</td>
+                        <td>12.20</td>
+                        <td>706.14</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Conclusion de la comparaison</strong> : Le modèle hybride CNN+GRU surpasse largement les modèles classiques (LSTM, Random Forest, XGBoost) en termes de précision (R² le plus élevé) et d’erreur moyenne (RMSE et MAE les plus bas). Il offre également le meilleur PHM score, confirmant sa supériorité pour la tâche de prédiction de RUL.</p>
+
+            <img src="comparaison-modeles-graph.jpg" alt="Graphique comparaison modèles" class="result-img">
+            <p class="img-caption">Image 12 : Comparaison graphique des performances des 4 modèles (R², RMSE, MAE, PHM)</p>
         </section>
 
         <section id="weibull">
