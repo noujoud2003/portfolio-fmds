@@ -10,12 +10,10 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(60px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         body {
             margin: 0;
             padding: 0;
@@ -27,7 +25,6 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
         .navbar {
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
@@ -38,7 +35,6 @@
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -47,7 +43,6 @@
             justify-content: center;
             gap: 12px;
         }
-
         .nav-btn {
             background: rgba(52, 152, 219, 0.25);
             color: #ecf0f1;
@@ -59,18 +54,15 @@
             font-size: 0.95em;
             transition: all 0.3s ease;
         }
-
         .nav-btn:hover {
             background: #3498db;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
-
         .nav-btn.active {
             background: #3498db !important;
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
         }
-
         .home-page {
             height: 100vh;
             background: url('main.png') no-repeat center center;
@@ -81,7 +73,6 @@
             justify-content: center;
             text-align: center;
         }
-
         .overlay {
             background: rgba(0, 0, 0, 0.68);
             padding: 80px 60px;
@@ -90,20 +81,17 @@
             backdrop-filter: blur(10px);
             animation: fadeInUp 1.4s ease-out;
         }
-
         .overlay h1 {
             font-size: 4.2em;
             margin: 0 0 30px;
             color: #ecf0f1;
             text-shadow: 0 5px 15px rgba(0,0,0,0.7);
         }
-
         .overlay p {
             font-size: 1.7em;
             margin: 15px 0;
             color: #bdc3c7;
         }
-
         .footer {
             position: absolute;
             bottom: 30px;
@@ -114,16 +102,34 @@
             opacity: 0.9;
         }
 
+        /* NOUVEAU : Logo ENSIT en petit dans le coin supérieur droit */
+        .faculty-logo {
+            position: fixed;
+            top: 80px;          /* juste en dessous de la navbar */
+            right: 20px;
+            width: 120px;       /* taille raisonnable – tu peux changer */
+            height: auto;
+            opacity: 0.85;
+            z-index: 999;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+        .faculty-logo:hover {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
         @media (max-width: 768px) {
             .overlay h1 { font-size: 3em; }
             .overlay p { font-size: 1.4em; }
             .overlay { padding: 50px 30px; }
+            .faculty-logo { width: 90px; top: 70px; right: 15px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Barre de navigation (identique à ta page batteries) -->
+    <!-- Barre de navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-btn active">Accueil</a>
@@ -138,18 +144,19 @@
         </div>
     </nav>
 
-    <!-- Section d'accueil avec fond main.png - sans boutons centraux -->
+    <!-- Logo ENSIT en haut à droite -->
+    <img src="ensit-logo.jpg" alt="Logo ENSIT" class="faculty-logo">
+
+    <!-- Section d'accueil avec fond main.png -->
     <section class="home-page">
         <div class="overlay">
             <h1>Projet FMDS & Maintenance Prédictive</h1>
             <p>Réalisé par : Noujoud Ouni – Sami Hasni – Raoua Meliti</p>
             <p>Année universitaire : 2025 – 2026</p>
         </div>
-
         <div class="footer">
             Maintenance Prédictive – Batteries • Roulements • Moteurs
         </div>
     </section>
-
 </body>
 </html>
