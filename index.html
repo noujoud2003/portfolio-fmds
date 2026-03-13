@@ -102,29 +102,37 @@
             opacity: 0.9;
         }
 
-        /* NOUVEAU : Logo ENSIT en petit dans le coin supérieur droit */
+        /* Logo ENSIT - coin supérieur droit, clair et visible */
         .faculty-logo {
             position: fixed;
-            top: 80px;          /* juste en dessous de la navbar */
-            right: 20px;
-            width: 120px;       /* taille raisonnable – tu peux changer */
+            top: 90px;           /* juste sous la navbar */
+            right: 30px;         /* décalage à droite pour ne pas coller au bord */
+            width: 140px;        /* taille claire et professionnelle */
             height: auto;
-            opacity: 0.85;
+            opacity: 0.95;       /* presque opaque pour bien voir */
             z-index: 999;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.15); /* fond semi-blanc pour contraste */
+            padding: 8px;        /* petit espace intérieur */
+            border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s ease;
         }
         .faculty-logo:hover {
             opacity: 1;
-            transform: scale(1.08);
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
         @media (max-width: 768px) {
             .overlay h1 { font-size: 3em; }
             .overlay p { font-size: 1.4em; }
             .overlay { padding: 50px 30px; }
-            .faculty-logo { width: 90px; top: 70px; right: 15px; }
+            .faculty-logo {
+                width: 100px;
+                top: 80px;
+                right: 15px;
+            }
         }
     </style>
 </head>
@@ -144,10 +152,10 @@
         </div>
     </nav>
 
-    <!-- Logo ENSIT en haut à droite -->
+    <!-- Logo ENSIT en haut à droite – maintenant clair -->
     <img src="ensit-logo.jpg" alt="Logo ENSIT" class="faculty-logo">
 
-    <!-- Section d'accueil avec fond main.png -->
+    <!-- Section d'accueil -->
     <section class="home-page">
         <div class="overlay">
             <h1>Projet FMDS & Maintenance Prédictive</h1>
