@@ -10,7 +10,6 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -22,7 +21,6 @@
             animation: gradientAnimation 18s ease infinite;
             min-height: 100vh;
         }
-
         .navbar {
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
@@ -33,7 +31,6 @@
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -42,7 +39,6 @@
             justify-content: center;
             gap: 12px;
         }
-
         .nav-btn {
             background: rgba(52, 152, 219, 0.25);
             color: #ecf0f1;
@@ -54,18 +50,15 @@
             font-size: 0.95em;
             transition: all 0.3s ease;
         }
-
         .nav-btn:hover {
             background: #3498db;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
-
         .active {
             background: #3498db !important;
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
         }
-
         .container {
             max-width: 1100px;
             margin: 120px auto 60px;
@@ -75,40 +68,33 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(8px);
         }
-
         h1 {
             color: #ecf0f1;
             text-align: center;
             margin-bottom: 10px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
-
         h2 {
             color: #3498db;
             border-bottom: 2px solid #3498db;
             padding-bottom: 8px;
             margin-top: 40px;
         }
-
         h3 {
             color: #2980b9;
         }
-
         p, li {
             color: #34495e;
         }
-
         a {
             color: #1abc9c;
             text-decoration: none;
             font-weight: 600;
         }
-
         a:hover {
             color: #16a085;
             text-decoration: underline;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -117,18 +103,15 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             font-size: 0.95em;
         }
-
         th, td {
             border: 1px solid #bdc3c7;
             padding: 12px;
             text-align: center;
         }
-
         th {
             background-color: #3498db;
             color: white;
         }
-
         img.result-img {
             width: 100%;
             max-width: 900px;
@@ -137,7 +120,6 @@
             margin: 25px auto;
             display: block;
         }
-
         .img-caption {
             text-align: center;
             font-style: italic;
@@ -145,7 +127,6 @@
             margin-top: -5px;
             margin-bottom: 35px;
         }
-
         .footer {
             text-align: center;
             margin-top: 60px;
@@ -154,10 +135,38 @@
             font-size: 0.9em;
             border-top: 1px solid rgba(255,255,255,0.2);
         }
+
+        /* Styles pour les boutons de téléchargement */
+        .downloads {
+            text-align: center;
+            margin: 30px 0 45px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #2ecc71;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05em;
+            margin: 10px 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(46,204,113,0.3);
+        }
+        .download-btn:hover {
+            background: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46,204,113,0.5);
+        }
+        .download-info {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-
     <!-- Barre de navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -174,7 +183,6 @@
     </nav>
 
     <div class="container">
-
         <h1>Étude de cas : Prédiction de la durée de vie restante (RUL) des batteries lithium-ion</h1>
         <p style="text-align:center; font-weight:bold; color:#2c3e50;">
             Mini-projet – Maintenance prédictive<br>
@@ -200,7 +208,6 @@
             <h2>1. Introduction</h2>
             <p>Les batteries lithium-ion sont essentielles aux véhicules électriques, au stockage d’énergie renouvelable et aux systèmes critiques. Leur dégradation imprévisible provoque pannes coûteuses et risques de sécurité. La prédiction précise de la Remaining Useful Life (RUL) permet une maintenance prédictive efficace et une meilleure sécurité.<br>
             <a href="https://www.iea.org/reports/global-ev-outlook-2025/batteries-and-energy-storage" target="_blank">→ Plus de détails sur l’importance des batteries Li-ion</a></p>
-
             <p><strong>Dataset</strong> : NASA PCoE + batteries randomisées (metadata.csv)<br>
             <strong>Tâche principale</strong> : Régression RUL + classification binaire (RUL ≤ 30 cycles ?)<br>
             <strong>Métriques clés</strong> : RMSE, MAE, PHM score, Brier score, courbe de calibration</p>
@@ -215,20 +222,37 @@
                 <li>Conversion cycles → heures : calculée via durée moyenne récente par batterie</li>
             </ul>
 
+            <!-- Boutons de téléchargement -->
+            <div class="downloads">
+                <p><strong>Téléchargez les fichiers de données du projet :</strong></p>
+                
+                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/metadata.csv" 
+                   class="download-btn" 
+                   download="metadata.csv">
+                   ↓ metadata.csv (métadonnées NASA PCoE)
+                </a>
+                
+                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/RUL_predictions_heures_CNN+GRU_improved.csv" 
+                   class="download-btn" 
+                   download="RUL_predictions_heures_CNN+GRU_improved.csv">
+                   ↓ RUL_predictions (prédictions + heures – CNN+GRU)
+                </a>
+            </div>
+            <p class="download-info">Liens directs vers GitHub (format raw CSV). Cliquez pour télécharger automatiquement. Les fichiers sont publics et à jour.</p>
+
             <img src="tableau-rul-predits.jpg" alt="Tableau RUL prédits" class="result-img">
             <p class="img-caption">Image 1 : Tableau des RUL prédits en cycles et heures pour les 30 batteries</p>
         </section>
 
+        <!-- Les autres sections restent identiques à ton code original -->
         <section id="methodo">
             <h2>3. Méthodologie</h2>
-
             <h3>3.1. Prétraitement et création des fenêtres</h3>
             <ul>
                 <li>Fenêtres glissantes de 10 cycles sur le ratio capacité/capacité initiale</li>
                 <li>Normalisation StandardScaler sur X et y</li>
                 <li>Split train/test par batteries (80/20)</li>
             </ul>
-
             <h3>3.2. Architecture du modèle CNN+GRU</h3>
             <ul>
                 <li>Conv1D (64 filtres, kernel 3)</li>
@@ -237,17 +261,14 @@
                 <li>Loss : MSE, Optimizer : Adam</li>
                 <li>Early Stopping (patience 15)</li>
             </ul>
-
             <img src="perte-evolution.jpg" alt="Évolution de la perte" class="result-img">
             <p class="img-caption">Image 2 : Évolution de la perte MSE – CNN+GRU (20 epochs)</p>
-
             <h3>3.3. Calibration des probabilités</h3>
             <ul>
                 <li>Probabilité brute : 1 - (RUL prédit / RUL max observé)</li>
                 <li>Méthodes testées : Temperature Scaling puis Beta Calibration (2 paramètres a, b)</li>
                 <li>Objectif : minimiser le Brier score et rapprocher la courbe de calibration de la diagonale</li>
             </ul>
-
             <img src="calibration-beta.jpg" alt="Courbe de calibration" class="result-img">
             <p class="img-caption">Image 3 : Courbe de calibration – Modèle Beta calibré (Brier = 0.0947)</p>
         </section>
@@ -260,10 +281,8 @@
                 <li>MAE = 7.72 cycles</li>
                 <li>PHM score = 167.17</li>
             </ul>
-
             <img src="rul-comparaison-toutes.jpg" alt="RUL réel vs prédit toutes batteries" class="result-img">
             <p class="img-caption">Image 4 : Comparaison RUL réel vs prédit – Modèle CNN+GRU</p>
-
             <img src="rul-groupes-4.jpg" alt="RUL groupés par 4" class="result-img">
             <p class="img-caption">Image 5 : RUL réel vs prédit – 4 groupes de batteries pour meilleure lisibilité</p>
         </section>
@@ -277,22 +296,17 @@
                 <li>Meilleur seuil (coût FN×5 + FP×1) = 0.150</li>
                 <li>Matrice de confusion : 61 TP / 19 FP / 1 FN / 42 TN</li>
             </ul>
-
             <img src="confusion-matrix.jpg" alt="Matrice de confusion" class="result-img">
             <p class="img-caption">Image 6 : Matrice de confusion (seuil = 0.150) – après Beta Calibration</p>
-
             <img src="precision-recall.jpg" alt="Courbe Precision-Recall" class="result-img">
             <p class="img-caption">Image 7 : Courbe Precision-Recall (AP = 0.959)</p>
-
             <img src="roc-curve.jpg" alt="Courbe ROC" class="result-img">
             <p class="img-caption">Image 8 : Courbe ROC (AUC = 0.953)</p>
         </section>
 
-        <!-- NOUVELLE SECTION : Comparaison des 3 modèles -->
         <section id="comparaison">
             <h2>Comparaison des 3 modèles</h2>
             <p>Nous avons comparé trois modèles sur le même jeu de test pour évaluer leur performance sur la prédiction de RUL :</p>
-
             <table>
                 <thead>
                     <tr>
@@ -334,9 +348,7 @@
                     </tr>
                 </tbody>
             </table>
-
             <p><strong>Conclusion de la comparaison</strong> : Le modèle hybride CNN+GRU surpasse largement les modèles classiques (LSTM, Random Forest, XGBoost) en termes de précision (R² le plus élevé) et d’erreur moyenne (RMSE et MAE les plus bas). Il offre également le meilleur PHM score, confirmant sa supériorité pour la tâche de prédiction de RUL.</p>
-
             <img src="comparaison-modeles-graph.jpg" alt="Graphique comparaison modèles" class="result-img">
             <p class="img-caption">Image 12 : Comparaison graphique des performances des 4 modèles (R², RMSE, MAE, PHM)</p>
         </section>
@@ -349,10 +361,8 @@
                 <li>Fiabilité R(100 h) = 85.13 %</li>
                 <li>Disponibilité globale estimée = 96.28 %</li>
             </ul>
-
             <img src="hazard-rate-weibull.jpg" alt="Hazard Rate Weibull" class="result-img">
             <p class="img-caption">Image 9 : Taux de défaillance (Hazard Rate) – Loi Weibull</p>
-
             <img src="fiabilite-courbes.jpg" alt="Comparaison courbes fiabilité" class="result-img">
             <p class="img-caption">Image 10 : Comparaison des courbes de fiabilité</p>
         </section>
@@ -364,7 +374,6 @@
                 <li>Batteries longue durée : B0025–B0028 (~2766–2789 h)</li>
                 <li>Batteries moyennes : B0007, B0018, B0050, etc.</li>
             </ul>
-
             <img src="tableau-rul-par-batterie.jpg" alt="RUL par batterie" class="result-img">
             <p class="img-caption">Image 11 : RUL prédits et classification risque par batterie</p>
         </section>
@@ -395,11 +404,9 @@
         </section>
 
         <div class="footer">
-            Étude réalisée par Noujoud – Mars 2026
+            Étude réalisée par Noujoud – Mars 2026<br>
+            <a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank" style="color:#bdc3c7;">Portfolio sur GitHub</a>
         </div>
-
     </div>
-
 </body>
 </html>
-
