@@ -89,8 +89,7 @@
         }
         .download-btn:hover { background: #27ae60; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(46,204,113,0.5); }
         .download-info { font-style: italic; color: #7f8c8d; margin-top: 10px; }
-        ul.detailed { margin-left: 20px; }
-        ul.detailed li { margin-bottom: 8px; }
+        ul.detailed li { margin-bottom: 6px; }
     </style>
 </head>
 <body>
@@ -130,7 +129,6 @@
             <li><a href="#refs">Références</a></li>
         </ol>
 
-        <!-- Introduction -->
         <section id="intro">
             <h2>1. Introduction</h2>
             <p>Les batteries lithium-ion sont essentielles aux véhicules électriques, au stockage d’énergie renouvelable et aux systèmes critiques. Leur dégradation imprévisible provoque pannes coûteuses et risques de sécurité. La prédiction précise de la Remaining Useful Life (RUL) permet une maintenance prédictive efficace et une meilleure sécurité.<br>
@@ -140,7 +138,6 @@
             <strong>Métriques clés</strong> : RMSE, MAE, PHM score, Brier score, courbe de calibration</p>
         </section>
 
-        <!-- Dataset -->
         <section id="dataset">
             <h2>2. Présentation du dataset</h2>
             <ul>
@@ -159,63 +156,77 @@
             <p class="img-caption">Image 1 : Tableau des RUL prédits en cycles et heures pour les 30 batteries</p>
         </section>
 
-        <!-- FMDS Classique (tu peux garder ta version précédente ou la mettre à jour) -->
         <section id="fmds-classique">
             <h2>3. Analyse FMDS Classique</h2>
-            <p>Avant d’aborder les approches de maintenance prédictive basées sur l’apprentissage profond, une analyse de fiabilité classique (FMDS) est réalisée pour comprendre le comportement de dégradation des batteries :</p>
-            <!-- Ici tu mets tes images et résultats FMDS comme avant -->
-            <!-- Exemple rapide : -->
+            <p>Avant d’aborder les approches de maintenance prédictive, une analyse de fiabilité classique (FMDS) est réalisée :</p>
             <ul>
                 <li>Dégradation du State of Health (SOH)</li>
                 <li>Courbe de survie Kaplan-Meier</li>
-                <li>Ajustement Weibull</li>
+                <li>Ajustement Weibull + densité de probabilité</li>
                 <li>Taux de risque (Hazard Rate)</li>
-                <li>MTBF = 41.29 cycles, Disponibilité = 89.20 %</li>
+                <li>Courbe Bathtub</li>
+                <li>Indicateurs : MTBF, MTTR, taux de défaillance/réparation, disponibilité</li>
             </ul>
-            <!-- Ajoute tes images ici comme avant -->
+
+            <!-- Ajoute ici tes images FMDS récentes -->
+            <img src="degradation_soh.png" alt="Dégradation SOH" class="result-img">
+            <p class="img-caption">Figure 3.1 : Dégradation du State of Health (SOH)</p>
+            <p class="remark">Forte variabilité et chutes brutales typiques des tests accélérés NASA PCoE.</p>
+
+            <!-- Autres images FMDS... -->
+
+            <h3>Résultats quantitatifs actualisés</h3>
+            <ul>
+                <li>Cycles de défaillance : [17, 3, 20, 17, 56, 39, 39, 27, 40, 39, 8, 27, 53, 27, 5, 39, 60, 100, 123, 74, 54]</li>
+                <li>MTBF : 41.29 cycles</li>
+                <li>MTTR (hypothétique) : 5 cycles</li>
+                <li>Taux de défaillance λ : 0.0242 par cycle</li>
+                <li>Taux de réparation μ : 0.2000 par cycle</li>
+                <li>Disponibilité stationnaire : 89.20 %</li>
+            </ul>
+            <p class="remark">MTBF de 41.29 cycles et disponibilité élevée malgré un MTTR court.</p>
         </section>
 
-        <!-- Méthodologie – MAINTENANCE PRÉDICTIVE (partie détaillée) -->
         <section id="methodo">
             <h2>4. Méthodologie – Maintenance prédictive</h2>
 
             <h3>4.1. Prétraitement et création des fenêtres</h3>
             <ul>
-                <li>Fenêtres glissantes de **10 cycles** sur le ratio capacité/capacité initiale</li>
-                <li>Normalisation StandardScaler sur les features (X) et la cible (y = RUL)</li>
-                <li>Split train/test par batteries (80/20) → évite le data leakage</li>
+                <li>Fenêtres glissantes de 10 cycles sur le ratio capacité/capacité initiale</li>
+                <li>Normalisation StandardScaler sur X et y</li>
+                <li>Split train/test par batteries (80/20) pour éviter le data leakage</li>
             </ul>
 
             <h3>4.2. Architecture du modèle CNN+GRU</h3>
-            <p>Modèle hybride convolutif-récurrent choisi pour capturer à la fois les motifs locaux (CNN) et les dépendances temporelles longues (GRU).</p>
+            <p>Modèle hybride convolutif-récurrent pour capturer motifs locaux et dépendances temporelles.</p>
             <ul class="detailed">
-                <li><strong>Nombre total de couches</strong> : 7 couches principales (Conv1D + 2 GRU + 3 Dense + Dropout)</li>
-                <li><strong>Taille des fenêtres (input)</strong> : 10 cycles consécutifs (shape = (10, 1))</li>
-                <li><strong>Couche Conv1D</strong> : 64 filtres, kernel size = 3, activation = ReLU, padding = 'same'</li>
-                <li><strong>Couche GRU 1</strong> : 64 unités, return_sequences = True</li>
+                <li><strong>Nombre total de couches principales</strong> : 7 (Conv1D + 2 GRU + 3 Dense + Dropout)</li>
+                <li><strong>Taille des fenêtres d’entrée</strong> : 10 cycles consécutifs (shape = (10, 1))</li>
+                <li><strong>Couche Conv1D</strong> : 64 filtres, kernel size = 3, activation ReLU, padding 'same'</li>
+                <li><strong>Couche GRU 1</strong> : 64 unités, return_sequences=True</li>
                 <li><strong>Couche GRU 2</strong> : 32 unités</li>
                 <li><strong>Dropout</strong> : 0.1 après chaque couche majeure (Conv1D + GRU + Dense)</li>
-                <li><strong>Couches Dense</strong> : Dense(16, ReLU) → Dense(1, linéaire)</li>
-                <li><strong>Fonction de perte</strong> : Mean Squared Error (MSE) – adaptée à la régression continue du RUL</li>
+                <li><strong>Couches Dense</strong> : Dense(16, activation='relu') → Dense(1, linéaire)</li>
+                <li><strong>Fonction de perte</strong> : Mean Squared Error (MSE) – adaptée à la régression du RUL</li>
                 <li><strong>Optimiseur</strong> : Adam (learning rate par défaut = 0.001)</li>
                 <li><strong>Nombre d’époques</strong> : Jusqu’à 150, avec Early Stopping (patience = 15, restauration des meilleurs poids)</li>
                 <li><strong>Batch size</strong> : 32</li>
-                <li><strong>Validation</strong> : 10 % du train split pour monitoring</li>
+                <li><strong>Validation split</strong> : 10 % du set d’entraînement</li>
             </ul>
 
             <img src="perte-evolution.jpg" alt="Évolution de la perte" class="result-img">
-            <p class="img-caption">Image 4.1 : Évolution de la perte MSE pendant l'entraînement (CNN+GRU)</p>
-            <p class="remark">Remarque : La perte diminue rapidement et se stabilise après ~20-30 époques, l’Early Stopping évite efficacement le surapprentissage.</p>
+            <p class="img-caption">Image 4.1 : Évolution de la perte MSE pendant l'entraînement</p>
+            <p class="remark">La perte se stabilise rapidement, l’Early Stopping empêche efficacement le surapprentissage.</p>
 
             <h3>4.3. Calibration des probabilités</h3>
             <ul>
                 <li>Probabilité brute : 1 - (RUL prédit / RUL max observé)</li>
-                <li>Méthode : Beta Calibration (2 paramètres a, b) – plus robuste que Temperature Scaling</li>
-                <li>Objectif : minimiser le Brier score et aligner la courbe de calibration sur la diagonale</li>
+                <li>Méthode : Beta Calibration (optimisation des paramètres a et b)</li>
+                <li>Objectif : minimiser le Brier score et aligner sur la diagonale parfaite</li>
             </ul>
-            <img src="calibration-beta.jpg" alt="Courbe de calibration" class="result-img">
+            <img src="calibration-beta.jpg" alt="Calibration" class="result-img">
             <p class="img-caption">Image 4.2 : Courbe de calibration après Beta Calibration</p>
-            <p class="remark">Remarque : Calibration très améliorée, les probabilités prédites sont fiables et utilisables pour la prise de décision.</p>
+            <p class="remark">Probabilités très fiables après calibration (Brier score très bas).</p>
         </section>
 
         <!-- Résultats régression -->
@@ -237,7 +248,7 @@
             <ul>
                 <li>ROC-AUC = 0.9529</li>
                 <li>Average Precision = 0.9590</li>
-                <li>Brier score (après Beta Calibration) = 0.0947</li>
+                <li>Brier score (Beta Calibration) = 0.0947</li>
             </ul>
             <img src="confusion-matrix.jpg" alt="Matrice de confusion" class="result-img">
             <p class="img-caption">Image 6.1 : Matrice de confusion au seuil optimal</p>
@@ -247,17 +258,11 @@
         <section id="comparaison">
             <h2>7. Comparaison des modèles</h2>
             <table>
-                <thead>
-                    <tr>
-                        <th>Modèle</th><th>R²</th><th>RMSE</th><th>MAE</th><th>PHM score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>CNN+GRU (Beta Cal.)</td><td>0.8720</td><td>9.62</td><td>7.72</td><td>167.17</td></tr>
-                    <tr><td>LSTM</td><td>0.7726</td><td>12.82</td><td>9.64</td><td>299.27</td></tr>
-                    <tr><td>Random Forest</td><td>0.7826</td><td>12.54</td><td>9.76</td><td>302.91</td></tr>
-                    <tr><td>XGBoost</td><td>0.6334</td><td>16.28</td><td>12.20</td><td>706.14</td></tr>
-                </tbody>
+                <tr><th>Modèle</th><th>R²</th><th>RMSE</th><th>MAE</th><th>PHM score</th></tr>
+                <tr><td>CNN+GRU (Beta Cal.)</td><td>0.8720</td><td>9.62</td><td>7.72</td><td>167.17</td></tr>
+                <tr><td>LSTM</td><td>0.7726</td><td>12.82</td><td>9.64</td><td>299.27</td></tr>
+                <tr><td>Random Forest</td><td>0.7826</td><td>12.54</td><td>9.76</td><td>302.91</td></tr>
+                <tr><td>XGBoost</td><td>0.6334</td><td>16.28</td><td>12.20</td><td>706.14</td></tr>
             </table>
         </section>
 
@@ -275,11 +280,10 @@
         <!-- Conclusion -->
         <section id="conclusion">
             <h2>9. Conclusion et perspectives</h2>
-            <p>Le modèle CNN+GRU associé à Beta Calibration offre une excellente précision (RMSE 9.62 cycles) et une fiabilité probabiliste renforcée (Brier 0.0947).</p>
-            <p><strong>Perspectives</strong> : incertitude bayésienne, quantile regression, tests sur Oxford/CALCE, déploiement temps réel.</p>
+            <p>Le modèle CNN+GRU avec Beta Calibration offre une excellente précision (RMSE 9.62 cycles) et une fiabilité probabiliste renforcée (Brier 0.0947).</p>
+            <p><strong>Perspectives</strong> : intégration d’incertitude bayésienne, quantile regression, tests sur Oxford/CALCE, déploiement temps réel.</p>
         </section>
 
-        <!-- Références -->
         <section id="refs">
             <h2>Références</h2>
             <ul>
@@ -290,7 +294,8 @@
         </section>
 
         <div class="footer">
-            Étude réalisée par Noujoud – Mars 2026
+            Étude réalisée par Noujoud – Mars 2026<br>
+            <a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank">Portfolio GitHub</a>
         </div>
     </div>
 </body>
