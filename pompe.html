@@ -68,108 +68,27 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(8px);
         }
-        h1 {
-            color: #ecf0f1;
-            text-align: center;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-        }
-        h2 {
-            color: #3498db;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
-            margin-top: 40px;
-        }
-        h3 {
-            color: #2980b9;
-        }
-        p, li {
-            color: #34495e;
-        }
-        a {
-            color: #1abc9c;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        a:hover {
-            color: #16a085;
-            text-decoration: underline;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            background: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            font-size: 0.95em;
-        }
-        th, td {
-            border: 1px solid #bdc3c7;
-            padding: 12px;
-            text-align: center;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        img.result-img {
-            width: 100%;
-            max-width: 900px;
-            border-radius: 8px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            margin: 25px auto;
-            display: block;
-        }
-        .img-caption {
-            text-align: center;
-            font-style: italic;
-            color: #7f8c8d;
-            margin-top: -5px;
-            margin-bottom: 35px;
-        }
-        .remark {
-            font-size: 0.95em;
-            color: #555;
-            text-align: center;
-            margin-top: 8px;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 20px;
-            color: #bdc3c7;
-            font-size: 0.9em;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-        .downloads {
-            text-align: center;
-            margin: 30px 0 45px;
-        }
+        h1 { color: #ecf0f1; text-align: center; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+        h2 { color: #3498db; border-bottom: 2px solid #3498db; padding-bottom: 8px; margin-top: 40px; }
+        h3 { color: #2980b9; }
+        p, li { color: #34495e; }
+        a { color: #1abc9c; text-decoration: none; font-weight: 600; }
+        a:hover { color: #16a085; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-size: 0.95em; }
+        th, td { border: 1px solid #bdc3c7; padding: 12px; text-align: center; }
+        th { background-color: #3498db; color: white; }
+        img.result-img { width: 100%; max-width: 900px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); margin: 25px auto; display: block; }
+        .img-caption { text-align: center; font-style: italic; color: #7f8c8d; margin-top: -5px; margin-bottom: 10px; }
+        .remark { font-size: 0.95em; color: #555; text-align: center; margin: 8px 0 30px; font-style: italic; }
+        .footer { text-align: center; margin-top: 60px; padding: 20px; color: #bdc3c7; font-size: 0.9em; border-top: 1px solid rgba(255,255,255,0.2); }
+        .downloads { text-align: center; margin: 30px 0 45px; }
         .download-btn {
-            display: inline-block;
-            background: #2ecc71;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.05em;
-            margin: 10px 15px;
-            transition: all 0.3s ease;
+            display: inline-block; background: #2ecc71; color: white; padding: 12px 24px; border-radius: 30px;
+            text-decoration: none; font-weight: bold; font-size: 1.05em; margin: 10px 15px; transition: all 0.3s;
             box-shadow: 0 4px 12px rgba(46,204,113,0.3);
         }
-        .download-btn:hover {
-            background: #27ae60;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46,204,113,0.5);
-        }
-        .download-info {
-            font-style: italic;
-            color: #7f8c8d;
-            margin-top: 10px;
-        }
+        .download-btn:hover { background: #27ae60; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(46,204,113,0.5); }
+        .download-info { font-style: italic; color: #7f8c8d; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -204,12 +123,12 @@
             <li><a href="#regression">5. Résultats – Performances de régression</a></li>
             <li><a href="#proba">6. Résultats – Performances probabilistes et calibration</a></li>
             <li><a href="#comparaison">7. Comparaison des modèles</a></li>
-            <li><a href="#weibull">8. Analyse de fiabilité (loi de Weibull)</a></li>
-            <li><a href="#predictions">9. Prédictions individuelles par batterie</a></li>
-            <li><a href="#conclusion">10. Conclusion et perspectives</a></li>
+            <li><a href="#predictions">8. Prédictions individuelles par batterie</a></li>
+            <li><a href="#conclusion">9. Conclusion et perspectives</a></li>
             <li><a href="#refs">Références</a></li>
         </ol>
 
+        <!-- 1. Introduction -->
         <section id="intro">
             <h2>1. Introduction</h2>
             <p>Les batteries lithium-ion sont essentielles aux véhicules électriques, au stockage d’énergie renouvelable et aux systèmes critiques. Leur dégradation imprévisible provoque pannes coûteuses et risques de sécurité. La prédiction précise de la Remaining Useful Life (RUL) permet une maintenance prédictive efficace et une meilleure sécurité.<br>
@@ -219,6 +138,7 @@
             <strong>Métriques clés</strong> : RMSE, MAE, PHM score, Brier score, courbe de calibration</p>
         </section>
 
+        <!-- 2. Dataset -->
         <section id="dataset">
             <h2>2. Présentation du dataset</h2>
             <ul>
@@ -227,65 +147,70 @@
                 <li>Seuil de fin de vie (EOL) : 70 % de la capacité initiale</li>
                 <li>Conversion cycles → heures : calculée via durée moyenne récente par batterie</li>
             </ul>
-
             <div class="downloads">
                 <p><strong>Téléchargez les fichiers de données du projet :</strong></p>
-                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/metadata.csv"
-                   class="download-btn"
-                   download="metadata.csv">
-                   ↓ metadata.csv (métadonnées NASA PCoE)
-                </a>
-                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/RUL_predictions_heures_CNN+GRU_improved.csv"
-                   class="download-btn"
-                   download="RUL_predictions_heures_CNN+GRU_improved.csv">
-                   ↓ RUL_predictions (prédictions + heures – CNN+GRU)
-                </a>
+                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/metadata.csv" class="download-btn" download="metadata.csv">↓ metadata.csv (métadonnées NASA PCoE)</a>
+                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/RUL_predictions_heures_CNN+GRU_improved.csv" class="download-btn" download="RUL_predictions_heures_CNN+GRU_improved.csv">↓ RUL_predictions (CNN+GRU)</a>
             </div>
-            <p class="download-info">Liens directs vers GitHub (format raw CSV). Cliquez pour télécharger automatiquement.</p>
-
+            <p class="download-info">Liens directs GitHub – Cliquez pour télécharger.</p>
             <img src="tableau-rul-predits.jpg" alt="Tableau RUL prédits" class="result-img">
             <p class="img-caption">Image 1 : Tableau des RUL prédits en cycles et heures pour les 30 batteries</p>
         </section>
 
+        <!-- 3. FMDS Classique (mise à jour avec tes derniers résultats) -->
         <section id="fmds-classique">
             <h2>3. Analyse FMDS Classique</h2>
-            <p>Avant d’aborder les approches de maintenance prédictive basées sur l’apprentissage profond, une analyse de fiabilité classique (FMDS) est réalisée pour comprendre le comportement de dégradation des batteries :</p>
+            <p>Avant toute approche prédictive par IA, une analyse de fiabilité classique (FMDS) est effectuée sur les données réelles de dégradation :</p>
             <ul>
-                <li>Visualisation de la dégradation du State of Health (SOH)</li>
-                <li>Estimation non-paramétrique de la survie via Kaplan-Meier</li>
-                <li>Ajustement paramétrique de la loi de Weibull</li>
-                <li>Analyse du taux de risque (Hazard Rate)</li>
-                <li>Calculs de fiabilité : MTBF, disponibilité et OEE</li>
+                <li>Dégradation du State of Health (SOH)</li>
+                <li>Courbe de survie Kaplan-Meier (non-paramétrique)</li>
+                <li>Ajustement Weibull + densité de probabilité</li>
+                <li>Taux de risque (Hazard Rate)</li>
+                <li>Courbe Bathtub (défaillances précoces / normales / usure)</li>
+                <li>Indicateurs quantitatifs : MTBF, MTTR, taux de défaillance/réparation, disponibilité</li>
             </ul>
 
-            <img src="sohnew.png" alt="Dégradation du SOH" class="result-img">
-            <p class="img-caption">Figure 3.1 : Dégradation du State of Health (SOH) pour les 30 batteries</p>
-            <p class="remark">Remarque : On observe une dégradation progressive avec des chutes parfois brutales, typiques des batteries Li-ion soumises à des tests accélérés (NASA PCoE).</p>
+            <img src="degradation_soh.png" alt="Dégradation SOH" class="result-img">
+            <p class="img-caption">Figure 3.1 : Dégradation du State of Health (SOH) pour toutes les batteries</p>
+            <p class="remark">Remarque : Forte variabilité entre batteries, chutes parfois brutales, typique des tests accélérés NASA PCoE.</p>
 
-            <img src="newclassfmds.png" alt="Courbe Kaplan-Meier" class="result-img">
+            <img src="kaplan_meier.png" alt="Kaplan-Meier" class="result-img">
             <p class="img-caption">Figure 3.2 : Courbe de survie Kaplan-Meier (estimateur non-paramétrique)</p>
-            <p class="remark">Remarque : La courbe en escalier reflète les défaillances réelles observées ; elle montre une chute rapide au début, confirmant une usure infantile.</p>
+            <p class="remark">Remarque : Chute rapide au début → confirme une usure infantile marquée sur les premières dizaines de cycles.</p>
 
-            <img src="newweibullclassique.png" alt="Fiabilité Weibull" class="result-img">
+            <img src="fiabilite_weibull.png" alt="Fiabilité Weibull" class="result-img">
             <p class="img-caption">Figure 3.3 : Courbe de fiabilité ajustée selon la loi de Weibull</p>
-            <p class="remark">Remarque : La courbe de fiabilité Weibull est lissée et décroissante, ce qui permet une modélisation paramétrique plus précise que l’approche empirique.</p>
+            <p class="remark">Remarque : Décroissance progressive, modélisation paramétrique cohérente avec les données empiriques.</p>
 
-            <img src="newfmds.png" alt="Hazard Rate Weibull" class="result-img">
-            <p class="img-caption">Figure 3.4 : Taux de risque (Hazard Rate) dérivé du modèle Weibull (échelle en cycles)</p>
-            <p class="remark">Remarque : Le taux de risque décroissant rapidement confirme le caractère de défaillance infantile (β ≈ 1.13 proche de 1, mais légèrement croissant au début).</p>
+            <img src="hazard_rate_weibull.png" alt="Hazard Rate" class="result-img">
+            <p class="img-caption">Figure 3.4 : Taux de risque (Hazard Rate) – Loi Weibull</p>
+            <p class="remark">Remarque : Taux croissant après ~40 cycles → phase d’usure accélérée en fin de vie.</p>
 
-            <h3>Résultats quantitatifs de l'analyse Weibull</h3>
+            <img src="bathtub_curve.png" alt="Bathtub Curve" class="result-img">
+            <p class="img-caption">Figure 3.5 : Courbe Bathtub – Défaillances précoces, vie normale et usure</p>
+            <p class="remark">Remarque : Phase infantile visible (taux élevé au début), puis vie utile stable, enfin usure marquée après ~100 cycles.</p>
+
+            <img src="weibull_histogram_pdf.png" alt="Ajustement Weibull + PDF" class="result-img">
+            <p class="img-caption">Figure 3.6 : Ajustement Weibull sur histogramme des cycles de défaillance</p>
+            <p class="remark">Remarque : La densité Weibull suit bien la distribution empirique, avec pic autour de 40 cycles.</p>
+
+            <img src="indicateurs_fmds.png" alt="Indicateurs FMDS" class="result-img">
+            <p class="img-caption">Figure 3.7 : Indicateurs FMDS clés du système batterie</p>
+            <p class="remark">Remarque : MTBF de 41.29 cycles, disponibilité élevée (89.20 %) malgré MTTR hypothétique de 5 cycles.</p>
+
+            <h3>Résultats quantitatifs actualisés</h3>
             <ul>
-                <li><strong>Cycles de défaillance observés</strong> : [17, 3, 19, 17, 5, 39, 39, 27, 5, 39, 27, 5, 27, 5, 39, 60, 100, 123, 74, 55]</li>
-                <li><strong>Paramètre β (forme)</strong> : 1.126</li>
-                <li><strong>Paramètre η (échelle)</strong> : 37.88 cycles</li>
-                <li><strong>MTBF (Mean Time Between Failures)</strong> : 36.25 cycles</li>
-                <li><strong>Disponibilité estimée</strong> : 87.88 %</li>
-                <li><strong>OEE estimé</strong> : 81.82 %</li>
+                <li><strong>Cycles de défaillance observés</strong> : [17, 3, 20, 17, 56, 39, 39, 27, 40, 39, 8, 27, 53, 27, 5, 39, 60, 100, 123, 74, 54]</li>
+                <li><strong>MTBF (Mean Time Between Failures)</strong> : 41.29 cycles</li>
+                <li><strong>MTTR (hypothétique)</strong> : 5 cycles</li>
+                <li><strong>Taux de défaillance λ</strong> : 0.0242 par cycle</li>
+                <li><strong>Taux de réparation μ</strong> : 0.2000 par cycle</li>
+                <li><strong>Disponibilité stationnaire</strong> : 89.20 %</li>
             </ul>
-            <p class="remark">Remarque globale : Avec β ≈ 1.13, on est proche d’une défaillance aléatoire (β = 1), mais légèrement orientée vers l’usure infantile. Le MTBF de 36 cycles indique une durée de vie relativement courte sous conditions de test accéléré.</p>
+            <p class="remark">Remarque globale : MTBF de 41 cycles indique une durée de vie moyenne raisonnable en test accéléré. Disponibilité élevée montre que même avec un MTTR court, le système reste très disponible.</p>
         </section>
 
+        <!-- 4. Méthodologie – Maintenance prédictive -->
         <section id="methodo">
             <h2>4. Méthodologie – Maintenance prédictive</h2>
             <h3>4.1. Prétraitement et création des fenêtres</h3>
@@ -306,19 +231,118 @@
             <p class="img-caption">Image 4.1 : Évolution de la perte MSE – CNN+GRU (20 epochs)</p>
             <p class="remark">Remarque : La perte diminue rapidement puis se stabilise, signe d’un bon apprentissage sans surapprentissage majeur grâce à l’early stopping.</p>
 
-            <h3>4.3. Calibration des probabilités</h3>
+            <h3>4.3. Calibration des probabilités (Beta Calibration)</h3>
             <ul>
                 <li>Probabilité brute : 1 - (RUL prédit / RUL max observé)</li>
-                <li>Méthodes testées : Temperature Scaling puis Beta Calibration (2 paramètres a, b)</li>
-                <li>Objectif : minimiser le Brier score et rapprocher la courbe de calibration de la diagonale</li>
+                <li>Méthode retenue : Beta Calibration (2 paramètres a, b)</li>
+                <li>Objectif : minimiser le Brier score et obtenir une calibration proche de la diagonale</li>
             </ul>
             <img src="calibration-beta.jpg" alt="Courbe de calibration" class="result-img">
-            <p class="img-caption">Image 4.2 : Courbe de calibration – Modèle Beta calibré (Brier = 0.0947)</p>
-            <p class="remark">Remarque : Après calibration Beta, la courbe se rapproche fortement de la diagonale, améliorant fortement la fiabilité probabiliste des prédictions.</p>
+            <p class="img-caption">Image 4.2 : Courbe de calibration – Modèle Beta calibré</p>
+            <p class="remark">Remarque : La calibration Beta améliore fortement la fiabilité probabiliste des prédictions (Brier score bas).</p>
         </section>
 
-        <!-- Les autres sections restent inchangées (tu peux les copier de ton ancien code si besoin) -->
-        <!-- ... section regression, proba, comparaison, weibull, predictions, conclusion, refs ... -->
+        <!-- 5. Résultats régression -->
+        <section id="regression">
+            <h2>5. Résultats – Performances de régression</h2>
+            <ul>
+                <li>R² = 0.8720</li>
+                <li>RMSE = 9.62 cycles</li>
+                <li>MAE = 7.72 cycles</li>
+                <li>PHM score = 167.17</li>
+            </ul>
+            <img src="rul-comparaison-toutes.jpg" alt="RUL réel vs prédit" class="result-img">
+            <p class="img-caption">Image 5.1 : Comparaison RUL réel vs prédit – Modèle CNN+GRU</p>
+            <p class="remark">Remarque : Bonne corrélation globale, erreurs faibles sur la majorité des batteries.</p>
+
+            <img src="rul-groupes-4.jpg" alt="RUL groupés" class="result-img">
+            <p class="img-caption">Image 5.2 : RUL réel vs prédit – Groupes de 4 batteries pour lisibilité</p>
+        </section>
+
+        <!-- 6. Résultats probabilistes -->
+        <section id="proba">
+            <h2>6. Résultats – Performances probabilistes et calibration</h2>
+            <ul>
+                <li>ROC-AUC = 0.9529</li>
+                <li>Average Precision = 0.9590</li>
+                <li>Brier score (Beta Calibration) = 0.0947</li>
+                <li>Meilleur seuil (coût FN×5 + FP×1) = 0.150</li>
+                <li>Matrice de confusion : 61 TP / 19 FP / 1 FN / 42 TN</li>
+            </ul>
+            <img src="confusion-matrix.jpg" alt="Matrice de confusion" class="result-img">
+            <p class="img-caption">Image 6.1 : Matrice de confusion au seuil optimal (0.150) – Beta Calibration</p>
+            <p class="remark">Remarque : Très peu de faux négatifs (critique en maintenance), bon compromis FP/FN.</p>
+
+            <img src="precision-recall.jpg" alt="Precision-Recall" class="result-img">
+            <p class="img-caption">Image 6.2 : Courbe Precision-Recall (AP = 0.959)</p>
+
+            <img src="roc-curve.jpg" alt="Courbe ROC" class="result-img">
+            <p class="img-caption">Image 6.3 : Courbe ROC (AUC = 0.953)</p>
+        </section>
+
+        <!-- 7. Comparaison modèles -->
+        <section id="comparaison">
+            <h2>7. Comparaison des modèles</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modèle</th>
+                        <th>R²</th>
+                        <th>RMSE (cycles)</th>
+                        <th>MAE (cycles)</th>
+                        <th>PHM score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>CNN+GRU (Beta Calibration)</td><td>0.8720</td><td>9.62</td><td>7.72</td><td>167.17</td></tr>
+                    <tr><td>LSTM</td><td>0.7726</td><td>12.82</td><td>9.64</td><td>299.27</td></tr>
+                    <tr><td>Random Forest</td><td>0.7826</td><td>12.54</td><td>9.76</td><td>302.91</td></tr>
+                    <tr><td>XGBoost</td><td>0.6334</td><td>16.28</td><td>12.20</td><td>706.14</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Conclusion</strong> : Le modèle hybride CNN+GRU surpasse largement les autres en précision et erreur moyenne.</p>
+            <img src="comparaison-modeles-graph.jpg" alt="Comparaison modèles" class="result-img">
+            <p class="img-caption">Image 7 : Comparaison graphique des performances (R², RMSE, MAE, PHM)</p>
+        </section>
+
+        <!-- 8. Prédictions individuelles -->
+        <section id="predictions">
+            <h2>8. Prédictions individuelles par batterie (extrait)</h2>
+            <ul>
+                <li>Batteries critiques : B0005 (15.22 h), B0041 (37.33 h), B0047 (47.14 h)</li>
+                <li>Batteries longue durée : B0025–B0028 (~2766–2789 h)</li>
+                <li>Batteries moyennes : B0007, B0018, B0050, etc.</li>
+            </ul>
+            <img src="tableau-rul-par-batterie.jpg" alt="RUL par batterie" class="result-img">
+            <p class="img-caption">Image 8 : RUL prédits et classification risque par batterie</p>
+        </section>
+
+        <!-- 9. Conclusion -->
+        <section id="conclusion">
+            <h2>9. Conclusion et perspectives</h2>
+            <p>Le modèle CNN+GRU avec Beta Calibration offre :</p>
+            <ul>
+                <li>Excellente précision régression (RMSE 9.62 cycles)</li>
+                <li>Fiabilité probabiliste renforcée (Brier 0.0947)</li>
+                <li>Analyse FMDS cohérente (MTBF 41.29 cycles, disponibilité 89.20 %)</li>
+            </ul>
+            <p><strong>Perspectives</strong> :</p>
+            <ul>
+                <li>Intégration d’incertitude bayésienne ou quantile regression</li>
+                <li>Test sur datasets Oxford / CALCE</li>
+                <li>Déploiement temps réel avec seuils adaptatifs</li>
+            </ul>
+        </section>
+
+        <!-- Références -->
+        <section id="refs">
+            <h2>Références</h2>
+            <ul>
+                <li>NASA PCoE Battery Dataset</li>
+                <li>Kull et al. (2017) – Beta Calibration</li>
+                <li>PHM 2008 Data Challenge</li>
+            </ul>
+        </section>
 
         <div class="footer">
             Étude réalisée par Noujoud – Mars 2026<br>
