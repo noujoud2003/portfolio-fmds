@@ -176,24 +176,20 @@
             <p class="img-caption">Figure 3.2 : Courbe de survie Kaplan-Meier (estimateur non-paramétrique)</p>
             <p class="remark">Remarque : Chute rapide au début → confirme une usure infantile marquée sur les premières dizaines de cycles.</p>
 
-            <img src="fiabilite_weibull.png" alt="Fiabilité Weibull" class="result-img">
-            <p class="img-caption">Figure 3.3 : Courbe de fiabilité ajustée selon la loi de Weibull</p>
-            <p class="remark">Remarque : Décroissance progressive, modélisation paramétrique cohérente avec les données empiriques.</p>
-
             <img src="hazard_rate_weibull.png" alt="Hazard Rate" class="result-img">
-            <p class="img-caption">Figure 3.4 : Taux de risque (Hazard Rate) – Loi Weibull</p>
+            <p class="img-caption">Figure 3.3 : Taux de risque (Hazard Rate) – Loi Weibull</p>
             <p class="remark">Remarque : Taux croissant après ~40 cycles → phase d’usure accélérée en fin de vie.</p>
 
             <img src="bathtub_curve.png" alt="Bathtub Curve" class="result-img">
-            <p class="img-caption">Figure 3.5 : Courbe Bathtub – Défaillances précoces, vie normale et usure</p>
+            <p class="img-caption">Figure 3.4 : Courbe Bathtub – Défaillances précoces, vie normale et usure</p>
             <p class="remark">Remarque : Phase infantile visible (taux élevé au début), puis vie utile stable, enfin usure marquée après ~100 cycles.</p>
 
             <img src="weibull_histogram_pdf.png" alt="Ajustement Weibull + PDF" class="result-img">
-            <p class="img-caption">Figure 3.6 : Ajustement Weibull sur histogramme des cycles de défaillance</p>
+            <p class="img-caption">Figure 3.5 : Ajustement Weibull sur histogramme des cycles de défaillance</p>
             <p class="remark">Remarque : La densité Weibull suit bien la distribution empirique, avec pic autour de 40 cycles.</p>
 
             <img src="indicateurs_fmds.png" alt="Indicateurs FMDS" class="result-img">
-            <p class="img-caption">Figure 3.7 : Indicateurs FMDS clés du système batterie</p>
+            <p class="img-caption">Figure 3.6 : Indicateurs FMDS clés du système batterie</p>
             <p class="remark">Remarque : MTBF de 41.29 cycles, disponibilité élevée (89.20 %) malgré MTTR hypothétique de 5 cycles.</p>
 
             <h3>Résultats quantitatifs actualisés (règles de calcul)</h3>
@@ -217,7 +213,7 @@
             <p class="remark">Remarque globale : MTBF de 41.29 cycles indique une durée de vie moyenne raisonnable en test accéléré. Disponibilité élevée (89.20 %) montre que même avec un MTTR court, le système reste très disponible.</p>
         </section>
 
-        <!-- Méthodologie – Maintenance prédictive (inchangée mais complète) -->
+        <!-- Méthodologie – Maintenance prédictive (avec toutes les nouvelles images) -->
         <section id="methodo">
             <h2>4. Méthodologie – Maintenance prédictive</h2>
 
@@ -229,39 +225,66 @@
             </ul>
 
             <h3>4.2. Architecture du modèle CNN+GRU</h3>
-            <p>Modèle hybride convolutif-récurrent pour capturer motifs locaux et dépendances temporelles.</p>
+            <p>Modèle hybride convolutif-récurrent choisi pour capturer motifs locaux (CNN) et dépendances temporelles longues (GRU).</p>
             <ul class="detailed">
                 <li><strong>Nombre total de couches principales</strong> : 7 (Conv1D + 2 GRU + 3 Dense + Dropout)</li>
                 <li><strong>Taille des fenêtres d’entrée</strong> : 10 cycles consécutifs (shape = (10, 1))</li>
                 <li><strong>Couche Conv1D</strong> : 64 filtres, kernel size = 3, activation ReLU, padding 'same'</li>
                 <li><strong>Couche GRU 1</strong> : 64 unités, return_sequences=True</li>
                 <li><strong>Couche GRU 2</strong> : 32 unités</li>
-                <li><strong>Dropout</strong> : 0.1 après chaque couche majeure (Conv1D + GRU + Dense)</li>
-                <li><strong>Couches Dense</strong> : Dense(16, activation='relu') → Dense(1, linéaire)</li>
-                <li><strong>Fonction de perte</strong> : Mean Squared Error (MSE) – adaptée à la régression du RUL</li>
+                <li><strong>Dropout</strong> : 0.1 après chaque couche majeure</li>
+                <li><strong>Couches Dense</strong> : Dense(16, ReLU) → Dense(1, linéaire)</li>
+                <li><strong>Fonction de perte</strong> : Mean Squared Error (MSE)</li>
                 <li><strong>Optimiseur</strong> : Adam (learning rate par défaut = 0.001)</li>
-                <li><strong>Nombre d’époques</strong> : Jusqu’à 150, avec Early Stopping (patience = 15, restauration des meilleurs poids)</li>
+                <li><strong>Nombre d’époques</strong> : Jusqu’à 150, avec Early Stopping (patience = 15)</li>
                 <li><strong>Batch size</strong> : 32</li>
-                <li><strong>Validation split</strong> : 10 % du set d’entraînement</li>
+                <li><strong>Validation split</strong> : 10 % du train</li>
             </ul>
 
             <img src="perte-evolution.jpg" alt="Évolution de la perte" class="result-img">
-            <p class="img-caption">Image 4.1 : Évolution de la perte MSE pendant l'entraînement</p>
-            <p class="remark">La perte se stabilise rapidement, l’Early Stopping empêche efficacement le surapprentissage.</p>
+            <p class="img-caption">Image 4.1 : Évolution de la perte MSE – CNN+GRU (train vs validation)</p>
+            <p class="remark">Remarque : Perte qui diminue bien et se stabilise, validation suit la train → bon apprentissage sans surapprentissage majeur.</p>
 
-            <h3>4.3. Calibration des probabilités</h3>
+            <h3>4.3. Calibration des probabilités (Beta Calibration)</h3>
             <ul>
                 <li>Probabilité brute : 1 - (RUL prédit / RUL max observé)</li>
-                <li>Méthode : Beta Calibration (optimisation des paramètres a et b)</li>
-                <li>Objectif : minimiser le Brier score et aligner sur la diagonale parfaite</li>
+                <li>Méthode retenue : Beta Calibration (optimisation des paramètres a et b)</li>
+                <li>Objectif : minimiser le Brier score et rapprocher la courbe de la diagonale parfaite</li>
             </ul>
+
             <img src="calibration-beta.jpg" alt="Calibration" class="result-img">
             <p class="img-caption">Image 4.2 : Courbe de calibration après Beta Calibration</p>
-            <p class="remark">Probabilités très fiables après calibration (Brier score très bas).</p>
+            <p class="remark">Remarque : La courbe se rapproche fortement de la diagonale → probabilités bien calibrées et fiables.</p>
+
+            <!-- Nouvelles images ajoutées ici -->
+            <img src="precision_recall_beta.png" alt="Precision-Recall" class="result-img">
+            <p class="img-caption">Image 4.3 : Courbe Precision-Recall après Beta Calibration (AP = 0.959)</p>
+            <p class="remark">Remarque : Average Precision très élevé → excellente capacité à identifier les batteries en fin de vie.</p>
+
+            <img src="roc_curve_beta.png" alt="ROC" class="result-img">
+            <p class="img-caption">Image 4.4 : Courbe ROC après Beta Calibration (AUC = 0.953)</p>
+            <p class="remark">Remarque : AUC proche de 0.96 → très bonne discrimination entre classes (RUL ≤ 30 vs > 30).</p>
+
+            <img src="confusion_matrix_beta.png" alt="Matrice de confusion" class="result-img">
+            <p class="img-caption">Image 4.5 : Matrice de confusion au seuil optimal (0.150) après Beta Calibration</p>
+            <p class="remark">Remarque : Très peu de faux négatifs (1 seulement) → idéal pour éviter les pannes non détectées.</p>
         </section>
 
-        <!-- Les autres sections restent identiques (tu peux les copier de ton ancien code si besoin) -->
-        <!-- ... regression, proba, comparaison, predictions, conclusion, refs ... -->
+        <section id="regression">
+            <h2>5. Résultats – Performances de régression</h2>
+            <ul>
+                <li>R² = 0.8720</li>
+                <li>RMSE = 9.62 cycles</li>
+                <li>MAE = 7.72 cycles</li>
+                <li>PHM score = 167.17</li>
+            </ul>
+
+            <img src="rul-groupes-4.jpg" alt="RUL réel vs prédit groupes" class="result-img">
+            <p class="img-caption">Image 5.1 : RUL réel vs prédit – CNN+GRU (groupés par 4 pour meilleure lisibilité)</p>
+            <p class="remark">Remarque : Bonne correspondance globale, erreurs plus marquées sur batteries à dégradation rapide.</p>
+        </section>
+
+        <!-- Les autres sections (comparaison, prédictions, conclusion, refs) restent comme avant -->
 
         <div class="footer">
             Étude réalisée par Noujoud – Mars 2026<br>
