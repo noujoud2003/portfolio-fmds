@@ -176,7 +176,7 @@
             <p class="img-caption">Figure 3.2 : Courbe de survie Kaplan-Meier (estimateur non-paramétrique)</p>
             <p class="remark">Remarque : Chute rapide au début → confirme une usure infantile marquée sur les premières dizaines de cycles.</p>
 
-            <img src="hazard_rate.png" alt="Hazard Rate" class="result-img">
+            <img src="hazard_rate_weibull.png" alt="Hazard Rate" class="result-img">
             <p class="img-caption">Figure 3.3 : Taux de risque (Hazard Rate) – Loi Weibull</p>
             <p class="remark">Remarque : Taux croissant après ~40 cycles → phase d’usure accélérée en fin de vie.</p>
 
@@ -184,11 +184,11 @@
             <p class="img-caption">Figure 3.4 : Courbe Bathtub – Défaillances précoces, vie normale et usure</p>
             <p class="remark">Remarque : Phase infantile visible (taux élevé au début), puis vie utile stable, enfin usure marquée après ~100 cycles.</p>
 
-            <img src="weibull_fit.png" alt="Ajustement Weibull + PDF" class="result-img">
+            <img src="weibull_histogram_pdf.png" alt="Ajustement Weibull + PDF" class="result-img">
             <p class="img-caption">Figure 3.5 : Ajustement Weibull sur histogramme des cycles de défaillance</p>
             <p class="remark">Remarque : La densité Weibull suit bien la distribution empirique, avec pic autour de 40 cycles.</p>
 
-            <img src="fmds_indicators.png" alt="Indicateurs FMDS" class="result-img">
+            <img src="indicateurs_fmds.png" alt="Indicateurs FMDS" class="result-img">
             <p class="img-caption">Figure 3.6 : Indicateurs FMDS clés du système batterie</p>
             <p class="remark">Remarque : MTBF de 41.29 cycles, disponibilité élevée (89.20 %) malgré MTTR hypothétique de 5 cycles.</p>
 
@@ -213,7 +213,6 @@
             <p class="remark">Remarque globale : MTBF de 41.29 cycles indique une durée de vie moyenne raisonnable en test accéléré. Disponibilité élevée (89.20 %) montre que même avec un MTTR court, le système reste très disponible.</p>
         </section>
 
-        <!-- Méthodologie – Maintenance prédictive (avec toutes les nouvelles images) -->
         <section id="methodo">
             <h2>4. Méthodologie – Maintenance prédictive</h2>
 
@@ -225,7 +224,7 @@
             </ul>
 
             <h3>4.2. Architecture du modèle CNN+GRU</h3>
-            <p>Modèle hybride convolutif-récurrent choisi pour capturer motifs locaux (CNN) et dépendances temporelles longues (GRU).</p>
+            <p>Modèle hybride convolutif-récurrent pour capturer motifs locaux (CNN) et dépendances temporelles longues (GRU).</p>
             <ul class="detailed">
                 <li><strong>Nombre total de couches principales</strong> : 7 (Conv1D + 2 GRU + 3 Dense + Dropout)</li>
                 <li><strong>Taille des fenêtres d’entrée</strong> : 10 cycles consécutifs (shape = (10, 1))</li>
@@ -256,8 +255,7 @@
             <p class="img-caption">Image 4.2 : Courbe de calibration après Beta Calibration</p>
             <p class="remark">Remarque : La courbe se rapproche fortement de la diagonale → probabilités bien calibrées et fiables.</p>
 
-            <!-- Nouvelles images ajoutées ici -->
-            <img src="precision_recall_beta.png" alt="Precision-Recall" class="result-img">
+            <img src="precision_recall_curve.png" alt="Precision-Recall" class="result-img">
             <p class="img-caption">Image 4.3 : Courbe Precision-Recall après Beta Calibration (AP = 0.959)</p>
             <p class="remark">Remarque : Average Precision très élevé → excellente capacité à identifier les batteries en fin de vie.</p>
 
@@ -284,7 +282,98 @@
             <p class="remark">Remarque : Bonne correspondance globale, erreurs plus marquées sur batteries à dégradation rapide.</p>
         </section>
 
-        <!-- Les autres sections (comparaison, prédictions, conclusion, refs) restent comme avant -->
+        <section id="comparaison">
+            <h2>7. Comparaison des modèles (performances de validation sur test set)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modèle</th>
+                        <th>R²</th>
+                        <th>RMSE (cycles)</th>
+                        <th>MAE (cycles)</th>
+                        <th>PHM score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CNN+GRU (Beta Calibration)</strong></td>
+                        <td>0.8720</td>
+                        <td>9.62</td>
+                        <td>7.72</td>
+                        <td>167.17</td>
+                    </tr>
+                    <tr>
+                        <td>LSTM</td>
+                        <td>0.7726</td>
+                        <td>12.82</td>
+                        <td>9.64</td>
+                        <td>299.27</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>0.7826</td>
+                        <td>12.54</td>
+                        <td>9.76</td>
+                        <td>302.91</td>
+                    </tr>
+                    <tr>
+                        <td>XGBoost</td>
+                        <td>0.6334</td>
+                        <td>16.28</td>
+                        <td>12.20</td>
+                        <td>706.14</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="remark">Remarque : Le modèle CNN+GRU est clairement le plus performant (meilleur R², RMSE/MAE les plus bas, PHM score le plus faible).</p>
+        </section>
+
+        <section id="predictions">
+            <h2>8. Prédictions individuelles par batterie (RUL en heures – modèle CNN+GRU)</h2>
+            <p>Extrait des prédictions RUL (cycles convertis en heures) pour les batteries du dataset de test :</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Batterie ID</th>
+                        <th>RUL prédit (cycles)</th>
+                        <th>RUL prédit (heures)</th>
+                        <th>Note / Risque</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>B0005</td><td>2.42</td><td>15.22</td><td>Critique (fin de vie proche)</td></tr>
+                    <tr><td>B0006</td><td>0.0</td><td>0.0</td><td>Épuisée</td></tr>
+                    <tr><td>B0007</td><td>16.82</td><td>105.67</td><td>Moyenne</td></tr>
+                    <tr><td>B0018</td><td>14.26</td><td>54.88</td><td>Moyenne</td></tr>
+                    <tr><td>B0025</td><td>69.96</td><td>2772.24</td><td>Longue durée</td></tr>
+                    <tr><td>B0026</td><td>70.33</td><td>2786.99</td><td>Longue durée</td></tr>
+                    <tr><td>B0027</td><td>70.39</td><td>2789.07</td><td>Longue durée</td></tr>
+                    <tr><td>B0028</td><td>69.82</td><td>2766.44</td><td>Longue durée</td></tr>
+                    <tr><td>B0041</td><td>7.89</td><td>37.33</td><td>Critique</td></tr>
+                    <tr><td>B0047</td><td>4.02</td><td>47.14</td><td>Critique</td></tr>
+                    <tr><td>B0050</td><td>15.84</td><td>80.34</td><td>Moyenne</td></tr>
+                    <!-- Tu peux ajouter d'autres lignes si tu veux plus d'exemples -->
+                </tbody>
+            </table>
+            <p class="remark">Remarque : Les batteries B0005, B0041 et B0047 présentent un RUL très faible (< 50 h) → priorité maintenance immédiate. Les B0025–B0028 montrent une excellente longévité (> 2700 h).</p>
+        </section>
+
+        <!-- Conclusion et références (inchangées) -->
+        <section id="conclusion">
+            <h2>9. Conclusion et perspectives</h2>
+            <p>Le modèle CNN+GRU avec Beta Calibration offre une excellente précision (RMSE 9.62 cycles) et une fiabilité probabiliste renforcée (Brier 0.0947).</p>
+            <p><strong>Perspectives</strong> : intégration d’incertitude bayésienne, quantile regression, tests sur Oxford/CALCE, déploiement temps réel.</p>
+        </section>
+
+        <section id="refs">
+            <h2>Références</h2>
+            <ul>
+                <li>NASA PCoE Battery Dataset</li>
+                <li>Kull et al. (2017) – Beta Calibration</li>
+                <li>PHM 2008 Data Challenge</li>
+            </ul>
+        </section>
 
         <div class="footer">
             Étude réalisée par Noujoud – Mars 2026<br>
