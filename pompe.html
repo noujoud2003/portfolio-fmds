@@ -176,7 +176,7 @@
             <p class="img-caption">Figure 3.2 : Courbe de survie Kaplan-Meier (estimateur non-paramétrique)</p>
             <p class="remark">Remarque : Chute rapide au début → confirme une usure infantile marquée sur les premières dizaines de cycles.</p>
 
-            <img src="hazard_rate_weibull.png" alt="Hazard Rate" class="result-img">
+            <img src="hazard_rate.png" alt="Hazard Rate" class="result-img">
             <p class="img-caption">Figure 3.3 : Taux de risque (Hazard Rate) – Loi Weibull</p>
             <p class="remark">Remarque : Taux croissant après ~40 cycles → phase d’usure accélérée en fin de vie.</p>
 
@@ -184,11 +184,11 @@
             <p class="img-caption">Figure 3.4 : Courbe Bathtub – Défaillances précoces, vie normale et usure</p>
             <p class="remark">Remarque : Phase infantile visible (taux élevé au début), puis vie utile stable, enfin usure marquée après ~100 cycles.</p>
 
-            <img src="weibull_histogram_pdf.png" alt="Ajustement Weibull + PDF" class="result-img">
+            <img src="weibull_fit.png" alt="Ajustement Weibull + PDF" class="result-img">
             <p class="img-caption">Figure 3.5 : Ajustement Weibull sur histogramme des cycles de défaillance</p>
             <p class="remark">Remarque : La densité Weibull suit bien la distribution empirique, avec pic autour de 40 cycles.</p>
 
-            <img src="indicateurs_fmds.png" alt="Indicateurs FMDS" class="result-img">
+            <img src="fmds_indicators.png" alt="Indicateurs FMDS" class="result-img">
             <p class="img-caption">Figure 3.6 : Indicateurs FMDS clés du système batterie</p>
             <p class="remark">Remarque : MTBF de 41.29 cycles, disponibilité élevée (89.20 %) malgré MTTR hypothétique de 5 cycles.</p>
 
@@ -252,7 +252,7 @@
                 <li>Objectif : minimiser le Brier score et rapprocher la courbe de la diagonale parfaite</li>
             </ul>
 
-            <img src="calibration-beta.jpg" alt="Calibration" class="result-img">
+            <img src="calibration_curve_beta.png" alt="Calibration" class="result-img">
             <p class="img-caption">Image 4.2 : Courbe de calibration après Beta Calibration</p>
             <p class="remark">Remarque : La courbe se rapproche fortement de la diagonale → probabilités bien calibrées et fiables.</p>
 
@@ -265,7 +265,7 @@
             <p class="img-caption">Image 4.4 : Courbe ROC après Beta Calibration (AUC = 0.953)</p>
             <p class="remark">Remarque : AUC proche de 0.96 → très bonne discrimination entre classes (RUL ≤ 30 vs > 30).</p>
 
-            <img src="confusion_matrix_beta.png" alt="Matrice de confusion" class="result-img">
+            <img src="confusion_best_beta.png" alt="Matrice de confusion" class="result-img">
             <p class="img-caption">Image 4.5 : Matrice de confusion au seuil optimal (0.150) après Beta Calibration</p>
             <p class="remark">Remarque : Très peu de faux négatifs (1 seulement) → idéal pour éviter les pannes non détectées.</p>
         </section>
