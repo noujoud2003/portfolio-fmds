@@ -150,103 +150,109 @@
                 <h2>1. Généralités</h2>
                 <p class="summary">La maintenance industrielle regroupe toutes les actions visant à maintenir ou rétablir un équipement dans un état permettant d’assurer sa fonction requise. Elle est essentielle pour garantir la fiabilité, la disponibilité et la sécurité des installations tout en maîtrisant les coûts.</p>
                 <ul>
-                    <li><strong>Définition & historique</strong> : Apparue avec l’industrialisation, elle est passée du réactif au proactif depuis les années 1950-60 (norme AFNOR NF X 60-000).</li>
-                    <li><strong>Types principaux</strong> : corrective, préventive, prédictive, conditionnelle.</li>
-                    <li><strong>Normes clés</strong> : ISO 55000, NF EN 13306, AFNOR X 60-010.</li>
+                    <li><strong>Définition & historique</strong> : Apparue avec l’industrialisation, elle est passée du réactif (après panne) au proactif depuis les années 1950-60 (AFNOR NF X 60-000).</li>
+                    <li><strong>Types principaux</strong> : corrective (après défaillance), préventive (planifiée), prédictive (basée sur l’état réel), et conditionnelle.</li>
+                    <li><strong>Normes clés</strong> : ISO 55000 (gestion des actifs), NF EN 13306 (terminologie), AFNOR X 60-010 (niveaux d’intervention).</li>
                 </ul>
                 <a href="https://fr.wikipedia.org/wiki/Maintenance" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>2. Maintenance 4.0 & GMAO</h2>
-                <p class="summary">La Maintenance 4.0 exploite l’IoT, le Big Data, le cloud et l’IA pour transformer la maintenance en processus connecté, intelligent et proactif. Les GMAO modernes centralisent les données et automatisent les workflows.</p>
+                <p class="summary">La Maintenance 4.0 exploite l’IoT, le Big Data, le cloud et l’IA pour transformer la maintenance en processus connecté, intelligent et proactif. Les GMAO modernes centralisent les données, automatisent les workflows et facilitent la prise de décision en temps réel.</p>
                 <ul>
                     <li><strong>Outils phares</strong> : SAP PM/EAM, Fiix, UpKeep, IBM Maximo, Mobility Work.</li>
-                    <li><strong>Avantages majeurs</strong> : Réduction des arrêts non planifiés (30-50 %), optimisation des stocks.</li>
-                    <li><strong>Exemples concrets</strong> : Siemens MindSphere, Schneider EcoStruxure.</li>
+                    <li><strong>Avantages majeurs</strong> : Réduction des arrêts non planifiés (30-50 %), optimisation des stocks et meilleure traçabilité.</li>
+                    <li><strong>Exemples concrets</strong> : Siemens avec MindSphere pour la surveillance connectée, Schneider Electric via EcoStruxure pour une maintenance augmentée.</li>
                 </ul>
                 <a href="https://www.ibm.com/topics/maintenance-4-0" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>3. Lean Maintenance</h2>
-                <p class="summary">Inspirée du Lean Manufacturing, elle élimine les gaspillages pour maximiser l’efficacité avec un minimum de ressources.</p>
+                <p class="summary">Inspirée du Lean Manufacturing, la Lean Maintenance élimine les gaspillages (temps perdu, sur-maintenance, stocks inutiles) pour maximiser l’efficacité des processus de maintenance avec un minimum de ressources.</p>
                 <ul>
-                    <li><strong>Outils essentiels</strong> : TPM, 5S, RCM, Lean Six Sigma.</li>
-                    <li><strong>Principes clés</strong> : Maintenance autonome, Kaizen, OEE.</li>
-                    <li><strong>Exemples d’impact</strong> : Réduction 20-40 % des temps perdus.</li>
+                    <li><strong>Outils essentiels</strong> : TPM (maintenance productive totale), 5S (organisation), RCM (maintenance centrée sur la fiabilité), Lean Six Sigma.</li>
+                    <li><strong>Principes clés</strong> : Implication des opérateurs (maintenance autonome), amélioration continue (Kaizen), réduction des temps morts.</li>
+                    <li><strong>Exemples d’impact</strong> : Réduction de 20-40 % des temps de recherche grâce au 5S, hausse de l’OEE via TPM dans l’automobile et l’aéronautique.</li>
                 </ul>
                 <a href="https://www.leanproduction.com/tpm.html" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>4. Maintenance Prédictive</h2>
-                <p class="summary">Anticipe les défaillances via données en temps réel et IA pour intervenir au bon moment.</p>
+                <p class="summary">Basée sur l’analyse de données en temps réel, la maintenance prédictive anticipe les défaillances avant qu’elles ne surviennent, permettant d’intervenir au moment optimal et d’éviter les arrêts imprévus coûteux.</p>
                 <ul>
-                    <li><strong>Techniques</strong> : Vibratoire, thermographie, ultrasons, analyse d’huile.</li>
-                    <li><strong>Outils</strong> : Capteurs IoT, Python, TensorFlow.</li>
-                    <li><strong>Bénéfices</strong> : Réduction 25-40 % des coûts.</li>
+                    <li><strong>Techniques courantes</strong> : Analyse vibratoire (usure roulements), thermographie infrarouge (surchauffe), ultrasons (fuites), analyse d’huile.</li>
+                    <li><strong>Outils & technologies</strong> : Capteurs IoT, Python (scikit-learn), TensorFlow/Keras pour l’IA, MATLAB pour le signal.</li>
+                    <li><strong>Bénéfices</strong> : Réduction de 25-40 % des coûts de maintenance, jusqu’à 70 % des pannes imprévues évitées.</li>
                 </ul>
                 <a href="https://www.ibm.com/topics/predictive-maintenance" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
-                <h2>5. Pronostic & PHM</h2>
-                <p class="summary">Estime la durée de vie restante (RUL) et optimise les décisions via modèles avancés.</p>
+                <h2>5. Pronostic & PHM (Prognostics and Health Management)</h2>
+                <p class="summary">Le PHM va au-delà de la détection : il estime la durée de vie restante (RUL) des composants et optimise les décisions de maintenance grâce à des modèles avancés, améliorant sécurité et rentabilité.</p>
                 <ul>
-                    <li><strong>Approches</strong> : Modèles physiques, data-driven, hybrides.</li>
-                    <li><strong>Applications</strong> : Aéronautique, énergie, ferroviaire.</li>
-                    <li><strong>Avantages</strong> : Meilleure planification et sécurité.</li>
+                    <li><strong>Approches</strong> : Modèles physiques (basés sur lois physiques), data-driven (machine learning), hybrides (combinaison des deux).</li>
+                    <li><strong>Applications typiques</strong> : Aéronautique (moteurs d’avion), énergie (éoliennes, turbines à gaz), ferroviaire et défense.</li>
+                    <li><strong>Avantages</strong> : Planification optimisée, réduction des coûts logistiques, augmentation de la disponibilité des systèmes critiques.</li>
                 </ul>
                 <a href="https://phmsociety.org/" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>6. Management énergétique ISO 50001</h2>
-                <p class="summary">Cadre pour améliorer en continu la performance énergétique.</p>
+                <p class="summary">La norme ISO 50001 fournit un cadre structuré pour mettre en place un système de management de l’énergie (SME) visant l’amélioration continue de la performance énergétique, avec des gains économiques et environnementaux mesurables.</p>
                 <ul>
-                    <li><strong>Principes</strong> : Politique énergétique, audits, PDCA, EnPI.</li>
-                    <li><strong>Bénéfices</strong> : 5-20 % d’économies, réduction CO₂.</li>
+                    <li><strong>Principes fondamentaux</strong> : Politique énergétique, audits, indicateurs de performance (EnPI), cycle PDCA (Plan-Do-Check-Act).</li>
+                    <li><strong>Bénéfices observés</strong> : Réduction de 5-20 % de la consommation énergétique, baisse des émissions CO₂, retour sur investissement rapide.</li>
                 </ul>
                 <a href="https://www.iso.org/standard/69426.html" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>7. Conclusion & Perspectives</h2>
-                <p class="summary">Vers une maintenance intelligente et autonome grâce au numérique.</p>
+                <p class="summary">La maintenance évolue rapidement vers des systèmes intelligents et autonomes. Les concepts actuels (prédictif, PHM, Lean) convergent vers une maintenance stratégique, soutenue par le numérique, pour une compétitivité accrue.</p>
                 <ul>
-                    <li><strong>Digital Twin</strong> : Simulation virtuelle en temps réel.</li>
-                    <li><strong>Maintenance autonome</strong> : Auto-diagnostic via IA.</li>
-                    <li><strong>Autres tendances</strong> : AR, prescriptive, blockchain.</li>
+                    <li><strong>Digital Twin</strong> : Jumeaux numériques pour simuler, tester et optimiser les équipements en virtuel.</li>
+                    <li><strong>Maintenance autonome</strong> : Systèmes auto-diagnostiqués et auto-réparants via IA et robotique.</li>
+                    <li><strong>Autres tendances</strong> : Réalité augmentée pour la formation, maintenance prescriptive, blockchain pour la traçabilité.</li>
                 </ul>
                 <a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card" id="annexes">
                 <h2>8. Annexes</h2>
-                <p class="summary">Ressources pratiques pour approfondir les fondamentaux : glossaire détaillé, checklists d'audit, templates Excel/PDF, normes et outils recommandés.</p>
+                <p class="summary">Ressources pratiques pour approfondir les fondamentaux : glossaire détaillé, checklists d'audit, templates Excel/PDF, normes et outils recommandés. Ces documents aident à appliquer concrètement les concepts vus dans le portfolio.</p>
                 <ul>
                     <li><strong>Glossaire</strong> : MTBF (Mean Time Between Failures), MTTR (Mean Time To Repair), RUL (Remaining Useful Life), OEE (Overall Equipment Effectiveness), TPM (Total Productive Maintenance), RCM (Reliability Centered Maintenance), GMAO (Gestion de Maintenance Assistée par Ordinateur).  
                         → Explications détaillées : <a href="https://www.emaint.com/blog-the-7-most-important-maintenance-metrics" target="_blank">eMaint Metrics</a></li>
                     
                     <li><strong>Checklists & templates</strong> :
                         <ul>
-                            <li>Audit 5S → <a href="https://citoolkit.com/wp-content/uploads/templates/5s_audit_checklist_manufacturing.pdf" target="_blank">Modèle PDF (CIToolkit)</a></li>
-                            <li>Audit 5S+1 Excel → <a href="https://www.creationtech.com/wp-content/uploads/2020/11/5S1-self-assessment-Rev-A.xlsx" target="_blank">Fichier Excel</a></li>
+                            <li>Audit 5S → <a href="https://citoolkit.com/wp-content/uploads/templates/5s_audit_checklist_manufacturing.pdf" target="_blank">Modèle PDF gratuit (CIToolkit)</a></li>
+                            <li>Audit 5S+1 (avec maintenance) → <a href="https://www.creationtech.com/wp-content/uploads/2020/11/5S1-self-assessment-Rev-A.xlsx" target="_blank">Fichier Excel audit</a></li>
                         </ul>
                     </li>
                     
-                    <li><strong>Fiche d’intervention</strong> → 
-                        <a href="https://fr.organilog.com/2092-fiche-intervention-rapport" target="_blank">Modèle PDF/Word (Organilog)</a> | 
-                        <a href="https://www.terresnumeriques.com/blog/le-blog-de-terres-numeriques-7/fiche-intervention-modele-gratuit-13" target="_blank">Kizeo Forms</a></li>
+                    <li><strong>Fiche d’intervention maintenance</strong> → Modèles gratuits :
+                        <ul>
+                            <li><a href="https://fr.organilog.com/2092-fiche-intervention-rapport" target="_blank">Modèle PDF/Word (Organilog)</a></li>
+                            <li><a href="https://www.terresnumeriques.com/blog/le-blog-de-terres-numeriques-7/fiche-intervention-modele-gratuit-13" target="_blank">Modèle Kizeo Forms (personnalisable)</a></li>
+                        </ul>
+                    </li>
                     
-                    <li><strong>Plan de maintenance préventive</strong> → 
-                        <a href="https://www.getsockeye.com/blog/preventive-maintenance-schedule-template" target="_blank">Templates Excel avancés (Sockeye)</a> | 
-                        <a href="https://www.template.net/schedule/maintenance/excel" target="_blank">Plusieurs modèles (Template.net)</a></li>
+                    <li><strong>Plan de maintenance préventive</strong> (calendrier / Gantt) :
+                        <ul>
+                            <li><a href="https://www.getsockeye.com/blog/preventive-maintenance-schedule-template" target="_blank">Templates Excel avancés (Sockeye)</a></li>
+                            <li><a href="https://www.template.net/schedule/maintenance/excel" target="_blank">Plusieurs modèles gratuits (Template.net)</a></li>
+                        </ul>
+                    </li>
                     
-                    <li><strong>Normes</strong> : ISO 55000, ISO 50001, NF EN 13306, AFNOR X60 → <a href="https://www.iso.org" target="_blank">ISO.org</a> | <a href="https://www.afnor.org" target="_blank">AFNOR</a></li>
+                    <li><strong>Normes essentielles</strong> : ISO 55000, ISO 50001, NF EN 13306, AFNOR X60 → Pages officielles : <a href="https://www.iso.org" target="_blank">ISO.org</a> / <a href="https://www.afnor.org" target="_blank">AFNOR</a></li>
                     
-                    <li><strong>Outils recommandés</strong> : Python (pandas/scikit-learn), Grafana + InfluxDB, Power BI (dashboards KPI).</li>
+                    <li><strong>Outils recommandés</strong> : Python (pandas, scikit-learn pour analyse prédictive), Grafana + InfluxDB (monitoring temps réel), Power BI (dashboards KPI comme OEE/MTBF).</li>
                     
                     <li><strong>Sites de référence</strong> : 
                         <a href="https://www.afnor.org" target="_blank">AFNOR</a> | 
@@ -255,7 +261,7 @@
                     </li>
                 </ul>
                 <p style="font-style:italic; margin-top:20px; color:#555;">
-                    Ces liens proposent des ressources gratuites et téléchargeables. Pour des versions personnalisées ou des documents que j’ai créés/adaptés (avec formules, exemples concrets, etc.), contacte-moi via la page Contact !
+                    Ces liens mènent à des ressources gratuites et téléchargeables. Pour des versions personnalisées (adaptées à un secteur spécifique, avec mes exemples ou calculs avancés), contacte-moi via la page Contact !
                 </p>
             </div>
 
