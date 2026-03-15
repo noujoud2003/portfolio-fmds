@@ -59,57 +59,70 @@
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
         }
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 140px auto 80px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.94);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-            backdrop-filter: blur(8px);
+            padding: 40px 20px;
         }
         h1 {
-            color: #3498db;
+            color: white;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.6em;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 50px;
+            font-size: 2.8em;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-radius: 10px;
-            overflow: hidden;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
         }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
+        .card {
+            background: rgba(255,255,255,0.94);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            border-left: 5px solid #3498db;
         }
-        th {
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(52,152,219,0.3);
+        }
+        .card h2 {
+            color: #3498db;
+            margin: 0 0 15px;
+            font-size: 1.5em;
+        }
+        .card p.summary {
+            color: #555;
+            font-size: 1.05em;
+            line-height: 1.5;
+            margin: 0 0 15px;
+        }
+        .card ul {
+            margin: 10px 0 20px 20px;
+            color: #444;
+        }
+        .card .more-link {
+            display: inline-block;
             background: #3498db;
             color: white;
-            font-weight: 600;
-        }
-        tr:hover {
-            background: rgba(52, 152, 219, 0.08);
-        }
-        .more-link {
-            color: #3498db;
+            padding: 10px 18px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
+            transition: all 0.3s;
         }
-        .more-link:hover {
-            text-decoration: underline;
+        .card .more-link:hover {
+            background: #2980b9;
+            transform: scale(1.05);
         }
         .footer {
             text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            color: #bdc3c7;
-            font-size: 0.9em;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 40px;
+            opacity: 0.8;
+            font-size: 0.95em;
         }
     </style>
 </head>
@@ -133,62 +146,88 @@
     <div class="container">
         <h1>Fondamentaux de la Maintenance Industrielle</h1>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Section</th>
-                    <th>Contenu principal</th>
-                    <th>Ressources clés</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1. Généralités</td>
-                    <td>Définition – Historique – Types (corrective, préventive, prédictive) – Normes ISO 55000 / AFNOR</td>
-                    <td><a href="https://fr.wikipedia.org/wiki/Maintenance_industrielle" target="_blank" class="more-link">Wikipédia</a> – Vidéo bases de la maintenance</td>
-                </tr>
-                <tr>
-                    <td>2. Maintenance 4.0 & GMAO</td>
-                    <td>IoT – Big Data – IA – Outils SAP, Fiix, UpKeep – Exemples Siemens / Schneider</td>
-                    <td><a href="https://new.siemens.com/global/en/products/services/digital-enterprise-services/maintenance-4-0.html" target="_blank" class="more-link">Siemens Maintenance 4.0</a> – Tutoriel SAP</td>
-                </tr>
-                <tr>
-                    <td>3. Lean Maintenance</td>
-                    <td>Intégration TPM – 5S – RCM – Lean Six Sigma – Exemples optimisation</td>
-                    <td><a href="https://www.leanproduction.com/tpm.html" target="_blank" class="more-link">TPM Guide</a> – Vidéo TPM vs Lean Six Sigma</td>
-                </tr>
-                <tr>
-                    <td>4. Maintenance Prédictive</td>
-                    <td>Capteurs – Analyse vibratoire – Thermographie – Outils MATLAB / Python TensorFlow</td>
-                    <td><a href="https://www.coursera.org/learn/predictive-maintenance" target="_blank" class="more-link">Coursera Predictive Maintenance</a> – Exemple code Python</td>
-                </tr>
-                <tr>
-                    <td>5. Pronostic & PHM</td>
-                    <td>Modèles physiques vs data-driven – Applications aéronautique / énergie</td>
-                    <td><a href="https://www.nasa.gov/centers/ames/research/technology-onepagers/prognostics.html" target="_blank" class="more-link">NASA PHM</a> – Webinaire IA en PHM</td>
-                </tr>
-                <tr>
-                    <td>6. Management énergétique ISO 50001</td>
-                    <td>Amélioration continue de la performance énergétique</td>
-                    <td><a href="https://www.iso.org/standard/69426.html" target="_blank" class="more-link">ISO 50001 Officiel</a></td>
-                </tr>
-                <tr>
-                    <td>7. Conclusion & Perspectives</td>
-                    <td>Synthèse – Tendances : Digital Twin – Jumeaux numériques – Maintenance autonome</td>
-                    <td><a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank" class="more-link">Digital Twin (Wikipédia)</a></td>
-                </tr>
-                <tr>
-                    <td>8. Annexes</td>
-                    <td>Méthodes & techniques – Glossaire – Références IEEE – Liens & crédits</td>
-                    <td><a href="#annexes" class="more-link">Consulter les annexes</a></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="grid">
+
+            <div class="card">
+                <h2>1. Généralités</h2>
+                <p class="summary">La maintenance industrielle assure la fiabilité et la disponibilité des équipements.</p>
+                <ul>
+                    <li>Définition et historique</li>
+                    <li>Types : corrective, préventive, prédictive</li>
+                    <li>Normes : ISO 55000, AFNOR</li>
+                </ul>
+                <a href="https://fr.wikipedia.org/wiki/Maintenance_industrielle" target="_blank" class="more-link">En savoir plus</a>
+            </div>
+
+            <div class="card">
+                <h2>2. Maintenance 4.0 & GMAO</h2>
+                <p class="summary">Intégration massive de l'IoT, Big Data et IA pour une maintenance connectée et proactive.</p>
+                <ul>
+                    <li>Outils : SAP, Fiix, UpKeep</li>
+                    <li>Exemples : usines Siemens, Schneider Electric</li>
+                </ul>
+                <a href="https://new.siemens.com/global/en/products/services/digital-enterprise-services/maintenance-4-0.html" target="_blank" class="more-link">En savoir plus</a>
+            </div>
+
+            <div class="card">
+                <h2>3. Lean Maintenance</h2>
+                <p class="summary">Optimisation des processus en éliminant les gaspillages grâce aux outils Lean.</p>
+                <ul>
+                    <li>TPM, 5S, RCM, Lean Six Sigma</li>
+                    <li>Exemples concrets d’optimisation</li>
+                </ul>
+                <a href="https://www.leanproduction.com/tpm.html" target="_blank" class="more-link">En savoir plus</a>
+            </div>
+
+            <div class="card">
+                <h2>4. Maintenance Prédictive</h2>
+                <p class="summary">Utilisation de données et d’IA pour anticiper les pannes avant qu’elles n’arrivent.</p>
+                <ul>
+                    <li>Techniques : capteurs, vibratoire, thermographie</li>
+                    <li>Outils : Python, TensorFlow, MATLAB</li>
+                </ul>
+                <a href="https://www.coursera.org/learn/predictive-maintenance" target="_blank" class="more-link">En savoir plus</a>
+            </div>
+
+            <div class="card">
+                <h2>5. Pronostic & PHM</h2>
+                <p class="summary">Prognostics and Health Management : prédire la durée de vie restante des équipements.</p>
+                <ul>
+                    <li>Modèles physiques vs data-driven</li>
+                    <li>Applications : aéronautique, énergie</li>
+                </ul>
+                <a href="https://www.nasa.gov/centers/ames/research/technology-onepagers/prognostics.html" target="_blank" class="more-link">En savoir plus</a>
+            </div>
+
+            <div class="card">
+                <h2>6. Management énergétique ISO 50001</h2>
+                <p class="summary">Norme internationale pour améliorer en continu la performance énergétique.</p>
+                <a href="https://www.iso.org/standard/69426.html" target="_blank" class="more-link">En savoir plus</a>
+            </div>
+
+            <div class="card">
+                <h2>7. Conclusion & Perspectives</h2>
+                <p class="summary">Synthèse des concepts et tendances futures de la maintenance moderne.</p>
+                <ul>
+                    <li>Digital Twin</li>
+                    <li>Jumeaux numériques</li>
+                    <li>Maintenance autonome</li>
+                </ul>
+                <a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank" class="more-link">En savoir plus</a>
+            </div>
+
+            <div class="card">
+                <h2>8. Annexes</h2>
+                <p class="summary">Outils complémentaires, glossaire, références et liens utiles.</p>
+                <a href="#annexes" class="more-link">Consulter les annexes</a>
+            </div>
+
+        </div>
     </div>
 
-    <div class="footer" style="text-align:center; color:white; padding:40px; opacity:0.8;">
+    <div class="footer">
         Portfolio – Noujoud – Mars 2026<br>
-        <a href="https://github.com/noujoud2003/portfolio-fmds" style="color:#3498db;">GitHub</a>
+        <a href="https://github.com/noujoud2003/portfolio-fmds" style="color:#3498db; text-decoration:none;">GitHub</a>
     </div>
 
 </body>
