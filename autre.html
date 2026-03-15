@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fondamentaux Maintenance Industrielle | Noujoud</title>
+    <title>Fondamentaux de la Maintenance Industrielle | Noujoud</title>
     <style>
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
@@ -20,146 +20,173 @@
             animation: gradientAnimation 18s ease infinite;
             min-height: 100vh;
         }
-        .navbar { /* copie ta navbar existante ici */ }
-        .container {
-            max-width: 1200px;
-            margin: 140px auto 60px;
-            padding: 0 20px;
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        h1 {
-            color: white;
-            text-align: center;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            margin-bottom: 40px;
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-        .card {
-            background: rgba(255,255,255,0.92);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(8px);
-            border-left: 5px solid #3498db;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(52,152,219,0.3);
-        }
-        .card h2 {
-            color: #3498db;
-            margin-top: 0;
-            font-size: 1.4em;
-        }
-        .card p {
-            color: #444;
-            line-height: 1.5;
-            margin: 12px 0 20px;
-        }
-        .more-btn {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 10px 18px;
+        .nav-btn {
+            background: rgba(52, 152, 219, 0.25);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
+            padding: 10px 16px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
         }
-        .more-btn:hover {
-            background: #2980b9;
-            transform: scale(1.05);
+        .nav-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        .active {
+            background: #3498db !important;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 140px auto 80px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            backdrop-filter: blur(8px);
+        }
+        h1 {
+            color: #3498db;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.6em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background: rgba(52, 152, 219, 0.08);
+        }
+        .more-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .more-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #bdc3c7;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
     </style>
 </head>
 <body>
 
-    <!-- Ta navbar ici (copie-colle celle de la page batteries) -->
-    
-   <nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="nav-btn">Accueil</a>
-        <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>  <!-- ← NOUVEAU -->
-        <a href="introduction.html" class="nav-btn">Introduction Générale</a>
-        <a href="planification.html" class="nav-btn">Planification & Scrum</a>
-        <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
-        <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
-        <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
-        <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
-        <a href="resultats.html" class="nav-btn">Résultats</a>
-        <a href="contact.html" class="nav-btn">Contact</a>
-    </div>
-</nav>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="autre.html" class="nav-btn active">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
+
     <div class="container">
         <h1>Fondamentaux de la Maintenance Industrielle</h1>
 
-        <div class="grid">
-
-            <!-- Section 1 -->
-            <div class="card">
-                <h2>1. Généralités sur la Maintenance Industrielle</h2>
-                <p>Définition, historique, types (corrective, préventive, prédictive), normes ISO 55000 et AFNOR.</p>
-                <a href="https://fr.wikipedia.org/wiki/Maintenance_industrielle" target="_blank" class="more-btn">En savoir plus</a>
-            </div>
-
-            <!-- Section 2 -->
-            <div class="card">
-                <h2>2. Maintenance 4.0 & GMAO 4.0</h2>
-                <p>IoT, Big Data, IA – Outils modernes (SAP, Fiix, UpKeep) – Exemples Siemens & Schneider Electric.</p>
-                <a href="https://assets.new.siemens.com/siemens/assets/api/uuid:..." target="_blank" class="more-btn">En savoir plus</a>
-            </div>
-
-            <!-- Section 3 -->
-            <div class="card">
-                <h2>3. Lean Maintenance</h2>
-                <p>Intégration TPM, 5S, RCM et Lean Six Sigma – Optimisation des processus et réduction des gaspillages.</p>
-                <a href="https://www.leanproduction.com/tpm.html" target="_blank" class="more-btn">En savoir plus</a>
-            </div>
-
-            <!-- Section 4 -->
-            <div class="card">
-                <h2>4. Maintenance Prédictive</h2>
-                <p>Capteurs, analyse vibratoire, thermographie – Outils Python/TensorFlow – Prédiction avancée de pannes.</p>
-                <a href="https://www.coursera.org/learn/predictive-maintenance" target="_blank" class="more-btn">En savoir plus</a>
-            </div>
-
-            <!-- Section 5 -->
-            <div class="card">
-                <h2>5. Pronostic & PHM</h2>
-                <p>Prognostics and Health Management – Modèles physiques vs data-driven – Applications aéronautique & énergie.</p>
-                <a href="https://www.nasa.gov/centers/ames/research/technology-onepagers/prognostics.html" target="_blank" class="more-btn">En savoir plus</a>
-            </div>
-
-            <!-- Section 6 -->
-            <div class="card">
-                <h2>6. Management énergétique – ISO 50001</h2>
-                <p>Norme internationale pour l'amélioration continue de la performance énergétique des organisations.</p>
-                <a href="https://www.iso.org/standard/69426.html" target="_blank" class="more-btn">En savoir plus</a>
-            </div>
-
-            <!-- Section 7 -->
-            <div class="card">
-                <h2>7. Conclusion & Perspectives</h2>
-                <p>Synthèse – Tendances : Digital Twin, jumeaux numériques, edge AI, maintenance autonome.</p>
-                <a href="#conclusion-detail" class="more-btn">En savoir plus</a>
-            </div>
-
-            <!-- Section 8 -->
-            <div class="card">
-                <h2>8. Annexes</h2>
-                <p>Glossaire, méthodes, références IEEE, liens utiles, crédits multimédias.</p>
-                <a href="#annexes" class="more-btn">Consulter les annexes</a>
-            </div>
-
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Section</th>
+                    <th>Contenu principal</th>
+                    <th>Ressources clés</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. Généralités</td>
+                    <td>Définition – Historique – Types (corrective, préventive, prédictive) – Normes ISO 55000 / AFNOR</td>
+                    <td><a href="https://fr.wikipedia.org/wiki/Maintenance_industrielle" target="_blank" class="more-link">Wikipédia</a> – Vidéo bases de la maintenance</td>
+                </tr>
+                <tr>
+                    <td>2. Maintenance 4.0 & GMAO</td>
+                    <td>IoT – Big Data – IA – Outils SAP, Fiix, UpKeep – Exemples Siemens / Schneider</td>
+                    <td><a href="https://new.siemens.com/global/en/products/services/digital-enterprise-services/maintenance-4-0.html" target="_blank" class="more-link">Siemens Maintenance 4.0</a> – Tutoriel SAP</td>
+                </tr>
+                <tr>
+                    <td>3. Lean Maintenance</td>
+                    <td>Intégration TPM – 5S – RCM – Lean Six Sigma – Exemples optimisation</td>
+                    <td><a href="https://www.leanproduction.com/tpm.html" target="_blank" class="more-link">TPM Guide</a> – Vidéo TPM vs Lean Six Sigma</td>
+                </tr>
+                <tr>
+                    <td>4. Maintenance Prédictive</td>
+                    <td>Capteurs – Analyse vibratoire – Thermographie – Outils MATLAB / Python TensorFlow</td>
+                    <td><a href="https://www.coursera.org/learn/predictive-maintenance" target="_blank" class="more-link">Coursera Predictive Maintenance</a> – Exemple code Python</td>
+                </tr>
+                <tr>
+                    <td>5. Pronostic & PHM</td>
+                    <td>Modèles physiques vs data-driven – Applications aéronautique / énergie</td>
+                    <td><a href="https://www.nasa.gov/centers/ames/research/technology-onepagers/prognostics.html" target="_blank" class="more-link">NASA PHM</a> – Webinaire IA en PHM</td>
+                </tr>
+                <tr>
+                    <td>6. Management énergétique ISO 50001</td>
+                    <td>Amélioration continue de la performance énergétique</td>
+                    <td><a href="https://www.iso.org/standard/69426.html" target="_blank" class="more-link">ISO 50001 Officiel</a></td>
+                </tr>
+                <tr>
+                    <td>7. Conclusion & Perspectives</td>
+                    <td>Synthèse – Tendances : Digital Twin – Jumeaux numériques – Maintenance autonome</td>
+                    <td><a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank" class="more-link">Digital Twin (Wikipédia)</a></td>
+                </tr>
+                <tr>
+                    <td>8. Annexes</td>
+                    <td>Méthodes & techniques – Glossaire – Références IEEE – Liens & crédits</td>
+                    <td><a href="#annexes" class="more-link">Consulter les annexes</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <!-- Footer -->
-    <div style="text-align:center; color:white; padding:40px; opacity:0.8;">
+    <div class="footer" style="text-align:center; color:white; padding:40px; opacity:0.8;">
         Portfolio – Noujoud – Mars 2026<br>
         <a href="https://github.com/noujoud2003/portfolio-fmds" style="color:#3498db;">GitHub</a>
     </div>
