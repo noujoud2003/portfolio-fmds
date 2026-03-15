@@ -127,7 +127,6 @@
     </style>
 </head>
 <body>
-
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-btn">Accueil</a>
@@ -145,80 +144,87 @@
 
     <div class="container">
         <h1>Fondamentaux de la Maintenance Industrielle</h1>
-
         <div class="grid">
 
             <div class="card">
                 <h2>1. Généralités</h2>
-                <p class="summary">La maintenance industrielle assure la fiabilité et la disponibilité des équipements.</p>
+                <p class="summary">La maintenance industrielle regroupe toutes les actions visant à maintenir ou rétablir un équipement dans un état permettant d’assurer sa fonction requise. Elle est essentielle pour garantir la fiabilité, la disponibilité et la sécurité des installations tout en maîtrisant les coûts.</p>
                 <ul>
-                    <li>Définition et historique</li>
-                    <li>Types : corrective, préventive, prédictive</li>
-                    <li>Normes : ISO 55000, AFNOR</li>
+                    <li><strong>Définition & historique</strong> : Apparue avec l’industrialisation, elle est passée du réactif (après panne) au proactif depuis les années 1950-60 (AFNOR NF X 60-000).</li>
+                    <li><strong>Types principaux</strong> : corrective (après défaillance), préventive (planifiée), prédictive (basée sur l’état réel), et conditionnelle.</li>
+                    <li><strong>Normes clés</strong> : ISO 55000 (gestion des actifs), NF EN 13306 (terminologie), AFNOR X 60-010 (niveaux d’intervention).</li>
                 </ul>
                 <a href="https://fr.wikipedia.org/wiki/Maintenance_industrielle" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>2. Maintenance 4.0 & GMAO</h2>
-                <p class="summary">Intégration massive de l'IoT, Big Data et IA pour une maintenance connectée et proactive.</p>
+                <p class="summary">La Maintenance 4.0 exploite l’IoT, le Big Data, le cloud et l’IA pour transformer la maintenance en processus connecté, intelligent et proactif. Les GMAO modernes centralisent les données, automatisent les workflows et facilitent la prise de décision en temps réel.</p>
                 <ul>
-                    <li>Outils : SAP, Fiix, UpKeep</li>
-                    <li>Exemples : usines Siemens, Schneider Electric</li>
+                    <li><strong>Outils phares</strong> : SAP PM/EAM, Fiix, UpKeep, IBM Maximo, Mobility Work.</li>
+                    <li><strong>Avantages majeurs</strong> : Réduction des arrêts non planifiés (30-50 %), optimisation des stocks et meilleure traçabilité.</li>
+                    <li><strong>Exemples concrets</strong> : Siemens avec MindSphere pour la surveillance connectée, Schneider Electric via EcoStruxure pour une maintenance augmentée.</li>
                 </ul>
                 <a href="https://new.siemens.com/global/en/products/services/digital-enterprise-services/maintenance-4-0.html" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>3. Lean Maintenance</h2>
-                <p class="summary">Optimisation des processus en éliminant les gaspillages grâce aux outils Lean.</p>
+                <p class="summary">Inspirée du Lean Manufacturing, la Lean Maintenance élimine les gaspillages (temps perdu, sur-maintenance, stocks inutiles) pour maximiser l’efficacité des processus de maintenance avec un minimum de ressources.</p>
                 <ul>
-                    <li>TPM, 5S, RCM, Lean Six Sigma</li>
-                    <li>Exemples concrets d’optimisation</li>
+                    <li><strong>Outils essentiels</strong> : TPM (maintenance productive totale), 5S (organisation), RCM (maintenance centrée sur la fiabilité), Lean Six Sigma.</li>
+                    <li><strong>Principes clés</strong> : Implication des opérateurs (maintenance autonome), amélioration continue (Kaizen), réduction des temps morts.</li>
+                    <li><strong>Exemples d’impact</strong> : Réduction de 20-40 % des temps de recherche grâce au 5S, hausse de l’OEE via TPM dans l’automobile et l’aéronautique.</li>
                 </ul>
                 <a href="https://www.leanproduction.com/tpm.html" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>4. Maintenance Prédictive</h2>
-                <p class="summary">Utilisation de données et d’IA pour anticiper les pannes avant qu’elles n’arrivent.</p>
+                <p class="summary">Basée sur l’analyse de données en temps réel, la maintenance prédictive anticipe les défaillances avant qu’elles ne surviennent, permettant d’intervenir au moment optimal et d’éviter les arrêts imprévus coûteux.</p>
                 <ul>
-                    <li>Techniques : capteurs, vibratoire, thermographie</li>
-                    <li>Outils : Python, TensorFlow, MATLAB</li>
+                    <li><strong>Techniques courantes</strong> : Analyse vibratoire (usure roulements), thermographie infrarouge (surchauffe), ultrasons (fuites), analyse d’huile.</li>
+                    <li><strong>Outils & technologies</strong> : Capteurs IoT, Python (scikit-learn), TensorFlow/Keras pour l’IA, MATLAB pour le signal.</li>
+                    <li><strong>Bénéfices</strong> : Réduction de 25-40 % des coûts de maintenance, jusqu’à 70 % des pannes imprévues évitées.</li>
                 </ul>
                 <a href="https://www.coursera.org/learn/predictive-maintenance" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
-                <h2>5. Pronostic & PHM</h2>
-                <p class="summary">Prognostics and Health Management : prédire la durée de vie restante des équipements.</p>
+                <h2>5. Pronostic & PHM (Prognostics and Health Management)</h2>
+                <p class="summary">Le PHM va au-delà de la détection : il estime la durée de vie restante (RUL) des composants et optimise les décisions de maintenance grâce à des modèles avancés, améliorant sécurité et rentabilité.</p>
                 <ul>
-                    <li>Modèles physiques vs data-driven</li>
-                    <li>Applications : aéronautique, énergie</li>
+                    <li><strong>Approches</strong> : Modèles physiques (basés sur lois physiques), data-driven (machine learning), hybrides (combinaison des deux).</li>
+                    <li><strong>Applications typiques</strong> : Aéronautique (moteurs d’avion), énergie (éoliennes, turbines à gaz), ferroviaire et défense.</li>
+                    <li><strong>Avantages</strong> : Planification optimisée, réduction des coûts logistiques, augmentation de la disponibilité des systèmes critiques.</li>
                 </ul>
                 <a href="https://www.nasa.gov/centers/ames/research/technology-onepagers/prognostics.html" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>6. Management énergétique ISO 50001</h2>
-                <p class="summary">Norme internationale pour améliorer en continu la performance énergétique.</p>
+                <p class="summary">La norme ISO 50001 fournit un cadre structuré pour mettre en place un système de management de l’énergie (SME) visant l’amélioration continue de la performance énergétique, avec des gains économiques et environnementaux mesurables.</p>
+                <ul>
+                    <li><strong>Principes fondamentaux</strong> : Politique énergétique, audits, indicateurs de performance (EnPI), cycle PDCA (Plan-Do-Check-Act).</li>
+                    <li><strong>Bénéfices observés</strong> : Réduction de 5-20 % de la consommation énergétique, baisse des émissions CO₂, retour sur investissement rapide.</li>
+                </ul>
                 <a href="https://www.iso.org/standard/69426.html" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>7. Conclusion & Perspectives</h2>
-                <p class="summary">Synthèse des concepts et tendances futures de la maintenance moderne.</p>
+                <p class="summary">La maintenance évolue rapidement vers des systèmes intelligents et autonomes. Les concepts actuels (prédictif, PHM, Lean) convergent vers une maintenance stratégique, soutenue par le numérique, pour une compétitivité accrue.</p>
                 <ul>
-                    <li>Digital Twin</li>
-                    <li>Jumeaux numériques</li>
-                    <li>Maintenance autonome</li>
+                    <li><strong>Digital Twin</strong> : Jumeaux numériques pour simuler, tester et optimiser les équipements en virtuel.</li>
+                    <li><strong>Maintenance autonome</strong> : Systèmes auto-diagnostiqués et auto-réparants via IA et robotique.</li>
+                    <li><strong>Autres tendances</strong> : Réalité augmentée pour la formation, maintenance prescriptive, blockchain pour la traçabilité.</li>
                 </ul>
                 <a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank" class="more-link">En savoir plus</a>
             </div>
 
             <div class="card">
                 <h2>8. Annexes</h2>
-                <p class="summary">Outils complémentaires, glossaire, références et liens utiles.</p>
+                <p class="summary">Cette section regroupe des ressources pratiques : glossaire des termes clés, checklists d’audit, templates de plans de maintenance, bibliographie, liens vers normes et outils open-source pour approfondir chaque thème.</p>
                 <a href="#annexes" class="more-link">Consulter les annexes</a>
             </div>
 
@@ -229,6 +235,5 @@
         Portfolio – Noujoud – Mars 2026<br>
         <a href="https://github.com/noujoud2003/portfolio-fmds" style="color:#3498db; text-decoration:none;">GitHub</a>
     </div>
-
 </body>
 </html>
