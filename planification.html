@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planification du Projet - FMDS | Noujoud</title>
+    <title>Planification & Scrum | Noujoud</title>
     <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.03); }
             100% { transform: scale(1); }
         }
-
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #ffffff;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientAnimation 18s ease infinite;
             color: #2c3e50;
             min-height: 100vh;
         }
-
         .navbar {
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
@@ -35,7 +39,6 @@
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -44,7 +47,6 @@
             justify-content: center;
             gap: 12px;
         }
-
         .nav-btn {
             background: rgba(52, 152, 219, 0.25);
             color: #ecf0f1;
@@ -56,131 +58,108 @@
             font-size: 0.95em;
             transition: all 0.3s ease;
         }
-
         .nav-btn:hover {
             background: #3498db;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
-
-        .nav-btn.active {
+        .active {
             background: #3498db !important;
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
         }
-
         .container {
             max-width: 1100px;
-            margin: 120px auto 60px;
+            margin: 140px auto 80px;
             padding: 40px;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.94);
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            backdrop-filter: blur(8px);
         }
-
         h1 {
             color: #3498db;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-size: 2.8em;
         }
-
-        h2 {
+        h2, h3 {
             color: #2980b9;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
             margin-top: 50px;
-            font-size: 2em;
         }
-
         h3 {
-            color: #2c3e50;
-            margin-top: 40px;
-            font-size: 1.6em;
             animation: pulse 3s infinite;
         }
-
         p, li {
             color: #34495e;
             font-size: 1.1em;
             line-height: 1.7;
         }
-
         ul {
-            padding-left: 25px;
+            padding-left: 30px;
         }
-
         img {
             width: 100%;
             max-width: 900px;
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             margin: 30px auto;
             display: block;
             transition: transform 0.4s ease;
         }
-
         img:hover {
             transform: scale(1.03);
         }
-
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 20px;
-            color: #7f8c8d;
-            font-size: 0.9em;
-            border-top: 1px solid #ecf0f1;
-        }
-
         section {
             opacity: 0;
             animation: fadeInUp 1s ease-out forwards;
         }
-
         section:nth-child(1) { animation-delay: 0.2s; }
         section:nth-child(2) { animation-delay: 0.4s; }
         section:nth-child(3) { animation-delay: 0.6s; }
         section:nth-child(4) { animation-delay: 0.8s; }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #bdc3c7;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Barre de navigation (exactement comme tes autres pages) -->
     <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="nav-btn">Accueil</a>
-        <a href="fondamentaux.html" class="nav-btn">Fondamentaux Maintenance</a>  <!-- ← NOUVEAU -->
-        <a href="introduction.html" class="nav-btn">Introduction Générale</a>
-        <a href="planification.html" class="nav-btn">Planification & Scrum</a>
-        <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
-        <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
-        <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
-        <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
-        <a href="resultats.html" class="nav-btn">Résultats</a>
-        <a href="contact.html" class="nav-btn">Contact</a>
-       </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="fondamentaux.html" class="nav-btn">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn active">Planification & Scrum</a>
+            <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
     </nav>
 
-    <!-- Contenu principal -->
     <div class="container">
-
         <h1>Planification du Projet - FMDS</h1>
 
         <section>
             <h3>1. Objectif et méthodologie choisie</h3>
             <p>
-                Pour ce projet, nous avons adopté une approche hybride combinant la méthodologie Agile (Scrum)
-                et le cycle en V. Cette combinaison permet de bénéficier de la flexibilité de Scrum pour les
-                itérations rapides et de la rigueur du cycle en V pour la validation à chaque étape clé.
+                Pour ce projet, nous avons adopté une approche hybride combinant la méthodologie Agile (Scrum) et le cycle en V. 
+                Cette combinaison permet de bénéficier de la flexibilité de Scrum pour les itérations rapides et de la rigueur du cycle en V pour la validation à chaque étape clé.
             </p>
         </section>
 
         <section>
             <h3>2. Méthodologie Scrum</h3>
             <p>
-                Scrum est une méthode agile basée sur des itérations courtes appelées sprints.
-                Chaque sprint permet de livrer une partie du travail, favorisant la collaboration,
-                la communication et l’adaptabilité.
+                Scrum est une méthode agile basée sur des itérations courtes appelées sprints. 
+                Chaque sprint permet de livrer une partie fonctionnelle, favorisant la collaboration, la communication et l’adaptabilité aux changements.
             </p>
             <img src="srcum.png" alt="Méthodologie Scrum">
         </section>
@@ -188,34 +167,29 @@
         <section>
             <h3>3. Cycle en V</h3>
             <p>
-                Le cycle en V est une méthode linéaire et structurée qui assure la vérification à chaque étape.
-                Il se compose de trois phases principales :
+                Le cycle en V est une méthode structurée et linéaire qui garantit la vérification et la validation à chaque niveau. 
+                Il se décompose en trois grandes phases :
             </p>
             <ul>
-                <li><strong>Conception :</strong> recherches préliminaires, étude du projet.</li>
-                <li><strong>Réalisation :</strong> collecte et traitement des données, entraînement du modèle IA.</li>
-                <li><strong>Validation :</strong> évaluation des performances, robustesse et généralisation du modèle IA.</li>
+                <li><strong>Conception :</strong> recherches préliminaires, définition des besoins et étude du projet.</li>
+                <li><strong>Réalisation :</strong> collecte et traitement des données, développement et entraînement des modèles IA.</li>
+                <li><strong>Validation :</strong> évaluation des performances, tests de robustesse et généralisation des modèles.</li>
             </ul>
             <img src="cyclev.png" alt="Cycle en V">
         </section>
 
         <section>
-            <h2>4. Planification du projet</h2>
+            <h2>4. Planification visuelle du projet</h2>
             <p>
-                Après avoir structuré le projet, nous avons utilisé un diagramme de Gantt pour planifier
-                visuellement les tâches, identifier les chevauchements et gérer les priorités,
-                assurant ainsi une organisation fluide et un suivi efficace.
+                Après avoir défini les méthodologies, nous avons utilisé un diagramme de Gantt pour planifier les tâches, identifier les dépendances, gérer les priorités et assurer un suivi efficace tout au long du projet.
             </p>
-            <img src="gantttt.jpeg" alt="Diagramme de Gantt" class="gantt-img">
+            <img src="gantttt.jpeg" alt="Diagramme de Gantt">
         </section>
 
         <div class="footer">
-            Projet FMDS – Maintenance Prédictive – 2025/2026
+            Projet FMDS – Maintenance Prédictive – Noujoud – Mars 2026
         </div>
-
     </div>
 
 </body>
 </html>
-
-
