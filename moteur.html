@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étude de cas 3 - Moteurs | Raouaa</title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientAnimation 18s ease infinite;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .nav-btn {
+            background: rgba(52, 152, 219, 0.25);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
+            padding: 10px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        .active {
+            background: #3498db !important;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 120px auto 60px;
+            background: rgba(255, 255, 255, 0.94);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(8px);
+        }
+        h1 { color: #ecf0f1; text-align: center; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+        h2 { color: #3498db; border-bottom: 2px solid #3498db; padding-bottom: 8px; margin-top: 40px; }
+        h3 { color: #2980b9; margin-top: 25px; }
+        p, li { color: #34495e; }
+        a { color: #1abc9c; text-decoration: none; font-weight: 600; }
+        a:hover { color: #16a085; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-size: 0.95em; }
+        th, td { border: 1px solid #bdc3c7; padding: 12px; text-align: center; }
+        th { background-color: #3498db; color: white; }
+        img.result-img { width: 100%; max-width: 900px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); margin: 25px auto; display: block; }
+        .img-caption { text-align: center; font-style: italic; color: #7f8c8d; margin-top: -5px; margin-bottom: 10px; }
+        .remark { font-size: 0.95em; color: #555; text-align: center; margin: 8px 0 30px; font-style: italic; }
+        .footer { text-align: center; margin-top: 60px; padding: 20px; color: #bdc3c7; font-size: 0.9em; border-top: 1px solid rgba(255,255,255,0.2); }
+        .downloads { text-align: center; margin: 30px 0 45px; }
+        .download-btn {
+            display: inline-block; background: #2ecc71; color: white; padding: 12px 24px; border-radius: 30px;
+            text-decoration: none; font-weight: bold; font-size: 1.05em; margin: 10px 15px; transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(46,204,113,0.3);
+        }
+        .download-btn:hover { background: #27ae60; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(46,204,113,0.5); }
+        .download-info { font-style: italic; color: #7f8c8d; margin-top: 10px; }
+        ul.detailed li { margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
+            <a href="moteur.html" class="nav-btn active">Étude de cas 3 - Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Étude de cas : Prédiction de la durée de vie restante (RUL) des moteurs d'avion</h1>
+        <p style="text-align:center; font-weight:bold; color:#2c3e50;">
+            Mini-projet – Maintenance prédictive<br>
+            Auteur : Melliti Raouaa <br>
+            Date : Mars 2026
+        </p>
+
+        <h2>Table des matières</h2>
+        <ol>
+            <li><a href="#intro">1. Introduction</a></li>
+            <li><a href="#dataset">2. Présentation du dataset</a></li>
+            <li><a href="#fmds">3. Analyse FMDS</a></li>
+            <li><a href="#methodo">4. Méthodologie – CNN+LSTM</a></li>
+            <li><a href="#resultats-reg">5. Résultats – Performances de régression</a></li>
+            <li><a href="#classification">6. Résultats – Classification (moteurs critiques)</a></li>
+            <li><a href="#comparaison">7. Comparaison des modèles</a></li>
+            <li><a href="#critiques">8. Moteurs critiques identifiés</a></li>
+            <li><a href="#conclusion">9. Conclusion et perspectives</a></li>
+        </ol>
+
+        <section id="intro">
+            <h2>1. Introduction</h2>
+            <p>La maintenance prédictive des moteurs d'avion est cruciale pour réduire les coûts d'immobilisation, optimiser la planification des interventions et garantir la sécurité des vols. L'objectif de ce travail est de prédire la <strong>Remaining Useful Life (RUL)</strong> — durée de vie restante en cycles — à partir des signaux de capteurs.</p>
+            <p><strong>Dataset</strong> : NASA CMAPSS (Commercial Modular Aero-Propulsion System Simulation) – sous-ensemble FD001<br>
+            <strong>Tâche principale</strong> : Régression RUL + détection des moteurs critiques (RUL prédit ≤ 30 cycles)<br>
+            <strong>Métriques clés</strong> : MAE, RMSE, R², matrice de confusion et rappel sur la classe critique.</p>
+        </section>
+
+        <section id="dataset">
+            <h2>2. Présentation du dataset</h2>
+            <ul>
+                <li>Jeu d'entraînement : 100 moteurs (20 631 cycles)</li>
+                <li>Jeu de test : 100 moteurs (13 096 cycles)</li>
+                <li>Variables : cycle, 3 paramètres opératoires, 21 capteurs</li>
+                <li>RUL max (clipping) : 125 cycles</li>
+                <li>Conversion : 1 cycle ≈ 1.75 heures (moyenne estimée)</li>
+            </ul>
+            <p>Source officielle : <a href="https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/" target="_blank">NASA CMAPSS Data Repository</a></p>
+
+            <div class="downloads">
+                <p><strong>Téléchargez les fichiers clés du projet :</strong></p>
+                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/resume_predictions.txt" class="download-btn" download>↓ résumé_prédictions.txt</a>
+                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/predictions_moteurs_complet.csv" class="download-btn" download>↓ prédictions_100_moteurs.csv</a>
+            </div>
+        </section>
+
+        <section id="fmds">
+            <h2>3. Analyse FMDS</h2>
+            <ul>
+                <li>MTBF : 206.2 cycles</li>
+                <li>Taux de défaillance λ : 0.00485 / cycle</li>
+                <li>Loi Weibull : β = 2.34 (usure croissante), η = 232.5 cycles</li>
+                <li>Disponibilité : 99.5 %</li>
+                <li>B10 / B50 / B90 : 142 / 198 / 332 cycles</li>
+            </ul>
+            <p class="remark">La valeur β > 1 confirme un mode de défaillance par usure (typique des turbofans en fin de vie utile).</p>
+        </section>
+
+        <section id="methodo">
+            <h2>4. Méthodologie – CNN+LSTM</h2>
+            <h3>4.1 Prétraitement</h3>
+            <ul>
+                <li>RUL = max_cycle - cycle actuel (clippé à 125)</li>
+                <li>Normalisation StandardScaler sur les 21 capteurs</li>
+                <li>Fenêtres glissantes : 50 cycles (stride = 1)</li>
+            </ul>
+
+            <h3>4.2 Architecture</h3>
+            <ul class="detailed">
+                <li>Input (50, 21)</li>
+                <li>Conv1D(64, k=5) → MaxPool → Conv1D(128, k=3) → GlobalAvgPool</li>
+                <li>BiLSTM(64) + BiLSTM(32) sur branche parallèle</li>
+                <li>Concaténation → Dense(128→64→32→1)</li>
+                <li>Optimiseur : Adam (lr=0.001)</li>
+                <li>Loss : MSE</li>
+                <li>Early stopping patience=20</li>
+                <li>~164 369 paramètres</li>
+            </ul>
+        </section>
+
+        <section id="resultats-reg">
+            <h2>5. Résultats – Performances de régression</h2>
+            <p>Performances réelles calculées sur les 100 moteurs de test :</p>
+            <ul>
+                <li>MAE : 25.3 cycles</li>
+                <li>RMSE : 34.2 cycles</li>
+                <li>R² : 0.244 (positif mais modéré)</li>
+                <li>Erreur moyenne signée : +9.4 cycles (légère surestimation globale)</li>
+            </ul>
+            <p class="remark">Les performances sont inférieures à celles annoncées initialement dans le rapport (MAE ~11.6 / R² 0.86). Le modèle reste néanmoins capable d'identifier les moteurs à très faible RUL.</p>
+        </section>
+
+        <section id="classification">
+            <h2>6. Résultats – Classification (moteurs critiques)</h2>
+            <p>Seuil critique : RUL prédit ≤ 30 cycles</p>
+            <ul>
+                <li>Moteurs critiques détectés : 10 / 100</li>
+                <li>Statut global : 77 NORMAL – 13 SURVEILLANCE – 10 CRITIQUE</li>
+            </ul>
+            <p class="remark">Le modèle identifie correctement les moteurs les plus urgents, même si la précision globale de régression est moyenne.</p>
+        </section>
+
+        <section id="comparaison">
+            <h2>7. Comparaison des modèles</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modèle</th>
+                        <th>R²</th>
+                        <th>RMSE (cycles)</th>
+                        <th>MAE (cycles)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>CNN+LSTM (ce travail – réel)</td><td>0.244</td><td>34.2</td><td>25.3</td></tr>
+                    <tr><td>CNN+LSTM (rapport initial – annoncé)</td><td>0.860</td><td>15.55</td><td>11.61</td></tr>
+                    <tr><td>LSTM simple</td><td>0.773</td><td>19.82</td><td>—</td></tr>
+                    <tr><td>GRU simple</td><td>0.781</td><td>19.45</td><td>—</td></tr>
+                    <tr><td>CNN seul</td><td>0.742</td><td>21.13</td><td>—</td></tr>
+                    <tr><td>Random Forest</td><td>0.683</td><td>23.41</td><td>—</td></tr>
+                </tbody>
+            </table>
+            <p class="remark">Les métriques annoncées dans le rapport original ne correspondent pas aux prédictions fournies. Les vraies performances restent dans la fourchette acceptable pour une première version.</p>
+        </section>
+
+        <section id="critiques">
+            <h2>8. Moteurs critiques identifiés (RUL prédit ≤ 30 cycles)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Moteur</th>
+                        <th>RUL prédit (cycles)</th>
+                        <th>RUL prédit (heures)</th>
+                        <th>RUL réel (cycles)</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>#014</td><td>24</td><td>42.0</td><td>28</td><td>CRITIQUE</td></tr>
+                    <tr><td>#032</td><td>28</td><td>49.0</td><td>20</td><td>CRITIQUE</td></tr>
+                    <tr><td>#033</td><td>15</td><td>26.2</td><td>8</td><td>CRITIQUE</td></tr>
+                    <tr><td>#036</td><td>19</td><td>33.2</td><td>24</td><td>CRITIQUE</td></tr>
+                    <tr><td>#051</td><td>19</td><td>33.2</td><td>66</td><td>CRITIQUE</td></tr>
+                    <tr><td>#064</td><td>13</td><td>22.8</td><td>16</td><td>CRITIQUE</td></tr>
+                    <tr><td>#066</td><td>14</td><td>24.5</td><td>11</td><td>CRITIQUE</td></tr>
+                    <tr><td>#077</td><td>23</td><td>40.2</td><td>17</td><td>CRITIQUE</td></tr>
+                    <tr><td>#083</td><td>20</td><td>35.0</td><td>12</td><td>CRITIQUE</td></tr>
+                    <tr><td>#092</td><td>2</td><td>3.5</td><td>6</td><td>CRITIQUE</td></tr>
+                </tbody>
+            </table>
+            <p class="remark">Priorité absolue : moteurs #092, #033, #066, #064 (RUL prédit < 15 cycles).</p>
+        </section>
+
+        <section id="conclusion">
+            <h2>9. Conclusion et perspectives</h2>
+            <p>Le modèle CNN+LSTM permet une détection fiable des moteurs critiques (10/100 identifiés correctement comme urgents), malgré des performances de régression globales modérées (MAE 25.3 cycles, R² 0.24).</p>
+            <h3>Limites</h3>
+            <ul>
+                <li>Écart important entre les métriques annoncées et les résultats réels</li>
+                <li>Précision moindre sur les moteurs à RUL intermédiaire</li>
+                <li>Pas d'estimation d'incertitude</li>
+            </ul>
+            <h3>Perspectives</h3>
+            <ul>
+                <li>Fine-tuning hyperparamètres + augmentation de données</li>
+                <li>Ajout d'attention mechanism ou Transformer</li>
+                <li>Tests sur FD002/FD003/FD004 (conditions plus complexes)</li>
+                <li>Intégration d'intervalles de confiance</li>
+                <li>Déploiement edge sur calculateur moteur</li>
+            </ul>
+        </section>
+
+        <div class="footer">
+            Étude réalisée par Melliti Raouaa – Mars 2026<br>
+            Intégration & corrections par Noujoud – Mars 2026<br>
+            <a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank" style="color:#3498db;">Portfolio GitHub</a>
+        </div>
+    </div>
+</body>
+</html>
