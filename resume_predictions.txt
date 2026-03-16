@@ -1,0 +1,23 @@
+============================================================
+RÉSUMÉ DES PRÉDICTIONS RUL
+============================================================
+
+Date de génération : 14/03/2026 14:54
+
+Nombre total de moteurs : 100
+RUL prédit moyen : 80.8 cycles
+RUL prédit moyen : 141.4 heures
+Erreur moyenne : 9.4 cycles
+
+Moteurs critiques (RUL <= 30) : 10
+Liste des moteurs critiques :
+  - Moteur #014 : 24 cycles (42.0 h)
+  - Moteur #032 : 28 cycles (49.0 h)
+  - Moteur #033 : 15 cycles (26.2 h)
+  - Moteur #036 : 19 cycles (33.2 h)
+  - Moteur #051 : 19 cycles (33.2 h)
+  - Moteur #064 : 13 cycles (22.8 h)
+  - Moteur #066 : 14 cycles (24.5 h)
+  - Moteur #077 : 23 cycles (40.2 h)
+  - Moteur #083 : 20 cycles (35.0 h)
+  - Moteur #092 : 2 cycles (3.5 h)
