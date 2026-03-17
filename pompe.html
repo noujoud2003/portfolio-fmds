@@ -309,13 +309,17 @@
             <h2>8. Prédictions individuelles par batterie (RUL en heures – modèle final CNN+GRU)</h2>
             <p>Le modèle final prédit la durée de vie restante (RUL) pour chaque batterie du dataset NASA Randomized Battery Usage. Voici un extrait représentatif des 31 batteries prédites :</p>
 
-            <div class="downloads">
-                <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv"
-                   class="download-btn" download="ALL_BATTERIES_RUL_HOURS.csv">
-                    ↓ Télécharger : Prédictions RUL (cycles + heures) – toutes les 31 batteries
-                </a>
-            </div>
-
+             <div class="downloads" style="text-align: center; margin: 40px 0;">  
+              <p><strong>Téléchargez les prédictions complètes pour les 31 batteries :</strong></p>
+              <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv"
+              target="_blank" 
+              style="display: inline-block; background: #2ecc71; color: white; padding: 14px 28px; border-radius: 35px; text-decoration: none; font-weight: bold; font-size: 1.08em; box-shadow: 0 5px 15px rgba(46,204,113,0.35);">
+        ↓ Ouvrir / Télécharger : Prédictions RUL (cycles + heures) – 31 batteries
+             </a>
+             <p style="font-size: 0.9em; color: #555; margin-top: 12px;">
+        (Clic droit → « Enregistrer le lien sous... » si le fichier s'ouvre au lieu de se télécharger)
+            </p>
+           </div>
             <p class="remark">Remarque : RUL_heures_pred = RUL_cycles_pred × durée moyenne d’un cycle (variable selon profil). Valeurs arrondies à 2 décimales. Téléchargez le CSV pour la liste complète.</p>
 
             <h3>Extrait des prédictions (critiques, moyennes et longues durées)</h3>
