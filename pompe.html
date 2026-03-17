@@ -153,7 +153,7 @@
             <div class="downloads">
                 <p><strong>Téléchargez les fichiers :</strong></p>
                 <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/metadata.csv" class="download-btn" download="metadata.csv">↓ metadata.csv (métadonnées)</a>
-                <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv" class="download-btn" download="ALL_BATTERIES_RUL_predictions_heures.csv">↓ Prédictions RUL (cycles + heures) – 31 batteries</a>
+                
             </div>
         </section>
 
@@ -222,7 +222,7 @@
                 <li>Optimiseur : Adam</li>
                 <li>Early Stopping + ReduceLROnPlateau pour convergence optimale</li>
             </ul>
-            <img src="loss_curve_train_val.png" alt="Évolution de la perte" class="result-img">
+            <img src="loss_curve_train_val2.png" alt="Évolution de la perte" class="result-img">
             <p class="img-caption">Figure 4.1 : Évolution de la perte MSE – Modèle final CNN+GRU Bidirectional</p>
             <p class="remark">Remarque : Convergence stable et rapide. Validation suit la train sans divergence → apprentissage robuste.</p>
         </section>
@@ -248,13 +248,13 @@
                 <li><strong>Brier score = 0.0933</strong></li>
                 <li><strong>Beta Calibration optimaux</strong> : a = 2.156, b = 1.577</li>
             </ul>
-            <img src="roc_curve_beta.png" alt="Courbe ROC" class="result-img">
+            <img src="roc_curve_beta2.png" alt="Courbe ROC" class="result-img">
             <p class="img-caption">Figure 6.1 : Courbe ROC après Beta Calibration (AUC = 0.9551)</p>
-            <img src="pr_curve_beta.png" alt="Precision-Recall" class="result-img">
+            <img src="pr_curve_beta2.png" alt="Precision-Recall" class="result-img">
             <p class="img-caption">Figure 6.2 : Courbe Precision-Recall après Beta Calibration (AP = 0.9603)</p>
-            <img src="calibration_curve_beta.png" alt="Calibration" class="result-img">
+            <img src="calibration_curve_beta2.png" alt="Calibration" class="result-img">
             <p class="img-caption">Figure 6.3 : Courbe de calibration après Beta Calibration</p>
-            <img src="confusion_best_beta.png" alt="Matrice de confusion" class="result-img">
+            <img src="confusion_best_beta2.png" alt="Matrice de confusion" class="result-img">
             <p class="img-caption">Figure 6.4 : Matrice de confusion au seuil optimal après Beta Calibration</p>
             <p class="remark">Remarque : Calibration très proche de la diagonale parfaite. Très faible taux de faux négatifs → excellente détection des batteries en fin de vie.</p>
         </section>
@@ -311,7 +311,7 @@
 
             <div class="downloads">
                 <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv"
-                   class="download-btn" download="ALL_BATTERIES_RUL_predictions_heures.csv">
+                   class="download-btn" download="ALL_BATTERIES_RUL_HOURS.csv">
                     ↓ Télécharger : Prédictions RUL (cycles + heures) – toutes les 31 batteries
                 </a>
             </div>
