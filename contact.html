@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Noujoud – Data Scientist & Maintenance Prédictive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientAnimation 18s ease infinite;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .nav-btn {
+            background: rgba(52, 152, 219, 0.25);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.97em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(52, 152, 219, 0.45);
+        }
+
+        .active {
+            background: #3498db !important;
+            box-shadow: 0 6px 18px rgba(52, 152, 219, 0.6);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 140px auto 80px;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .profile {
+            margin-bottom: 40px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .profile img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #3498db;
+            box-shadow: 0 10px 30px rgba(52,152,219,0.4);
+            transition: all 0.5s ease;
+        }
+
+        .profile img:hover {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 20px 50px rgba(52,152,219,0.6);
+        }
+
+        .profile h1 {
+            margin: 20px 0 8px;
+            color: #2c3e50;
+            font-size: 2.2em;
+        }
+
+        .profile p {
+            color: #555;
+            font-size: 1.15em;
+            margin: 0;
+        }
+
+        .social-links {
+            margin: 30px 0;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #0e76a8;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            margin: 12px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(14,118,168,0.3);
+        }
+
+        .social-btn:hover {
+            background: #0b5c85;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(14,118,168,0.5);
+        }
+
+        .social-btn i {
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+
+        .cv-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #27ae60;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 20px 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(39,174,96,0.4);
+        }
+
+        .cv-btn:hover {
+            background: #219653;
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(39,174,96,0.6);
+        }
+
+        .cv-btn i {
+            margin-right: 12px;
+            font-size: 1.4em;
+        }
+
+        .contact-info {
+            margin: 50px 0 30px;
+            font-size: 1.1em;
+            color: #34495e;
+        }
+
+        .contact-info p {
+            margin: 12px 0;
+        }
+
+        .contact-info i {
+            color: #3498db;
+            margin-right: 12px;
+            font-size: 1.3em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 30px;
+            color: #bdc3c7;
+            font-size: 0.95em;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 40px 25px; margin: 120px auto 60px; }
+            .profile img { width: 150px; height: 150px; }
+            .social-btn, .cv-btn { padding: 12px 24px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn active">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile">
+            <img src="ton_photo.jpg" alt="Noujoud - Data Scientist & Maintenance Prédictive">
+            <!-- Remplace "ton_photo.jpg" par le vrai nom de ton image (ex: noujoud_profile.jpg) -->
+            <h1>Noujoud</h1>
+            <p>Data Scientist | Spécialiste Maintenance Prédictive</p>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/ton-profil-linkedin/" 
+               target="_blank" 
+               class="social-btn">
+                <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+        </div>
+
+        <a href="ton_cv.pdf" 
+           class="cv-btn" 
+           download="CV_Noujoud_Data_Scientist.pdf">
+            <i class="fas fa-file-download"></i> Télécharger mon CV (PDF)
+        </a>
+        <!-- Remplace "ton_cv.pdf" par le vrai nom de ton fichier CV -->
+
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> noujoud@example.com</p>
+            <p><i class="fas fa-phone"></i> +216 XX XXX XXX</p>
+            <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
+        </div>
+
+        <p style="font-size:1.1em; margin:40px 0; color:#555;">
+            N’hésitez pas à me contacter pour toute opportunité professionnelle, 
+            collaboration sur des projets de maintenance prédictive, 
+            ou simplement pour discuter data science et IA industrielle.
+        </p>
+    </div>
+
+    <div class="footer">
+        © 2026 Noujoud – Tous droits réservés<br>
+        <a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank" style="color:#3498db;">Portfolio GitHub</a>
+    </div>
+</body>
+</html>
