@@ -305,116 +305,57 @@
             <p class="remark">Remarque : Le modèle CNN+GRU Bidirectional domine nettement tous les autres en précision (R², RMSE, MAE) et en score PHM. Gain significatif grâce à la couche bidirectionnelle et au scheduler de learning rate.</p>
         </section>
 
-        <section id="predictions">
-            <h2>8. Prédictions individuelles par batterie (RUL en heures – modèle final CNN+GRU)</h2>
-            <p>Le modèle final prédit la durée de vie restante (RUL) pour chaque batterie du dataset NASA Randomized Battery Usage. Voici un extrait représentatif des 31 batteries prédites :</p>
+       <section id="predictions">
+    <h2>8. Prédictions individuelles par batterie (RUL en heures – modèle final CNN+GRU)</h2>
+    <p>Le modèle final prédit la durée de vie restante (RUL) pour chaque batterie du dataset NASA Randomized Battery Usage. Voici un extrait représentatif des 31 batteries prédites :</p>
 
-             <div class="downloads" style="text-align: center; margin: 40px 0;">  
-              <p><strong>Téléchargez les prédictions complètes pour les 31 batteries :</strong></p>
-              <a href="ALL_BATTERIES_RUL_HOURS.csv"
-              target="_blank" 
-              style="display: inline-block; background: #2ecc71; color: white; padding: 14px 28px; border-radius: 35px; text-decoration: none; font-weight: bold; font-size: 1.08em; box-shadow: 0 5px 15px rgba(46,204,113,0.35);">
-        ↓ Ouvrir / Télécharger : Prédictions RUL (cycles + heures) – 31 batteries
-             </a>
-             <p style="font-size: 0.9em; color: #555; margin-top: 12px;">
-        
-            </p>
-           </div>
-            <p class="remark">Remarque : RUL_heures_pred = RUL_cycles_pred × durée moyenne d’un cycle (variable selon profil). Valeurs arrondies à 2 décimales. Téléchargez le CSV pour la liste complète.</p>
+    <div class="downloads" style="text-align:center; margin:40px 0;">
+        <a href="ALL_BATTERIES_RUL_HOURS.csv"
+           target="_blank"
+           style="display:inline-block; background:#27ae60; color:white; padding:16px 32px; border-radius:35px; text-decoration:none; font-weight:bold; font-size:1.1em; box-shadow:0 5px 15px rgba(39,174,96,0.4);">
+            ↓ Ouvrir / Télécharger : Prédictions RUL (cycles + heures) – 31 batteries
+        </a>
+        <p style="font-size:0.95em; color:#555; margin-top:12px; font-style:italic;">
+          
+        </p>
+    </div>
 
-            <h3>Extrait des prédictions (critiques, moyennes et longues durées)</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Batterie ID</th>
-                        <th>RUL prédit (heures)</th>
-                        <th>Niveau de risque / Remarque</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Critiques (< 50 h) -->
-                    <tr>
-                        <td>B0005</td>
-                        <td>4.59</td>
-                        <td><strong>Critique</strong> – Fin de vie imminente, maintenance immédiate</td>
-                    </tr>
-                    <tr>
-                        <td>B0006</td>
-                        <td>2.39</td>
-                        <td><strong>Critique</strong> – Épuisée, remplacement urgent</td>
-                    </tr>
-                    <tr>
-                        <td>B0045</td>
-                        <td>1.07</td>
-                        <td><strong>Critique</strong> – Risque de panne très élevé</td>
-                    </tr>
-                    <tr>
-                        <td>B0046</td>
-                        <td>0.0</td>
-                        <td><strong>Critique</strong> – Déjà en fin de vie</td>
-                    </tr>
-                    <tr>
-                        <td>B0047</td>
-                        <td>0.15</td>
-                        <td><strong>Critique</strong> – RUL quasi nulle</td>
-                    </tr>
+    <p class="remark">Remarque : RUL_heures_pred = RUL_cycles_pred × durée moyenne d’un cycle (variable selon profil). Valeurs arrondies à 2 décimales. Téléchargez le CSV pour la liste complète des 31 batteries.</p>
 
-                    <!-- Moyennes (50–500 h) -->
-                    <tr>
-                        <td>B0007</td>
-                        <td>94.28</td>
-                        <td>Moyenne – Surveillance régulière</td>
-                    </tr>
-                    <tr>
-                        <td>B0018</td>
-                        <td>40.07</td>
-                        <td><strong>Critique à moyenne</strong> – Maintenance sous 1–2 mois</td>
-                    </tr>
-                    <tr>
-                        <td>B0041</td>
-                        <td>8.82</td>
-                        <td><strong>Critique</strong> – Action rapide nécessaire</td>
-                    </tr>
-                    <tr>
-                        <td>B0048</td>
-                        <td>100.23</td>
-                        <td>Moyenne – Suivi mensuel</td>
-                    </tr>
+    <h3>Extrait des prédictions (critiques, moyennes et longues durées)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Batterie ID</th>
+                <th>RUL prédit (heures)</th>
+                <th>Niveau de risque / Remarque</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>B0005</td><td>4.59</td><td><strong>Critique</strong> – Fin de vie imminente, maintenance immédiate</td></tr>
+            <tr><td>B0006</td><td>2.39</td><td><strong>Critique</strong> – Épuisée, remplacement urgent</td></tr>
+            <tr><td>B0045</td><td>1.07</td><td><strong>Critique</strong> – Risque de panne très élevé</td></tr>
+            <tr><td>B0046</td><td>0.0</td><td><strong>Critique</strong> – Déjà en fin de vie</td></tr>
+            <tr><td>B0047</td><td>0.15</td><td><strong>Critique</strong> – RUL quasi nulle</td></tr>
+            <tr><td>B0007</td><td>94.28</td><td>Moyenne – Surveillance régulière recommandée</td></tr>
+            <tr><td>B0018</td><td>40.07</td><td><strong>Critique à moyenne</strong> – Planifier maintenance sous 1–2 mois</td></tr>
+            <tr><td>B0041</td><td>8.82</td><td><strong>Critique</strong> – Action rapide nécessaire</td></tr>
+            <tr><td>B0048</td><td>100.23</td><td>Moyenne – Suivi mensuel</td></tr>
+            <tr><td>B0025</td><td>1916.19</td><td><strong>Longue durée</strong> – Excellente longévité</td></tr>
+            <tr><td>B0026</td><td>1661.84</td><td><strong>Longue durée</strong> – Très bonne santé résiduelle</td></tr>
+            <tr><td>B0027</td><td>1658.38</td><td><strong>Longue durée</strong> – Performance stable</td></tr>
+            <tr><td>B0028</td><td>1916.97</td><td><strong>Longue durée</strong> – Parmi les meilleures</td></tr>
+        </tbody>
+    </table>
 
-                    <!-- Longues durées (> 500 h) -->
-                    <tr>
-                        <td>B0025</td>
-                        <td>1916.19</td>
-                        <td><strong>Longue durée</strong> – Excellente longévité</td>
-                    </tr>
-                    <tr>
-                        <td>B0026</td>
-                        <td>1661.84</td>
-                        <td><strong>Longue durée</strong> – Très bonne santé résiduelle</td>
-                    </tr>
-                    <tr>
-                        <td>B0027</td>
-                        <td>1658.38</td>
-                        <td><strong>Longue durée</strong> – Performance stable</td>
-                    </tr>
-                    <tr>
-                        <td>B0028</td>
-                        <td>1916.97</td>
-                        <td><strong>Longue durée</strong> – Parmi les meilleures</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p class="remark">
-                <strong>Classification des risques :</strong>
-                <ul>
-                    <li><strong>Critique</strong> : RUL < 50 h → priorité immédiate</li>
-                    <li><strong>Moyenne</strong> : 50–500 h → suivi régulier</li>
-                    <li><strong>Longue durée</strong> : > 500 h → excellente santé</li>
-                </ul>
-                Liste complète des 31 batteries disponible dans le CSV téléchargeable.
-            </p>
-        </section>
+    <p class="remark">
+        <strong>Classification des risques :</strong><br>
+        <strong>Critique</strong> : RUL < 50 heures → priorité haute (risque de panne imminent)<br>
+        <strong>Moyenne</strong> : 50–500 heures → suivi régulier<br>
+        <strong>Longue durée</strong> : > 500 heures → excellente santé résiduelle<br><br>
+        Liste complète des 31 batteries disponible dans le fichier CSV ci-dessus.
+    </p>
+</section>
 
         <section id="limites" class="limits-section">
             <h2>9. Limites identifiées et améliorations possibles</h2>
