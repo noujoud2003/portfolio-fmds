@@ -153,7 +153,7 @@
             <div class="downloads">
                 <p><strong>Téléchargez les fichiers de données du projet :</strong></p>
                 <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/metadata.csv" class="download-btn" download="metadata.csv">↓ metadata.csv (métadonnées NASA PCoE)</a>
-                <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv" class="download-btn" download="ALL_BATTERIES_RUL_predictions_heures.csv">↓ Prédictions RUL (cycles + heures) – toutes batteries</a>
+                <a href="ALL_BATTERIES_RUL_HOURS.csv" class="download-btn" download="ALL_BATTERIES_RUL_predictions_heures.csv">↓ Prédictions RUL (cycles + heures) – toutes batteries</a>
             </div>
             <p class="download-info">Liens directs GitHub – Cliquez pour télécharger.</p>
         </section>
@@ -203,7 +203,7 @@
                 <li>Optimiseur : Adam</li>
                 <li>Early Stopping + ReduceLROnPlateau pour convergence optimale</li>
             </ul>
-            <img src="loss_curve_train_val.png" alt="Évolution de la perte" class="result-img">
+            <img src="loss_curve_train_val2.png" alt="Évolution de la perte" class="result-img">
             <p class="img-caption">Figure 4.1 : Évolution de la perte MSE – Modèle final CNN+GRU Bidirectional</p>
             <p class="remark">Remarque : Convergence stable et rapide. Validation suit la train sans divergence → apprentissage robuste.</p>
         </section>
@@ -216,7 +216,7 @@
                 <li><strong>MAE = 7.19 cycles</strong></li>
                 <li><strong>PHM score = 122.43</strong></li>
             </ul>
-            <img src="predictions_vs_rul_real_distribution_errors.png" alt="Prédictions vs RUL réelle" class="result-img">
+            <img src="predictions_vs_rul_real_distribution_errors2.png" alt="Prédictions vs RUL réelle" class="result-img">
             <p class="img-caption">Figure 5.1 : Prédictions vs RUL réelle + Distribution des erreurs (modèle final)</p>
             <p class="remark">Remarque : Excellente corrélation (R² 0.894). La majorité des points dans la zone ±15 cycles. Biais très faible (-0.03) → modèle précis et peu biaisé.</p>
         </section>
@@ -229,13 +229,13 @@
                 <li><strong>Brier score = 0.0933</strong></li>
                 <li><strong>Beta Calibration optimaux</strong> : a = 2.156, b = 1.577</li>
             </ul>
-            <img src="roc_curve_beta.png" alt="Courbe ROC" class="result-img">
+            <img src="roc_curve_beta2.png" alt="Courbe ROC" class="result-img">
             <p class="img-caption">Figure 6.1 : Courbe ROC après Beta Calibration (AUC = 0.9551)</p>
-            <img src="pr_curve_beta.png" alt="Precision-Recall" class="result-img">
+            <img src="pr_curve_beta2.png" alt="Precision-Recall" class="result-img">
             <p class="img-caption">Figure 6.2 : Courbe Precision-Recall après Beta Calibration (AP = 0.9603)</p>
-            <img src="calibration_curve_beta.png" alt="Calibration" class="result-img">
+            <img src="calibration_curve_beta2.png" alt="Calibration" class="result-img">
             <p class="img-caption">Figure 6.3 : Courbe de calibration après Beta Calibration</p>
-            <img src="confusion_best_beta.png" alt="Matrice de confusion" class="result-img">
+            <img src="confusion_best_beta2.png" alt="Matrice de confusion" class="result-img">
             <p class="img-caption">Figure 6.4 : Matrice de confusion au seuil optimal après Beta Calibration</p>
             <p class="remark">Remarque : Calibration très proche de la diagonale parfaite. Très faible taux de faux négatifs → excellente détection des batteries en fin de vie.</p>
         </section>
@@ -286,18 +286,115 @@
             <p class="remark">Remarque : Le modèle CNN+GRU Bidirectional domine nettement tous les autres en précision (R², RMSE, MAE) et en score PHM. Gain significatif grâce à la couche bidirectionnelle et au scheduler de learning rate.</p>
         </section>
 
-        <section id="predictions">
-            <h2>8. Prédictions individuelles par batterie (RUL en heures – modèle final)</h2>
-            <p>Extrait des prédictions RUL (cycles convertis en heures) pour les batteries du dataset :</p>
-            <div class="downloads">
-                <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv" 
-                   class="download-btn" download="ALL_BATTERIES_RUL_predictions_heures.csv">
-                    ↓ Télécharger : Prédictions RUL (cycles + heures) – toutes batteries (31)
-                </a>
-            </div>
-            <p class="remark">Remarque : Les valeurs sont issues du modèle final. Les batteries avec RUL < 50 heures sont considérées critiques (maintenance prioritaire). Les RUL > 1000 heures indiquent une excellente longévité.</p>
-        </section>
+       <section id="predictions">
+    <h2>8. Prédictions individuelles par batterie (RUL en heures – modèle final CNN+GRU)</h2>
+    <p>Le modèle final prédit la durée de vie restante (RUL) pour chaque batterie du dataset NASA Randomized Battery Usage. Voici un extrait des résultats (toutes les 31 batteries sont disponibles en téléchargement) :</p>
 
+    <div class="downloads">
+        <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv" 
+           class="download-btn" download="ALL_BATTERIES_RUL_predictions_heures.csv">
+            ↓ Télécharger : Prédictions RUL (cycles + heures) – toutes les 31 batteries
+        </a>
+    </div>
+
+    <p class="remark">Remarque : RUL_heures_pred = RUL_cycles_pred × durée moyenne d’un cycle (variable selon le profil de chaque batterie). Les valeurs sont arrondies à 2 décimales.</p>
+
+    <h3>Extrait des prédictions critiques et représentatives</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Batterie ID</th>
+                <th>RUL prédit (heures)</th>
+                <th>Niveau de risque / Remarque</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Batteries critiques (RUL < 50 h) -->
+            <tr>
+                <td>B0005</td>
+                <td>4.59</td>
+                <td><strong>Critique</strong> – Fin de vie imminente, maintenance immédiate</td>
+            </tr>
+            <tr>
+                <td>B0006</td>
+                <td>2.39</td>
+                <td><strong>Critique</strong> – Épuisée, remplacement urgent</td>
+            </tr>
+            <tr>
+                <td>B0045</td>
+                <td>1.07</td>
+                <td><strong>Critique</strong> – Risque de panne très élevé</td>
+            </tr>
+            <tr>
+                <td>B0046</td>
+                <td>0.0</td>
+                <td><strong>Critique</strong> – Déjà en fin de vie</td>
+            </tr>
+            <tr>
+                <td>B0047</td>
+                <td>0.15</td>
+                <td><strong>Critique</strong> – RUL quasi nulle</td>
+            </tr>
+
+            <!-- Batteries moyennes (50–500 h) -->
+            <tr>
+                <td>B0007</td>
+                <td>94.28</td>
+                <td>Moyenne – Surveillance régulière recommandée</td>
+            </tr>
+            <tr>
+                <td>B0018</td>
+                <td>40.07</td>
+                <td><strong>Critique à moyenne</strong> – Planifier maintenance sous 1–2 mois</td>
+            </tr>
+            <tr>
+                <td>B0041</td>
+                <td>8.82</td>
+                <td><strong>Critique</strong> – Action rapide nécessaire</td>
+            </tr>
+            <tr>
+                <td>B0048</td>
+                <td>100.23</td>
+                <td>Moyenne – Suivi mensuel</td>
+            </tr>
+
+            <!-- Batteries longue durée (> 500 h) -->
+            <tr>
+                <td>B0025</td>
+                <td>1916.19</td>
+                <td><strong>Longue durée</strong> – Excellente longévité</td>
+            </tr>
+            <tr>
+                <td>B0026</td>
+                <td>1661.84</td>
+                <td><strong>Longue durée</strong> – Très bonne santé résiduelle</td>
+            </tr>
+            <tr>
+                <td>B0027</td>
+                <td>1658.38</td>
+                <td><strong>Longue durée</strong> – Performance stable</td>
+            </tr>
+            <tr>
+                <td>B0028</td>
+                <td>1916.97</td>
+                <td><strong>Longue durée</strong> – Parmi les meilleures</td>
+            </tr>
+            <tr>
+                <td>B0055</td>
+                <td>205.83</td>
+                <td>Moyenne à longue – Surveillance modérée</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="remark">Remarque : 
+    <ul>
+        <li><strong>Critique</strong> : RUL < 50 heures → priorité haute (risque de panne imminent)</li>
+        <li><strong>Moyenne</strong> : 50–500 heures → suivi régulier</li>
+        <li><strong>Longue durée</strong> : > 500 heures → excellente santé résiduelle</li>
+    </ul>
+    Pour la liste complète des 31 batteries, téléchargez le fichier CSV ci-dessus.</p>
+</section>
         <section id="limites" class="limits-section">
             <h2>9. Limites identifiées et améliorations possibles</h2>
             <ul>
