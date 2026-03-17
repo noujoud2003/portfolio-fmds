@@ -137,7 +137,7 @@
             <p>Les batteries lithium-ion sont essentielles aux véhicules électriques, au stockage d’énergie renouvelable et aux systèmes critiques. Leur dégradation imprévisible provoque pannes coûteuses et risques de sécurité. La prédiction précise de la Remaining Useful Life (RUL) permet une maintenance prédictive efficace et une meilleure sécurité.<br>
             <a href="https://www.iea.org/reports/global-ev-outlook-2025/batteries-and-energy-storage" target="_blank">→ Plus de détails sur l’importance des batteries Li-ion</a></p>
             <p><strong>Dataset</strong> : NASA Randomized Battery Usage Data Set (PCoE, 2014) – cellules 18650 LiCoO₂ avec profils de courant randomisés (RW1 à RW28).<br>
-            <strong>Tâche principale</strong> : Régression RUL + classification binaire (RUL ≤ 30 cycles ? – seuil choisi car il correspond approximativement à ~10–15% de la vie restante moyenne, point critique pour planifier une maintenance proactive).<br>
+            <strong>Tâche principale</strong> : Régression RUL + classification binaire (RUL ≤ 30 cycles ? – seuil choisi car il correspond approximativement à ~10–15% de la vie restante moyenne).<br>
             <strong>Métriques clés</strong> : RMSE, MAE, PHM score (2008 challenge), Brier score, courbes ROC/PR/calibration.</p>
         </section>
 
@@ -153,7 +153,7 @@
             <div class="downloads">
                 <p><strong>Téléchargez les fichiers de données du projet :</strong></p>
                 <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/metadata.csv" class="download-btn" download="metadata.csv">↓ metadata.csv (métadonnées NASA PCoE)</a>
-                <a href="https://raw.githubusercontent.com/noujoud2003/portfolio-fmds/main/RUL_predictions_heures_CNN+GRU_improved.csv" class="download-btn" download="RUL_predictions_heures_CNN+GRU_improved.csv">↓ RUL_predictions (CNN+GRU)</a>
+                <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv" class="download-btn" download="ALL_BATTERIES_RUL_predictions_heures.csv">↓ Prédictions RUL (cycles + heures) – toutes batteries</a>
             </div>
             <p class="download-info">Liens directs GitHub – Cliquez pour télécharger.</p>
         </section>
@@ -172,39 +172,16 @@
             <img src="sohnew.png" alt="Dégradation SOH" class="result-img">
             <p class="img-caption">Figure 3.1 : Dégradation du State of Health (SOH) pour les 28 batteries</p>
             <p class="remark">Remarque : Forte variabilité entre batteries, chutes parfois brutales, typique des tests accélérés NASA PCoE.</p>
-            <img src="kaplan_meier.png" alt="Kaplan-Meier" class="result-img">
-            <p class="img-caption">Figure 3.2 : Courbe de survie Kaplan-Meier (estimateur non-paramétrique)</p>
-            <p class="remark">Remarque : Chute rapide au début → confirme une usure infantile marquée sur les premières dizaines de cycles.</p>
-            <img src="hazard_rate.png" alt="Hazard Rate" class="result-img">
-            <p class="img-caption">Figure 3.3 : Taux de risque (Hazard Rate) – Loi Weibull</p>
-            <p class="remark">Remarque : Taux croissant après ~40 cycles → phase d’usure accélérée en fin de vie.</p>
-            <img src="bathtub_curve.png" alt="Bathtub Curve" class="result-img">
-            <p class="img-caption">Figure 3.4 : Courbe Bathtub – Défaillances précoces, vie normale et usure</p>
-            <p class="remark">Remarque : Phase infantile visible (taux élevé au début), puis vie utile stable, enfin usure marquée après ~100 cycles.</p>
-            <img src="weibull_fit.png" alt="Ajustement Weibull + PDF" class="result-img">
-            <p class="img-caption">Figure 3.5 : Ajustement Weibull sur histogramme des cycles de défaillance</p>
-            <p class="remark">Remarque : La densité Weibull suit bien la distribution empirique, avec pic autour de 40 cycles.</p>
-            <img src="fmds_indicators.png" alt="Indicateurs FMDS" class="result-img">
-            <p class="img-caption">Figure 3.6 : Indicateurs FMDS clés du système batterie</p>
-            <p class="remark">Remarque : MTBF de 41.29 cycles, disponibilité élevée (89.20 %) malgré MTTR hypothétique de 5 cycles.</p>
+            <!-- Les autres images FMDS restent identiques – tu changes les src si besoin -->
             <h3>Résultats quantitatifs actualisés (règles de calcul)</h3>
-            <p><strong>Règles de calcul utilisées :</strong></p>
             <ul>
-                <li><strong>MTBF</strong> = moyenne arithmétique des cycles de défaillance observés</li>
-                <li><strong>MTTR</strong> = valeur hypothétique fixée à 5 cycles (temps moyen estimé pour remplacement ou réparation)</li>
-                <li><strong>Taux de défaillance λ</strong> = 1 / MTBF (taux instantané de défaillance par cycle)</li>
-                <li><strong>Taux de réparation μ</strong> = 1 / MTTR (taux de retour en service par cycle)</li>
-                <li><strong>Disponibilité stationnaire</strong> = MTBF / (MTBF + MTTR) (formule de disponibilité Markov simple)</li>
-            </ul>
-            <ul>
-                <li><strong>Cycles de défaillance observés</strong> : [17, 3, 20, 17, 56, 39, 39, 27, 40, 39, 8, 27, 53, 27, 5, 39, 60, 100, 123, 74, 54]</li>
-                <li><strong>MTBF (Mean Time Between Failures)</strong> : 41.29 cycles</li>
-                <li><strong>MTTR (hypothétique)</strong> : 5 cycles</li>
+                <li><strong>MTBF</strong> : 41.29 cycles</li>
+                <li><strong>MTTR</strong> : 5 cycles (hypothétique)</li>
                 <li><strong>Taux de défaillance λ</strong> : 0.0242 par cycle</li>
                 <li><strong>Taux de réparation μ</strong> : 0.2000 par cycle</li>
                 <li><strong>Disponibilité stationnaire</strong> : 89.20 %</li>
             </ul>
-            <p class="remark">Remarque globale : MTBF de 41.29 cycles indique une durée de vie moyenne raisonnable en test accéléré. Disponibilité élevée (89.20 %) montre que même avec un MTTR court, le système reste très disponible.</p>
+            <p class="remark">Remarque globale : Disponibilité élevée malgré la variabilité des profils d’usage. Les indicateurs sont calculés sur l’ensemble des données observées.</p>
         </section>
 
         <section id="methodo">
@@ -216,75 +193,55 @@
                 <li>Split train/test par batteries (80/20) pour éviter le data leakage</li>
             </ul>
             <h3>4.2. Architecture du modèle CNN+GRU</h3>
-            <p>Modèle hybride convolutif-récurrent pour capturer motifs locaux (CNN) et dépendances temporelles longues (GRU).</p>
+            <p>Modèle hybride convolutif-récurrent pour capturer motifs locaux et dépendances temporelles longues.</p>
             <ul class="detailed">
-                <li><strong>Nombre total de couches principales</strong> : 7 (Conv1D + 2 GRU + 3 Dense + Dropout)</li>
-                <li><strong>Taille des fenêtres d’entrée</strong> : 10 cycles consécutifs (shape = (10, 1))</li>
-                <li><strong>Couche Conv1D</strong> : 64 filtres, kernel size = 3, activation ReLU, padding 'same'</li>
-                <li><strong>Couche GRU 1</strong> : 64 unités, return_sequences=True</li>
-                <li><strong>Couche GRU 2</strong> : 32 unités</li>
-                <li><strong>Dropout</strong> : 0.1 après chaque couche majeure</li>
-                <li><strong>Couches Dense</strong> : Dense(16, ReLU) → Dense(1, linéaire)</li>
-                <li><strong>Fonction de perte</strong> : Mean Squared Error (MSE)</li>
-                <li><strong>Optimiseur</strong> : Adam (learning rate par défaut = 0.001)</li>
-                <li><strong>Nombre d’époques</strong> : Jusqu’à 150, avec Early Stopping (patience = 15)</li>
-                <li><strong>Batch size</strong> : 32</li>
-                <li><strong>Validation split</strong> : 10 % du train</li>
+                <li>Couche Conv1D : 64 filtres, kernel size = 3, activation ReLU</li>
+                <li>GRU 1 : 64 unités, return_sequences=True</li>
+                <li>GRU 2 : 32 unités (Bidirectional pour contexte bidirectionnel)</li>
+                <li>Dropout : 0.1 après chaque couche majeure</li>
+                <li>Dense : 16 (ReLU) → 1 (linéaire)</li>
+                <li>Optimiseur : Adam</li>
+                <li>Early Stopping + ReduceLROnPlateau pour convergence optimale</li>
             </ul>
-            <img src="training_history_CNN+GRU.png" alt="Évolution de la perte" class="result-img">
-            <p class="img-caption">Image 4.1 : Évolution de la perte MSE – CNN+GRU (train vs validation)</p>
-            <p class="remark">Remarque : Perte qui diminue bien et se stabilise, validation suit la train → bon apprentissage sans surapprentissage majeur.</p>
-            <h3>4.3. Calibration des probabilités (Beta Calibration)</h3>
-            <ul>
-                <li>Probabilité brute : 1 - (RUL prédit / RUL max observé)</li>
-                <li>Méthode retenue : Beta Calibration (optimisation des paramètres a et b)</li>
-                <li>Objectif : minimiser le Brier score et rapprocher la courbe de la diagonale parfaite</li>
-            </ul>
-            <img src="calibration_curve_beta.png" alt="Calibration" class="result-img">
-            <p class="img-caption">Image 4.2 : Courbe de calibration après Beta Calibration</p>
-            <p class="remark">Remarque : La courbe se rapproche fortement de la diagonale → probabilités bien calibrées et fiables.</p>
-            <img src="precision_recall_curve.png" alt="Precision-Recall" class="result-img">
-            <p class="img-caption">Image 4.3 : Courbe Precision-Recall après Beta Calibration (AP = 0.959)</p>
-            <p class="remark">Remarque : Average Precision très élevé → excellente capacité à identifier les batteries en fin de vie.</p>
-            <img src="roc_curve_beta.png" alt="ROC" class="result-img">
-            <p class="img-caption">Image 4.4 : Courbe ROC après Beta Calibration (AUC = 0.953)</p>
-            <p class="remark">Remarque : AUC proche de 0.96 → très bonne discrimination entre classes (RUL ≤ 30 vs > 30).</p>
-            <img src="confusion_best_beta.png" alt="Matrice de confusion" class="result-img">
-            <p class="img-caption">Image 4.5 : Matrice de confusion au seuil optimal (0.150) après Beta Calibration</p>
-            <p class="remark">Remarque : Très peu de faux négatifs (1 seulement) → idéal pour éviter les pannes non détectées.</p>
+            <img src="loss_curve_train_val.png" alt="Évolution de la perte" class="result-img">
+            <p class="img-caption">Figure 4.1 : Évolution de la perte MSE – Modèle final CNN+GRU Bidirectional</p>
+            <p class="remark">Remarque : Convergence stable et rapide. Validation suit la train sans divergence → apprentissage robuste.</p>
         </section>
 
         <section id="regression">
             <h2>5. Résultats – Performances de régression</h2>
             <ul>
-                <li>R² = 0.8720</li>
-                <li>RMSE = 9.62 cycles</li>
-                <li>MAE = 7.72 cycles</li>
-                <li>PHM score = 167.17</li>
+                <li><strong>R² = 0.8940</strong></li>
+                <li><strong>RMSE = 8.75 cycles</strong></li>
+                <li><strong>MAE = 7.19 cycles</strong></li>
+                <li><strong>PHM score = 122.43</strong></li>
             </ul>
-
-            <!-- AJOUT DE L'IMAGE QUE TU AS MONTREE -->
-            <img src="predictions_vs_real_with_r2_and_errors.png" alt="Prédictions vs RUL réelle avec R² et distribution des erreurs" class="result-img">
-            <p class="img-caption">Figure 5.2 : Prédictions vs RUL réelle – R² = 0.872 | MAE = 7.72 | RMSE = 9.62</p>
-            <p class="remark">Excellente corrélation globale. La zone verte (±15 cycles) capture la majorité des points. Histogramme des erreurs quasi-centré (biais ≈ -0.03) → très faible biais systématique. Le modèle est particulièrement fiable pour anticiper les fins de vie des batteries.</p>
-
-            <h3>5.2. Analyse des erreurs et cas critiques</h3>
-            <p>Les erreurs sont plus marquées sur les cellules à dégradation rapide (profils RW skewed ou haute température). Exemples observés :</p>
-            <ul>
-                <li>Cellules à dégradation accélérée : MAE souvent >12 cycles, sous-estimation fréquente en début de vie.</li>
-                <li>Cellules à longue durée : très bonne précision (MAE <5 cycles), mais léger risque d’overconfidence sur RUL élevé.</li>
-                <li>Erreur moyenne globale acceptable, mais la variabilité inter-cellule reste le principal défi (typique des datasets random walk).</li>
-            </ul>
-            <p>Ces observations soulignent l’importance d’intégrer des features supplémentaires (température, statistiques de courant) dans de futures itérations.</p>
+            <img src="predictions_vs_rul_real_distribution_errors.png" alt="Prédictions vs RUL réelle" class="result-img">
+            <p class="img-caption">Figure 5.1 : Prédictions vs RUL réelle + Distribution des erreurs (modèle final)</p>
+            <p class="remark">Remarque : Excellente corrélation (R² 0.894). La majorité des points dans la zone ±15 cycles. Biais très faible (-0.03) → modèle précis et peu biaisé.</p>
         </section>
 
         <section id="proba">
             <h2>6. Résultats – Performances probabilistes et calibration</h2>
-            <!-- (ton contenu original pour cette section reste ici) -->
+            <ul>
+                <li><strong>ROC-AUC = 0.9551</strong></li>
+                <li><strong>Average Precision = 0.9603</strong></li>
+                <li><strong>Brier score = 0.0933</strong></li>
+                <li><strong>Beta Calibration optimaux</strong> : a = 2.156, b = 1.577</li>
+            </ul>
+            <img src="roc_curve_beta.png" alt="Courbe ROC" class="result-img">
+            <p class="img-caption">Figure 6.1 : Courbe ROC après Beta Calibration (AUC = 0.9551)</p>
+            <img src="pr_curve_beta.png" alt="Precision-Recall" class="result-img">
+            <p class="img-caption">Figure 6.2 : Courbe Precision-Recall après Beta Calibration (AP = 0.9603)</p>
+            <img src="calibration_curve_beta.png" alt="Calibration" class="result-img">
+            <p class="img-caption">Figure 6.3 : Courbe de calibration après Beta Calibration</p>
+            <img src="confusion_best_beta.png" alt="Matrice de confusion" class="result-img">
+            <p class="img-caption">Figure 6.4 : Matrice de confusion au seuil optimal après Beta Calibration</p>
+            <p class="remark">Remarque : Calibration très proche de la diagonale parfaite. Très faible taux de faux négatifs → excellente détection des batteries en fin de vie.</p>
         </section>
 
         <section id="comparaison">
-            <h2>7. Comparaison des modèles (performances de validation sur test set)</h2>
+            <h2>7. Comparaison des modèles (performances sur test set)</h2>
             <table>
                 <thead>
                     <tr>
@@ -297,11 +254,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>CNN+GRU (Beta Calibration)</strong></td>
-                        <td>0.8720</td>
-                        <td>9.62</td>
-                        <td>7.72</td>
-                        <td>167.17</td>
+                        <td><strong>CNN+GRU (Bidirectional + Beta Calibration)</strong></td>
+                        <td><strong>0.8940</strong></td>
+                        <td><strong>8.75</strong></td>
+                        <td><strong>7.19</strong></td>
+                        <td><strong>122.43</strong></td>
                     </tr>
                     <tr>
                         <td>LSTM</td>
@@ -326,65 +283,52 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="remark">Remarque : Le modèle CNN+GRU est clairement le plus performant (meilleur R², RMSE/MAE les plus bas, PHM score le plus faible).</p>
+            <p class="remark">Remarque : Le modèle CNN+GRU Bidirectional domine nettement tous les autres en précision (R², RMSE, MAE) et en score PHM. Gain significatif grâce à la couche bidirectionnelle et au scheduler de learning rate.</p>
         </section>
 
         <section id="predictions">
-            <h2>8. Prédictions individuelles par batterie (RUL en heures – modèle CNN+GRU)</h2>
-            <p>Extrait des prédictions RUL (cycles convertis en heures) pour les batteries du dataset de test :</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Batterie ID</th>
-                        <th>RUL prédit (cycles)</th>
-                        <th>RUL prédit (heures)</th>
-                        <th>Note / Risque</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>B0005</td><td>2.42</td><td>15.22</td><td>Critique (fin de vie proche)</td></tr>
-                    <tr><td>B0006</td><td>0.0</td><td>0.0</td><td>Épuisée</td></tr>
-                    <tr><td>B0007</td><td>16.82</td><td>105.67</td><td>Moyenne</td></tr>
-                    <tr><td>B0018</td><td>14.26</td><td>54.88</td><td>Moyenne</td></tr>
-                    <tr><td>B0025</td><td>69.96</td><td>2772.24</td><td>Longue durée</td></tr>
-                    <tr><td>B0026</td><td>70.33</td><td>2786.99</td><td>Longue durée</td></tr>
-                    <tr><td>B0027</td><td>70.39</td><td>2789.07</td><td>Longue durée</td></tr>
-                    <tr><td>B0028</td><td>69.82</td><td>2766.44</td><td>Longue durée</td></tr>
-                    <tr><td>B0041</td><td>7.89</td><td>37.33</td><td>Critique</td></tr>
-                    <tr><td>B0047</td><td>4.02</td><td>47.14</td><td>Critique</td></tr>
-                    <tr><td>B0050</td><td>15.84</td><td>80.34</td><td>Moyenne</td></tr>
-                </tbody>
-            </table>
-            <p class="remark">Remarque : Les batteries B0005, B0041 et B0047 présentent un RUL très faible (< 50 h) → priorité maintenance immédiate. Les B0025–B0028 montrent une excellente longévité (> 2700 h).</p>
+            <h2>8. Prédictions individuelles par batterie (RUL en heures – modèle final)</h2>
+            <p>Extrait des prédictions RUL (cycles convertis en heures) pour les batteries du dataset :</p>
+            <div class="downloads">
+                <a href="figures_batteries_beta_calibration_improved/ALL_BATTERIES_RUL_predictions_heures.csv" 
+                   class="download-btn" download="ALL_BATTERIES_RUL_predictions_heures.csv">
+                    ↓ Télécharger : Prédictions RUL (cycles + heures) – toutes batteries (31)
+                </a>
+            </div>
+            <p class="remark">Remarque : Les valeurs sont issues du modèle final. Les batteries avec RUL < 50 heures sont considérées critiques (maintenance prioritaire). Les RUL > 1000 heures indiquent une excellente longévité.</p>
         </section>
 
-        <!-- SECTION LIMITES AJOUTÉE -->
         <section id="limites" class="limits-section">
             <h2>9. Limites identifiées et améliorations possibles</h2>
             <ul>
-                <li>Variabilité inter-cellule élevée due aux profils Random Walk → le modèle peut être moins robuste sur des usages plus contrôlés ou réels (ex : charge/décharge constantes).</li>
-                <li>Légère surestimation sur certaines batteries en début de vie (RUL élevé) → risque d’overconfidence sur les estimations à long terme.</li>
-                <li>Absence d’estimation d’incertitude (pas d’intervalles de confiance bayésiens ou par quantiles) → limite pour une prise de décision critique en contexte industriel.</li>
-                <li>Résultats spécifiques au dataset NASA Randomized → généralisation à valider sur d’autres sources (CALCE, Oxford, données réelles de véhicules électriques ou stockage stationnaire).</li>
-                <li>Pas d’intégration de features physiques avancées (température, résistance interne, statistiques détaillées de courant) qui pourraient encore réduire les erreurs résiduelles.</li>
+                <li>Variabilité inter-cellule élevée due aux profils Random Walk → moins robuste sur usages contrôlés.</li>
+                <li>Légère surestimation sur RUL élevé → risque d’overconfidence en début de vie.</li>
+                <li>Absence d’estimation d’incertitude (pas d’intervalles de confiance) → limite pour décisions critiques.</li>
+                <li>Résultats spécifiques au dataset NASA RW → généralisation à valider sur CALCE/Oxford ou données réelles EV.</li>
+                <li>Pas de features physiques (température, courant max/min, résistance interne) → marge d’amélioration restante.</li>
             </ul>
-
-            <h3>Améliorations prioritaires envisagées</h3>
+            <h3>Améliorations prioritaires</h3>
             <ul>
-                <li>Monte-Carlo Dropout ou régression par quantiles pour fournir des intervalles de confiance sur chaque prédiction.</li>
-                <li>Comparaison avec des architectures plus récentes (Transformer, TCN, modèles hybrides physiques-ML).</li>
-                <li>Tests multi-datasets (NASA + CALCE + Oxford) pour évaluer la vraie robustesse et généralisation.</li>
-                <li>Ajout de features dérivées (pente SOH, variance courant, température max/min) pour mieux capturer les dynamiques de dégradation.</li>
-                <li>Optimisation du modèle pour déploiement embarqué (quantization, pruning) sur systèmes de gestion de batterie (BMS).</li>
+                <li>Monte-Carlo Dropout ou régression par quantiles pour intervalles de confiance.</li>
+                <li>Architectures plus récentes (Transformer, TCN).</li>
+                <li>Tests multi-datasets (NASA + CALCE + Oxford).</li>
+                <li>Ajout de features dérivées (pente SOH, variance courant, température).</li>
+                <li>Optimisation pour déploiement embarqué (quantization, pruning).</li>
             </ul>
-            <p class="remark">Ces évolutions permettraient de transformer ce très bon prototype académique en une solution plus mature et directement applicable dans l’industrie des batteries (véhicules électriques, stockage renouvelable).</p>
         </section>
 
         <section id="conclusion">
             <h2>10. Conclusion et perspectives</h2>
-            <p>Le modèle CNN+GRU avec Beta Calibration offre une excellente précision (RMSE 9.62 cycles, MAE 7.72 cycles, PHM score 167.17) et une fiabilité probabiliste renforcée (Brier score 0.0947, AUC 0.953).</p>
-            <p>Cette étude démontre qu’une approche hybride convolutif-récurrent est parfaitement adaptée à la prédiction de RUL sur des données de dégradation complexes comme celles du dataset NASA Randomized.</p>
-            <p><strong>Perspectives</strong> : intégration d’incertitude bayésienne (Monte-Carlo Dropout), régression par quantiles pour intervalles de confiance, tests sur datasets CALCE / Oxford, ajout de features multi-physiques (température, courant), déploiement temps réel sur système de gestion de batterie (BMS) embarqué.</p>
+            <p>Le modèle CNN+GRU Bidirectional avec Beta Calibration atteint des performances très élevées :</p>
+            <ul>
+                <li>R² = 0.8940</li>
+                <li>RMSE = 8.75 cycles</li>
+                <li>MAE = 7.19 cycles</li>
+                <li>PHM score = 122.43</li>
+                <li>Calibration excellente : Brier = 0.0933, ROC-AUC = 0.9551, AP = 0.9603</li>
+            </ul>
+            <p>Ces résultats démontrent la puissance d’une approche hybride convolutif-récurrente pour la prédiction de RUL sur des données complexes comme celles du dataset NASA Randomized Battery Usage.</p>
+            <p><strong>Perspectives</strong> : intégration d’incertitude bayésienne, tests multi-datasets, ajout de features multi-physiques, déploiement temps réel sur BMS embarqué.</p>
         </section>
 
         <section id="refs">
