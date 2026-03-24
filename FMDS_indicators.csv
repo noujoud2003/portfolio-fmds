@@ -1,0 +1,2 @@
+MTBF_hours,MTTR_hours,Failure_Rate_lambda,Repair_Rate_mu,Availability_pct,Weibull_beta,Weibull_eta,Best_Model_AIC
+3915.3915428571427,2.0,0.000255402298609012,0.5,99.94894561909068,32.5255572580657,3986.467724482516,Weibull
