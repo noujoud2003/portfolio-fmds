@@ -278,6 +278,38 @@
             color: #16a085;
             margin-top: 0;
         }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.6);
+        }
+        .learn-more-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+        }
+        .learn-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.6);
+        }
         @media (max-width: 768px) {
             .container {
                 margin: 120px 20px 40px;
@@ -321,7 +353,11 @@
             <div class="intro-box">
                 <h3>📌 Introduction – Pourquoi prédire le RUL ?</h3>
                 <p>Les batteries lithium-ion (NMC-LCO 18650 – 2.8 Ah) sont essentielles dans les véhicules électriques, le stockage d'énergie renouvelable et les systèmes critiques. Prédire leur durée de vie restante (RUL) permet d'anticiper les pannes, d'optimiser la maintenance prédictive et de prolonger leur usage en seconde vie.</p>
-                <p><strong>Dataset :</strong> Hawaii Natural Energy Institute – 14 cellules – plus de 1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.</p>
+                
+                <div style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px;">
+                    <p style="margin-bottom: 10px;"><strong>📂 Dataset :</strong> Hawaii Natural Energy Institute – 14 cellules – plus de 1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.</p>
+                    <a href="Battery_RUL.csv" class="download-btn" download>📥 Télécharger le Dataset</a>
+                </div>
             </div>
         </section>
 
@@ -396,6 +432,7 @@
             <div class="image-container">
                 <img src="Diagnostic_Feature_Importance.png" alt="Importance des Features">
                 <p class="image-caption">Figure 3: Importance des features pour la classification - Discharge Time et Time constant current sont les indicateurs les plus pertinents</p>
+                <a href="https://www.sciencedirect.com/topics/engineering/lithium-ion-battery-degradation" target="_blank" class="learn-more-btn">📖 En savoir plus sur la dégradation</a>
             </div>
 
             <h3>📈 Performance des Modèles de Classification</h3>
@@ -550,6 +587,19 @@
                     <img src="LSTM_rul_by_battery.png" alt="RUL par Batterie">
                     <p class="image-caption">Figure 7: Courbes RUL réel vs prédit par batterie - Excellent suivi de la dégradation sur les 3 batteries test</p>
                 </div>
+            </div>
+
+            <h3>🔄 Prédiction Cycle par Cycle (Exemple Batterie 4)</h3>
+            <div class="key-findings">
+                <h4>🔍 Suivi de la Dégradation Temporelle</h4>
+                <p>Le modèle LSTM ne se contente pas de prédire une valeur finale, il suit l'évolution de la dégradation cycle après cycle. Sur l'exemple de la Batterie 4 (Cycles 21 à 114), on observe une capacité du modèle à capturer la tendance globale malgré le bruit de mesure.</p>
+                <ul>
+                    <li><strong>Cycle 21:</strong> RUL Réel = 0.3019h | Prédit = 0.3055h (Erreur: -0.0036h)</li>
+                    <li><strong>Cycle 50:</strong> RUL Réel = 0.2936h | Prédit = 0.2950h (Erreur: -0.0014h)</li>
+                    <li><strong>Cycle 100:</strong> RUL Réel = 0.2794h | Prédit = 0.2805h (Erreur: -0.0011h)</li>
+                    <li><strong>Cycle 114:</strong> RUL Réel = 0.2761h | Prédit = 0.2727h (Erreur: +0.0034h)</li>
+                </ul>
+                <p><em>Ce suivi temporel permet une maintenance proactive plutôt que réactive.</em></p>
             </div>
 
             <h3>⏱️ RUL Restant Prédit au Dernier Cycle</h3>
