@@ -14,11 +14,6 @@
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-      100% { transform: scale(1); }
-    }
     body {
       margin: 0;
       padding: 0;
@@ -76,7 +71,7 @@
       box-shadow: 0 14px 55px rgba(0,0,0,0.3);
       color: #1f2937;
     }
-    h1 { color: #1e40af; text-align: center; font-size: 2.9rem; margin-bottom: 0.6rem; animation: pulse 4s infinite; }
+    h1 { color: #1e40af; text-align: center; font-size: 2.9rem; margin-bottom: 0.6rem; }
     .author { text-align: center; font-size: 1.45rem; color: #4b5563; margin-bottom: 2.8rem; }
     h2 { color: #1e40af; border-bottom: 4px solid #3b82f6; padding-bottom: 12px; margin: 3.5rem 0 1.8rem; font-size: 2.3rem; }
     table { width: 100%; border-collapse: collapse; margin: 2.2rem 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 22px rgba(0,0,0,0.12); }
@@ -91,7 +86,7 @@
     }
     .btn-download:hover { background: #047857; transform: translateY(-5px); box-shadow: 0 12px 35px rgba(5,150,105,0.55); }
     .figure-card { background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 35px rgba(0,0,0,0.15); margin: 3rem 0; animation: fadeInUp 1.2s ease-out; }
-    .figure-card img { width: 100%; height: auto; display: block; }
+    .figure-card img { width: 100%; height: auto; }
     .figure-caption { padding: 1.5rem; background: #f8fafc; text-align: center; font-weight: 500; color: #374151; border-top: 1px solid #e5e7eb; }
     .remark { background: #e0f2fe; border-left: 6px solid #3b82f6; padding: 1.4rem; margin: 1.8rem 0; border-radius: 10px; font-style: italic; color: #1e40af; }
     footer { text-align: center; padding: 3.5rem 1rem; background: rgba(0,0,0,0.8); color: #d1d5db; margin-top: 6rem; }
@@ -121,11 +116,11 @@
     <div class="author">Étude réalisée par <strong>Noujoud Ouni</strong></div>
   </header>
 
-  <!-- Introduction -->
+  <!-- Introduction avec nombre de batteries -->
   <div class="intro">
     <h2>Introduction – Pourquoi prédire le RUL ?</h2>
     <p>
-      Les batteries lithium-ion (NMC-LCO 18650 – 2.8 Ah) sont essentielles dans les véhicules électriques, le stockage d’énergie et les systèmes critiques.
+      Les batteries lithium-ion (NMC-LCO 18650 – 2.8 Ah) sont essentielles dans les véhicules électriques, le stockage d’énergie et les systèmes critiques. 
       Prédire leur durée de vie restante (<strong>RUL</strong>) permet d’anticiper les pannes, d’optimiser la maintenance et de prolonger leur usage en seconde vie.
     </p>
         <!-- Bouton "En savoir plus" -->
@@ -143,16 +138,15 @@
   </div>
     <p>
       <strong>Dataset</strong> : Hawaii Natural Energy Institute – 14 cellules – >1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.<br>
-      <strong>Split batterie-indépendant</strong> : 9 batteries en train, 2 en validation, 3 en test.<br>
-      <strong>Séquences créées</strong> : Train ~9478 | Validation ~2094 | Test ~3179 (fenêtre de 10 cycles).
+      <strong>Split batterie-indépendant</strong> : 9 batteries en train, 2 en validation, 3 en test.
     </p>
   </div>
 
   <!-- Téléchargements -->
   <div class="btn-group">
     <h2>Téléchargements</h2>
-    <a href="Battery_RUL.csv"                     class="btn-download" download>Dataset original (Battery_RUL.csv)</a>
-    <a href="LSTM_battery_remaining_hours.csv"    class="btn-download" download>Résultats LSTM – RUL restant par batterie</a>
+    <a href="Battery_RUL.csv"                     class="btn-download" download>Dataset original</a>
+    <a href="LSTM_battery_remaining_hours.csv"    class="btn-download" download>Résultats LSTM – RUL restant</a>
     <a href="LSTM_all_visualizations.png"         class="btn-download" download>Figures LSTM complètes</a>
     <a href="LSTM_rul_by_battery.png"             class="btn-download" download>Courbes RUL par batterie</a>
   </div>
@@ -160,7 +154,7 @@
   <!-- Tableau comparaison tous modèles -->
   <h2>Comparaison de tous les modèles testés (Test set)</h2>
   <div class="remark">
-    <strong>Meilleur modèle retenu</strong> : LSTM → meilleur équilibre R² / RMSE / suivi de la dégradation en fin de vie.
+    <strong>Meilleur modèle</strong> : LSTM → meilleur équilibre R² / RMSE / suivi fin de vie.
   </div>
   <table>
     <thead>
@@ -172,7 +166,7 @@
         <th>MAPE (%)</th>
         <th>RA</th>
         <th>α-λ 20% (%)</th>
-        <th>Remarque principale</th>
+        <th>Remarque</th>
       </tr>
     </thead>
     <tbody>
@@ -224,7 +218,7 @@
         <td>–</td>
         <td>–</td>
         <td>–</td>
-        <td>Moins adapté aux longues séquences temporelles</td>
+        <td>Moins adapté aux longues séquences</td>
       </tr>
     </tbody>
   </table>
@@ -232,7 +226,7 @@
   <!-- Tableau RUL restant par batterie -->
   <h2>RUL restant prédit au dernier cycle (Test set – LSTM)</h2>
   <div class="remark">
-    Surestimation systématique en fin de vie (erreur positive) – Batterie 7 est la mieux prédite (MAE le plus bas).
+    Surestimation systématique en fin de vie – Batterie 7 est la mieux prédite (MAE le plus bas).
   </div>
   <table>
     <thead>
@@ -288,7 +282,7 @@
   <!-- Architecture LSTM -->
   <h2>Architecture du modèle retenu (LSTM)</h2>
   <div class="remark">
-    Modèle final après plusieurs itérations : dropout réduit, early stopping strict, scaling cohérent.
+    Modèle final après optimisation : dropout réduit, early stopping strict, scaling cohérent.
   </div>
   <ul>
     <li>Entrée : séquences de 10 cycles × 7 features</li>
@@ -302,25 +296,12 @@
     <li>Early stopping : patience=12, restore best weights</li>
   </ul>
 
-  <!-- Importance des features (tes deux graphiques) -->
-  <h2>Importance des features – LSTM (Permutation Importance)</h2>
-  <div class="remark">
-    Les features les plus importantes sont liées au temps de charge et décharge + tension max.
-  </div>
-  <div class="figure-card">
-    <div class="figure-caption" style="background:#dbeafe; font-weight:bold;">
-      Figure 3 – Importance des features (barplot + pie chart)<br>
-      <em>Remarque : Time constant current et Max. Voltage Dischar. dominent largement (~65% combinés)</em>
-    </div>
-    <img src="LSTM_feature_importance_combined.png" alt="Importance des features LSTM">
-  </div>
-
-  <!-- Figures LSTM avec remarques -->
+  <!-- Figures avec remarques -->
   <h2>Résultats visuels – LSTM (meilleur modèle)</h2>
 
   <div class="figure-card">
     <div class="figure-caption" style="background:#dbeafe; font-weight:bold;">
-      Figure 1 – Toutes visualisations LSTM (loss, scatter, distribution erreurs)<br>
+      Figure 1 – Toutes visualisations LSTM<br>
       <em>Remarque : bonne convergence – légère surestimation en fin de vie visible sur le scatter</em>
     </div>
     <img src="LSTM_all_visualizations.png" alt="LSTM toutes visualisations">
@@ -341,19 +322,19 @@
   </div>
   <ul>
     <li>Surestimation du RUL quand il est < 0.05 h (biais positif)</li>
-    <li>Seulement 3 batteries en test → généralisation à confirmer sur plus de données</li>
-    <li>Pas de prise en compte explicite de la température ou de l’impédance</li>
+    <li>Seulement 3 batteries en test → généralisation à confirmer</li>
+    <li>Pas de prise en compte température / impédance</li>
   </ul>
 
   <div class="remark" style="margin-top:2rem;">
     <strong>Perspectives futures :</strong>
   </div>
   <ul>
-    <li>Bidirectional LSTM ou Transformer pour mieux capturer les dépendances longues</li>
-    <li>Huber loss pour réduire l’impact des erreurs en fin de vie</li>
-    <li>Ajout de features physiques (température, SOH, impédance)</li>
-    <li>Estimation d’incertitude (Monte-Carlo Dropout, Bayesian NN)</li>
-    <li>Déploiement en dashboard interactif (Streamlit / Plotly Dash)</li>
+    <li>Bidirectional LSTM ou Transformer</li>
+    <li>Huber loss pour fin de vie</li>
+    <li>Features physiques (température, SOH)</li>
+    <li>Uncertainty quantification</li>
+    <li>Dashboard interactif</li>
   </ul>
 
 </div>
