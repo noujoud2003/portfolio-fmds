@@ -711,7 +711,7 @@
         </section>
 
         <!-- SYNTHÈSE -->
-        <section>
+      <section>
     <h2>📋 4. Synthèse et Recommandations</h2>
     
     <div class="results-grid">
@@ -719,7 +719,7 @@
             <h4>✅ Points Forts</h4>
             <ul>
                 <li><strong>Pronostic (LSTM):</strong> R² = 97.53%, erreur < 1 minute</li>
-                <li><strong>Diagnostic amélioré:</strong> Accuracy 86.5%, Recall Critique 69.8% ⬆️</li>
+                <li><strong>Diagnostic amélioré:</strong> Accuracy 86.5%, Recall Critique 69.8%</li>
                 <li><strong>Disponibilité système:</strong> 99.95% (FMDS)</li>
                 <li><strong>MTBF élevé:</strong> 3915 heures (~163 jours)</li>
                 <li><strong>Features temporelles:</strong> Rolling mean/std améliorent la détection</li>
@@ -727,13 +727,14 @@
             </ul>
         </div>
         <div class="result-card">
-            <h4>⚠️ Limites</h4>
+            <h4>⚠️ Limites Actuelles</h4>
             <ul>
                 <li>MAPE élevé sur faibles RUL (normal, dû aux valeurs proches de 0)</li>
-                <li>Recall "Dégradé" encore modéré (38.8%) → à optimiser</li>
-                <li>Dataset limité (14 batteries) → généralisation à valider</li>
+                <li>Recall "Dégradé" à optimiser (38.8%) → détection précoce à améliorer</li>
+                <li>30% des états critiques encore manqués → risque résiduel</li>
+                <li>Dataset limité (14 batteries) → généralisation à valider sur plus de données</li>
                 <li>MTTR estimé (2h) → à mesurer en conditions réelles</li>
-                <li>30% des états critiques encore manqués → marge d'amélioration</li>
+                <li>Pas de capteurs de température/impédance → diagnostic partiel</li>
             </ul>
         </div>
     </div>
@@ -746,29 +747,60 @@
             <li><strong>Planifier la maintenance préventive</strong> à ~80% du MTBF (~3100 heures) pour anticiper l'usure</li>
             <li><strong>Implémenter un système d'alerte hiérarchique:</strong> 
                 <ul style="margin-top: 8px; padding-left: 20px;">
-                    <li>Alerte "Dégradé" → Surveillance renforcée</li>
-                    <li>Alerte "Critique" → Intervention immédiate</li>
+                    <li>🟡 Alerte "Dégradé" → Surveillance renforcée + planification intervention</li>
+                    <li>🔴 Alerte "Critique" → Intervention immédiate + arrêt préventif</li>
                 </ul>
             </li>
             <li><strong>Surveiller particulièrement</strong> les batteries après 4000 heures (pic de défaillance Weibull)</li>
-            <li><strong>Enrichir le dataset</strong> avec plus de batteries et variabilité d'usage pour améliorer la généralisation</li>
-            <li><strong>Combiner avec capteurs additionnels</strong> (température, impédance) pour affiner le diagnostic</li>
         </ol>
     </div>
 
-    <div class="key-findings" style="background: #e3f2fd; border-left-color: #2196f3;">
-        <h4>🔄 Améliorations Apportées au Diagnostic</h4>
-        <ul>
-            <li><strong>SMOTE:</strong> Rééquilibrage des classes → Toutes les classes à 20% pendant l'entraînement</li>
-            <li><strong>Class Weights:</strong> Pénalisation x10 des erreurs sur la classe "Critique"</li>
-            <li><strong>Features Engineering:</strong> Ajout de 15 features temporelles glissantes (rolling mean/std sur 5 cycles)</li>
-            <li><strong>Résultat:</strong> Recall "Critique" passé de <strong>20.6% → 69.8%</strong> (+239%) ✅</li>
-        </ul>
+    <div class="key-findings" style="background: #fff3cd; border-left-color: #ffc107;">
+        <h4 style="color: #856404;">🚀 Perspectives d'Amélioration</h4>
+        <ol style="margin: 15px 0 0; padding-left: 25px; line-height: 1.8;">
+            <li><strong>Améliorer le Recall "Dégradé" (38.8% → 60%+):</strong>
+                <ul style="margin-top: 5px; padding-left: 20px;">
+                    <li>Ajouter des features spécifiques à la dégradation précoce</li>
+                    <li>Utiliser des algorithmes de détection d'anomalies (Isolation Forest, Autoencoders)</li>
+                    <li>Créer une classe intermédiaire "Dégradé Précoce"</li>
+                </ul>
+            </li>
+            <li><strong>Réduire les 30% d'états critiques manqués:</strong>
+                <ul style="margin-top: 5px; padding-left: 20px;">
+                    <li>Ajouter des capteurs de température et d'impédance interne</li>
+                    <li>Implémenter un modèle d'ensemble (voting classifier)</li>
+                    <li>Utiliser l'apprentissage actif pour identifier les cas ambigus</li>
+                </ul>
+            </li>
+            <li><strong>Enrichir le dataset:</strong>
+                <ul style="margin-top: 5px; padding-left: 20px;">
+                    <li>Collecter des données sur 50+ batteries (au lieu de 14)</li>
+                    <li>Inclure différentes conditions d'usage (température, profondeur de décharge)</li>
+                    <li>Ajouter des batteries de différents fabricants pour la robustesse</li>
+                </ul>
+            </li>
+            <li><strong>Optimiser le modèle en production:</strong>
+                <ul style="margin-top: 5px; padding-left: 20px;">
+                    <li>Implémenter l'apprentissage continu (online learning)</li>
+                    <li>Mettre en place un système de ré-entraînement automatique</li>
+                    <li>Créer un dashboard de monitoring des performances</li>
+                </ul>
+            </li>
+            <li><strong>Valider en conditions réelles:</strong>
+                <ul style="margin-top: 5px; padding-left: 20px;">
+                    <li>Tester sur un parc de batteries en exploitation</li>
+                    <li>Mesurer le MTTR réel et l'impact sur la disponibilité</li>
+                    <li>Évaluer le ROI de la maintenance prédictive</li>
+                </ul>
+            </li>
+        </ol>
     </div>
 
-    <div class="intro-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); margin-top: 40px;">
-        <h3>🏆 Conclusion Générale</h3>
-        <p>Cette étude démontre la faisabilité d'un système complet de maintenance prédictive pour batteries lithium-ion combinant <strong>diagnostic</strong> (classification des états de santé) et <strong>pronostic</strong> (prédiction du RUL). Le modèle LSTM atteint des performances exceptionnelles avec un R² de 97.53% et une erreur de prédiction inférieure à 1 minute. Le diagnostic, amélioré par SMOTE et class weights, détecte désormais <strong>69.8% des états critiques</strong> (contre 20.6% initialement), réduisant significativement le risque de panne imprévue. L'approche hybride proposée permet d'anticiper les pannes, d'optimiser la maintenance et de prolonger la durée de vie des batteries, contribuant ainsi à une économie circulaire durable.</p>
+    <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-top: 40px;">
+        <h3 style="color: white; margin-top: 0;">🏆 Conclusion Générale</h3>
+        <p style="color: #ecf0f1; line-height: 1.8;">
+            Cette étude démontre la faisabilité d'un système complet de maintenance prédictive pour batteries lithium-ion combinant <strong>diagnostic</strong> (classification des états de santé) et <strong>pronostic</strong> (prédiction du RUL). Le modèle LSTM atteint des performances exceptionnelles avec un R² de 97.53% et une erreur de prédiction inférieure à 1 minute. Le diagnostic, optimisé par SMOTE et class weights, détecte désormais <strong>69.8% des états critiques</strong> avec une accuracy globale de 86.5%. L'approche hybride proposée permet d'anticiper les pannes, d'optimiser la maintenance et de prolonger la durée de vie des batteries. Les perspectives d'amélioration identifiées (enrichissement du dataset, capteurs additionnels, apprentissage continu) ouvrent la voie vers un déploiement industriel robuste et scalable.
+        </p>
     </div>
 </section>
 
