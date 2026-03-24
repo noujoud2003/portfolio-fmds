@@ -4,40 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Résultats – Prédiction RUL Batteries | Noujoud Ouni</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-      100% { transform: scale(1); }
     }
     body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
-      background-size: 400% 400%;
-      animation: gradientAnimation 18s ease infinite;
-      color: #ecf0f1;
-      min-height: 100vh;
+      background: #f8fafc;
+      color: #1e2937;
+      line-height: 1.75;
     }
     .navbar {
-      background: rgba(0,0,0,0.78);
-      backdrop-filter: blur(12px);
-      padding: 16px 0;
+      background: #1e40af;
+      padding: 18px 0;
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.45);
+      box-shadow: 0 4px 15px rgba(30,64,175,0.25);
     }
     .nav-container {
       max-width: 1450px;
@@ -45,56 +33,145 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 14px;
+      gap: 16px;
     }
     .nav-btn {
-      background: rgba(59,130,246,0.3);
       color: white;
-      border: 1px solid #3b82f6;
-      padding: 11px 20px;
+      padding: 12px 24px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.98em;
-      transition: all 0.35s ease;
+      font-size: 1.02em;
+      transition: all 0.3s ease;
     }
     .nav-btn:hover {
-      background: #3b82f6;
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(59,130,246,0.55);
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
     }
     .active {
-      background: #3b82f6 !important;
-      box-shadow: 0 8px 25px rgba(59,130,246,0.7);
+      background: white;
+      color: #1e40af;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .container {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: 140px auto 100px;
-      background: rgba(255,255,255,0.95);
-      padding: 45px 35px;
-      border-radius: 16px;
-      box-shadow: 0 14px 55px rgba(0,0,0,0.3);
-      color: #1f2937;
+      background: white;
+      padding: 60px 50px;
+      border-radius: 20px;
+      box-shadow: 0 15px 60px rgba(0,0,0,0.08);
     }
-    h1 { color: #1e40af; text-align: center; font-size: 2.9rem; margin-bottom: 0.6rem; animation: pulse 4s infinite; }
-    .author { text-align: center; font-size: 1.45rem; color: #4b5563; margin-bottom: 2.8rem; }
-    h2 { color: #1e40af; border-bottom: 4px solid #3b82f6; padding-bottom: 12px; margin: 3.5rem 0 1.8rem; font-size: 2.3rem; }
-    table { width: 100%; border-collapse: collapse; margin: 2.2rem 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 22px rgba(0,0,0,0.12); }
-    th, td { padding: 15px 18px; text-align: center; border: 1px solid #d1d5db; }
-    th { background: #1e40af; color: white; font-weight: 600; }
-    tr:nth-child(even) { background: #f9fafb; }
-    .btn-group { text-align: center; margin: 3rem 0; }
+    h1 {
+      color: #1e40af;
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .author {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #475569;
+      margin-bottom: 3rem;
+    }
+    h2 {
+      color: #1e40af;
+      border-bottom: 4px solid #60a5fa;
+      padding-bottom: 14px;
+      margin: 4rem 0 2rem;
+      font-size: 2.4rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2.5rem 0;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 16px 20px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+    th {
+      background: #1e40af;
+      color: white;
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background: #f8fafc; }
+    .btn-group {
+      text-align: center;
+      margin: 3.5rem 0 4rem;
+    }
     .btn-download {
-      display: inline-block; background: #059669; color: white; padding: 15px 36px;
-      margin: 14px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.15rem;
-      box-shadow: 0 6px 18px rgba(5,150,105,0.4); transition: all 0.4s;
+      display: inline-block;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 16px 42px;
+      margin: 16px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.18rem;
+      box-shadow: 0 8px 25px rgba(16,185,129,0.35);
+      transition: all 0.4s;
     }
-    .btn-download:hover { background: #047857; transform: translateY(-5px); box-shadow: 0 12px 35px rgba(5,150,105,0.55); }
-    .figure-card { background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 35px rgba(0,0,0,0.15); margin: 3rem 0; animation: fadeInUp 1.2s ease-out; }
-    .figure-card img { width: 100%; height: auto; display: block; }
-    .figure-caption { padding: 1.5rem; background: #f8fafc; text-align: center; font-weight: 500; color: #374151; border-top: 1px solid #e5e7eb; }
-    .remark { background: #e0f2fe; border-left: 6px solid #3b82f6; padding: 1.4rem; margin: 1.8rem 0; border-radius: 10px; font-style: italic; color: #1e40af; }
-    footer { text-align: center; padding: 3.5rem 1rem; background: rgba(0,0,0,0.8); color: #d1d5db; margin-top: 6rem; }
+    .btn-download:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(16,185,129,0.5);
+    }
+    .more-info-btn {
+      display: inline-block;
+      background: #60a5fa;
+      color: white;
+      padding: 16px 40px;
+      margin: 2rem 0;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 8px 25px rgba(96,165,250,0.4);
+      transition: all 0.4s;
+    }
+    .more-info-btn:hover {
+      background: #3b82f6;
+      transform: translateY(-5px);
+    }
+    .figure-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      margin: 3.5rem 0;
+    }
+    .figure-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .figure-caption {
+      padding: 1.8rem;
+      background: #f1f5f9;
+      text-align: center;
+      font-weight: 500;
+      color: #334155;
+    }
+    .remark {
+      background: #f0f9ff;
+      border-left: 6px solid #60a5fa;
+      padding: 1.6rem;
+      margin: 2rem 0;
+      border-radius: 12px;
+      color: #1e40af;
+    }
+    footer {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: #1e2937;
+      color: #cbd5e1;
+      margin-top: 7rem;
+    }
   </style>
 </head>
 <body>
@@ -125,39 +202,33 @@
   <div class="intro">
     <h2>Introduction – Pourquoi prédire le RUL ?</h2>
     <p>
-      Les batteries lithium-ion (NMC-LCO 18650 – 2.8 Ah) sont essentielles dans les véhicules électriques, le stockage d’énergie et les systèmes critiques.
-      Prédire leur durée de vie restante (<strong>RUL</strong>) permet d’anticiper les pannes, d’optimiser la maintenance et de prolonger leur usage en seconde vie.
+      Les batteries lithium-ion (NMC-LCO 18650 – 2.8 Ah) sont essentielles dans les véhicules électriques, le stockage d’énergie renouvelable et les systèmes critiques. 
+      Prédire leur durée de vie restante (<strong>RUL</strong>) permet d’anticiper les pannes, d’optimiser la maintenance prédictive et de prolonger leur usage en seconde vie.
     </p>
-        <!-- Bouton "En savoir plus" -->
-
-    <div style="text-align:center; margin:2.5rem 0;">
-
-      <a href="#importance-batteries" class="more-info-btn">
-
-        <i class="fas fa-battery-full"></i> En savoir plus sur l’importance des batteries lithium-ion
-
-      </a>
-
-    </div>
-
-  </div>
     <p>
-      <strong>Dataset</strong> : Hawaii Natural Energy Institute – 14 cellules – >1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.<br>
+      <strong>Dataset</strong> : Hawaii Natural Energy Institute – 14 cellules – plus de 1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.<br>
       <strong>Split batterie-indépendant</strong> : 9 batteries en train, 2 en validation, 3 en test.<br>
-      <strong>Séquences créées</strong> : Train ~9478 | Validation ~2094 | Test ~3179 (fenêtre de 10 cycles).
+      <strong>Séquences créées</strong> : Train ≈ 9478 | Validation ≈ 2094 | Test ≈ 3179 (fenêtre de 10 cycles).
     </p>
+
+    <!-- Bouton En savoir plus -->
+    <div style="text-align:center; margin:3rem 0;">
+      <a href="#importance-batteries" class="more-info-btn">
+        <i class="fas fa-battery-full"></i> En savoir plus sur l’importance des batteries lithium-ion
+      </a>
+    </div>
   </div>
 
   <!-- Téléchargements -->
   <div class="btn-group">
     <h2>Téléchargements</h2>
-    <a href="Battery_RUL.csv"                     class="btn-download" download>Dataset original (Battery_RUL.csv)</a>
-    <a href="LSTM_battery_remaining_hours.csv"    class="btn-download" download>Résultats LSTM – RUL restant par batterie</a>
-    <a href="LSTM_all_visualizations.png"         class="btn-download" download>Figures LSTM complètes</a>
-    <a href="LSTM_rul_by_battery.png"             class="btn-download" download>Courbes RUL par batterie</a>
+    <a href="Battery_RUL.csv" class="btn-download" download>Dataset original (Battery_RUL.csv)</a>
+    <a href="RUL_predictions_test_set.csv" class="btn-download" download>RUL_predictions_test_set.csv (données détaillées)</a>
+    <a href="LSTM_battery_remaining_hours.csv" class="btn-download" download>Résultats LSTM – RUL restant par batterie</a>
+    <a href="LSTM_all_visualizations.png" class="btn-download" download>Figures LSTM complètes</a>
   </div>
 
-  <!-- Tableau comparaison tous modèles -->
+  <!-- Tableau comparaison -->
   <h2>Comparaison de tous les modèles testés (Test set)</h2>
   <div class="remark">
     <strong>Meilleur modèle retenu</strong> : LSTM → meilleur équilibre R² / RMSE / suivi de la dégradation en fin de vie.
@@ -229,10 +300,10 @@
     </tbody>
   </table>
 
-  <!-- Tableau RUL restant par batterie -->
+  <!-- Tableau RUL restant -->
   <h2>RUL restant prédit au dernier cycle (Test set – LSTM)</h2>
   <div class="remark">
-    Surestimation systématique en fin de vie (erreur positive) – Batterie 7 est la mieux prédite (MAE le plus bas).
+    Surestimation systématique en fin de vie – Batterie 7 est la mieux prédite (MAE le plus bas).
   </div>
   <table>
     <thead>
@@ -288,7 +359,7 @@
   <!-- Architecture LSTM -->
   <h2>Architecture du modèle retenu (LSTM)</h2>
   <div class="remark">
-    Modèle final après plusieurs itérations : dropout réduit, early stopping strict, scaling cohérent.
+    Modèle final après optimisation : dropout réduit, early stopping strict, scaling cohérent.
   </div>
   <ul>
     <li>Entrée : séquences de 10 cycles × 7 features</li>
@@ -302,37 +373,40 @@
     <li>Early stopping : patience=12, restore best weights</li>
   </ul>
 
-  <!-- Importance des features (tes deux graphiques) -->
-  <h2>Importance des features – LSTM (Permutation Importance)</h2>
+  <!-- Section Importance des batteries -->
+  <div id="importance-batteries">
+    <h2>Pourquoi les batteries lithium-ion sont-elles si importantes aujourd’hui ?</h2>
+    <div class="remark">
+      Les batteries lithium-ion représentent une technologie clé de la transition énergétique mondiale.
+    </div>
+    <ul>
+      <li><strong>Véhicules électriques</strong> : cœur de la mobilité durable et réduction des émissions de CO₂</li>
+      <li><strong>Stockage d’énergie renouvelable</strong> : stabilisation du réseau solaire et éolien</li>
+      <li><strong>Appareils électroniques et médicaux</strong> : smartphones, ordinateurs, drones, équipements de santé</li>
+      <li><strong>Seconde vie</strong> : réutilisation en stockage stationnaire après usage automobile</li>
+      <li><strong>Sécurité et durabilité</strong> : prévention des risques thermiques et économie circulaire</li>
+    </ul>
+  </div>
+
+  <!-- Recommandations Finales pour Portfolio -->
+  <h2>Recommandations Finales pour votre Portfolio / Soutenance</h2>
   <div class="remark">
-    Les features les plus importantes sont liées au temps de charge et décharge + tension max.
+    Pour présenter un portfolio complet et professionnel :
   </div>
-  <div class="figure-card">
-    <div class="figure-caption" style="background:#dbeafe; font-weight:bold;">
-      Figure 3 – Importance des features (barplot + pie chart)<br>
-      <em>Remarque : Time constant current et Max. Voltage Dischar. dominent largement (~65% combinés)</em>
-    </div>
-    <img src="LSTM_feature_importance_combined.png" alt="Importance des features LSTM">
-  </div>
-
-  <!-- Figures LSTM avec remarques -->
-  <h2>Résultats visuels – LSTM (meilleur modèle)</h2>
-
-  <div class="figure-card">
-    <div class="figure-caption" style="background:#dbeafe; font-weight:bold;">
-      Figure 1 – Toutes visualisations LSTM (loss, scatter, distribution erreurs)<br>
-      <em>Remarque : bonne convergence – légère surestimation en fin de vie visible sur le scatter</em>
-    </div>
-    <img src="LSTM_all_visualizations.png" alt="LSTM toutes visualisations">
-  </div>
-
-  <div class="figure-card">
-    <div class="figure-caption" style="background:#dbeafe; font-weight:bold;">
-      Figure 2 – Courbes RUL réel vs prédit par batterie<br>
-      <em>Remarque : Batterie 7 est la mieux suivie – erreur plus importante sur batterie 11 en fin de vie</em>
-    </div>
-    <img src="LSTM_rul_by_battery.png" alt="Courbes RUL par batterie">
-  </div>
+  <ol>
+    <li><strong>Utilisez les deux fichiers :</strong><br>
+      • <strong>RUL_predictions_test_set.csv</strong> → Pour les graphiques détaillés et l’analyse point par point<br>
+      • <strong>LSTM_battery_remaining_hours.csv</strong> → Pour le tableau résumé percutant en fin de vie
+    </li>
+    <li><strong>Dans votre soutenance :</strong><br>
+      • Montrez une courbe RUL réel vs prédit (à partir de RUL_predictions_test_set.csv)<br>
+      • Montrez le tableau résumé des erreurs en fin de vie (à partir de LSTM_battery_remaining_hours.csv)
+    </li>
+    <li><strong>Le plus important :</strong><br>
+      RUL_predictions_test_set.csv est le plus complet (toutes les données).<br>
+      LSTM_battery_remaining_hours.csv est le plus percutant pour montrer la précision finale.
+    </li>
+  </ol>
 
   <!-- Limites & Perspectives -->
   <h2>Limites & Perspectives</h2>
@@ -349,11 +423,11 @@
     <strong>Perspectives futures :</strong>
   </div>
   <ul>
-    <li>Bidirectional LSTM ou Transformer pour mieux capturer les dépendances longues</li>
-    <li>Huber loss pour réduire l’impact des erreurs en fin de vie</li>
+    <li>Bidirectional LSTM ou Transformer</li>
+    <li>Huber loss pour fin de vie</li>
     <li>Ajout de features physiques (température, SOH, impédance)</li>
-    <li>Estimation d’incertitude (Monte-Carlo Dropout, Bayesian NN)</li>
-    <li>Déploiement en dashboard interactif (Streamlit / Plotly Dash)</li>
+    <li>Estimation d’incertitude (Monte-Carlo Dropout)</li>
+    <li>Déploiement en dashboard interactif</li>
   </ul>
 
 </div>
