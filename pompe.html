@@ -576,7 +576,38 @@
                     <li><strong>α-λ Accuracy (20%) = 66%</strong> - 66% des prédictions dans ±20% de la valeur réelle</li>
                 </ul>
             </div>
-
+<section>
+    <h2>🔧 Détails Techniques (Optionnel)</h2>
+    <details>
+        <summary style="cursor: pointer; color: #3498db; font-weight: bold;">
+            📖 Cliquer pour voir l'architecture LSTM détaillée
+        </summary>
+        
+        <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h4>Architecture du Modèle</h4>
+            <ul>
+                <li><strong>Input :</strong> Séquences de 10 cycles × 7 features</li>
+                <li><strong>LSTM :</strong> 64 unités, activation ReLU</li>
+                <li><strong>Dropout :</strong> 20% (régularisation)</li>
+                <li><strong>Dense 1 :</strong> 32 neurones, ReLU</li>
+                <li><strong>Dropout :</strong> 20%</li>
+                <li><strong>Dense 2 :</strong> 1 neurone (sortie RUL en heures)</li>
+                <li><strong>Optimiseur :</strong> Adam (lr=0.001)</li>
+                <li><strong>Loss :</strong> MSE</li>
+                <li><strong>Batch Size :</strong> 32</li>
+                <li><strong>Epochs :</strong> 50 (Early Stopping patience=10)</li>
+            </ul>
+            
+            <h4>Split des Données</h4>
+            <table>
+                <tr><th>Set</th><th>Batteries</th><th>Cycles</th><th>%</th></tr>
+                <tr><td>Train</td><td>9</td><td>9,478</td><td>70%</td></tr>
+                <tr><td>Validation</td><td>2</td><td>2,094</td><td>15%</td></tr>
+                <tr><td>Test</td><td>3</td><td>3,179</td><td>15%</td></tr>
+            </table>
+        </div>
+    </details>
+</section>
             <h3>📈 Visualisations des Prédictions LSTM</h3>
             <div class="image-grid">
                 <div class="image-container">
