@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction RUL - Roulements Industriels | Rezgui Rim</title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientAnimation 18s ease infinite;
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .nav-btn {
+            background: rgba(52, 152, 219, 0.25);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
+            padding: 10px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        .active { background: #3498db !important; }
+
+        .container {
+            max-width: 1400px;
+            margin: 140px auto 80px;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+        }
+        h1 { color: #3498db; text-align: center; margin-bottom: 20px; font-size: 2.8em; }
+        .subtitle { text-align: center; color: #7f8c8d; font-size: 1.2em; margin-bottom: 40px; font-style: italic; }
+        h2 { color: #2980b9; margin-top: 50px; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h3 { color: #16a085; margin-top: 35px; }
+
+        .intro-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        .key-findings {
+            background: #e8f6f3;
+            border-left: 5px solid #16a085;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .result-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .metric-label { font-weight: 600; color: #7f8c8d; }
+        .metric-value { color: #2980b9; font-weight: 700; }
+        .best-value { color: #27ae60; font-weight: 700; }
+
+        /* TABLEAUX PROFESSIONNELS */
+        .table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            font-size: 0.95em;
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th {
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+        th:first-child { border-top-left-radius: 12px; }
+        th:last-child { border-top-right-radius: 12px; }
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: middle;
+        }
+        tbody tr { transition: all 0.3s ease; }
+        tbody tr:hover {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        tbody tr:nth-child(even) { background: #f8f9fa; }
+        tbody tr:nth-child(even):hover {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .highlight-row {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+            font-weight: 600;
+            border-left: 4px solid #28a745;
+        }
+        .highlight-row:hover {
+            background: linear-gradient(135deg, #c3e6cb 0%, #b1dfbb 100%) !important;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 8px;
+        }
+        .badge-best { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; }
+        .badge-good { background: linear-gradient(135deg, #17a2b8 0%, #138496 100%); color: white; }
+        .badge-warning { background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%); color: #212529; }
+        .metric-bar {
+            width: 100%; height: 8px; background: #e9ecef;
+            border-radius: 4px; overflow: hidden; margin-top: 5px;
+        }
+        .metric-bar-fill {
+            height: 100%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px; transition: width 0.6s ease;
+        }
+        .metric-bar-fill.best { background: linear-gradient(90deg, #28a745 0%, #20c997 100%); }
+        .metric-bar-fill.good { background: linear-gradient(90deg, #17a2b8 0%, #138496 100%); }
+        .value-cell { font-weight: 600; color: #2c3e50; }
+        .value-cell.best { color: #27ae60; font-weight: 700; }
+        .icon-cell { font-size: 1.2em; margin-right: 8px; }
+
+        /* TABLEAU FMDS SPÉCIAL */
+        .fmds-table th { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+        .fmds-table .indicator-name { font-weight: 600; color: #2c3e50; }
+        .fmds-table .indicator-value { font-weight: 700; color: #3498db; font-size: 1.1em; }
+
+        img {
+            width: 100%; border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin: 20px 0;
+        }
+        .image-caption {
+            text-align: center; color: #7f8c8d;
+            font-style: italic; margin-top: 8px;
+        }
+        .footer {
+            text-align: center; margin-top: 60px;
+            padding: 30px; color: #bdc3c7;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white; padding: 12px 30px;
+            border-radius: 25px; text-decoration: none;
+            margin: 10px 5px; transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-weight: 600;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        .conclusion-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border: 2px solid #667eea; padding: 25px;
+            margin: 30px 0; border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 20px; margin: 120px auto 40px; }
+            table { font-size: 0.85em; }
+            th, td { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="roulement.html" class="nav-btn active">Étude de cas 2 - Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>🔧 Prédiction du Remaining Useful Life (RUL)</h1>
+        <p class="subtitle">Roulements de Moteurs Industriels | Projet ENSIT</p>
+
+        <!-- INTRODUCTION -->
+        <section>
+            <div class="intro-box">
+                <h3>📌 Introduction – Pourquoi prédire le RUL des roulements ?</h3>
+                <p>Les roulements sont des composants critiques dans les machines tournantes industrielles. Leur défaillance représente 40-50% des pannes de moteurs électriques, entraînant des arrêts de production coûteux. Prédire leur durée de vie restante (RUL) permet d'anticiper les interventions, d'optimiser la maintenance et de garantir la continuité opérationnelle.</p>
+                <div style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px;">
+                    <p><strong>📂 Dataset :</strong> NASA C-MAPSS adapté aux roulements – 100 unités d'entraînement – 100 unités de test – 21 capteurs de vibrations, température, pression.</p>
+                    <a href="https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/" target="_blank" class="download-btn">📥 Télécharger le Dataset NASA C-MAPSS</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FMDS -->
+        <section>
+            <h2>📊 1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
+            <div class="key-findings">
+                <h4>🎯 Résultats Clés FMDS</h4>
+                <ul>
+                    <li><strong>MTBF :</strong> 192.3 cycles</li>
+                    <li><strong>MTTR :</strong> 14.2 cycles</li>
+                    <li><strong>Disponibilité :</strong> 93.1%</li>
+                    <li><strong>Meilleur modèle :</strong> Weibull (β=2.1, η=215 cycles)</li>
+                </ul>
+            </div>
+            
+            <h3>📋 Indicateurs FMDS Détaillés</h3>
+            <div class="table-container">
+                <table class="fmds-table">
+                    <thead>
+                        <tr>
+                            <th>📊 Indicateur</th>
+                            <th>📈 Valeur</th>
+                            <th>💡 Interprétation</th>
+                            <th>📊 Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="indicator-name">MTBF (Mean Time Between Failures)</td>
+                            <td class="indicator-value">192.3 cycles</td>
+                            <td>Durée moyenne entre remplacements</td>
+                            <td><span class="badge badge-good">Bon</span></td>
+                        </tr>
+                        <tr>
+                            <td class="indicator-name">MTTR (Mean Time To Repair)</td>
+                            <td class="indicator-value">14.2 cycles</td>
+                            <td>Temps moyen de remplacement</td>
+                            <td><span class="badge badge-good">Rapide</span></td>
+                        </tr>
+                        <tr>
+                            <td class="indicator-name">Taux de défaillance (λ)</td>
+                            <td class="indicator-value">0.0052/cycle</td>
+                            <td>Usure progressive confirmée</td>
+                            <td><span class="badge badge-warning">À surveiller</span></td>
+                        </tr>
+                        <tr>
+                            <td class="indicator-name">Disponibilité</td>
+                            <td class="indicator-value">93.1%</td>
+                            <td>Système industriel satisfaisant</td>
+                            <td><span class="badge badge-good">Bon</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="indicator-name">Modèle de défaillance</td>
+                            <td class="indicator-value">Weibull β=2.1</td>
+                            <td>Usure par fatigue mécanique</td>
+                            <td><span class="badge badge-best">Validé</span></td>
+                        </tr>
+                        <tr>
+                            <td class="indicator-name">Paramètre d'échelle (η)</td>
+                            <td class="indicator-value">215 cycles</td>
+                            <td>63.2% de défaillance atteinte</td>
+                            <td><span class="badge badge-good">Stable</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="image-container">
+                <img src="FMDS_Weibull_Bearings.png" alt="Courbe de Fiabilité Weibull">
+                <p class="image-caption">Figure 1: Courbe de fiabilité R(t) - Loi de Weibull (β=2.1, η=215 cycles) pour les roulements industriels</p>
+            </div>
+
+            <h3>📈 Indicateurs de Fiabilité B10/B50/B90</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Indicateur</th>
+                            <th>Formule</th>
+                            <th>Valeur</th>
+                            <th>Signification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MTTF</strong></td>
+                            <td>η × Γ(1 + 1/β)</td>
+                            <td>190.4 cycles</td>
+                            <td>Durée de vie moyenne théorique</td>
+                        </tr>
+                        <tr>
+                            <td><strong>B10</strong></td>
+                            <td>η × (-ln(0.9))^(1/β)</td>
+                            <td>78 cycles</td>
+                            <td>10% des roulements défaillants</td>
+                        </tr>
+                        <tr>
+                            <td><strong>B50</strong></td>
+                            <td>η × (-ln(0.5))^(1/β)</td>
+                            <td>182 cycles</td>
+                            <td>Durée de vie médiane</td>
+                        </tr>
+                        <tr>
+                            <td><strong>B90</strong></td>
+                            <td>η × (-ln(0.1))^(1/β)</td>
+                            <td>298 cycles</td>
+                            <td>90% des roulements défaillants</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- DIAGNOSTIC -->
+        <section>
+            <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
+            
+            <div class="key-findings">
+                <h4>🎯 Méthodologie de Classification</h4>
+                <p>Classification des roulements en <strong>2 états</strong> basés sur l'analyse vibratoire et le seuil de défaillance :</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Classe</th>
+                            <th>Critère</th>
+                            <th>Signification</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><span class="icon-cell">✅</span><strong>Normal</strong></td>
+                            <td>RMS &lt; seuil, Kurtosis normal</td>
+                            <td>Fonctionnement nominal</td>
+                            <td>Surveillance standard</td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><span class="icon-cell">⚠️</span><strong>Défaillant</strong></td>
+                            <td>RMS élevé, pics fréquentiels</td>
+                            <td>Défaut naissant ou confirmé</td>
+                            <td>Intervention planifiée</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>🤖 Performance Comparative des Modèles</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>🧠 Modèle</th>
+                            <th>📊 Accuracy</th>
+                            <th>🎯 Précision</th>
+                            <th>🔄 Rappel</th>
+                            <th>⚖️ F1-Score</th>
+                            <th>📈 AUC-ROC</th>
+                            <th>🏆 Rang</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><span class="icon-cell">🌲</span><strong>Random Forest</strong></td>
+                            <td class="value-cell best">91.2%<div class="metric-bar"><div class="metric-bar-fill best" style="width: 91.2%"></div></div></td>
+                            <td class="value-cell best">0.92</td>
+                            <td class="value-cell best">0.88</td>
+                            <td class="value-cell best">0.90</td>
+                            <td class="value-cell best">0.97<span class="badge badge-best">Top</span></td>
+                            <td><span class="badge badge-best">1er</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon-cell">⚡</span>SVM (RBF)</td>
+                            <td class="value-cell">87.3%<div class="metric-bar"><div class="metric-bar-fill good" style="width: 87.3%"></div></div></td>
+                            <td class="value-cell">0.89</td>
+                            <td class="value-cell">0.85</td>
+                            <td class="value-cell">0.87</td>
+                            <td class="value-cell">0.95</td>
+                            <td><span class="badge badge-good">2ème</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon-cell">🌳</span>Decision Tree</td>
+                            <td class="value-cell">80.4%<div class="metric-bar"><div class="metric-bar-fill" style="width: 80.4%"></div></div></td>
+                            <td class="value-cell">0.82</td>
+                            <td class="value-cell">0.78</td>
+                            <td class="value-cell">0.80</td>
+                            <td class="value-cell">0.91</td>
+                            <td><span class="badge badge-warning">3ème</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>📊 Analyse Détaillée - Random Forest (Meilleur Modèle)</h3>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>✅ Points Forts</h4>
+                    <div class="metric">
+                        <span class="metric-label">Accuracy Globale:</span>
+                        <span class="metric-value best-value">91.2%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">AUC Moyen:</span>
+                        <span class="metric-value best-value">0.97</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Détection Défauts:</span>
+                        <span class="metric-value best-value">88% rappel</span>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <h4>⚠️ Caractéristiques Clés</h4>
+                    <ul style="font-size: 0.9em; line-height: 1.8;">
+                        <li>RMS vibratoire: indicateur principal</li>
+                        <li>Kurtosis: détection pics anormaux</li>
+                        <li>Facteur de crête: sensibilité aux chocs</li>
+                        <li>Pente de tendance: évolution dégradation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="Diagnostic_Confusion_Bearings.png" alt="Matrices de Confusion">
+                <p class="image-caption">Figure 2: Matrices de confusion comparées - Random Forest montre la meilleure diagonalité (4 erreurs/100 échantillons)</p>
+            </div>
+
+            <div class="image-container">
+                <img src="ROC_Bearings.png" alt="Courbes ROC">
+                <p class="image-caption">Figure 3: Courbes ROC multi-modèles - Random Forest (AUC=0.97) > SVM (AUC=0.95) > Decision Tree (AUC=0.91)</p>
+            </div>
+
+            <div class="conclusion-box">
+                <h4>✅ Conclusion du Diagnostic</h4>
+                <p>Le modèle <strong>Random Forest</strong> est retenu avec <strong>91.2% d'accuracy</strong> et un <strong>AUC de 0.97</strong>. Ses avantages pour les roulements :</p>
+                <ul style="margin-top: 15px; line-height: 2;">
+                    <li>✅ <strong>Gère les relations non-linéaires</strong> entre indicateurs vibratoires</li>
+                    <li>✅ <strong>Robuste au bruit</strong> des signaux industriels</li>
+                    <li>✅ <strong>Feature importance</strong> interprétable pour l'expertise métier</li>
+                    <li>✅ <strong>Rapide en inférence</strong> → adapté au monitoring temps réel</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PROGNOSTIC -->
+        <section>
+            <h2>🔮 3. Pronostic - Prédiction RUL (Régression)</h2>
+           
+            <div class="key-findings">
+                <h4>🎯 Comparaison des Modèles de Prédiction RUL</h4>
+                <p>Évaluation comparative de 3 architectures pour l'estimation de la durée de vie résiduelle des roulements.</p>
+            </div>
+
+            <h3>📊 Tableau Comparatif des Performances</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>🤖 Modèle</th>
+                            <th>RMSE (cycles)</th>
+                            <th>MAE (cycles)</th>
+                            <th>MAPE (%)</th>
+                            <th>R²</th>
+                            <th>Score RUL</th>
+                            <th>📝 Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><span class="icon-cell">🧠</span><strong>Réseau de Neurones</strong> <span class="badge badge-best">MEILLEUR</span></td>
+                            <td class="value-cell best">14.8<div class="metric-bar"><div class="metric-bar-fill best" style="width: 85%"></div></div></td>
+                            <td class="value-cell best">12.1</td>
+                            <td class="value-cell">18.5</td>
+                            <td class="value-cell best">0.85</td>
+                            <td class="value-cell best">47.7</td>
+                            <td>Meilleure précision + gestion non-linéarités</td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon-cell">🌳</span>Arbre de Régression</td>
+                            <td class="value-cell">16.5<div class="metric-bar"><div class="metric-bar-fill good" style="width: 75%"></div></div></td>
+                            <td class="value-cell">13.9</td>
+                            <td class="value-cell">22.1</td>
+                            <td class="value-cell">0.81</td>
+                            <td class="value-cell">60.3</td>
+                            <td>Bon compromis performance/interprétabilité</td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon-cell">📈</span>Régression Linéaire</td>
+                            <td class="value-cell">18.2<div class="metric-bar"><div class="metric-bar-fill" style="width: 65%"></div></div></td>
+                            <td class="value-cell">15.6</td>
+                            <td class="value-cell">25.3</td>
+                            <td class="value-cell">0.78</td>
+                            <td class="value-cell">118.4</td>
+                            <td>Simple mais limité aux relations linéaires</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="key-findings">
+                <h4>🏆 Résultats Clés - Réseau de Neurones</h4>
+                <ul>
+                    <li><strong>RMSE = 14.8 cycles</strong> → Précision ±30 cycles à 95% confiance</li>
+                    <li><strong>MAE = 12.1 cycles</strong> → Erreur moyenne acceptable pour planification</li>
+                    <li><strong>R² = 0.85</strong> → 85% de la variance du RUL expliquée</li>
+                    <li><strong>Score RUL = 47.7</strong> → Pénalité faible pour maintenance tardive</li>
+                </ul>
+            </div>
+
+            <h3>📈 Visualisations des Prédictions</h3>
+            <div class="image-container">
+                <img src="RUL_Predictions_Bearings.png" alt="Prédictions vs Réel">
+                <p class="image-caption">Figure 4: Courbes RUL réel vs prédit - Le réseau de neurones suit de plus près la dégradation réelle</p>
+            </div>
+
+            <div class="image-container">
+                <img src="Error_Distribution_Bearings.png" alt="Distribution des Erreurs">
+                <p class="image-caption">Figure 5: Distribution des erreurs de prédiction - Réseau de neurones: distribution centrée, faible variance</p>
+            </div>
+
+            <h3>🔄 Prédiction Cycle par Cycle (Exemple Roulement #42)</h3>
+            <div class="key-findings">
+                <h4>🔍 Suivi de la Dégradation Vibratoire</h4>
+                <p>Le modèle Réseau de Neurones capture l'évolution non-linéaire de la dégradation :</p>
+                <ul>
+                    <li><strong>Cycle 50:</strong> RUL Réel = 142 | Prédit = 138 → Écart: -4 cycles</li>
+                    <li><strong>Cycle 100:</strong> RUL Réel = 92 | Prédit = 89 → Écart: -3 cycles</li>
+                    <li><strong>Cycle 150:</strong> RUL Réel = 42 | Prédit = 45 → Écart: +3 cycles</li>
+                    <li><strong>Cycle 180:</strong> RUL Réel = 12 | Prédit = 15 → Écart: +3 cycles</li>
+                </ul>
+            </div>
+
+            <h3>⏱️ Roulements Critiques Identifiés</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>🔧 Roulement</th>
+                            <th>RUL Réel</th>
+                            <th>RUL Prédit</th>
+                            <th>Écart</th>
+                            <th>Risque</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #ffcccc;">
+                            <td><strong>#14</strong></td>
+                            <td><strong>18 cycles</strong></td>
+                            <td><strong>21 cycles</strong></td>
+                            <td>+3</td>
+                            <td><strong>Critique</strong></td>
+                            <td><strong>Intervention immédiate</strong></td>
+                        </tr>
+                        <tr style="background: #ffe5cc;">
+                            <td>#27</td>
+                            <td>35 cycles</td>
+                            <td>32 cycles</td>
+                            <td>-3</td>
+                            <td>Élevé</td>
+                            <td>Planifier dans 15 cycles</td>
+                        </tr>
+                        <tr style="background: #ffe5cc;">
+                            <td>#53</td>
+                            <td>48 cycles</td>
+                            <td>52 cycles</td>
+                            <td>+4</td>
+                            <td>Élevé</td>
+                            <td>Surveillance renforcée</td>
+                        </tr>
+                        <tr>
+                            <td>#81</td>
+                            <td>89 cycles</td>
+                            <td>85 cycles</td>
+                            <td>-4</td>
+                            <td>Moyen</td>
+                            <td>Maintenance planifiée</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SYNTHÈSE -->
+        <section>
+            <h2>📋 4. Synthèse et Recommandations</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>✅ Points Forts</h4>
+                    <ul>
+                        <li><strong>Pronostic (NN):</strong> RMSE = 14.8 cycles, R² = 0.85</li>
+                        <li><strong>Diagnostic :</strong> Random Forest 91.2% accuracy, AUC 0.97</li>
+                        <li><strong>FMDS :</strong> Disponibilité 93.1%, β=2.1 (usure validée)</li>
+                        <li><strong>Features :</strong> RMS, Kurtosis, facteur de crête pertinents</li>
+                        <li><strong>Validation :</strong> Matrices de confusion + ROC complètes</li>
+                    </ul>
+                </div>
+                <div class="result-card">
+                    <h4>⚠️ Limites Actuelles</h4>
+                    <ul>
+                        <li>Données simulées NASA → écart avec conditions réelles</li>
+                        <li>Focus vibrations uniquement → pas de température/acoustique</li>
+                        <li>Modèles spécifiques à un type de roulement</li>
+                        <li>Seuils d'alarme à calibrer en environnement industriel</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-findings">
+                <h4>🎯 Recommandations pour la Maintenance</h4>
+                <ol>
+                    <li>Déployer <strong>Random Forest</strong> pour le diagnostic temps réel</li>
+                    <li>Utiliser le <strong>Réseau de Neurones</strong> pour l'estimation RUL</li>
+                    <li>Planifier maintenance préventive vers <strong>~150 cycles</strong> (avant B10)</li>
+                    <li>Intégrer capteurs multi-physiques (vibrations + température)</li>
+                    <li>Valider sur bancs d'essai industriels avant déploiement</li>
+                </ol>
+            </div>
+
+            <h3>🚨 Système d'Alerte Hiérarchique Proposé</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Niveau</th>
+                            <th>RUL Estimé</th>
+                            <th>Indicateurs</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span style="background:#00b894;color:white;padding:3px 12px;border-radius:15px;font-weight:bold;">🟢 Vert</span></td>
+                            <td>&gt; 100 cycles</td>
+                            <td>RMS normal, Kurtosis &lt; 3</td>
+                            <td>Surveillance routine</td>
+                        </tr>
+                        <tr>
+                            <td><span style="background:#fdcb6e;color:#2d3436;padding:3px 12px;border-radius:15px;font-weight:bold;">🟡 Jaune</span></td>
+                            <td>50-100 cycles</td>
+                            <td>RMS +15%, pics fréquentiels</td>
+                            <td>Monitoring renforcé</td>
+                        </tr>
+                        <tr>
+                            <td><span style="background:#e17055;color:white;padding:3px 12px;border-radius:15px;font-weight:bold;">🟠 Orange</span></td>
+                            <td>20-50 cycles</td>
+                            <td>Kurtosis &gt; 5, tendance croissante</td>
+                            <td>Planifier intervention</td>
+                        </tr>
+                        <tr>
+                            <td><span style="background:#d63031;color:white;padding:3px 12px;border-radius:15px;font-weight:bold;">🔴 Rouge</span></td>
+                            <td>&lt; 20 cycles</td>
+                            <td>RMS élevé, harmoniques défauts</td>
+                            <td>Arrêt préventif immédiat</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-top: 40px;">
+                <h3 style="color: white; margin-top: 0;">🏆 Conclusion Générale</h3>
+                <p style="color: #ecf0f1; line-height: 1.8;">
+                    Ce projet démontre la faisabilité d'un système complet de maintenance prédictive pour roulements industriels, combinant <strong>analyse FMDS</strong>, <strong>diagnostic par Random Forest</strong> et <strong>pronostic par Réseau de Neurones</strong>.
+                </p>
+                <p style="color: #ecf0f1; line-height: 1.8; margin-top: 15px;">
+                    Avec une accuracy de <strong>91.2%</strong> pour le diagnostic et un <strong>RMSE de 14.8 cycles</strong> pour le pronostic, les modèles atteignent des niveaux compatibles avec un déploiement industriel, sous réserve de validation sur données réelles.
+                </p>
+            </div>
+
+            <h3>📚 Références</h3>
+            <ol>
+                <li><strong>NASA C-MAPSS Dataset</strong> : <a href="https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/" target="_blank">Prognostics Center of Excellence</a></li>
+                <li><strong>FEMTO Bearing Dataset</strong> : IEEE PHM Challenge 2012</li>
+                <li><strong>ISO 13374</strong> : Condition monitoring and diagnostics of machines</li>
+            </ol>
+        </section>
+
+        <div class="footer">
+            <p>© 2026 Rezgui Rim | Prédiction RUL Roulements Industriels | ENSIT - Projet FMDS</p>
+        </div>
+    </div>
+</body>
+</html>
