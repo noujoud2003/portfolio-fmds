@@ -412,39 +412,38 @@
     
     <div class="key-findings">
         <h4>🎯 Méthodologie de Classification</h4>
-        <p>Classification des batteries en 5 états de santé basés sur le RUL restant :</p>
+        <p>Classification des batteries en 4 états de santé basés sur le RUL restant :</p>
         <ul>
             <li><strong>Excellent:</strong> RUL > 12 minutes</li>
             <li><strong>Bon:</strong> RUL > 6 minutes</li>
-            <li><strong>Moyen:</strong> RUL > 3 minutes</li>
-            <li><strong>Dégradé:</strong> RUL > 0.6 minute</li>
-            <li><strong>Critique:</strong> RUL ≤ 0.6 minute</li>
+            <li><strong>Moyen:</strong> RUL > 2 minutes</li>
+            <li><strong>Critique:</strong> RUL ≤ 2 minutes</li>
         </ul>
     </div>
 
     <h3>📊 Distribution des États de Santé</h3>
     <div class="image-container">
-        <img src="Diagnostic_Class_Distribution.png" alt="Distribution des États de Santé">
-        <p class="image-caption">Figure 2: Distribution des états de santé des batteries - Dataset avec 5 classes équilibrées (Excellent: 5200, Bon: 5000, Moyen: 3400, Dégradé: 1250, Critique: 250 cycles)</p>
+        <img src="im1.png" alt="Distribution des États de Santé">
+        <p class="image-caption">Figure 2: Distribution des états de santé des batteries - Dataset équilibré avec 4 classes (Excellent: 3838, Moyen: 3772, Critique: 3717, Bon: 3564 cycles). Cette distribution équilibrée permet un apprentissage non biaisé.</p>
     </div>
 
     <h3>🌲 Importance des Features (Random Forest)</h3>
     <div class="image-container">
-        <img src="Diagnostic_Feature_Importance.png" alt="Top 15 Features les plus importantes">
-        <p class="image-caption">Figure 3: Top 15 features les plus importantes - Discharge Time (16%), Decrement 3.6-3.4V (10.5%), Time constant current (8.3%) et Max. Voltage Dischar. (10%) dominent la prédiction. Les features temporelles glissantes (_roll_mean_5) améliorent significativement la performance.</p>
+        <img src="im2.png" alt="Top Features les plus importantes">
+        <p class="image-caption">Figure 3: Importance des features selon le modèle Random Forest - Discharge Time (26%), Time at 4.15V (21%) et Time constant current (19%) dominent la prédiction. Ces paramètres temporels de décharge sont les indicateurs les plus fiables de l'état de santé.</p>
         <a href="https://www.sciencedirect.com/topics/engineering/lithium-ion-battery-degradation" target="_blank" class="learn-more-btn">📖 En savoir plus sur la dégradation</a>
     </div>
 
-    <h3>📈 Performance du Modèle Amélioré</h3>
+    <h3>📈 Matrices de Confusion - Comparaison des Modèles</h3>
     <div class="image-container">
-        <img src="Diagnostic_Confusion_Matrix.png" alt="Matrice de Confusion - Diagnostic Amélioré">
-        <p class="image-caption">Figure 4: Matrice de confusion du modèle Random Forest amélioré - Excellence détection des classes Excellent (1856/1869) et Bon (1620/1781), avec une amélioration significative sur la classe Critique (61/95 correctement détectés)</p>
+        <img src="im3.png" alt="Matrices de Confusion - Comparaison">
+        <p class="image-caption">Figure 4: Comparaison des matrices de confusion pour les trois modèles. Random Forest excelle avec une excellente détection diagonale (Excellent: 1359, Bon: 1165, Critique: 1171, Moyen: 1059 corrects). SVM montre des confusions entre Moyen et Excellent (205 erreurs). Decision Tree présente des performances intermédiaires.</p>
     </div>
 
-    <h3>📊 Courbes ROC - One vs Rest</h3>
+    <h3>📊 Courbes ROC - Multi-classes</h3>
     <div class="image-container">
-        <img src="Diagnostic_ROC_Curves_All_Classes.png" alt="Courbes ROC">
-        <p class="image-caption">Figure 5: Courbes ROC pour toutes les classes - AUC exceptionnelle: Excellent (1.000), Bon (0.984), Dégradé (0.963), Critique (0.951), Moyen (0.959). Toutes les classes dépassent 0.95, démontrant une excellente capacité de discrimination.</p>
+        <img src="roc.png" alt="Courbes ROC">
+        <p class="image-caption">Figure 5: Courbes ROC multi-classes comparant les trois modèles. Random Forest domine avec AUC=0.99, suivi de SVM (AUC=0.98) et Decision Tree (AUC=0.95). Tous les modèles dépassent 0.95, indiquant une excellente capacité de discrimination entre les classes.</p>
     </div>
 
     <div class="results-grid">
@@ -452,62 +451,82 @@
             <h4>🏆 Random Forest (Meilleur Modèle)</h4>
             <div class="metric">
                 <span class="metric-label">Accuracy:</span>
-                <span class="metric-value best-value">86.5%</span>
+                <span class="metric-value best-value">89.31%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">Precision (moyenne):</span>
-                <span class="metric-value">86.2%</span>
+                <span class="metric-label">Recall moyen:</span>
+                <span class="metric-value best-value">89.31%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">Recall (moyenne):</span>
-                <span class="metric-value">85.8%</span>
+                <span class="metric-label">F1-Score moyen:</span>
+                <span class="metric-value best-value">89.18%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">F1-Score (moyenne):</span>
-                <span class="metric-value">86.0%</span>
+                <span class="metric-label">AUC moyen:</span>
+                <span class="metric-value best-value">0.9882</span>
             </div>
-            <div class="metric">
-                <span class="metric-label">AUC Moyen:</span>
-                <span class="metric-value best-value">0.971</span>
-            </div>
+            <p class="highlight">✅ Meilleures performances globales avec une excellente généralisation</p>
         </div>
+        
         <div class="result-card">
-            <h4>📊 Performance par Classe</h4>
+            <h4>⚡ SVM (2ème Position)</h4>
             <div class="metric">
-                <span class="metric-label">Excellent:</span>
-                <span class="metric-value best-value">99.3% recall</span>
+                <span class="metric-label">Accuracy:</span>
+                <span class="metric-value">83.71%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">Bon:</span>
-                <span class="metric-value best-value">90.9% recall</span>
+                <span class="metric-label">Recall moyen:</span>
+                <span class="metric-value">83.71%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">Critique:</span>
-                <span class="metric-value">64.2% recall ⚠️</span>
+                <span class="metric-label">F1-Score moyen:</span>
+                <span class="metric-value">83.38%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">Dégradé:</span>
-                <span class="metric-value">38.8% recall ⚠️</span>
+                <span class="metric-label">AUC moyen:</span>
+                <span class="metric-value">0.9785</span>
+            </div>
+            <p class="highlight">⚠️ Confusions entre classes adjacentes (Moyen/Excellent)</p>
+        </div>
+        
+        <div class="result-card">
+            <h4>🌳 Decision Tree (3ème Position)</h4>
+            <div class="metric">
+                <span class="metric-label">Accuracy:</span>
+                <span class="metric-value">83.94%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">Moyen:</span>
-                <span class="metric-value">79.2% recall</span>
+                <span class="metric-label">Recall moyen:</span>
+                <span class="metric-value">83.94%</span>
             </div>
+            <div class="metric">
+                <span class="metric-label">F1-Score moyen:</span>
+                <span class="metric-value">83.81%</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">AUC moyen:</span>
+                <span class="metric-value">0.9470</span>
+            </div>
+            <p class="highlight">📊 Modèle interprétable mais moins performant que RF</p>
         </div>
     </div>
 
     <div class="key-findings">
-        <h4>🎯 Améliorations Apportées</h4>
+        <h4>📋 Analyse des Résultats</h4>
         <ul>
-            <li><strong>Features Engineering:</strong> Ajout de 15 features temporelles glissantes (rolling mean/std sur 5 cycles)</li>
-            <li><strong>Sélecteur de Features:</strong> Sélection des 15 features les plus importantes par Random Forest</li>
-            <li><strong>Hyperparamètres Optimisés:</strong> n_estimators=200, max_depth=15, min_samples_split=3</li>
-            <li><strong>Gestion du Déséquilibre:</strong> Class weights adaptés pour améliorer la détection des classes rares (Critique, Dégradé)</li>
-            <li><strong>Résultat:</strong> Accuracy globale de 86.5% avec AUC moyenne de 0.971</li>
+            <li><strong>Performance Exceptionnelle:</strong> Random Forest atteint <strong>89.31% d'accuracy</strong> avec un AUC de <strong>0.9882</strong>, démontrant une excellente capacité à classifier les états de santé</li>
+            <li><strong>Classes Bien Détectées:</strong> Les matrices de confusion montrent une forte diagonalité, indiquant peu d'erreurs de classification</li>
+            <li><strong>Dataset Équilibré:</strong> Les 4 classes sont représentées de manière équilibrée (3500-3800 échantillons chacune), évitant les biais d'apprentissage</li>
+            <li><strong>Features Temporelles Dominantes:</strong> Le temps de décharge et les temps à voltage constant sont les meilleurs indicateurs de santé</li>
+            <li><strong>Robustesse:</strong> Tous les modèles dépassent 83% d'accuracy, validant la qualité des features sélectionnées</li>
         </ul>
     </div>
-</section>
 
+    <div class="conclusion-box">
+        <h4>✅ Conclusion du Diagnostic</h4>
+        <p>Le modèle <strong>Random Forest</strong> est retenu pour le diagnostic avec <strong>89.31% de précision</strong>. Sa capacité à capturer les relations non-linéaires entre les paramètres de charge/décharge et l'état de santé en fait l'outil idéal pour la surveillance en temps réel. L'AUC de 0.9882 confirme l'excellente séparabilité des classes.</p>
+    </div>
+</section>
         <!-- PROGNOSTIC - DEEP LEARNING -->
         <section>
             <h2>🔮 3. Pronostic - Prédiction RUL (Deep Learning)</h2>
