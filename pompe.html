@@ -406,44 +406,45 @@
             </div>
         </section>
 
-        <!-- DIAGNOSTIC -->
-       <section>
+       <!-- DIAGNOSTIC -->
+<section>
     <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
-    
+   
     <div class="key-findings">
         <h4>🎯 Méthodologie de Classification</h4>
-        <p>Classification des batteries en 4 états de santé basés sur le RUL restant :</p>
+        <p>Classification des batteries en 4 états de santé basés sur le RUL restant (temps de décharge). Les classes ont été définies de manière équilibrée à l'aide de quartiles pour éviter tout biais d'apprentissage :</p>
         <ul>
-            <li><strong>Excellent:</strong> RUL > 12 minutes</li>
-            <li><strong>Bon:</strong> RUL > 6 minutes</li>
-            <li><strong>Moyen:</strong> RUL > 2 minutes</li>
-            <li><strong>Critique:</strong> RUL ≤ 2 minutes</li>
+            <li><strong>Excellent</strong></li>
+            <li><strong>Bon</strong></li>
+            <li><strong>Moyen</strong></li>
+            <li><strong>Critique</strong></li>
         </ul>
+        <p>Cette approche par quartiles permet d'obtenir une distribution équilibrée des quatre classes.</p>
     </div>
 
     <h3>📊 Distribution des États de Santé</h3>
     <div class="image-container">
         <img src="iim1.png" alt="Distribution des États de Santé">
-        <p class="image-caption">Figure 2: Distribution des états de santé des batteries - Dataset équilibré avec 4 classes (Excellent: 3838, Moyen: 3772, Critique: 3717, Bon: 3564 cycles). Cette distribution équilibrée permet un apprentissage non biaisé.</p>
+        <p class="image-caption">Figure 2: Distribution des états de santé des batteries. Les 4 classes sont représentées de manière équilibrée, ce qui permet un apprentissage non biaisé et une bonne généralisation des modèles.</p>
     </div>
 
     <h3>🌲 Importance des Features (Random Forest)</h3>
     <div class="image-container">
         <img src="im2.png" alt="Top Features les plus importantes">
-        <p class="image-caption">Figure 3: Importance des features selon le modèle Random Forest - Discharge Time (26%), Time at 4.15V (21%) et Time constant current (19%) dominent la prédiction. Ces paramètres temporels de décharge sont les indicateurs les plus fiables de l'état de santé.</p>
+        <p class="image-caption">Figure 3: Importance des features selon le modèle Random Forest. Le <strong>Discharge Time (s)</strong> est de loin la feature la plus importante, suivi du <strong>Time at 4.15V (s)</strong> et du <strong>Time constant current (s)</strong>. Ces paramètres temporels de charge/décharge sont les meilleurs indicateurs de l'état de santé des batteries.</p>
         <a href="https://www.sciencedirect.com/topics/engineering/lithium-ion-battery-degradation" target="_blank" class="learn-more-btn">📖 En savoir plus sur la dégradation</a>
     </div>
 
     <h3>📈 Matrices de Confusion - Comparaison des Modèles</h3>
     <div class="image-container">
         <img src="im3.png" alt="Matrices de Confusion - Comparaison">
-        <p class="image-caption">Figure 4: Comparaison des matrices de confusion pour les trois modèles. Random Forest excelle avec une excellente détection diagonale (Excellent: 1359, Bon: 1165, Critique: 1171, Moyen: 1059 corrects). SVM montre des confusions entre Moyen et Excellent (205 erreurs). Decision Tree présente des performances intermédiaires.</p>
+        <p class="image-caption">Figure 4: Comparaison des matrices de confusion pour les trois modèles. Random Forest montre une bonne performance globale avec une détection diagonale solide. SVM et Decision Tree présentent plus de confusions, notamment entre classes adjacentes.</p>
     </div>
 
     <h3>📊 Courbes ROC - Multi-classes</h3>
     <div class="image-container">
         <img src="roc.png" alt="Courbes ROC">
-        <p class="image-caption">Figure 5: Courbes ROC multi-classes comparant les trois modèles. Random Forest domine avec AUC=0.99, suivi de SVM (AUC=0.98) et Decision Tree (AUC=0.95). Tous les modèles dépassent 0.95, indiquant une excellente capacité de discrimination entre les classes.</p>
+        <p class="image-caption">Figure 5: Courbes ROC multi-classes comparant les trois modèles. Random Forest domine avec un AUC de 0.99, suivi de SVM (AUC=0.98) et Decision Tree (AUC=0.95). Tous les modèles dépassent un AUC de 0.95, indiquant une très bonne capacité de discrimination entre les quatre états de santé.</p>
     </div>
 
     <div class="results-grid">
@@ -451,80 +452,80 @@
             <h4>🏆 Random Forest (Meilleur Modèle)</h4>
             <div class="metric">
                 <span class="metric-label">Accuracy:</span>
-                <span class="metric-value best-value">89.31%</span>
+                <span class="metric-value best-value">~89%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">Recall moyen:</span>
-                <span class="metric-value best-value">89.31%</span>
+                <span class="metric-value best-value">~89%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">F1-Score moyen:</span>
-                <span class="metric-value best-value">89.18%</span>
+                <span class="metric-value best-value">~88.5%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">AUC moyen:</span>
-                <span class="metric-value best-value">0.9882</span>
+                <span class="metric-value best-value">0.99</span>
             </div>
             <p class="highlight">✅ Meilleures performances globales avec une excellente généralisation</p>
         </div>
-        
+       
         <div class="result-card">
             <h4>⚡ SVM (2ème Position)</h4>
             <div class="metric">
                 <span class="metric-label">Accuracy:</span>
-                <span class="metric-value">83.71%</span>
+                <span class="metric-value">~84%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">Recall moyen:</span>
-                <span class="metric-value">83.71%</span>
+                <span class="metric-value">~84%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">F1-Score moyen:</span>
-                <span class="metric-value">83.38%</span>
+                <span class="metric-value">~83.5%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">AUC moyen:</span>
-                <span class="metric-value">0.9785</span>
+                <span class="metric-value">0.98</span>
             </div>
-            <p class="highlight">⚠️ Confusions entre classes adjacentes (Moyen/Excellent)</p>
+            <p class="highlight">⚠️ Quelques confusions entre classes adjacentes</p>
         </div>
-        
+       
         <div class="result-card">
             <h4>🌳 Decision Tree (3ème Position)</h4>
             <div class="metric">
                 <span class="metric-label">Accuracy:</span>
-                <span class="metric-value">83.94%</span>
+                <span class="metric-value">~84%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">Recall moyen:</span>
-                <span class="metric-value">83.94%</span>
+                <span class="metric-value">~84%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">F1-Score moyen:</span>
-                <span class="metric-value">83.81%</span>
+                <span class="metric-value">~83.5%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">AUC moyen:</span>
-                <span class="metric-value">0.9470</span>
+                <span class="metric-value">0.95</span>
             </div>
-            <p class="highlight">📊 Modèle interprétable mais moins performant que RF</p>
+            <p class="highlight">📊 Modèle simple et interprétable mais moins performant que Random Forest</p>
         </div>
     </div>
 
     <div class="key-findings">
         <h4>📋 Analyse des Résultats</h4>
         <ul>
-            <li><strong>Performance Exceptionnelle:</strong> Random Forest atteint <strong>89.31% d'accuracy</strong> avec un AUC de <strong>0.9882</strong>, démontrant une excellente capacité à classifier les états de santé</li>
-            <li><strong>Classes Bien Détectées:</strong> Les matrices de confusion montrent une forte diagonalité, indiquant peu d'erreurs de classification</li>
-            <li><strong>Dataset Équilibré:</strong> Les 4 classes sont représentées de manière équilibrée (3500-3800 échantillons chacune), évitant les biais d'apprentissage</li>
-            <li><strong>Features Temporelles Dominantes:</strong> Le temps de décharge et les temps à voltage constant sont les meilleurs indicateurs de santé</li>
-            <li><strong>Robustesse:</strong> Tous les modèles dépassent 83% d'accuracy, validant la qualité des features sélectionnées</li>
+            <li><strong>Performance Exceptionnelle :</strong> Random Forest atteint une accuracy élevée (~89%) avec un AUC moyen de <strong>0.99</strong>, démontrant une excellente capacité à classifier les états de santé.</li>
+            <li><strong>Discrimination forte :</strong> Les courbes ROC montrent que tous les modèles ont une bonne capacité de séparation entre les classes (AUC > 0.95).</li>
+            <li><strong>Dataset équilibré :</strong> Les 4 classes sont représentées de manière relativement équilibrée grâce à la méthode par quartiles.</li>
+            <li><strong>Features Temporelles Dominantes :</strong> Le temps de décharge et les temps à tension constante sont les indicateurs les plus pertinents de l'état de santé.</li>
+            <li><strong>Robustesse :</strong> Random Forest surpasse clairement les autres modèles, validant la qualité des features sélectionnées.</li>
         </ul>
     </div>
 
     <div class="conclusion-box">
         <h4>✅ Conclusion du Diagnostic</h4>
-        <p>Le modèle <strong>Random Forest</strong> est retenu pour le diagnostic avec <strong>89.31% de précision</strong>. Sa capacité à capturer les relations non-linéaires entre les paramètres de charge/décharge et l'état de santé en fait l'outil idéal pour la surveillance en temps réel. L'AUC de 0.9882 confirme l'excellente séparabilité des classes.</p>
+        <p>Le modèle <strong>Random Forest</strong> est retenu pour le diagnostic grâce à ses performances supérieures (accuracy ~89% et AUC 0.99). Sa capacité à capturer les relations non-linéaires entre les paramètres temporels de charge/décharge et l'état de santé en fait l'outil le plus adapté pour une surveillance en temps réel des batteries.</p>
     </div>
 </section>
         <!-- PROGNOSTIC - DEEP LEARNING -->
@@ -729,31 +730,31 @@
             </div>
         </section>
 
-        <!-- SYNTHÈSE -->
-   <section>
+<!-- SYNTHÈSE -->
+<section>
     <h2>📋 4. Synthèse et Recommandations</h2>
-    
+   
     <div class="results-grid">
         <div class="result-card">
             <h4>✅ Points Forts</h4>
             <ul>
-                <li><strong>Pronostic (LSTM):</strong> R² = 97.53%, erreur < 1 minute</li>
-                <li><strong>Diagnostic avancé:</strong> Random Forest Accuracy 89.3%, AUC moyen 0.988, Recall Critique 69.8%</li>
-                <li><strong>Disponibilité système:</strong> 99.95% (FMDS)</li>
+                <li><strong>Pronostic (LSTM):</strong> R² = 97.53%, erreur moyenne inférieure à 1 minute</li>
+                <li><strong>Diagnostic avancé:</strong> Random Forest avec Accuracy ~89%, AUC moyen 0.99</li>
+                <li><strong>Disponibilité système:</strong> 99.95% (analyse FMDS)</li>
                 <li><strong>MTBF élevé:</strong> 3915 heures (~163 jours)</li>
-                <li><strong>Features temporelles:</strong> Rolling mean/std améliorent la détection</li>
-                <li><strong>Courbes ROC et importance features:</strong> indicateurs fiables de performance</li>
+                <li><strong>Features temporelles dominantes:</strong> Discharge Time, Time at 4.15V et Time constant current sont les plus importantes</li>
+                <li><strong>Excellente discrimination :</strong> Courbes ROC avec AUC ≥ 0.95 pour tous les modèles</li>
             </ul>
         </div>
         <div class="result-card">
             <h4>⚠️ Limites Actuelles</h4>
             <ul>
-                <li>Recall "Dégradé" encore faible (38.8%) → détection précoce à améliorer</li>
-                <li>30% des états critiques manqués → risque résiduel</li>
-                <li>Dataset limité (14 batteries) → généralisation à valider sur plus de données</li>
-                <li>MTTR estimé (2h) → à mesurer en conditions réelles</li>
-                <li>Pas de capteurs additionnels (température/impédance) → diagnostic partiel</li>
-                <li>Modèles SVM et Decision Tree moins performants → à combiner en ensemble</li>
+                <li>Dataset limité à seulement 14 batteries en conditions de laboratoire contrôlées</li>
+                <li>Absence de variabilité réelle (température, C-rates différents, vibrations...)</li>
+                <li>Performances à valider sur un plus grand nombre de cellules et en environnement opérationnel</li>
+                <li>MTTR estimé à 2 heures (hypothèse) — valeur à confirmer en conditions réelles</li>
+                <li>Pas de capteurs additionnels (température, impédance interne)</li>
+                <li>Modèles SVM et Decision Tree restent en retrait par rapport à Random Forest</li>
             </ul>
         </div>
     </div>
@@ -761,64 +762,42 @@
     <div class="key-findings">
         <h4>🎯 Recommandations pour la Maintenance Prédictive</h4>
         <ol>
-            <li><strong>Utiliser LSTM comme modèle principal</strong> pour la prédiction RUL en temps réel (précision < 1 min)</li>
-            <li><strong>Déployer Random Forest avec Class Weights</strong> pour le diagnostic des états critiques (Recall 69.8%)</li>
-            <li><strong>Planifier la maintenance préventive</strong> à ~80% du MTBF (~3100 heures) pour anticiper l'usure</li>
-            <li><strong>Implémenter un système d'alerte hiérarchique:</strong> 
+            <li><strong>Utiliser le LSTM</strong> comme modèle principal pour la prédiction du RUL en temps réel (très bonne précision)</li>
+            <li><strong>Déployer le Random Forest</strong> pour le diagnostic des états de santé (meilleure performance globale)</li>
+            <li><strong>Planifier la maintenance préventive</strong> vers ~80% du MTBF (environ 3100 heures) pour anticiper la phase d’usure</li>
+            <li><strong>Implémenter un système d’alerte hiérarchique :</strong>
                 <ul style="margin-top: 8px; padding-left: 20px;">
-                    <li>🟡 Alerte "Dégradé" → Surveillance renforcée + planification intervention</li>
-                    <li>🔴 Alerte "Critique" → Intervention immédiate + arrêt préventif</li>
+                    <li>🟡 Alerte "Moyen / Dégradé" → Surveillance renforcée et planification</li>
+                    <li>🔴 Alerte "Critique" → Intervention immédiate</li>
                 </ul>
             </li>
-            <li><strong>Surveiller particulièrement</strong> les batteries après 4000 heures (pic de défaillance Weibull)</li>
+            <li><strong>Surveiller particulièrement</strong> les batteries après 4000 heures (pic de risque selon le modèle Weibull)</li>
         </ol>
     </div>
 
     <div class="key-findings" style="background: #fff3cd; border-left-color: #ffc107;">
         <h4 style="color: #856404;">🚀 Perspectives d'Amélioration</h4>
         <ol style="margin: 15px 0 0; padding-left: 25px; line-height: 1.8;">
-            <li><strong>Améliorer le Recall "Dégradé" (38.8% → 60%+):</strong>
-                <ul style="margin-top: 5px; padding-left: 20px;">
-                    <li>Ajouter des features spécifiques à la dégradation précoce</li>
-                    <li>Tester des modèles d’anomalies (Isolation Forest, Autoencoders)</li>
-                    <li>Créer une classe intermédiaire "Dégradé Précoce"</li>
-                </ul>
-            </li>
-            <li><strong>Réduire les 30% d'états critiques manqués:</strong>
-                <ul style="margin-top: 5px; padding-left: 20px;">
-                    <li>Ajouter capteurs de température et impédance interne</li>
-                    <li>Implémenter un modèle d'ensemble (voting classifier Random Forest + SVM + Decision Tree)</li>
-                    <li>Apprentissage actif pour identifier les cas ambigus</li>
-                </ul>
-            </li>
-            <li><strong>Enrichir le dataset:</strong>
-                <ul style="margin-top: 5px; padding-left: 20px;">
-                    <li>Collecter des données sur 50+ batteries</li>
-                    <li>Inclure différentes conditions d'usage (température, profondeur de décharge)</li>
-                    <li>Ajouter des batteries de différents fabricants pour robustesse</li>
-                </ul>
-            </li>
-            <li><strong>Optimiser le modèle en production:</strong>
-                <ul style="margin-top: 5px; padding-left: 20px;">
-                    <li>Apprentissage continu (online learning)</li>
-                    <li>Ré-entraînement automatique selon nouvelles données</li>
-                    <li>Dashboard de monitoring des performances (accuracy, recall, AUC)</li>
-                </ul>
-            </li>
-            <li><strong>Valider en conditions réelles:</strong>
-                <ul style="margin-top: 5px; padding-left: 20px;">
-                    <li>Tester sur un parc de batteries en exploitation</li>
-                    <li>Mesurer le MTTR réel et l’impact sur la disponibilité</li>
-                    <li>Évaluer le ROI de la maintenance prédictive</li>
-                </ul>
-            </li>
+            <li><strong>Enrichir le dataset :</strong> Collecter des données sur 50+ batteries avec différentes conditions d’usage (température variable, C-rates, profondeur de décharge)</li>
+            <li><strong>Ajouter des capteurs :</strong> Température et impédance interne pour améliorer le diagnostic</li>
+            <li><strong>Améliorer la robustesse :</strong> Tester des modèles d’ensemble (Voting Classifier) et l’apprentissage continu</li>
+            <li><strong>Optimiser pour la production :</strong> Développer un dashboard de monitoring (accuracy, recall, AUC) avec ré-entraînement automatique</li>
+            <li><strong>Valider en conditions réelles :</strong> Tester sur un parc de batteries en exploitation et évaluer le ROI de la maintenance prédictive</li>
         </ol>
     </div>
 
     <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-top: 40px;">
         <h3 style="color: white; margin-top: 0;">🏆 Conclusion Générale</h3>
         <p style="color: #ecf0f1; line-height: 1.8;">
-            Cette étude démontre la faisabilité d'un système complet de maintenance prédictive pour batteries lithium-ion combinant <strong>diagnostic</strong> (classification avancée des états de santé) et <strong>pronostic</strong> (prédiction du RUL). Le modèle LSTM atteint des performances exceptionnelles avec un R² de 97.53% et une erreur de prédiction inférieure à 1 minute. Le diagnostic, optimisé avec Random Forest et class weights, détecte désormais <strong>69.8% des états critiques</strong> avec une accuracy globale de 89.3% et un AUC moyen de 0.988. L'approche hybride permet d'anticiper les pannes, d'optimiser la maintenance et de prolonger la durée de vie des batteries. Les perspectives d'amélioration identifiées (enrichissement du dataset, capteurs additionnels, apprentissage continu, modèles d’ensemble) ouvrent la voie vers un déploiement industriel robuste et scalable.
+            Ce mini-projet en Maintenance Intelligente démontre la faisabilité d’une approche hybride combinant <strong>analyse FMDS</strong>, <strong>diagnostic par Machine Learning</strong> (Random Forest) et <strong>pronostic par Deep Learning</strong> (LSTM). 
+            Le modèle LSTM atteint un R² de 97.53% avec une erreur inférieure à 1 minute, tandis que le Random Forest offre une excellente classification des états de santé avec un AUC moyen de 0.99.
+        </p>
+        <p style="color: #ecf0f1; line-height: 1.8; margin-top: 15px;">
+            Bien que les résultats soient très encourageants en conditions de laboratoire, le nombre limité de batteries (14 cellules) et l’absence de variabilité opérationnelle réelle constituent des limites importantes. 
+            Une validation sur un dataset plus large et en environnement réel est nécessaire avant tout déploiement industriel.
+        </p>
+        <p style="color: #ecf0f1; line-height: 1.8; margin-top: 15px;">
+            Ce travail met en évidence le potentiel des techniques d’intelligence artificielle pour passer d’une maintenance curative à une maintenance prédictive plus efficace et proactive pour les batteries lithium-ion.
         </p>
     </div>
 </section>
