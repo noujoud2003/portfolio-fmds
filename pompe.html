@@ -707,7 +707,61 @@
                     </tbody>
                 </table>
             </div>
+<!-- À ajouter après le tableau comparatif des modèles, avant "📈 Visualisations des Prédictions LSTM" -->
 
+<h3>📊 Importance des Features - Modèle LSTM</h3>
+<div class="image-container">
+    <img src="feature_importance_lstm.png" alt="Importance des Features - Permutation et Distribution">
+    <p class="image-caption">
+        <strong>Figure 8:</strong> Importance des features par permutation pour le modèle LSTM. 
+        <strong>Time constant current (34.1%)</strong>, <strong>Max. Voltage Dischar. (31.6%)</strong> et 
+        <strong>Time at 4.15V (21.4%)</strong> représentent <strong>87.1%</strong> de l'importance totale. 
+        Ces paramètres temporels et de tension sont les indicateurs les plus critiques pour prédire le RUL des batteries.
+    </p>
+</div>
+
+<div class="key-findings">
+    <h4>🔍 Interprétation des Features Importantes pour le Pronostic</h4>
+    <div class="results-grid">
+        <div class="result-card">
+            <h4>📈 Top 3 Features (87.1%)</h4>
+            <div class="metric">
+                <span class="metric-label">Time constant current:</span>
+                <span class="metric-value best-value">34.1%</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Max. Voltage Dischar.:</span>
+                <span class="metric-value best-value">31.6%</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Time at 4.15V:</span>
+                <span class="metric-value best-value">21.4%</span>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #7f8c8d;">
+                <em>Ces 3 features dominent la prédiction du RUL</em>
+            </p>
+        </div>
+        
+        <div class="result-card">
+            <h4>💡 Signification Physique</h4>
+            <ul style="font-size: 0.9em; line-height: 1.8;">
+                <li><strong>Time constant current:</strong> Durée phase courant constant → diminue avec la dégradation de la capacité</li>
+                <li><strong>Max. Voltage Dischar.:</strong> Tension max en décharge → reflète l'état de santé interne</li>
+                <li><strong>Time at 4.15V:</strong> Temps à voltage max charge → augmente avec la résistance interne</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="conclusion-box">
+    <h4>✅ Cohérence Diagnostic vs Pronostic</h4>
+    <p>Les mêmes features importantes apparaissent dans le <strong>diagnostic</strong> (classification) et le <strong>pronostic</strong> (prédiction RUL), confirmant leur pertinence physique :</p>
+    <ul style="margin-top: 15px;">
+        <li>✅ <strong>Time constant current</strong> et <strong>Time at 4.15V</strong> sont cruciaux pour les deux tâches</li>
+        <li>✅ Les paramètres <strong>temporels</strong> dominent les paramètres de tension</li>
+        <li>✅ Validation de la qualité des features sélectionnées</li>
+    </ul>
+</div>
             <div class="key-findings">
                 <h4>🏆 Résultats Clés - Modèle LSTM</h4>
                 <ul>
