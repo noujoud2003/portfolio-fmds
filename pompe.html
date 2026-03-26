@@ -56,7 +56,7 @@
         .active { background: #3498db !important; }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 140px auto 80px;
             padding: 50px;
             background: rgba(255, 255, 255, 0.96);
@@ -104,6 +104,159 @@
         .metric-value { color: #2980b9; font-weight: 700; }
         .best-value { color: #27ae60; font-weight: 700; }
 
+        /* TABLEAUX PROFESSIONNELS AMÉLIORÉS */
+        .table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            font-size: 0.95em;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+        
+        th:first-child {
+            border-top-left-radius: 12px;
+        }
+        
+        th:last-child {
+            border-top-right-radius: 12px;
+        }
+        
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: middle;
+        }
+        
+        tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        tbody tr:hover {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        tbody tr:nth-child(even):hover {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .highlight-row {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+            font-weight: 600;
+            border-left: 4px solid #28a745;
+        }
+        
+        .highlight-row:hover {
+            background: linear-gradient(135deg, #c3e6cb 0%, #b1dfbb 100%) !important;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 8px;
+        }
+        
+        .badge-best {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+        
+        .badge-good {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            color: white;
+        }
+        
+        .badge-warning {
+            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+            color: #212529;
+        }
+        
+        .metric-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        
+        .metric-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+        
+        .metric-bar-fill.best {
+            background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+        }
+        
+        .metric-bar-fill.good {
+            background: linear-gradient(90deg, #17a2b8 0%, #138496 100%);
+        }
+        
+        .value-cell {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .value-cell.best {
+            color: #27ae60;
+            font-weight: 700;
+        }
+        
+        .icon-cell {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        /* TABLEAU FMDS SPÉCIAL */
+        .fmds-table th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+        
+        .fmds-table .indicator-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .fmds-table .indicator-value {
+            font-weight: 700;
+            color: #3498db;
+            font-size: 1.1em;
+        }
+
         img {
             width: 100%;
             border-radius: 12px;
@@ -122,6 +275,45 @@
             padding: 30px;
             color: #bdc3c7;
             border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-weight: 600;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .conclusion-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border: 2px solid #667eea;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 120px auto 40px;
+            }
+            table {
+                font-size: 0.85em;
+            }
+            th, td {
+                padding: 10px 8px;
+            }
         }
     </style>
 </head>
@@ -169,65 +361,273 @@
                     <li><strong>Meilleur modèle :</strong> Weibull (β=32.53, η=3986.47h)</li>
                 </ul>
             </div>
+            
+            <h3>📋 Indicateurs FMDS Détaillés</h3>
+            <div class="table-container">
+                <table class="fmds-table">
+                    <thead>
+                        <tr>
+                            <th>📊 Indicateur</th>
+                            <th>📈 Valeur</th>
+                            <th>💡 Interprétation</th>
+                            <th>📊 Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="indicator-name">MTBF (Mean Time Between Failures)</td>
+                            <td class="indicator-value">3915.39 h</td>
+                            <td>Durée de vie moyenne entre pannes</td>
+                            <td><span class="badge badge-best">Excellent</span></td>
+                        </tr>
+                        <tr>
+                            <td class="indicator-name">MTTR (Mean Time To Repair)</td>
+                            <td class="indicator-value">2.0 h</td>
+                            <td>Temps moyen de réparation (hypothèse)</td>
+                            <td><span class="badge badge-good">Rapide</span></td>
+                        </tr>
+                        <tr>
+                            <td class="indicator-name">Taux de défaillance (λ)</td>
+                            <td class="indicator-value">0.000255/h</td>
+                            <td>Risque de panne par heure</td>
+                            <td><span class="badge badge-best">Très faible</span></td>
+                        </tr>
+                        <tr>
+                            <td class="indicator-name">Disponibilité</td>
+                            <td class="indicator-value">99.95%</td>
+                            <td>Système très disponible</td>
+                            <td><span class="badge badge-best">Exceptionnel</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="indicator-name">Modèle de défaillance</td>
+                            <td class="indicator-value">Weibull β=32.53</td>
+                            <td>Usure progressive très marquée</td>
+                            <td><span class="badge badge-good">Validé</span></td>
+                        </tr>
+                        <tr>
+                            <td class="indicator-name">Paramètre d'échelle (η)</td>
+                            <td class="indicator-value">3986.47 h</td>
+                            <td>Cycle caractéristique (63.2% défaillance)</td>
+                            <td><span class="badge badge-good">Stable</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="image-container">
                 <img src="FMDS_reliability_analysis.png" alt="Analyse FMDS Complète">
                 <p class="image-caption">Figure 1: Analyse FMDS complète - Distribution des temps de vie, fonctions de fiabilité, hazard rate, Kaplan-Meier, QQ-Plot Weibull et variabilité inter-batteries</p>
             </div>
         </section>
 
-        <!-- DIAGNOSTIC -->
-        <section>
-            <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
-            <div class="key-findings">
-                <h4>🎯 Méthodologie de Classification</h4>
-                <p>Classification des batteries en 4 états de santé basés sur le RUL restant. Les classes ont été définies de manière équilibrée à l'aide de quartiles :</p>
-                <ul>
-                    <li><strong>Excellent</strong></li>
-                    <li><strong>Bon</strong></li>
-                    <li><strong>Moyen</strong></li>
-                    <li><strong>Critique</strong></li>
-                </ul>
-            </div>
-            <div class="image-container">
-                <img src="iim1.png" alt="Distribution des États de Santé">
-                <p class="image-caption">Figure 2: Distribution des états de santé des batteries. Les 4 classes sont représentées de manière équilibrée grâce à la méthode par quartiles.</p>
-            </div>
-            <div class="image-container">
-                <img src="im2.png" alt="Feature Importance">
-                <p class="image-caption">Figure 3: Importance des features selon Random Forest. Le Discharge Time domine largement, suivi du Time at 4.15V et Time constant current.</p>
-            </div>
-            <div class="image-container">
-                <img src="im3.png" alt="Matrices de Confusion">
-                <p class="image-caption">Figure 4: Comparaison des matrices de confusion. Random Forest montre la meilleure performance globale.</p>
-            </div>
-            <div class="image-container">
-                <img src="roc.png" alt="Courbes ROC">
-                <p class="image-caption">Figure 5: Courbes ROC multi-classes. Random Forest domine avec AUC = 0.99.</p>
-            </div>
+      <!-- DIAGNOSTIC AMÉLIORÉ -->
+<section>
+    <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
+    
+    <div class="key-findings">
+        <h4>🎯 Objectif du Diagnostic</h4>
+        <p>Détecter en temps réel l'état de santé des batteries pour anticiper les défaillances et planifier la maintenance.</p>
+    </div>
 
-            <div class="results-grid">
-                <div class="result-card">
-                    <h4>🏆 Random Forest (Meilleur Modèle)</h4>
-                    <div class="metric"><span class="metric-label">Accuracy</span><span class="metric-value best-value">~89%</span></div>
-                    <div class="metric"><span class="metric-label">AUC moyen</span><span class="metric-value best-value">0.99</span></div>
-                </div>
-                <div class="result-card">
-                    <h4>⚡ SVM</h4>
-                    <div class="metric"><span class="metric-label">Accuracy</span><span class="metric-value">~84%</span></div>
-                    <div class="metric"><span class="metric-label">AUC</span><span class="metric-value">0.98</span></div>
-                </div>
-                <div class="result-card">
-                    <h4>🌳 Decision Tree</h4>
-                    <div class="metric"><span class="metric-label">Accuracy</span><span class="metric-value">~84%</span></div>
-                    <div class="metric"><span class="metric-label">AUC</span><span class="metric-value">0.95</span></div>
-                </div>
-            </div>
+    <h3>📊 Méthodologie de Classification</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>🏷️ Classe</th>
+                    <th>📈 Critère (RUL)</th>
+                    <th>💡 Signification</th>
+                    <th>⚡ Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><span class="icon-cell">✅</span><strong>Excellent</strong></td>
+                    <td>> 75% du RUL max</td>
+                    <td>Batterie neuve/peu utilisée</td>
+                    <td>Utilisation normale</td>
+                </tr>
+                <tr>
+                    <td><span class="icon-cell">👍</span><strong>Bon</strong></td>
+                    <td>50-75% du RUL max</td>
+                    <td>Bon état général</td>
+                    <td>Surveillance standard</td>
+                </tr>
+                <tr>
+                    <td><span class="icon-cell">⚠️</span><strong>Moyen</strong></td>
+                    <td>25-50% du RUL max</td>
+                    <td>Dégradation visible</td>
+                    <td>Surveillance renforcée</td>
+                </tr>
+                <tr style="background: #fff3cd;">
+                    <td><span class="icon-cell">🚨</span><strong>Critique</strong></td>
+                    <td>≤ 25% du RUL max</td>
+                    <td>Risque de panne élevé</td>
+                    <td>Remplacement imminent</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-            <div class="conclusion-box">
-                <h4>✅ Conclusion du Diagnostic</h4>
-                <p>Le modèle <strong>Random Forest</strong> est retenu pour le diagnostic grâce à ses performances supérieures (~89% accuracy et AUC 0.99).</p>
+    <div class="image-container">
+        <img src="iim1.png" alt="Distribution des États de Santé">
+        <p class="image-caption">Figure 2: Distribution équilibrée des 4 classes (Excellent: 3838, Bon: 3564, Moyen: 3772, Critique: 3717 échantillons)</p>
+    </div>
+
+    <h3>🤖 Performance Comparative des Modèles</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>🧠 Modèle</th>
+                    <th>📊 Accuracy</th>
+                    <th>🎯 Précision</th>
+                    <th>🔄 Rappel</th>
+                    <th>⚖️ F1-Score</th>
+                    <th>📈 AUC-ROC</th>
+                    <th>🏆 Rang</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><span class="icon-cell">🌲</span><strong>Random Forest</strong></td>
+                    <td class="value-cell best">89.3%<div class="metric-bar"><div class="metric-bar-fill best" style="width: 89.3%"></div></div></td>
+                    <td class="value-cell best">0.892</td>
+                    <td class="value-cell best">0.893</td>
+                    <td class="value-cell best">0.892</td>
+                    <td class="value-cell best">0.988<span class="badge badge-best">Top</span></td>
+                    <td><span class="badge badge-best">1er</span></td>
+                </tr>
+                <tr>
+                    <td><span class="icon-cell">🌳</span>Decision Tree</td>
+                    <td class="value-cell">83.9%<div class="metric-bar"><div class="metric-bar-fill good" style="width: 83.9%"></div></div></td>
+                    <td class="value-cell">0.838</td>
+                    <td class="value-cell">0.839</td>
+                    <td class="value-cell">0.838</td>
+                    <td class="value-cell">0.947</td>
+                    <td><span class="badge badge-warning">3ème</span></td>
+                </tr>
+                <tr>
+                    <td><span class="icon-cell">⚡</span>SVM (RBF)</td>
+                    <td class="value-cell">83.7%<div class="metric-bar"><div class="metric-bar-fill" style="width: 83.7%"></div></div></td>
+                    <td class="value-cell">0.780</td>
+                    <td class="value-cell">0.850</td>
+                    <td class="value-cell">0.810</td>
+                    <td class="value-cell">0.979</td>
+                    <td><span class="badge badge-good">2ème</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>📊 Analyse Détaillée - Random Forest (Meilleur Modèle)</h3>
+    
+    <div class="results-grid">
+        <div class="result-card">
+            <h4>✅ Points Forts</h4>
+            <div class="metric">
+                <span class="metric-label">Accuracy Globale:</span>
+                <span class="metric-value best-value">89.3%</span>
             </div>
-        </section>
+            <div class="metric">
+                <span class="metric-label">AUC Moyen:</span>
+                <span class="metric-value best-value">0.988</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Classes Bien Détectées:</span>
+                <span class="metric-value best-value">Excellent & Critique</span>
+            </div>
+        </div>
+        
+        <div class="result-card">
+            <h4>⚠️ Confusions Observées</h4>
+            <ul style="font-size: 0.9em; line-height: 1.8;">
+                <li>Bon ↔ Moyen: ~135-153 cas</li>
+                <li>Critique ↔ Moyen: ~159 cas</li>
+                <li>Excellent ↔ Bon: ~14 cas</li>
+            </ul>
+            <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">
+                <em>Confusions normales entre classes adjacentes (dégradation progressive)</em>
+            </p>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="im2.png" alt="Feature Importance">
+        <p class="image-caption">Figure 3: Importance des features - Le <strong>Discharge Time</strong> (26%) domine, suivi de <strong>Time at 4.15V</strong> (21%) et <strong>Time constant current</strong> (19%)</p>
+    </div>
+
+    <h3>🔍 Interprétation des Features Importantes</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>📊 Feature</th>
+                    <th>📈 Importance</th>
+                    <th>💡 Pourquoi Important?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><strong>Discharge Time (s)</strong></td>
+                    <td class="value-cell best">~26%</td>
+                    <td>Directement lié à la capacité restante de la batterie</td>
+                </tr>
+                <tr>
+                    <td><strong>Time at 4.15V (s)</strong></td>
+                    <td class="value-cell">~21%</td>
+                    <td>Indicateur de dégradation (voltage max en charge)</td>
+                </tr>
+                <tr>
+                    <td><strong>Time constant current (s)</strong></td>
+                    <td class="value-cell">~19%</td>
+                    <td>Phase CC diminue avec le vieillissement</td>
+                </tr>
+                <tr>
+                    <td><strong>Decrement 3.6-3.4V (s)</strong></td>
+                    <td class="value-cell">~11%</td>
+                    <td>Vitesse de décharge en fin de cycle</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="image-container">
+        <img src="im3.png" alt="Matrices de Confusion">
+        <p class="image-caption">Figure 4: Matrices de confusion comparées - Random Forest montre la meilleure diagonalité (moins d'erreurs)</p>
+    </div>
+
+    <div class="image-container">
+        <img src="roc.png" alt="Courbes ROC">
+        <p class="image-caption">Figure 5: Courbes ROC multi-classes - Random Forest (AUC=0.99) > SVM (AUC=0.98) > Decision Tree (AUC=0.95)</p>
+    </div>
+
+    <h3>📈 Analyse des Courbes ROC</h3>
+    <div class="key-findings">
+        <h4>🎯 Capacité de Discrimination</h4>
+        <ul>
+            <li><strong>AUC ≥ 0.95</strong> pour tous les modèles → <span class="highlight">Excellente discrimination</span></li>
+            <li><strong>Random Forest (0.988)</strong> → Presque parfait</li>
+            <li><strong>Taux de vrais positifs > 90%</strong> avec faible taux de faux positifs</li>
+            <li>Modèles <strong>fiables pour la détection précoce</strong> des états critiques</li>
+        </ul>
+    </div>
+
+    <div class="conclusion-box">
+        <h4>✅ Conclusion du Diagnostic</h4>
+        <p>Le modèle <strong>Random Forest</strong> est retenu avec <strong>89.3% d'accuracy</strong> et un <strong>AUC de 0.988</strong>. Ses avantages:</p>
+        <ul style="margin-top: 15px; line-height: 2;">
+            <li>✅ <strong>Capte les relations non-linéaires</strong> entre les paramètres de charge/décharge</li>
+            <li>✅ <strong>Robuste au surapprentissage</strong> grâce aux 100 arbres</li>
+            <li>✅ <strong>Interprétable</strong> via l'importance des features</li>
+            <li>✅ <strong>Rapide en inférence</strong> → adapté au temps réel</li>
+            <li>✅ <strong>Excellent pour classes déséquilibrées</strong></li>
+        </ul>
+        <p style="margin-top: 15px; font-weight: 600; color: #2980b9;">
+            🎯 Ce modèle permet une surveillance fiable avec moins de 11% d'erreurs de classification.
+        </p>
+    </div>
+</section>
 
         <!-- PROGNOSTIC -->
         <section>
@@ -239,72 +639,74 @@
             </div>
 
             <h3>📊 Tableau Comparatif des Performances</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Modèle</th>
-                        <th>R²</th>
-                        <th>RMSE (h)</th>
-                        <th>MAE (h)</th>
-                        <th>MAPE (%)</th>
-                        <th>RA</th>
-                        <th>α-λ 20% (%)</th>
-                        <th>Remarque principale</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="highlight-row">
-                        <td><strong>LSTM</strong> <span class="badge badge-best">MEILLEUR</span></td>
-                        <td class="best-value">0.9753</td>
-                        <td class="best-value">0.0138</td>
-                        <td class="best-value">0.0103</td>
-                        <td>37.0</td>
-                        <td>0.63</td>
-                        <td>66.0</td>
-                        <td>Meilleur suivi dynamique + fin de vie</td>
-                    </tr>
-                    <tr>
-                        <td>Random Forest</td>
-                        <td>0.9761</td>
-                        <td>0.0137</td>
-                        <td>0.0092</td>
-                        <td>37.8</td>
-                        <td>0.62</td>
-                        <td>68.1</td>
-                        <td>Très stable – rapide – bon compromis</td>
-                    </tr>
-                    <tr>
-                        <td>XGBoost</td>
-                        <td>0.9743</td>
-                        <td>0.0142</td>
-                        <td>0.0101</td>
-                        <td>41.0</td>
-                        <td>0.59</td>
-                        <td>64.8</td>
-                        <td>Excellente feature importance</td>
-                    </tr>
-                    <tr>
-                        <td>GRU</td>
-                        <td>0.9607</td>
-                        <td>0.0174</td>
-                        <td>0.0131</td>
-                        <td>–</td>
-                        <td>–</td>
-                        <td>–</td>
-                        <td>Moins performant que LSTM</td>
-                    </tr>
-                    <tr>
-                        <td>CNN 1D</td>
-                        <td>0.9469</td>
-                        <td>0.0202</td>
-                        <td>0.0153</td>
-                        <td>–</td>
-                        <td>–</td>
-                        <td>–</td>
-                        <td>Moins adapté aux longues séquences</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>🤖 Modèle</th>
+                            <th>R²</th>
+                            <th>RMSE (h)</th>
+                            <th>MAE (h)</th>
+                            <th>MAPE (%)</th>
+                            <th>RA</th>
+                            <th>α-λ 20%</th>
+                            <th>📝 Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><span class="icon-cell">🧠</span><strong>LSTM</strong> <span class="badge badge-best">MEILLEUR</span></td>
+                            <td class="value-cell best">0.9753<div class="metric-bar"><div class="metric-bar-fill best" style="width: 97.53%"></div></div></td>
+                            <td class="value-cell best">0.0138</td>
+                            <td class="value-cell best">0.0103</td>
+                            <td class="value-cell">37.0</td>
+                            <td class="value-cell">0.63</td>
+                            <td class="value-cell">66.0%</td>
+                            <td>Meilleur suivi dynamique + fin de vie</td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon-cell">🌲</span>Random Forest</td>
+                            <td class="value-cell best">0.9761<div class="metric-bar"><div class="metric-bar-fill best" style="width: 97.61%"></div></div></td>
+                            <td class="value-cell best">0.0137</td>
+                            <td class="value-cell best">0.0092</td>
+                            <td class="value-cell">37.8</td>
+                            <td class="value-cell">0.62</td>
+                            <td class="value-cell">68.1%</td>
+                            <td>Très stable – rapide – bon compromis</td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon-cell">📊</span>XGBoost</td>
+                            <td class="value-cell">0.9743<div class="metric-bar"><div class="metric-bar-fill good" style="width: 97.43%"></div></div></td>
+                            <td class="value-cell">0.0142</td>
+                            <td class="value-cell">0.0101</td>
+                            <td class="value-cell">41.0</td>
+                            <td class="value-cell">0.59</td>
+                            <td class="value-cell">64.8%</td>
+                            <td>Excellente feature importance</td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon-cell">🔄</span>GRU</td>
+                            <td class="value-cell">0.9607<div class="metric-bar"><div class="metric-bar-fill" style="width: 96.07%"></div></div></td>
+                            <td class="value-cell">0.0174</td>
+                            <td class="value-cell">0.0131</td>
+                            <td class="value-cell">–</td>
+                            <td class="value-cell">–</td>
+                            <td class="value-cell">–</td>
+                            <td>Moins performant que LSTM</td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon-cell">🔍</span>CNN 1D</td>
+                            <td class="value-cell">0.9469<div class="metric-bar"><div class="metric-bar-fill" style="width: 94.69%"></div></div></td>
+                            <td class="value-cell">0.0202</td>
+                            <td class="value-cell">0.0153</td>
+                            <td class="value-cell">–</td>
+                            <td class="value-cell">–</td>
+                            <td class="value-cell">–</td>
+                            <td>Moins adapté aux longues séquences</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="key-findings">
                 <h4>🏆 Résultats Clés - Modèle LSTM</h4>
@@ -339,57 +741,63 @@
                 </ul>
             </div>
 
-            <h3>⏱️ RUL Restant Prédit au Dernier Cycle</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Batterie</th>
-                        <th>Cycles Test</th>
-                        <th>RUL Réel (h)</th>
-                        <th>RUL Prédit (h)</th>
-                        <th>Erreur (h)</th>
-                        <th>Erreur (min)</th>
-                        <th>R²</th>
-                        <th>RMSE (h)</th>
-                        <th>MAE (h)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Batterie 4</td>
-                        <td>1061</td>
-                        <td>0.000278</td>
-                        <td>0.018974</td>
-                        <td>+0.018696</td>
-                        <td>1.12</td>
-                        <td>0.9906</td>
-                        <td>0.008515</td>
-                        <td>0.007400</td>
-                    </tr>
-                    <tr class="highlight-row">
-                        <td><strong>Batterie 7</strong> <span class="badge badge-best">MEILLEUR</span></td>
-                        <td>1061</td>
-                        <td>0.000278</td>
-                        <td>0.000786</td>
-                        <td>+0.000509</td>
-                        <td class="best-value">0.03</td>
-                        <td>0.9833</td>
-                        <td class="best-value">0.011328</td>
-                        <td class="best-value">0.007933</td>
-                    </tr>
-                    <tr>
-                        <td>Batterie 11</td>
-                        <td>1057</td>
-                        <td>0.000278</td>
-                        <td>0.028055</td>
-                        <td>+0.027777</td>
-                        <td>1.67</td>
-                        <td>0.9693</td>
-                        <td>0.015387</td>
-                        <td>0.012613</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3>⏱️ RUL Restant Prédit au Dernier Cycle - Analyse Détaillée</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>🔋 Batterie</th>
+                            <th>📊 Cycles</th>
+                            <th>RUL Réel (h)</th>
+                            <th>RUL Prédit (h)</th>
+                            <th>Erreur (h)</th>
+                            <th>Erreur (min)</th>
+                            <th>R²</th>
+                            <th>RMSE (h)</th>
+                            <th>MAE (h)</th>
+                            <th>🏆 Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Batterie 4</strong></td>
+                            <td>1061</td>
+                            <td>0.000278</td>
+                            <td>0.018974</td>
+                            <td class="value-cell">+0.018696</td>
+                            <td class="value-cell">1.12</td>
+                            <td class="value-cell best">0.9906</td>
+                            <td class="value-cell">0.008515</td>
+                            <td class="value-cell">0.007400</td>
+                            <td><span class="badge badge-good">Très bon</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Batterie 7</strong> <span class="badge badge-best">TOP</span></td>
+                            <td>1061</td>
+                            <td>0.000278</td>
+                            <td>0.000786</td>
+                            <td class="value-cell best">+0.000509</td>
+                            <td class="value-cell best">0.03</td>
+                            <td class="value-cell">0.9833</td>
+                            <td class="value-cell best">0.011328</td>
+                            <td class="value-cell best">0.007933</td>
+                            <td><span class="badge badge-best">Exceptionnel</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Batterie 11</strong></td>
+                            <td>1057</td>
+                            <td>0.000278</td>
+                            <td>0.028055</td>
+                            <td class="value-cell">+0.027777</td>
+                            <td class="value-cell">1.67</td>
+                            <td class="value-cell">0.9693</td>
+                            <td class="value-cell">0.015387</td>
+                            <td class="value-cell">0.012613</td>
+                            <td><span class="badge badge-warning">Acceptable</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- SYNTHÈSE -->
@@ -423,7 +831,7 @@
                     <li>Utiliser le <strong>LSTM</strong> pour la prédiction RUL en temps réel</li>
                     <li>Déployer le <strong>Random Forest</strong> pour le diagnostic des états de santé</li>
                     <li>Planifier la maintenance préventive vers ~3100 heures</li>
-                    <li>Implémenter un système d’alerte hiérarchique</li>
+                    <li>Implémenter un système d'alerte hiérarchique</li>
                     <li>Surveiller particulièrement après 4000 heures</li>
                 </ol>
             </div>
