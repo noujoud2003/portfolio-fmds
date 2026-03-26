@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Noujoud – Data Scientist & Maintenance Prédictive</title>
+    <title>Contact | Équipe – Data Science & Maintenance Prédictive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         @keyframes gradientAnimation {
@@ -14,6 +14,10 @@
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -64,140 +68,220 @@
             box-shadow: 0 6px 18px rgba(52, 152, 219, 0.6);
         }
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 140px auto 80px;
             background: rgba(255, 255, 255, 0.96);
             padding: 50px 40px;
             border-radius: 16px;
             box-shadow: 0 15px 50px rgba(0,0,0,0.25);
             backdrop-filter: blur(10px);
+        }
+        
+        /* En-tête équipe */
+        .team-header {
             text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out;
         }
-        .profile {
-            margin-bottom: 40px;
-            animation: fadeInUp 1.2s ease-out;
-        }
-        .profile img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid #3498db;
-            box-shadow: 0 10px 30px rgba(52,152,219,0.4);
-            transition: all 0.5s ease;
-        }
-        .profile img:hover {
-            transform: scale(1.08) rotate(3deg);
-            box-shadow: 0 20px 50px rgba(52,152,219,0.6);
-        }
-        .profile h1 {
-            margin: 20px 0 8px;
+        .team-header h1 {
             color: #2c3e50;
-            font-size: 2.2em;
+            font-size: 2.4em;
+            margin-bottom: 10px;
         }
-        .profile p {
+        .team-header p {
             color: #555;
-            font-size: 1.15em;
-            margin: 0;
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
         }
-        .social-links {
-            margin: 30px 0;
+        
+        /* Grille des membres */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
         }
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            background: #0e76a8;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.05em;
-            margin: 12px;
+        
+        /* Carte membre */
+        .member-card {
+            background: white;
+            border-radius: 16px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
             transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(14,118,168,0.3);
+            animation: fadeInUp 0.8s ease-out;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
-        .social-btn:hover {
-            background: #0b5c85;
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(14,118,168,0.5);
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         }
-        .social-btn i {
-            margin-right: 10px;
-            font-size: 1.3em;
+        .member-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            border-color: #3498db;
         }
-        .cv-btn {
-            display: inline-flex;
-            align-items: center;
-            background: #27ae60;
-            color: white;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin: 20px 0;
-            transition: all 0.4s ease;
-            box-shadow: 0 6px 20px rgba(39,174,96,0.4);
+        .member-card.featured {
+            border-color: #27ae60;
         }
-        .cv-btn:hover {
-            background: #219653;
-            transform: translateY(-6px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(39,174,96,0.6);
+        .member-card.featured::before {
+            background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);
         }
-        .cv-btn i {
-            margin-right: 12px;
-            font-size: 1.4em;
-        }
-        .contact-info {
-            margin: 50px 0 30px;
-            font-size: 1.1em;
-            color: #34495e;
-        }
-        .contact-info p {
-            margin: 12px 0;
-        }
-        .contact-info i {
-            color: #3498db;
-            margin-right: 12px;
-            font-size: 1.3em;
-        }
-
-        /* Style pour les membres de l'équipe */
-        .team-section h2 {
-            margin: 70px 0 40px;
-            color: #2c3e50;
-            font-size: 1.9em;
-        }
-        .team-member {
-            margin-bottom: 60px;
-        }
-        .team-member img {
-            width: 150px;
-            height: 150px;
+        
+        .member-card img {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid #3498db;
-            box-shadow: 0 10px 25px rgba(52,152,219,0.35);
+            box-shadow: 0 8px 25px rgba(52,152,219,0.35);
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
         }
-        /* Contact plus compact pour l'équipe */
-        .team-member .contact-info {
-            margin: 15px 0 10px;
-            font-size: 1em;
+        .member-card:hover img {
+            transform: scale(1.08);
+            box-shadow: 0 12px 35px rgba(52,152,219,0.5);
         }
-
+        
+        .member-card h2 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin: 10px 0 5px;
+        }
+        .member-card .role {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+        .member-card .description {
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* Boutons sociaux */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0e76a8 0%, #0077b5 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(14,118,168,0.3);
+        }
+        .social-btn:hover {
+            background: linear-gradient(135deg, #0b5c85 0%, #005885 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(14,118,168,0.5);
+        }
+        .social-btn i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .cv-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(39,174,96,0.3);
+            margin-top: 5px;
+        }
+        .cv-btn:hover {
+            background: linear-gradient(135deg, #219653 0%, #27ae60 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(39,174,96,0.5);
+        }
+        .cv-btn i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        /* Contact info compact */
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .contact-info p {
+            margin: 8px 0;
+            color: #555;
+            font-size: 0.95em;
+        }
+        .contact-info i {
+            color: #3498db;
+            margin-right: 8px;
+            width: 20px;
+        }
+        
+        /* Badge rôle */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .badge-lead {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+        }
+        .badge-member {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+        
+        /* Footer */
         .footer {
             text-align: center;
-            margin-top: 80px;
+            margin-top: 60px;
             padding: 30px;
             color: #bdc3c7;
             font-size: 0.95em;
             border-top: 1px solid rgba(255,255,255,0.2);
         }
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
         @media (max-width: 768px) {
             .container { padding: 40px 25px; margin: 120px auto 60px; }
-            .profile img { width: 150px; height: 150px; }
-            .team-member img { width: 130px; height: 130px; }
+            .team-grid { grid-template-columns: 1fr; }
+            .member-card img { width: 120px; height: 120px; }
         }
     </style>
 </head>
@@ -218,56 +302,95 @@
     </nav>
 
     <div class="container">
-        <div class="profile">
-            <img src="noujoudimage.jpg" alt="Noujoud Ouni">
-            <h1>Noujoud Ouni</h1>
-            <p>Étudiante en master Industrie 4.0, diplômée en informatique industrielle et automatisme</p>
+        <!-- En-tête équipe unifiée -->
+        <div class="team-header">
+            <h1>🤝 Notre Équipe</h1>
+            <p>Étudiants en master Industrie 4.0, passionnés par la Data Science et la Maintenance Prédictive. Nous collaborons sur des projets innovants pour anticiper les défaillances et optimiser les systèmes industriels.</p>
         </div>
 
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/noujoud-ouni-167060318/" target="_blank" class="social-btn">
-                <i class="fab fa-linkedin-in"></i> LinkedIn
-            </a>
-        </div>
-
-        <a href="Ouni-Noujoud_cv.pdf" class="cv-btn" download="Ouni-Noujoud_cv.pdf">
-            <i class="fas fa-file-download"></i> Télécharger mon CV (PDF)
-        </a>
-
-        <div class="contact-info">
-            <p><i class="fas fa-envelope"></i> ouninoujoud681@gmail.com</p>
-            <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
-        </div>
-
-        <!-- ====================== SECTION ÉQUIPE ====================== -->
-        <div class="team-section">
-            <h2>Équipe du Projet</h2>
+        <!-- Grille des membres -->
+        <div class="team-grid">
             
-            <div class="team-member profile">
+            <!-- Noujoud Ouni -->
+            <div class="member-card featured">
+                <img src="noujoudimage.jpg" alt="Noujoud Ouni">
+                <h2>Noujoud Ouni</h2>
+                <p class="role">Lead Data Scientist</p>
+                <span class="badge badge-lead">🎓 Master Industrie 4.0</span>
+                <p class="description">Diplômée en informatique industrielle et automatisme. Spécialisée en apprentissage profond, traitement du signal et maintenance prédictive.</p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/noujoud-ouni-167060318/" target="_blank" class="social-btn">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                    <a href="Ouni-Noujoud_cv.pdf" class="cv-btn" download>
+                        <i class="fas fa-file-download"></i> Télécharger mon CV
+                    </a>
+                </div>
+                
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> ouninoujoud681@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
+                </div>
+            </div>
+
+            <!-- Raoua Meliti -->
+            <div class="member-card">
                 <img src="rr.jpg" alt="Raoua Meliti">
-                <h1>Raoua Meliti</h1>
-                <p>Étudiante en master Industrie 4.0</p>
+                <h2>Raoua Meliti</h2>
+            
+                <span class="badge badge-member">🎓 Master Industrie 4.0</span>
+                <p class="description">Passionnée par l'analyse de données, la fiabilité des systèmes et l'optimisation de la maintenance industrielle.</p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/melliti-raoua-518268255/" target="_blank" class="social-btn">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                    <a href="raouaa.pdf" class="cv-btn" download>
+                        <i class="fas fa-file-download"></i> Télécharger mon CV
+                    </a>
+                </div>
+                
                 <div class="contact-info">
                     <p><i class="fas fa-envelope"></i> raouaa.melliti54272@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
                 </div>
             </div>
 
-            <div class="team-member profile">
+            <!-- Sami Hasni -->
+            <div class="member-card">
                 <img src="ss.jpg" alt="Sami Hasni">
-                <h1>Sami Hasni</h1>
-                <p>Étudiant en master Industrie 4.0</p>
+                <h2>Sami Hasni</h2>
+              
+                <span class="badge badge-member">🎓 Master Industrie 4.0</span>
+                <p class="description">Intéressé par l'IoT, les systèmes embarqués et l'application de l'IA pour la surveillance industrielle.</p>
+                
+                <div class="social-links">
+
+                </div>
+                
                 <div class="contact-info">
                     <p><i class="fas fa-envelope"></i> samiezin99@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
                 </div>
             </div>
+
+        </div>
+
+        <!-- Message d'équipe -->
+        <div style="text-align: center; margin-top: 40px; padding: 25px; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 12px; border: 2px solid #667eea;">
+            <p style="margin: 0; font-size: 1.1em; color: #2c3e50;">
+                💡 <strong>Un projet ? Une collaboration ?</strong><br>
+                N'hésitez pas à nous contacter via LinkedIn ou par email. Nous sommes ouverts aux opportunités professionnelles et aux projets innovants !
+            </p>
         </div>
     </div>
 
     <div class="footer">
-        © 2026 Noujoud Ouni • Raoua Meliti • Sami Hasni – Tous droits réservés<br>
-        <a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank" style="color:#3498db;">Portfolio GitHub</a>
+        © 2026 Équipe FMDS – Noujoud Ouni • Raoua Meliti • Sami Hasni<br>
+        <a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank">
+            <i class="fab fa-github"></i> Portfolio GitHub
+        </a>
     </div>
 </body>
 </html>
