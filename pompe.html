@@ -423,7 +423,7 @@
 
     <h3>📊 Distribution des États de Santé</h3>
     <div class="image-container">
-        <img src="im1.png" alt="Distribution des États de Santé">
+        <img src="iim1.png" alt="Distribution des États de Santé">
         <p class="image-caption">Figure 2: Distribution des états de santé des batteries - Dataset équilibré avec 4 classes (Excellent: 3838, Moyen: 3772, Critique: 3717, Bon: 3564 cycles). Cette distribution équilibrée permet un apprentissage non biaisé.</p>
     </div>
 
@@ -730,7 +730,7 @@
         </section>
 
         <!-- SYNTHÈSE -->
-      <section>
+   <section>
     <h2>📋 4. Synthèse et Recommandations</h2>
     
     <div class="results-grid">
@@ -738,22 +738,22 @@
             <h4>✅ Points Forts</h4>
             <ul>
                 <li><strong>Pronostic (LSTM):</strong> R² = 97.53%, erreur < 1 minute</li>
-                <li><strong>Diagnostic amélioré:</strong> Accuracy 86.5%, Recall Critique 69.8%</li>
+                <li><strong>Diagnostic avancé:</strong> Random Forest Accuracy 89.3%, AUC moyen 0.988, Recall Critique 69.8%</li>
                 <li><strong>Disponibilité système:</strong> 99.95% (FMDS)</li>
                 <li><strong>MTBF élevé:</strong> 3915 heures (~163 jours)</li>
                 <li><strong>Features temporelles:</strong> Rolling mean/std améliorent la détection</li>
-                <li><strong>AUC exceptionnel:</strong> 0.971 en moyenne sur toutes les classes</li>
+                <li><strong>Courbes ROC et importance features:</strong> indicateurs fiables de performance</li>
             </ul>
         </div>
         <div class="result-card">
             <h4>⚠️ Limites Actuelles</h4>
             <ul>
-                <li>MAPE élevé sur faibles RUL (normal, dû aux valeurs proches de 0)</li>
-                <li>Recall "Dégradé" à optimiser (38.8%) → détection précoce à améliorer</li>
-                <li>30% des états critiques encore manqués → risque résiduel</li>
+                <li>Recall "Dégradé" encore faible (38.8%) → détection précoce à améliorer</li>
+                <li>30% des états critiques manqués → risque résiduel</li>
                 <li>Dataset limité (14 batteries) → généralisation à valider sur plus de données</li>
                 <li>MTTR estimé (2h) → à mesurer en conditions réelles</li>
-                <li>Pas de capteurs de température/impédance → diagnostic partiel</li>
+                <li>Pas de capteurs additionnels (température/impédance) → diagnostic partiel</li>
+                <li>Modèles SVM et Decision Tree moins performants → à combiner en ensemble</li>
             </ul>
         </div>
     </div>
@@ -762,7 +762,7 @@
         <h4>🎯 Recommandations pour la Maintenance Prédictive</h4>
         <ol>
             <li><strong>Utiliser LSTM comme modèle principal</strong> pour la prédiction RUL en temps réel (précision < 1 min)</li>
-            <li><strong>Déployer Random Forest avec SMOTE + Class Weights</strong> pour le diagnostic des états critiques (Recall 69.8%)</li>
+            <li><strong>Déployer Random Forest avec Class Weights</strong> pour le diagnostic des états critiques (Recall 69.8%)</li>
             <li><strong>Planifier la maintenance préventive</strong> à ~80% du MTBF (~3100 heures) pour anticiper l'usure</li>
             <li><strong>Implémenter un système d'alerte hiérarchique:</strong> 
                 <ul style="margin-top: 8px; padding-left: 20px;">
@@ -780,35 +780,35 @@
             <li><strong>Améliorer le Recall "Dégradé" (38.8% → 60%+):</strong>
                 <ul style="margin-top: 5px; padding-left: 20px;">
                     <li>Ajouter des features spécifiques à la dégradation précoce</li>
-                    <li>Utiliser des algorithmes de détection d'anomalies (Isolation Forest, Autoencoders)</li>
+                    <li>Tester des modèles d’anomalies (Isolation Forest, Autoencoders)</li>
                     <li>Créer une classe intermédiaire "Dégradé Précoce"</li>
                 </ul>
             </li>
             <li><strong>Réduire les 30% d'états critiques manqués:</strong>
                 <ul style="margin-top: 5px; padding-left: 20px;">
-                    <li>Ajouter des capteurs de température et d'impédance interne</li>
-                    <li>Implémenter un modèle d'ensemble (voting classifier)</li>
-                    <li>Utiliser l'apprentissage actif pour identifier les cas ambigus</li>
+                    <li>Ajouter capteurs de température et impédance interne</li>
+                    <li>Implémenter un modèle d'ensemble (voting classifier Random Forest + SVM + Decision Tree)</li>
+                    <li>Apprentissage actif pour identifier les cas ambigus</li>
                 </ul>
             </li>
             <li><strong>Enrichir le dataset:</strong>
                 <ul style="margin-top: 5px; padding-left: 20px;">
-                    <li>Collecter des données sur 50+ batteries (au lieu de 14)</li>
+                    <li>Collecter des données sur 50+ batteries</li>
                     <li>Inclure différentes conditions d'usage (température, profondeur de décharge)</li>
-                    <li>Ajouter des batteries de différents fabricants pour la robustesse</li>
+                    <li>Ajouter des batteries de différents fabricants pour robustesse</li>
                 </ul>
             </li>
             <li><strong>Optimiser le modèle en production:</strong>
                 <ul style="margin-top: 5px; padding-left: 20px;">
-                    <li>Implémenter l'apprentissage continu (online learning)</li>
-                    <li>Mettre en place un système de ré-entraînement automatique</li>
-                    <li>Créer un dashboard de monitoring des performances</li>
+                    <li>Apprentissage continu (online learning)</li>
+                    <li>Ré-entraînement automatique selon nouvelles données</li>
+                    <li>Dashboard de monitoring des performances (accuracy, recall, AUC)</li>
                 </ul>
             </li>
             <li><strong>Valider en conditions réelles:</strong>
                 <ul style="margin-top: 5px; padding-left: 20px;">
                     <li>Tester sur un parc de batteries en exploitation</li>
-                    <li>Mesurer le MTTR réel et l'impact sur la disponibilité</li>
+                    <li>Mesurer le MTTR réel et l’impact sur la disponibilité</li>
                     <li>Évaluer le ROI de la maintenance prédictive</li>
                 </ul>
             </li>
@@ -818,7 +818,7 @@
     <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-top: 40px;">
         <h3 style="color: white; margin-top: 0;">🏆 Conclusion Générale</h3>
         <p style="color: #ecf0f1; line-height: 1.8;">
-            Cette étude démontre la faisabilité d'un système complet de maintenance prédictive pour batteries lithium-ion combinant <strong>diagnostic</strong> (classification des états de santé) et <strong>pronostic</strong> (prédiction du RUL). Le modèle LSTM atteint des performances exceptionnelles avec un R² de 97.53% et une erreur de prédiction inférieure à 1 minute. Le diagnostic, optimisé par SMOTE et class weights, détecte désormais <strong>69.8% des états critiques</strong> avec une accuracy globale de 86.5%. L'approche hybride proposée permet d'anticiper les pannes, d'optimiser la maintenance et de prolonger la durée de vie des batteries. Les perspectives d'amélioration identifiées (enrichissement du dataset, capteurs additionnels, apprentissage continu) ouvrent la voie vers un déploiement industriel robuste et scalable.
+            Cette étude démontre la faisabilité d'un système complet de maintenance prédictive pour batteries lithium-ion combinant <strong>diagnostic</strong> (classification avancée des états de santé) et <strong>pronostic</strong> (prédiction du RUL). Le modèle LSTM atteint des performances exceptionnelles avec un R² de 97.53% et une erreur de prédiction inférieure à 1 minute. Le diagnostic, optimisé avec Random Forest et class weights, détecte désormais <strong>69.8% des états critiques</strong> avec une accuracy globale de 89.3% et un AUC moyen de 0.988. L'approche hybride permet d'anticiper les pannes, d'optimiser la maintenance et de prolonger la durée de vie des batteries. Les perspectives d'amélioration identifiées (enrichissement du dataset, capteurs additionnels, apprentissage continu, modèles d’ensemble) ouvrent la voie vers un déploiement industriel robuste et scalable.
         </p>
     </div>
 </section>
