@@ -1,75 +1,448 @@
-<!-- SYNTHÈSE -->
-<section>
-    <h2>📋 4. Synthèse et Recommandations</h2>
-   
-    <div class="results-grid">
-        <div class="result-card">
-            <h4>✅ Points Forts</h4>
-            <ul>
-                <li><strong>Pronostic (LSTM) :</strong> R² = 97.53% avec une erreur moyenne inférieure à 1 minute</li>
-                <li><strong>Diagnostic :</strong> Random Forest offrant une accuracy ~89% et un AUC moyen de 0.99</li>
-                <li><strong>Analyse FMDS :</strong> Disponibilité très élevée (99.95%) et MTBF de 3915 heures (~163 jours)</li>
-                <li><strong>Features pertinentes :</strong> Discharge Time, Time at 4.15V et Time constant current dominent largement</li>
-                <li><strong>Bonne capacité de discrimination :</strong> AUC ≥ 0.95 sur les courbes ROC pour tous les modèles</li>
-                <li><strong>Approche complète :</strong> Bonne combinaison de FMDS, Machine Learning et Deep Learning</li>
-            </ul>
-        </div>
-        <div class="result-card">
-            <h4>⚠️ Limites Actuelles</h4>
-            <ul>
-                <li>Dataset limité à 14 batteries uniquement</li>
-                <li>Conditions strictement contrôlées en laboratoire (25°C, profils de charge/décharge fixes)</li>
-                <li>Manque de variabilité réelle (température, C-rates, vibrations, etc.)</li>
-                <li>MTTR estimé à 2 heures (hypothèse non mesurée)</li>
-                <li>Absence de capteurs additionnels (température, impédance)</li>
-            </ul>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction RUL Batteries Li-ion | Noujoud Ouni</title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientAnimation 18s ease infinite;
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .nav-btn {
+            background: rgba(52, 152, 219, 0.25);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
+            padding: 10px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        .active { background: #3498db !important; }
 
-    <div class="key-findings">
-        <h4>🎯 Recommandations pour la Maintenance Prédictive</h4>
-        <ol>
-            <li><strong>Utiliser le LSTM</strong> comme modèle principal pour prédire le RUL en temps réel</li>
-            <li><strong>Déployer le Random Forest</strong> pour le diagnostic des états de santé</li>
-            <li><strong>Planifier la maintenance préventive</strong> autour de 80% du MTBF (~3100 heures)</li>
-            <li><strong>Implémenter un système d’alerte hiérarchique :</strong>
-                <ul style="margin-top: 8px; padding-left: 20px;">
-                    <li>🟡 Alerte "Moyen" → Surveillance renforcée</li>
-                    <li>🔴 Alerte "Critique" → Intervention immédiate</li>
+        .container {
+            max-width: 1200px;
+            margin: 140px auto 80px;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+        }
+        h1 { color: #3498db; text-align: center; margin-bottom: 20px; font-size: 2.8em; }
+        .subtitle { text-align: center; color: #7f8c8d; font-size: 1.2em; margin-bottom: 40px; font-style: italic; }
+        h2 { color: #2980b9; margin-top: 50px; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h3 { color: #16a085; margin-top: 35px; }
+
+        .intro-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        .key-findings {
+            background: #e8f6f3;
+            border-left: 5px solid #16a085;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .result-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .metric-label { font-weight: 600; color: #7f8c8d; }
+        .metric-value { color: #2980b9; font-weight: 700; }
+        .best-value { color: #27ae60; font-weight: 700; }
+
+        img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin: 20px 0;
+        }
+        .image-caption {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 8px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #bdc3c7;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="pompe.html" class="nav-btn active">Étude de cas 1 - Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>🔋 Prédiction du Remaining Useful Life (RUL)</h1>
+        <p class="subtitle">Batteries Lithium-ion 18650 | Mini-projet Maintenance Intelligente</p>
+
+        <!-- INTRODUCTION -->
+        <section>
+            <div class="intro-box">
+                <h3>📌 Introduction – Pourquoi prédire le RUL ?</h3>
+                <p>Les batteries lithium-ion (NMC-LCO 18650 – 2.8 Ah) sont essentielles dans les véhicules électriques, le stockage d'énergie renouvelable et les systèmes critiques. Prédire leur durée de vie restante (RUL) permet d'anticiper les pannes, d'optimiser la maintenance prédictive et de prolonger leur usage en seconde vie.</p>
+                <div style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px;">
+                    <p><strong>📂 Dataset :</strong> Hawaii Natural Energy Institute – 14 cellules – plus de 1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.</p>
+                    <a href="Battery_RUL.csv" class="download-btn" download>📥 Télécharger le Dataset</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FMDS -->
+        <section>
+            <h2>📊 1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
+            <div class="key-findings">
+                <h4>🎯 Résultats Clés FMDS</h4>
+                <ul>
+                    <li><strong>MTBF :</strong> 3915.39 heures (~163 jours)</li>
+                    <li><strong>MTTR :</strong> 2.0 heures (hypothèse)</li>
+                    <li><strong>Disponibilité :</strong> 99.95%</li>
+                    <li><strong>Meilleur modèle :</strong> Weibull (β=32.53, η=3986.47h)</li>
                 </ul>
-            </li>
-            <li><strong>Surveiller particulièrement</strong> les batteries après 4000 heures (pic de risque selon Weibull)</li>
-        </ol>
-    </div>
+            </div>
+            <div class="image-container">
+                <img src="FMDS_reliability_analysis.png" alt="Analyse FMDS Complète">
+                <p class="image-caption">Figure 1: Analyse FMDS complète - Distribution des temps de vie, fonctions de fiabilité, hazard rate, Kaplan-Meier, QQ-Plot Weibull et variabilité inter-batteries</p>
+            </div>
+        </section>
 
-    <div class="key-findings" style="background: #fff3cd; border-left-color: #ffc107;">
-        <h4 style="color: #856404;">🚀 Perspectives d'Amélioration</h4>
-        <ol style="margin: 15px 0 0; padding-left: 25px; line-height: 1.8;">
-            <li>Enrichir le dataset (50+ batteries avec conditions réelles variées)</li>
-            <li>Ajouter des capteurs (température et impédance interne)</li>
-            <li>Tester des modèles d’ensemble et l’apprentissage continu</li>
-            <li>Développer un dashboard de suivi des performances</li>
-            <li>Valider l’approche sur un parc de batteries en exploitation et calculer le ROI</li>
-        </ol>
-    </div>
+        <!-- DIAGNOSTIC -->
+        <section>
+            <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
+            <div class="key-findings">
+                <h4>🎯 Méthodologie de Classification</h4>
+                <p>Classification des batteries en 4 états de santé basés sur le RUL restant. Les classes ont été définies de manière équilibrée à l'aide de quartiles :</p>
+                <ul>
+                    <li><strong>Excellent</strong></li>
+                    <li><strong>Bon</strong></li>
+                    <li><strong>Moyen</strong></li>
+                    <li><strong>Critique</strong></li>
+                </ul>
+            </div>
+            <div class="image-container">
+                <img src="iim1.png" alt="Distribution des États de Santé">
+                <p class="image-caption">Figure 2: Distribution des états de santé des batteries. Les 4 classes sont représentées de manière équilibrée grâce à la méthode par quartiles.</p>
+            </div>
+            <div class="image-container">
+                <img src="im2.png" alt="Feature Importance">
+                <p class="image-caption">Figure 3: Importance des features selon Random Forest. Le Discharge Time domine largement, suivi du Time at 4.15V et Time constant current.</p>
+            </div>
+            <div class="image-container">
+                <img src="im3.png" alt="Matrices de Confusion">
+                <p class="image-caption">Figure 4: Comparaison des matrices de confusion. Random Forest montre la meilleure performance globale.</p>
+            </div>
+            <div class="image-container">
+                <img src="roc.png" alt="Courbes ROC">
+                <p class="image-caption">Figure 5: Courbes ROC multi-classes. Random Forest domine avec AUC = 0.99.</p>
+            </div>
 
-    <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-top: 40px;">
-        <h3 style="color: white; margin-top: 0;">🏆 Conclusion Générale</h3>
-        <p style="color: #ecf0f1; line-height: 1.8;">
-            Ce mini-projet en Maintenance Intelligente a permis d’explorer une approche hybride combinant analyse FMDS, diagnostic par Machine Learning (Random Forest) et pronostic par Deep Learning (LSTM).
-        </p>
-        <p style="color: #ecf0f1; line-height: 1.8; margin-top: 15px;">
-            Les résultats obtenus sont encourageants : le LSTM atteint un R² de 97.53% avec une erreur inférieure à 1 minute, et le Random Forest offre une bonne classification des états de santé avec un AUC de 0.99.
-        </p>
-        <p style="color: #ecf0f1; line-height: 1.8; margin-top: 15px;">
-            Cependant, avec seulement 14 batteries et des conditions de laboratoire contrôlées, ces performances restent à valider sur un dataset plus large et en environnement réel.
-        </p>
-        <p style="color: #ecf0f1; line-height: 1.8; margin-top: 15px;">
-            Ce travail met en lumière le fort potentiel des techniques d’intelligence artificielle pour moderniser la maintenance des batteries lithium-ion.
-        </p>
-    </div>
-</section>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>🏆 Random Forest (Meilleur Modèle)</h4>
+                    <div class="metric"><span class="metric-label">Accuracy</span><span class="metric-value best-value">~89%</span></div>
+                    <div class="metric"><span class="metric-label">AUC moyen</span><span class="metric-value best-value">0.99</span></div>
+                </div>
+                <div class="result-card">
+                    <h4>⚡ SVM</h4>
+                    <div class="metric"><span class="metric-label">Accuracy</span><span class="metric-value">~84%</span></div>
+                    <div class="metric"><span class="metric-label">AUC</span><span class="metric-value">0.98</span></div>
+                </div>
+                <div class="result-card">
+                    <h4>🌳 Decision Tree</h4>
+                    <div class="metric"><span class="metric-label">Accuracy</span><span class="metric-value">~84%</span></div>
+                    <div class="metric"><span class="metric-label">AUC</span><span class="metric-value">0.95</span></div>
+                </div>
+            </div>
 
-<div class="footer">
-    <p>© 2026 Noujoud Ouni | Prédiction RUL Batteries Li-ion | Mini-projet Maintenance Intelligente</p>
-</div>
+            <div class="conclusion-box">
+                <h4>✅ Conclusion du Diagnostic</h4>
+                <p>Le modèle <strong>Random Forest</strong> est retenu pour le diagnostic grâce à ses performances supérieures (~89% accuracy et AUC 0.99).</p>
+            </div>
+        </section>
+
+        <!-- PROGNOSTIC -->
+        <section>
+            <h2>🔮 3. Pronostic - Prédiction RUL (Deep Learning)</h2>
+           
+            <div class="key-findings">
+                <h4>🎯 Comparaison des Modèles de Prédiction RUL</h4>
+                <p>Évaluation comparative de 5 architectures pour la prédiction du Remaining Useful Life.</p>
+            </div>
+
+            <h3>📊 Tableau Comparatif des Performances</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modèle</th>
+                        <th>R²</th>
+                        <th>RMSE (h)</th>
+                        <th>MAE (h)</th>
+                        <th>MAPE (%)</th>
+                        <th>RA</th>
+                        <th>α-λ 20% (%)</th>
+                        <th>Remarque principale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td><strong>LSTM</strong> <span class="badge badge-best">MEILLEUR</span></td>
+                        <td class="best-value">0.9753</td>
+                        <td class="best-value">0.0138</td>
+                        <td class="best-value">0.0103</td>
+                        <td>37.0</td>
+                        <td>0.63</td>
+                        <td>66.0</td>
+                        <td>Meilleur suivi dynamique + fin de vie</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>0.9761</td>
+                        <td>0.0137</td>
+                        <td>0.0092</td>
+                        <td>37.8</td>
+                        <td>0.62</td>
+                        <td>68.1</td>
+                        <td>Très stable – rapide – bon compromis</td>
+                    </tr>
+                    <tr>
+                        <td>XGBoost</td>
+                        <td>0.9743</td>
+                        <td>0.0142</td>
+                        <td>0.0101</td>
+                        <td>41.0</td>
+                        <td>0.59</td>
+                        <td>64.8</td>
+                        <td>Excellente feature importance</td>
+                    </tr>
+                    <tr>
+                        <td>GRU</td>
+                        <td>0.9607</td>
+                        <td>0.0174</td>
+                        <td>0.0131</td>
+                        <td>–</td>
+                        <td>–</td>
+                        <td>–</td>
+                        <td>Moins performant que LSTM</td>
+                    </tr>
+                    <tr>
+                        <td>CNN 1D</td>
+                        <td>0.9469</td>
+                        <td>0.0202</td>
+                        <td>0.0153</td>
+                        <td>–</td>
+                        <td>–</td>
+                        <td>–</td>
+                        <td>Moins adapté aux longues séquences</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="key-findings">
+                <h4>🏆 Résultats Clés - Modèle LSTM</h4>
+                <ul>
+                    <li><strong>R² = 0.9753</strong> - Explique 97.53% de la variance du RUL</li>
+                    <li><strong>RMSE = 0.0138h (~50 secondes)</strong></li>
+                    <li><strong>MAE = 0.0103h (~37 secondes)</strong></li>
+                </ul>
+            </div>
+
+            <h3>📈 Visualisations des Prédictions LSTM</h3>
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="LSTM_all_visualizations.png" alt="Visualisations LSTM">
+                    <p class="image-caption">Figure 6: Visualisations complètes LSTM</p>
+                </div>
+                <div class="image-container">
+                    <img src="LSTM_rul_by_battery.png" alt="RUL par Batterie">
+                    <p class="image-caption">Figure 7: Courbes RUL réel vs prédit par batterie</p>
+                </div>
+            </div>
+
+            <h3>🔄 Prédiction Cycle par Cycle (Exemple Batterie 4)</h3>
+            <div class="key-findings">
+                <h4>🔍 Suivi de la Dégradation Temporelle</h4>
+                <p>Le modèle LSTM suit l'évolution de la dégradation cycle après cycle.</p>
+                <ul>
+                    <li><strong>Cycle 21:</strong> RUL Réel = 0.3019h | Prédit = 0.3055h</li>
+                    <li><strong>Cycle 50:</strong> RUL Réel = 0.2936h | Prédit = 0.2950h</li>
+                    <li><strong>Cycle 100:</strong> RUL Réel = 0.2794h | Prédit = 0.2805h</li>
+                    <li><strong>Cycle 114:</strong> RUL Réel = 0.2761h | Prédit = 0.2727h</li>
+                </ul>
+            </div>
+
+            <h3>⏱️ RUL Restant Prédit au Dernier Cycle</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Batterie</th>
+                        <th>Cycles Test</th>
+                        <th>RUL Réel (h)</th>
+                        <th>RUL Prédit (h)</th>
+                        <th>Erreur (h)</th>
+                        <th>Erreur (min)</th>
+                        <th>R²</th>
+                        <th>RMSE (h)</th>
+                        <th>MAE (h)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Batterie 4</td>
+                        <td>1061</td>
+                        <td>0.000278</td>
+                        <td>0.018974</td>
+                        <td>+0.018696</td>
+                        <td>1.12</td>
+                        <td>0.9906</td>
+                        <td>0.008515</td>
+                        <td>0.007400</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Batterie 7</strong> <span class="badge badge-best">MEILLEUR</span></td>
+                        <td>1061</td>
+                        <td>0.000278</td>
+                        <td>0.000786</td>
+                        <td>+0.000509</td>
+                        <td class="best-value">0.03</td>
+                        <td>0.9833</td>
+                        <td class="best-value">0.011328</td>
+                        <td class="best-value">0.007933</td>
+                    </tr>
+                    <tr>
+                        <td>Batterie 11</td>
+                        <td>1057</td>
+                        <td>0.000278</td>
+                        <td>0.028055</td>
+                        <td>+0.027777</td>
+                        <td>1.67</td>
+                        <td>0.9693</td>
+                        <td>0.015387</td>
+                        <td>0.012613</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SYNTHÈSE -->
+        <section>
+            <h2>📋 4. Synthèse et Recommandations</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>✅ Points Forts</h4>
+                    <ul>
+                        <li><strong>Pronostic (LSTM):</strong> R² = 97.53%, erreur < 1 minute</li>
+                        <li><strong>Diagnostic :</strong> Random Forest ~89% accuracy, AUC 0.99</li>
+                        <li><strong>FMDS :</strong> Disponibilité 99.95% et MTBF ~3915 heures</li>
+                        <li><strong>Features :</strong> Temps de décharge dominent</li>
+                        <li><strong>ROC :</strong> AUC ≥ 0.95 pour tous les modèles</li>
+                    </ul>
+                </div>
+                <div class="result-card">
+                    <h4>⚠️ Limites Actuelles</h4>
+                    <ul>
+                        <li>Dataset limité à 14 batteries en conditions de laboratoire</li>
+                        <li>Absence de variabilité réelle (température, C-rates...)</li>
+                        <li>MTTR estimé à 2 heures (hypothèse)</li>
+                        <li>Pas de capteurs additionnels</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-findings">
+                <h4>🎯 Recommandations</h4>
+                <ol>
+                    <li>Utiliser le <strong>LSTM</strong> pour la prédiction RUL en temps réel</li>
+                    <li>Déployer le <strong>Random Forest</strong> pour le diagnostic des états de santé</li>
+                    <li>Planifier la maintenance préventive vers ~3100 heures</li>
+                    <li>Implémenter un système d’alerte hiérarchique</li>
+                    <li>Surveiller particulièrement après 4000 heures</li>
+                </ol>
+            </div>
+
+            <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-top: 40px;">
+                <h3 style="color: white; margin-top: 0;">🏆 Conclusion Générale</h3>
+                <p style="color: #ecf0f1; line-height: 1.8;">
+                    Ce mini-projet en Maintenance Intelligente a exploré une approche hybride combinant FMDS, diagnostic par Random Forest et pronostic par LSTM. 
+                    Les résultats sont encourageants avec un R² de 97.53% pour le LSTM et un AUC de 0.99 pour le Random Forest.
+                </p>
+                <p style="color: #ecf0f1; line-height: 1.8; margin-top: 15px;">
+                    Avec seulement 14 batteries en conditions de laboratoire, ces performances doivent être validées sur un dataset plus large et en environnement réel.
+                </p>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p>© 2026 Noujoud Ouni | Prédiction RUL Batteries Li-ion | Mini-projet Maintenance Intelligente</p>
+        </div>
+    </div>
+</body>
+</html>
