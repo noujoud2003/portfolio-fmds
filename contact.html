@@ -11,12 +11,10 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
-            to   { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -27,7 +25,6 @@
             animation: gradientAnimation 18s ease infinite;
             min-height: 100vh;
         }
-
         .navbar {
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
@@ -38,7 +35,6 @@
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -47,7 +43,6 @@
             justify-content: center;
             gap: 14px;
         }
-
         .nav-btn {
             background: rgba(52, 152, 219, 0.25);
             color: #ecf0f1;
@@ -59,18 +54,15 @@
             font-size: 0.97em;
             transition: all 0.3s ease;
         }
-
         .nav-btn:hover {
             background: #3498db;
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(52, 152, 219, 0.45);
         }
-
         .active {
             background: #3498db !important;
             box-shadow: 0 6px 18px rgba(52, 152, 219, 0.6);
         }
-
         .container {
             max-width: 900px;
             margin: 140px auto 80px;
@@ -81,12 +73,10 @@
             backdrop-filter: blur(10px);
             text-align: center;
         }
-
         .profile {
             margin-bottom: 40px;
             animation: fadeInUp 1.2s ease-out;
         }
-
         .profile img {
             width: 180px;
             height: 180px;
@@ -96,28 +86,23 @@
             box-shadow: 0 10px 30px rgba(52,152,219,0.4);
             transition: all 0.5s ease;
         }
-
         .profile img:hover {
             transform: scale(1.08) rotate(3deg);
             box-shadow: 0 20px 50px rgba(52,152,219,0.6);
         }
-
         .profile h1 {
             margin: 20px 0 8px;
             color: #2c3e50;
             font-size: 2.2em;
         }
-
         .profile p {
             color: #555;
             font-size: 1.15em;
             margin: 0;
         }
-
         .social-links {
             margin: 30px 0;
         }
-
         .social-btn {
             display: inline-flex;
             align-items: center;
@@ -132,18 +117,15 @@
             transition: all 0.4s ease;
             box-shadow: 0 5px 15px rgba(14,118,168,0.3);
         }
-
         .social-btn:hover {
             background: #0b5c85;
             transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(14,118,168,0.5);
         }
-
         .social-btn i {
             margin-right: 10px;
             font-size: 1.3em;
         }
-
         .cv-btn {
             display: inline-flex;
             align-items: center;
@@ -158,34 +140,44 @@
             transition: all 0.4s ease;
             box-shadow: 0 6px 20px rgba(39,174,96,0.4);
         }
-
         .cv-btn:hover {
             background: #219653;
             transform: translateY(-6px) scale(1.05);
             box-shadow: 0 15px 35px rgba(39,174,96,0.6);
         }
-
         .cv-btn i {
             margin-right: 12px;
             font-size: 1.4em;
         }
-
         .contact-info {
             margin: 50px 0 30px;
             font-size: 1.1em;
             color: #34495e;
         }
-
         .contact-info p {
             margin: 12px 0;
         }
-
         .contact-info i {
             color: #3498db;
             margin-right: 12px;
             font-size: 1.3em;
         }
-
+        .team-section h2 {
+            margin: 70px 0 40px;
+            color: #2c3e50;
+            font-size: 1.9em;
+        }
+        .team-member {
+            margin-bottom: 60px;
+        }
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #3498db;
+            box-shadow: 0 10px 25px rgba(52,152,219,0.35);
+        }
         .footer {
             text-align: center;
             margin-top: 80px;
@@ -194,11 +186,10 @@
             font-size: 0.95em;
             border-top: 1px solid rgba(255,255,255,0.2);
         }
-
         @media (max-width: 768px) {
             .container { padding: 40px 25px; margin: 120px auto 60px; }
             .profile img { width: 150px; height: 150px; }
-            .social-btn, .cv-btn { padding: 12px 24px; font-size: 1em; }
+            .team-member img { width: 130px; height: 130px; }
         }
     </style>
 </head>
@@ -221,42 +212,57 @@
     <div class="container">
         <div class="profile">
             <img src="noujoudimage.jpg" alt="Noujoud Ouni">
-            <!-- Remplace "ton_photo.jpg" par le vrai nom de ton image (ex: noujoud_profile.jpg) -->
-            <h1>Noujoud Ouni </h1>
-            <p>Étudiante en master Industrie 4.0, diplômée en informatique industrielle et automatisme
-</p>
+            <h1>Noujoud Ouni</h1>
+            <p>Étudiante en master Industrie 4.0, diplômée en informatique industrielle et automatisme</p>
         </div>
 
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/noujoud-ouni-167060318/" 
-               target="_blank" 
-               class="social-btn">
+            <a href="https://www.linkedin.com/in/noujoud-ouni-167060318/" target="_blank" class="social-btn">
                 <i class="fab fa-linkedin-in"></i> LinkedIn
             </a>
         </div>
 
-        <a href="Ouni-Noujoud_cv.pdf" 
-           class="cv-btn" 
-           download="Ouni-Noujoud_cv.pdf">
+        <a href="Ouni-Noujoud_cv.pdf" class="cv-btn" download="Ouni-Noujoud_cv.pdf">
             <i class="fas fa-file-download"></i> Télécharger mon CV (PDF)
         </a>
-        <!-- Remplace "ton_cv.pdf" par le vrai nom de ton fichier CV -->
 
         <div class="contact-info">
-            <p><i class="fas fa-envelope"></i> ouninoujoud681@gmail.com.com</p>
-            
+            <p><i class="fas fa-envelope"></i> ouninoujoud681@gmail.com</p>
             <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
         </div>
 
-        <p style="font-size:1.1em; margin:40px 0; color:#555;">
-            N’hésitez pas à me contacter pour toute opportunité professionnelle, 
-            collaboration sur des projets de maintenance prédictive, 
-            ou simplement pour discuter data science et IA industrielle.
-        </p>
+       
+
+        <!-- ====================== NOUVELLE SECTION ÉQUIPE ====================== -->
+        <div class="team-section">
+            <h2>Équipe du Projet</h2>
+            
+            <div class="team-member profile">
+                <img src="r1.jpg" alt="Raoua Meliti">
+                <h1>Raoua Meliti</h1>
+                <p>Étudiante en master Industrie 4.0</p>
+                <!  <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> raouaa.melliti54272@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
+        </div>
+
+            </div>
+
+            <div class="team-member profile">
+                <img src="s1.jpg" alt="Sami Hasni">
+                <h1>Sami Hasni</h1>
+                <p>Étudiant en master Industrie 4.0</p>
+                  <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> samiezin99@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
+        </div>
+<!-- Ajoute ici son LinkedIn ou email si tu veux -->
+            </div>
+        </div>
     </div>
 
     <div class="footer">
-        © 2026 Noujoud – Tous droits réservés<br>
+        © 2026 Noujoud Ouni Raoua Meliti Sami Hasni – Tous droits réservés<br>
         <a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank" style="color:#3498db;">Portfolio GitHub</a>
     </div>
 </body>
