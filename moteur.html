@@ -18,6 +18,51 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(15, 32, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            background: rgba(52, 152, 219, 0.25);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .nav-btn.active {
+            background: #3498db;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.5);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -30,6 +75,8 @@
             padding: 40px 20px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-radius: 10px;
         }
 
         header h1 {
@@ -286,6 +333,7 @@
             text-align: center;
             padding: 30px 20px;
             margin-top: 50px;
+            border-radius: 10px;
         }
 
         .download-btn {
@@ -315,6 +363,15 @@
         }
 
         @media (max-width: 768px) {
+            .nav-container {
+                gap: 8px;
+            }
+            
+            .nav-btn {
+                padding: 8px 12px;
+                font-size: 0.8em;
+            }
+            
             header h1 {
                 font-size: 1.8em;
             }
@@ -330,14 +387,31 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>🔧 Prédiction du Remaining Useful Life (RUL)</h1>
-        <p class="subtitle">Moteurs d'Avion Turbofan</p>
-        <p class="author">Étude réalisée par Melliti Raouaa</p>
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="fondamentaux.html" class="nav-btn">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="batteries.html" class="nav-btn">Étude de cas 1 - Batteries</a>
+            <a href="roulements.html" class="nav-btn">Étude de cas 2 - Roulements</a>
+            <a href="moteurs.html" class="nav-btn active">Étude de cas 3 - Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="resultats.html" class="nav-btn">Résultats</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
 
     <div class="container">
         <!-- Introduction -->
+        <header>
+            <h1>🔧 Prédiction du Remaining Useful Life (RUL)</h1>
+            <p class="subtitle">Moteurs d'Avion Turbofan</p>
+            <p class="author">Étude réalisée par Melliti Raouaa</p>
+        </header>
+
+        <!-- Introduction Section -->
         <section>
             <h2>📌 Introduction – Pourquoi prédire le RUL ?</h2>
             <div class="intro-box">
@@ -346,7 +420,7 @@
                 <p><strong>Prédire leur durée de vie restante (RUL)</strong> permet d'anticiper les pannes, d'optimiser la maintenance prédictive et de garantir la sécurité des vols.</p>
             </div>
 
-            <h3>📂 Dataset : NASA CMAPSS (Commercial Modular Aero-Propulsion System Simulation)</h3>
+           
             <div class="dataset-info">
                 <ul>
                     <li><strong>100 moteurs</strong> pour l'entraînement (20 631 cycles)</li>
@@ -356,7 +430,7 @@
                     <li><strong>RUL max (clipping)</strong> : 125 cycles</li>
                 </ul>
             </div>
-            <a href="https://data.nasa.gov" target="_blank" class="download-btn">📥 Télécharger le Dataset NASA CMAPSS</a>
+          
         </section>
 
         <!-- FMDS Analysis -->
@@ -436,7 +510,7 @@
             </table>
 
             <div class="image-container">
-                <img src="FMDS_Life_Distribution.png" alt="Distribution des cycles de vie">
+                <img src="01_distribution_lois.png" alt="Distribution des cycles de vie">
                 <p class="image-caption">Figure 1: Distribution des cycles de vie avec ajustement des lois</p>
             </div>
 
@@ -466,7 +540,7 @@
             </table>
 
             <div class="image-container">
-                <img src="FMDS_Weibull_QQPlot.png" alt="QQ-Plot Weibull">
+                <img src="05_qqplot_weibull.png" alt="QQ-Plot Weibull">
                 <p class="image-caption">Figure 2: QQ-Plot Weibull - Validation de l'ajustement</p>
             </div>
 
@@ -509,7 +583,7 @@
             </table>
 
             <div class="image-container">
-                <img src="FMDS_Reliability_Functions.png" alt="Fonctions de fiabilité">
+                <img src="02_fonctions_fiabilite.png" alt="Fonctions de fiabilité">
                 <p class="image-caption">Figure 3: Fonctions de fiabilité R(t) - Comparaison des lois</p>
             </div>
 
@@ -559,7 +633,7 @@
             </table>
 
             <div class="image-container">
-                <img src="FMDS_Hazard_Rate.png" alt="Taux de défaillance">
+                <img src="03_hazard_rate.png" alt="Taux de défaillance">
                 <p class="image-caption">Figure 4: Taux de défaillance instantané - Usure progressive</p>
             </div>
 
@@ -698,7 +772,7 @@
             </table>
 
             <div class="image-container">
-                <img src="Diagnostic_Confusion_Matrix.png" alt="Matrice de confusion">
+                <img src="08_matrice_confusion.png" alt="Matrice de confusion">
                 <p class="image-caption">Figure 5: Matrice de confusion au seuil 30 cycles</p>
             </div>
 
@@ -741,7 +815,7 @@
             </table>
 
             <div class="image-container">
-                <img src="Diagnostic_ROC_Curve.png" alt="Courbe ROC">
+                <img src="09_roc_curve.png" alt="Courbe ROC">
                 <p class="image-caption">Figure 6: Courbe ROC (AUC = 0.991)</p>
             </div>
 
@@ -901,12 +975,12 @@ Dense(1)  # Sortie RUL<br><br>
             <h3>📈 Visualisations des Prédictions</h3>
             
             <div class="image-container">
-                <img src="Pronostic_Predictions_vs_Real.png" alt="Prédictions vs Réel">
+                <img src="06_predictions_vs_reel.png" alt="Prédictions vs Réel">
                 <p class="image-caption">Figure 7: Prédictions vs RUL réel (R² = 0.842)</p>
             </div>
 
             <div class="image-container">
-                <img src="Pronostic_Training_Loss.png" alt="Courbe d'apprentissage">
+                <img src="05_training_history.png" alt="Courbe d'apprentissage">
                 <p class="image-caption">Figure 8: Courbe d'apprentissage - Loss (early stopping à 23 époques)</p>
             </div>
 
