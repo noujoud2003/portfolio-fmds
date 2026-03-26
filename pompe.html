@@ -708,7 +708,372 @@
                 </table>
             </div>
 <!-- À ajouter après le tableau comparatif des modèles, avant "📈 Visualisations des Prédictions LSTM" -->
+<!-- Bouton pour afficher/masquer l'architecture (BATTERIES) -->
+<div style="text-align: center; margin: 30px 0;">
+    <button onclick="toggleArchitecture()" 
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                   color: white; 
+                   padding: 15px 40px; 
+                   border: none; 
+                   border-radius: 30px; 
+                   font-size: 1.1em; 
+                   font-weight: 600; 
+                   cursor: pointer; 
+                   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                   transition: all 0.3s ease;">
+        <span id="btnText">🏗️ Voir l'Architecture du Modèle LSTM</span>
+        <span id="btnIcon" style="margin-left: 10px;">▼</span>
+    </button>
+</div>
 
+<!-- Section Architecture (cachée par défaut) -->
+<div id="architectureSection" style="display: none; animation: fadeIn 0.5s ease;">
+    
+    <h3>🏗️ Architecture du Modèle LSTM - Batteries Li-ion</h3>
+    <div class="key-findings">
+        <h4>🎯 Choix du LSTM pour la Prédiction Temporelle</h4>
+        <p>Le modèle <strong>LSTM (Long Short-Term Memory)</strong> est particulièrement adapté pour la prédiction du RUL des batteries car il capture les dépendances temporelles longues dans les séquences de dégradation.</p>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>📊 Couche</th>
+                    <th>🔧 Configuration</th>
+                    <th>📈 Paramètres</th>
+                    <th>💡 Objectif</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><strong>Input</strong></td>
+                    <td>Séquences temporelles</td>
+                    <td>(10 cycles, 7 features)</td>
+                    <td>Fenêtre glissante de 10 cycles pour capturer la dégradation</td>
+                </tr>
+                <tr>
+                    <td><strong>LSTM</strong></td>
+                    <td>64 unités, activation='relu'</td>
+                    <td>18,432 paramètres</td>
+                    <td>Mémorisation long terme des patterns de dégradation</td>
+                </tr>
+                <tr>
+                    <td><strong>Dropout (1)</strong></td>
+                    <td>rate=0.2</td>
+                    <td>0 paramètres</td>
+                    <td>Régularisation (évite overfitting)</td>
+                </tr>
+                <tr>
+                    <td><strong>Dense (1)</strong></td>
+                    <td>32 neurones, ReLU</td>
+                    <td>2,080 paramètres</td>
+                    <td>Apprentissage non-linéaire</td>
+                </tr>
+                <tr>
+                    <td><strong>Dropout (2)</strong></td>
+                    <td>rate=0.2</td>
+                    <td>0 paramètres</td>
+                    <td>Régularisation additionnelle</td>
+                </tr>
+                <tr style="background: #d4edda;">
+                    <td><strong>Dense (Output)</strong></td>
+                    <td>1 neurone (linéaire)</td>
+                    <td>33 paramètres</td>
+                    <td><strong>Prédiction RUL (heures)</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="results-grid">
+        <div class="result-card">
+            <h4>📊 Résumé Architecture LSTM</h4>
+            <div class="metric">
+                <span class="metric-label">Total Paramètres:</span>
+                <span class="metric-value best-value">20,545</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Paramètres Entraînables:</span>
+                <span class="metric-value best-value">20,545</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Couches LSTM:</span>
+                <span class="metric-value">1</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Couches Denses:</span>
+                <span class="metric-value">2</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Dropout Rate:</span>
+                <span class="metric-value">0.2 (20%)</span>
+            </div>
+        </div>
+        
+        <div class="result-card">
+            <h4>✅ Avantages du LSTM</h4>
+            <ul style="font-size: 0.9em; line-height: 1.8;">
+                <li><strong>Mémoire long terme :</strong> Capture la dégradation progressive</li>
+                <li><strong>Séquentiel :</strong> Idéal pour séries temporelles de cycles</li>
+                <li><strong>Dropout :</strong> Robustesse au surapprentissage</li>
+                <li><strong>Architecture légère :</strong> 20k paramètres seulement</li>
+                <li><strong>Rapide à l'inférence :</strong> Adapté au temps réel</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>📚 Méthodologie Train/Validation/Test Split</h3>
+    <div class="key-findings">
+        <h4>🔍 Stratégie de Séparation par Batterie</h4>
+        <p>Pour éviter le <strong>data leakage</strong>, nous séparons les données <strong>par batterie</strong> et non aléatoirement :</p>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>📂 Ensemble</th>
+                    <th>🔢 Batteries</th>
+                    <th>📈 Pourcentage</th>
+                    <th>🎯 Utilisation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: #e8f6f3;">
+                    <td><strong>Entraînement</strong></td>
+                    <td>9 batteries (IDs aléatoires)</td>
+                    <td>~64% du dataset</td>
+                    <td>Apprentissage des poids du modèle</td>
+                </tr>
+                <tr style="background: #fff3cd;">
+                    <td><strong>Validation</strong></td>
+                    <td>15% du train (interne)</td>
+                    <td>~10% du dataset</td>
+                    <td>Surveillance performance + early stopping</td>
+                </tr>
+                <tr style="background: #ffe5e5;">
+                    <td><strong>Test</strong></td>
+                    <td>3 batteries (IDs aléatoires)</td>
+                    <td>~21% du dataset</td>
+                    <td>Évaluation finale (données jamais vues)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="key-findings">
+        <h4>🔄 Prétraitement des Données</h4>
+        <div class="results-grid">
+            <div class="result-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <h4>Étape 1: Nettoyage</h4>
+                <p style="font-size: 0.9em; line-height: 1.6;">
+                    Filtrage des valeurs aberrantes (RUL > 0 et < 99ème percentile) et suppression des valeurs nulles.
+                </p>
+            </div>
+            
+            <div class="result-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <h4>Étape 2: Création Séquences</h4>
+                <p style="font-size: 0.9em; line-height: 1.6;">
+                    Fenêtre glissante de <strong>10 cycles</strong> : chaque échantillon = séquence de 10 pas × 7 features.
+                </p>
+            </div>
+            
+            <div class="result-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <h4>Étape 3: Normalisation</h4>
+                <p style="font-size: 0.9em; line-height: 1.6;">
+                    <strong>StandardScaler</strong> appliqué sur les 7 features. Fit sur train uniquement, transform sur train/test.
+                </p>
+            </div>
+            
+            <div class="result-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <h4>Étape 4: Split par Batterie</h4>
+                <p style="font-size: 0.9em; line-height: 1.6;">
+                    Mélange aléatoire des 14 batteries → 9 train, 3 test + 15% validation interne.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <h3>⚙️ Hyperparamètres d'Entraînement</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>🔧 Hyperparamètre</th>
+                    <th>📊 Valeur</th>
+                    <th>💡 Justification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Fonction de Loss</strong></td>
+                    <td>MSE (Mean Squared Error)</td>
+                    <td>Pénalise les grandes erreurs de prédiction RUL</td>
+                </tr>
+                <tr>
+                    <td><strong>Optimiseur</strong></td>
+                    <td>Adam (learning rate par défaut)</td>
+                    <td>Convergence rapide + adaptatif</td>
+                </tr>
+                <tr>
+                    <td><strong>Batch Size</strong></td>
+                    <td>32</td>
+                    <td>Équilibre entre vitesse et stabilité</td>
+                </tr>
+                <tr>
+                    <td><strong>Nombre d'Epochs</strong></td>
+                    <td>Max 50</td>
+                    <td>Suffisant pour convergence</td>
+                </tr>
+                <tr>
+                    <td><strong>Early Stopping</strong></td>
+                    <td>Patience=10 epochs</td>
+                    <td>Arrêt si val_loss n'améliore pas + restore best weights</td>
+                </tr>
+                <tr>
+                    <td><strong>Validation Split</strong></td>
+                    <td>15% du train</td>
+                    <td>Surveillance performance pendant training</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>Dropout Rate</strong></td>
+                    <td>0.2 (20%)</td>
+                    <td>Régularisation modérée</td>
+                </tr>
+                <tr>
+                    <td><strong>Métriques</strong></td>
+                    <td>MAE (Mean Absolute Error)</td>
+                    <td>Interprétable directement en heures</td>
+                </tr>
+                <tr>
+                    <td><strong>Séquence Length</strong></td>
+                    <td>10 cycles</td>
+                    <td>Fenêtre temporelle pour capturer la dégradation</td>
+                </tr>
+                <tr>
+                    <td><strong>Features</strong></td>
+                    <td>7 capteurs</td>
+                    <td>Paramètres de charge/décharge sélectionnés</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="conclusion-box">
+        <h4>🎯 Stratégie de Validation</h4>
+        <p><strong>Pour garantir la robustesse du modèle LSTM :</strong></p>
+        <ul style="margin-top: 15px; line-height: 2;">
+            <li>✅ <strong>Séparation stricte par batterie</strong> : 9 train, 3 test, aucune batterie dans les deux</li>
+            <li>✅ <strong>Validation interne</strong> : 15% du dataset d'entraînement pour surveillance</li>
+            <li>✅ <strong>Early Stopping</strong> : Arrêt automatique après 10 epochs sans amélioration</li>
+            <li>✅ <strong>Restore Best Weights</strong> : Conservation des meilleurs poids</li>
+            <li>✅ <strong>Normalisation correcte</strong> : Fit sur train, transform sur train et test</li>
+            <li>✅ <strong>Métriques multiples</strong> : R², RMSE, MAE pour évaluation complète</li>
+            <li>✅ <strong>Reproductibilité</strong> : Graines aléatoires fixées (np.random.seed(42))</li>
+        </ul>
+    </div>
+
+    <h3>📊 Visualisation de l'Entraînement</h3>
+    <div class="image-container">
+        <img src="LSTM_training_history.png" alt="Courbe d'apprentissage LSTM">
+        <p class="image-caption">Figure X: Historique d'entraînement - Train Loss (bleu) et Validation Loss (rouge) avec early stopping</p>
+    </div>
+
+    <div class="results-grid">
+        <div class="result-card">
+            <h4>📈 Performance Finale (Test Set)</h4>
+            <div class="metric">
+                <span class="metric-label">R² Score:</span>
+                <span class="metric-value best-value">0.9753</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">RMSE:</span>
+                <span class="metric-value best-value">0.0138h (~50s)</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">MAE:</span>
+                <span class="metric-value best-value">0.0103h (~37s)</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Epochs Entraînés:</span>
+                <span class="metric-value">~12-23 (early stopping)</span>
+            </div>
+        </div>
+        
+        <div class="result-card">
+            <h4>🎓 Leçons de l'Entraînement</h4>
+            <ul style="font-size: 0.9em; line-height: 1.8;">
+                <li><strong>Convergence rapide :</strong> Modèle converge en 12-23 epochs grâce à early stopping</li>
+                <li><strong>Pas d'overfitting :</strong> Train loss ≈ Validation loss à la fin</li>
+                <li><strong>Early stopping efficace :</strong> Évite l'entraînement excessif, garde meilleurs poids</li>
+                <li><strong>Dropout utile :</strong> 20% de dropout améliore la généralisation</li>
+                <li><strong>Split par batterie :</strong> Garantît évaluation réaliste sur batteries jamais vues</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="key-findings">
+        <h4>📝 Code Python - Split Train/Validation/Test</h4>
+        <div style="background: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.85em; overflow-x: auto;">
+<pre>
+# Split par batterie (éviter data leakage)
+unique_bat = df['Battery_ID'].unique()
+np.random.seed(42)
+np.random.shuffle(unique_bat)
+n = len(unique_bat)
+
+train_bat = unique_bat[:int(n*0.7)]  # 9 batteries (~64%)
+test_bat = unique_bat[int(n*0.7):]   # 3 batteries (~21%)
+
+train_mask = df['Battery_ID'].isin(train_bat)
+test_mask = df['Battery_ID'].isin(test_bat)
+
+# Validation interne (15% du train)
+history = lstm_model.fit(
+    X_train_rul_s, y_train_rul,
+    validation_split=0.15,  # ~10% du dataset total
+    epochs=50,
+    batch_size=32,
+    callbacks=[EarlyStopping(patience=10, 
+               restore_best_weights=True)]
+)
+</pre>
+        </div>
+    </div>
+
+</div>
+
+<!-- Script JavaScript pour toggle -->
+<script>
+function toggleArchitecture() {
+    var section = document.getElementById('architectureSection');
+    var btnText = document.getElementById('btnText');
+    var btnIcon = document.getElementById('btnIcon');
+    
+    if (section.style.display === 'none' || section.style.display === '') {
+        section.style.display = 'block';
+        btnText.textContent = '🔼 Masquer l\'Architecture du Modèle LSTM';
+        btnIcon.textContent = '▲';
+        // Scroll smooth vers la section
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        section.style.display = 'none';
+        btnText.textContent = '🏗️ Voir l\'Architecture du Modèle LSTM';
+        btnIcon.textContent = '▼';
+    }
+}
+
+// Animation fade-in
+var style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+`;
+document.head.appendChild(style);
+</script>
 <h3>📊 Importance des Features - Modèle LSTM</h3>
 <div class="image-container">
     <img src="LSTM_feature_importance.png" alt="Importance des Features - Permutation et Distribution">
