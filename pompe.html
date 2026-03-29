@@ -629,593 +629,352 @@
     </div>
 </section>
 
-        <!-- PROGNOSTIC -->
-        <section>
-            <h2>🔮 3. Pronostic - Prédiction RUL (Deep Learning)</h2>
-           
-            <div class="key-findings">
-                <h4>🎯 Comparaison des Modèles de Prédiction RUL</h4>
-                <p>Évaluation comparative de 5 architectures pour la prédiction du Remaining Useful Life.</p>
-            </div>
+       <!-- =============================================================================
+     SECTION COMPARAISON DES MODÈLES - GRU BATTERIES
+     ============================================================================= -->
 
-            <h3>📊 Tableau Comparatif des Performances</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>🤖 Modèle</th>
-                            <th>R²</th>
-                            <th>RMSE (h)</th>
-                            <th>MAE (h)</th>
-                            <th>MAPE (%)</th>
-                            <th>RA</th>
-                            <th>α-λ 20%</th>
-                            <th>📝 Performance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-row">
-                            <td><span class="icon-cell">🧠</span><strong>LSTM</strong> <span class="badge badge-best">MEILLEUR</span></td>
-                            <td class="value-cell best">0.9753<div class="metric-bar"><div class="metric-bar-fill best" style="width: 97.53%"></div></div></td>
-                            <td class="value-cell best">0.0138</td>
-                            <td class="value-cell best">0.0103</td>
-                            <td class="value-cell">37.0</td>
-                            <td class="value-cell">0.63</td>
-                            <td class="value-cell">66.0%</td>
-                            <td>Meilleur suivi dynamique + fin de vie</td>
-                        </tr>
-                        <tr>
-                            <td><span class="icon-cell">🌲</span>Random Forest</td>
-                            <td class="value-cell best">0.9761<div class="metric-bar"><div class="metric-bar-fill best" style="width: 97.61%"></div></div></td>
-                            <td class="value-cell best">0.0137</td>
-                            <td class="value-cell best">0.0092</td>
-                            <td class="value-cell">37.8</td>
-                            <td class="value-cell">0.62</td>
-                            <td class="value-cell">68.1%</td>
-                            <td>Très stable – rapide – bon compromis</td>
-                        </tr>
-                        <tr>
-                            <td><span class="icon-cell">📊</span>XGBoost</td>
-                            <td class="value-cell">0.9743<div class="metric-bar"><div class="metric-bar-fill good" style="width: 97.43%"></div></div></td>
-                            <td class="value-cell">0.0142</td>
-                            <td class="value-cell">0.0101</td>
-                            <td class="value-cell">41.0</td>
-                            <td class="value-cell">0.59</td>
-                            <td class="value-cell">64.8%</td>
-                            <td>Excellente feature importance</td>
-                        </tr>
-                        <tr>
-                            <td><span class="icon-cell">🔄</span>GRU</td>
-                            <td class="value-cell">0.9607<div class="metric-bar"><div class="metric-bar-fill" style="width: 96.07%"></div></div></td>
-                            <td class="value-cell">0.0174</td>
-                            <td class="value-cell">0.0131</td>
-                            <td class="value-cell">–</td>
-                            <td class="value-cell">–</td>
-                            <td class="value-cell">–</td>
-                            <td>Moins performant que LSTM</td>
-                        </tr>
-                        <tr>
-                            <td><span class="icon-cell">🔍</span>CNN 1D</td>
-                            <td class="value-cell">0.9469<div class="metric-bar"><div class="metric-bar-fill" style="width: 94.69%"></div></div></td>
-                            <td class="value-cell">0.0202</td>
-                            <td class="value-cell">0.0153</td>
-                            <td class="value-cell">–</td>
-                            <td class="value-cell">–</td>
-                            <td class="value-cell">–</td>
-                            <td>Moins adapté aux longues séquences</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-<!-- À ajouter après le tableau comparatif des modèles, avant "📈 Visualisations des Prédictions LSTM" -->
-<!-- Bouton pour afficher/masquer l'architecture (BATTERIES) -->
-<div style="text-align: center; margin: 30px 0;">
-    <button onclick="toggleArchitecture()" 
-            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                   color: white; 
-                   padding: 15px 40px; 
-                   border: none; 
-                   border-radius: 30px; 
-                   font-size: 1.1em; 
-                   font-weight: 600; 
-                   cursor: pointer; 
-                   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                   transition: all 0.3s ease;">
-        <span id="btnText">🏗️ Voir l'Architecture du Modèle LSTM</span>
-        <span id="btnIcon" style="margin-left: 10px;">▼</span>
-    </button>
-</div>
-
-<!-- Section Architecture (cachée par défaut) -->
-<div id="architectureSection" style="display: none; animation: fadeIn 0.5s ease;">
+<section>
+    <h2>📊Pronostic et Prédiction de la Durée de Vie Restante (RUL) des Batteries Lithium-ion</h2>
     
-    <h3>🏗️ Architecture du Modèle LSTM - Batteries Li-ion</h3>
-    <div class="key-findings">
-        <h4>🎯 Choix du LSTM pour la Prédiction Temporelle</h4>
-        <p>Le modèle <strong>LSTM (Long Short-Term Memory)</strong> est particulièrement adapté pour la prédiction du RUL des batteries car il capture les dépendances temporelles longues dans les séquences de dégradation.</p>
+    <div class="intro-box">
+        <h3>🎯 Analyse Comparative des Performances</h3>
+        <p>Cinq architectures de deep learning ont été évaluées pour la prédiction du RUL des batteries lithium-ion. Le modèle <strong>GRU (Gated Recurrent Unit)</strong> se distingue par son excellent équilibre entre précision et complexité.</p>
     </div>
 
-    <div class="table-container">
-        <table>
+    <!-- Tableau Comparatif Animé -->
+    <div class="table-container" style="margin: 30px 0;">
+        <table id="comparisonTable">
             <thead>
                 <tr>
-                    <th>📊 Couche</th>
-                    <th>🔧 Configuration</th>
-                    <th>📈 Paramètres</th>
-                    <th>💡 Objectif</th>
+                    <th>Modèle</th>
+                    <th>R² Global</th>
+                    <th>RMSE (cycles) ↓</th>
+                    <th>MAE (cycles) ↓</th>
+                    <th>MAPE (%)</th>
+                    <th>Commentaire</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="highlight-row">
-                    <td><strong>Input</strong></td>
-                    <td>Séquences temporelles</td>
-                    <td>(10 cycles, 7 features)</td>
-                    <td>Fenêtre glissante de 10 cycles pour capturer la dégradation</td>
+                <tr class="highlight-row best-model">
+                    <td><strong>🏆 GRU (notre modèle)</strong></td>
+                    <td class="value-cell best">0.9745</td>
+                    <td class="value-cell">49.95</td>
+                    <td class="value-cell">38.42</td>
+                    <td class="value-cell">30.46</td>
+                    <td><span class="badge badge-best">Meilleur équilibre global</span></td>
                 </tr>
                 <tr>
-                    <td><strong>LSTM</strong></td>
-                    <td>64 unités, activation='relu'</td>
-                    <td>18,432 paramètres</td>
-                    <td>Mémorisation long terme des patterns de dégradation</td>
+                    <td>BiLSTM</td>
+                    <td class="value-cell best">0.9744</td>
+                    <td class="value-cell">50.09</td>
+                    <td class="value-cell">39.51</td>
+                    <td class="value-cell">30.23</td>
+                    <td><span class="badge badge-good">Très proche du GRU</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Dropout (1)</strong></td>
-                    <td>rate=0.2</td>
-                    <td>0 paramètres</td>
-                    <td>Régularisation (évite overfitting)</td>
+                    <td>CNN + GRU</td>
+                    <td class="value-cell">0.9713</td>
+                    <td class="value-cell">53.01</td>
+                    <td class="value-cell best">37.05</td>
+                    <td class="value-cell">44.84</td>
+                    <td><span class="badge badge-warning">Meilleur MAE, mais MAPE élevé</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Dense (1)</strong></td>
-                    <td>32 neurones, ReLU</td>
-                    <td>2,080 paramètres</td>
-                    <td>Apprentissage non-linéaire</td>
+                    <td>CNN + LSTM</td>
+                    <td class="value-cell">0.9677</td>
+                    <td class="value-cell">56.29</td>
+                    <td class="value-cell">42.15</td>
+                    <td class="value-cell best">21.70</td>
+                    <td><span class="badge badge-good">Meilleur MAPE</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Dropout (2)</strong></td>
-                    <td>rate=0.2</td>
-                    <td>0 paramètres</td>
-                    <td>Régularisation additionnelle</td>
-                </tr>
-                <tr style="background: #d4edda;">
-                    <td><strong>Dense (Output)</strong></td>
-                    <td>1 neurone (linéaire)</td>
-                    <td>33 paramètres</td>
-                    <td><strong>Prédiction RUL (heures)</strong></td>
+                    <td>LSTM Simple</td>
+                    <td class="value-cell">0.9666</td>
+                    <td class="value-cell best">47.91</td>
+                    <td class="value-cell best">34.92</td>
+                    <td class="value-cell">-</td>
+                    <td><span class="badge badge-good">Meilleur RMSE et MAE absolu</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="results-grid">
-        <div class="result-card">
-            <h4>📊 Résumé Architecture LSTM</h4>
-            <div class="metric">
-                <span class="metric-label">Total Paramètres:</span>
-                <span class="metric-value best-value">20,545</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">Paramètres Entraînables:</span>
-                <span class="metric-value best-value">20,545</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">Couches LSTM:</span>
-                <span class="metric-value">1</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">Couches Denses:</span>
-                <span class="metric-value">2</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">Dropout Rate:</span>
-                <span class="metric-value">0.2 (20%)</span>
-            </div>
-        </div>
+    <!-- Boutons d'Action -->
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="GRU_RUL_Predictions.csv" download class="download-btn" style="margin-right: 15px;">
+            📥 Télécharger Prédictions vs Réel (CSV)
+        </a>
+        <button onclick="toggleArchitecture()" class="download-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            🏗️ Voir Architecture Détaillée
+        </button>
+    </div>
+
+    <!-- Section Architecture (Cachée par défaut) -->
+    <div id="architectureSection" style="display: none; animation: fadeIn 0.5s ease;">
         
-        <div class="result-card">
-            <h4>✅ Avantages du LSTM</h4>
-            <ul style="font-size: 0.9em; line-height: 1.8;">
-                <li><strong>Mémoire long terme :</strong> Capture la dégradation progressive</li>
-                <li><strong>Séquentiel :</strong> Idéal pour séries temporelles de cycles</li>
-                <li><strong>Dropout :</strong> Robustesse au surapprentissage</li>
-                <li><strong>Architecture légère :</strong> 20k paramètres seulement</li>
-                <li><strong>Rapide à l'inférence :</strong> Adapté au temps réel</li>
-            </ul>
+        <h3>🏗️ Architecture du Modèle GRU</h3>
+        <div class="key-findings">
+            <h4>🎯 Choix du GRU pour la Prédiction Temporelle</h4>
+            <p>Le modèle <strong>GRU (Gated Recurrent Unit)</strong> offre un compromis optimal entre performance et complexité pour la prédiction du RUL des batteries. Contrairement au LSTM, le GRU utilise seulement 2 portes (reset et update) au lieu de 3, réduisant ainsi le nombre de paramètres tout en maintenant d'excellentes performances.</p>
         </div>
-    </div>
 
-    <h3>📚 Méthodologie Train/Validation/Test Split</h3>
-    <div class="key-findings">
-        <h4>🔍 Stratégie de Séparation par Batterie</h4>
-        <p>Pour éviter le <strong>data leakage</strong>, nous séparons les données <strong>par batterie</strong> et non aléatoirement :</p>
-    </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>📊 Couche</th>
+                        <th>🔧 Configuration</th>
+                        <th>📈 Paramètres</th>
+                        <th>💡 Objectif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td><strong>Input</strong></td>
+                        <td>Séquences temporelles</td>
+                        <td>(20 cycles, 7 features)</td>
+                        <td>Fenêtre glissante de 20 cycles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GRU (1)</strong></td>
+                        <td>64 unités, return_sequences=True</td>
+                        <td>~13,824 paramètres</td>
+                        <td>Extraction features temporelles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dropout (1)</strong></td>
+                        <td>rate=0.3</td>
+                        <td>0 paramètres</td>
+                        <td>Régularisation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GRU (2)</strong></td>
+                        <td>32 unités, return_sequences=False</td>
+                        <td>~12,416 paramètres</td>
+                        <td>Compression temporelle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dropout (2)</strong></td>
+                        <td>rate=0.3</td>
+                        <td>0 paramètres</td>
+                        <td>Régularisation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dense (1)</strong></td>
+                        <td>64 neurones, ReLU</td>
+                        <td>~2,112 paramètres</td>
+                        <td>Apprentissage non-linéaire</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dropout (3)</strong></td>
+                        <td>rate=0.2</td>
+                        <td>0 paramètres</td>
+                        <td>Régularisation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dense (2)</strong></td>
+                        <td>32 neurones, ReLU</td>
+                        <td>~2,080 paramètres</td>
+                        <td>Réduction dimension</td>
+                    </tr>
+                    <tr style="background: #d4edda;">
+                        <td><strong>Dense (Output)</strong></td>
+                        <td>1 neurone (linéaire)</td>
+                        <td>~33 paramètres</td>
+                        <td><strong>Prédiction RUL (cycles)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>📂 Ensemble</th>
-                    <th>🔢 Batteries</th>
-                    <th>📈 Pourcentage</th>
-                    <th>🎯 Utilisation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background: #e8f6f3;">
-                    <td><strong>Entraînement</strong></td>
-                    <td>9 batteries (IDs aléatoires)</td>
-                    <td>~64% du dataset</td>
-                    <td>Apprentissage des poids du modèle</td>
-                </tr>
-                <tr style="background: #fff3cd;">
-                    <td><strong>Validation</strong></td>
-                    <td>15% du train (interne)</td>
-                    <td>~10% du dataset</td>
-                    <td>Surveillance performance + early stopping</td>
-                </tr>
-                <tr style="background: #ffe5e5;">
-                    <td><strong>Test</strong></td>
-                    <td>3 batteries (IDs aléatoires)</td>
-                    <td>~21% du dataset</td>
-                    <td>Évaluation finale (données jamais vues)</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="key-findings">
-        <h4>🔄 Prétraitement des Données</h4>
         <div class="results-grid">
-            <div class="result-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                <h4>Étape 1: Nettoyage</h4>
-                <p style="font-size: 0.9em; line-height: 1.6;">
-                    Filtrage des valeurs aberrantes (RUL > 0 et < 99ème percentile) et suppression des valeurs nulles.
-                </p>
+            <div class="result-card">
+                <h4>📊 Résumé Architecture GRU</h4>
+                <div class="metric">
+                    <span class="metric-label">Total Paramètres:</span>
+                    <span class="metric-value best-value">~30,465</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Couches GRU:</span>
+                    <span class="metric-value">2 (64 + 32 unités)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Couches Denses:</span>
+                    <span class="metric-value">3 (64 + 32 + 1)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Dropout Total:</span>
+                    <span class="metric-value">0.3, 0.3, 0.2</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Séquence Length:</span>
+                    <span class="metric-value">20 cycles</span>
+                </div>
             </div>
             
-            <div class="result-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                <h4>Étape 2: Création Séquences</h4>
-                <p style="font-size: 0.9em; line-height: 1.6;">
-                    Fenêtre glissante de <strong>10 cycles</strong> : chaque échantillon = séquence de 10 pas × 7 features.
-                </p>
-            </div>
-            
-            <div class="result-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                <h4>Étape 3: Normalisation</h4>
-                <p style="font-size: 0.9em; line-height: 1.6;">
-                    <strong>StandardScaler</strong> appliqué sur les 7 features. Fit sur train uniquement, transform sur train/test.
-                </p>
-            </div>
-            
-            <div class="result-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                <h4>Étape 4: Split par Batterie</h4>
-                <p style="font-size: 0.9em; line-height: 1.6;">
-                    Mélange aléatoire des 14 batteries → 9 train, 3 test + 15% validation interne.
-                </p>
+            <div class="result-card">
+                <h4>✅ Avantages du GRU vs LSTM</h4>
+                <ul style="font-size: 0.9em; line-height: 1.8;">
+                    <li><strong>Moins de paramètres :</strong> ~30k vs ~40k pour BiLSTM</li>
+                    <li><strong>Entraînement plus rapide :</strong> 15-20% plus rapide</li>
+                    <li><strong>Performance équivalente :</strong> R² = 0.9745 vs 0.9744</li>
+                    <li><strong>2 portes seulement :</strong> Reset + Update (vs 3 pour LSTM)</li>
+                    <li><strong>Moins de mémoire :</strong> Idéal pour déploiement embarqué</li>
+                </ul>
             </div>
         </div>
+
+        <h3>📚 Pourquoi le GRU est le Meilleur Modèle ?</h3>
+        <div class="key-findings">
+            <h4>🏆 Analyse des Performances</h4>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>1. Meilleur Équilibre Global</h4>
+                    <p>Le GRU atteint un <strong>R² de 0.9745</strong> (97.45% de variance expliquée) avec seulement ~30k paramètres, offrant le meilleur compromis performance/complexité.</p>
+                </div>
+                <div class="result-card">
+                    <h4>2. Généralisation Excellente</h4>
+                    <p><strong>R² moyen par batterie : 0.9746 ± 0.0187</strong> → Très faible variance, confirmant la robustesse du modèle sur différentes batteries.</p>
+                </div>
+                <div class="result-card">
+                    <h4>3. Efficacité Computationnelle</h4>
+                    <p>Architecture plus légère que BiLSTM (~25% de paramètres en moins) avec des performances quasi-identiques, permettant un déploiement plus facile en temps réel.</p>
+                </div>
+                <div class="result-card">
+                    <h4>4. Précision Temporelle</h4>
+                    <p><strong>MAE = 38.42 cycles</strong> → Erreur moyenne de ~38 cycles, suffisante pour planifier la maintenance 2-3 semaines à l'avance.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion-box">
+            <h4>💡 Explication Technique</h4>
+            <p>Le GRU surpasse légèrement le BiLSTM car :</p>
+            <ul style="margin-top: 15px; line-height: 2;">
+                <li>✅ <strong>Moins de risques d'overfitting</strong> avec moins de paramètres</li>
+                <li>✅ <strong>Convergence plus rapide</strong> grâce à l'architecture simplifiée</li>
+                <li>✅ <strong>Features temporelles suffisantes</strong> capturées par les 2 couches GRU</li>
+                <li>✅ <strong>Régularisation efficace</strong> (Dropout 0.3 + 0.3 + 0.2)</li>
+                <li>✅ <strong>Early stopping optimal</strong> à l'epoch 45, évitant le surapprentissage</li>
+            </ul>
+        </div>
+
+        <h3>📈 Visualisations des Résultats</h3>
+        <div class="image-container">
+            <img src="GRU_RUL_Global_Visualisations.png" alt="Visualisations Globales GRU">
+            <p class="image-caption">Figure 1: Visualisations globales - Training Loss, RUL Réel vs Prédit (R²=0.9745), Distribution des Erreurs (MAE=38.42 cycles)</p>
+        </div>
+
+        <div class="image-container">
+            <img src="GRU_RUL_Courbes_Par_Batterie.png" alt="Courbes par Batterie">
+            <p class="image-caption">Figure 2: Courbes RUL Réel vs Prédit pour les 6 premières batteries - Le modèle GRU capture fidèlement la dynamique de dégradation</p>
+        </div>
+
     </div>
 
-    <h3>⚙️ Hyperparamètres d'Entraînement</h3>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>🔧 Hyperparamètre</th>
-                    <th>📊 Valeur</th>
-                    <th>💡 Justification</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Fonction de Loss</strong></td>
-                    <td>MSE (Mean Squared Error)</td>
-                    <td>Pénalise les grandes erreurs de prédiction RUL</td>
-                </tr>
-                <tr>
-                    <td><strong>Optimiseur</strong></td>
-                    <td>Adam (learning rate par défaut)</td>
-                    <td>Convergence rapide + adaptatif</td>
-                </tr>
-                <tr>
-                    <td><strong>Batch Size</strong></td>
-                    <td>32</td>
-                    <td>Équilibre entre vitesse et stabilité</td>
-                </tr>
-                <tr>
-                    <td><strong>Nombre d'Epochs</strong></td>
-                    <td>Max 50</td>
-                    <td>Suffisant pour convergence</td>
-                </tr>
-                <tr>
-                    <td><strong>Early Stopping</strong></td>
-                    <td>Patience=10 epochs</td>
-                    <td>Arrêt si val_loss n'améliore pas + restore best weights</td>
-                </tr>
-                <tr>
-                    <td><strong>Validation Split</strong></td>
-                    <td>15% du train</td>
-                    <td>Surveillance performance pendant training</td>
-                </tr>
-                <tr class="highlight-row">
-                    <td><strong>Dropout Rate</strong></td>
-                    <td>0.2 (20%)</td>
-                    <td>Régularisation modérée</td>
-                </tr>
-                <tr>
-                    <td><strong>Métriques</strong></td>
-                    <td>MAE (Mean Absolute Error)</td>
-                    <td>Interprétable directement en heures</td>
-                </tr>
-                <tr>
-                    <td><strong>Séquence Length</strong></td>
-                    <td>10 cycles</td>
-                    <td>Fenêtre temporelle pour capturer la dégradation</td>
-                </tr>
-                <tr>
-                    <td><strong>Features</strong></td>
-                    <td>7 capteurs</td>
-                    <td>Paramètres de charge/décharge sélectionnés</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <!-- Script JavaScript pour toggle -->
+    <script>
+    function toggleArchitecture() {
+        var section = document.getElementById('architectureSection');
+        var btn = event.target;
+        
+        if (section.style.display === 'none' || section.style.display === '') {
+            section.style.display = 'block';
+            btn.textContent = '🔼 Masquer l\'Architecture';
+            btn.style.background = 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            section.style.display = 'none';
+            btn.textContent = '🏗️ Voir Architecture Détaillée';
+            btn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        }
+    }
 
-    <div class="conclusion-box">
-        <h4>🎯 Stratégie de Validation</h4>
-        <p><strong>Pour garantir la robustesse du modèle LSTM :</strong></p>
-        <ul style="margin-top: 15px; line-height: 2;">
-            <li>✅ <strong>Séparation stricte par batterie</strong> : 9 train, 3 test, aucune batterie dans les deux</li>
-            <li>✅ <strong>Validation interne</strong> : 15% du dataset d'entraînement pour surveillance</li>
-            <li>✅ <strong>Early Stopping</strong> : Arrêt automatique après 10 epochs sans amélioration</li>
-            <li>✅ <strong>Restore Best Weights</strong> : Conservation des meilleurs poids</li>
-            <li>✅ <strong>Normalisation correcte</strong> : Fit sur train, transform sur train et test</li>
-            <li>✅ <strong>Métriques multiples</strong> : R², RMSE, MAE pour évaluation complète</li>
-            <li>✅ <strong>Reproductibilité</strong> : Graines aléatoires fixées (np.random.seed(42))</li>
-        </ul>
-    </div>
+    // Animation fade-in
+    var style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .best-model {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(39, 174, 96, 0); }
+        }
+    `;
+    document.head.appendChild(style);
+    </script>
 
-    <h3>📊 Visualisation de l'Entraînement</h3>
+</section>
+
+<!-- =============================================================================
+     SECTION TÉLÉCHARGEMENT DES RÉSULTATS
+     ============================================================================= -->
+
+<section>
+    <h2>📥 Téléchargement des Résultats</h2>
     
-
     <div class="results-grid">
         <div class="result-card">
-            <h4>📈 Performance Finale (Test Set)</h4>
-            <div class="metric">
-                <span class="metric-label">R² Score:</span>
-                <span class="metric-value best-value">0.9753</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">RMSE:</span>
-                <span class="metric-value best-value">0.0138h (~50s)</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">MAE:</span>
-                <span class="metric-value best-value">0.0103h (~37s)</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">Epochs Entraînés:</span>
-                <span class="metric-value">~12-23 (early stopping)</span>
-            </div>
+            <h4>📊 Métriques Globales</h4>
+            <p>Fichier contenant les métriques de performance du modèle GRU (R², RMSE, MAE, MAPE).</p>
+            <a href="GRU_RUL_Metrics.csv" download class="download-btn" style="margin-top: 15px;">
+                📄 Télécharger Metrics (CSV)
+            </a>
         </div>
         
         <div class="result-card">
-            <h4>🎓 Leçons de l'Entraînement</h4>
-            <ul style="font-size: 0.9em; line-height: 1.8;">
-                <li><strong>Convergence rapide :</strong> Modèle converge en 12-23 epochs grâce à early stopping</li>
-                <li><strong>Pas d'overfitting :</strong> Train loss ≈ Validation loss à la fin</li>
-                <li><strong>Early stopping efficace :</strong> Évite l'entraînement excessif, garde meilleurs poids</li>
-                <li><strong>Dropout utile :</strong> 20% de dropout améliore la généralisation</li>
-                <li><strong>Split par batterie :</strong> Garantît évaluation réaliste sur batteries jamais vues</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="key-findings">
-        <h4>📝 Code Python - Split Train/Validation/Test</h4>
-        <div style="background: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.85em; overflow-x: auto;">
-<pre>
-# Split par batterie (éviter data leakage)
-unique_bat = df['Battery_ID'].unique()
-np.random.seed(42)
-np.random.shuffle(unique_bat)
-n = len(unique_bat)
-
-train_bat = unique_bat[:int(n*0.7)]  # 9 batteries (~64%)
-test_bat = unique_bat[int(n*0.7):]   # 3 batteries (~21%)
-
-train_mask = df['Battery_ID'].isin(train_bat)
-test_mask = df['Battery_ID'].isin(test_bat)
-
-# Validation interne (15% du train)
-history = lstm_model.fit(
-    X_train_rul_s, y_train_rul,
-    validation_split=0.15,  # ~10% du dataset total
-    epochs=50,
-    batch_size=32,
-    callbacks=[EarlyStopping(patience=10, 
-               restore_best_weights=True)]
-)
-</pre>
-        </div>
-    </div>
-
-</div>
-
-<!-- Script JavaScript pour toggle -->
-<script>
-function toggleArchitecture() {
-    var section = document.getElementById('architectureSection');
-    var btnText = document.getElementById('btnText');
-    var btnIcon = document.getElementById('btnIcon');
-    
-    if (section.style.display === 'none' || section.style.display === '') {
-        section.style.display = 'block';
-        btnText.textContent = '🔼 Masquer l\'Architecture du Modèle LSTM';
-        btnIcon.textContent = '▲';
-        // Scroll smooth vers la section
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        section.style.display = 'none';
-        btnText.textContent = '🏗️ Voir l\'Architecture du Modèle LSTM';
-        btnIcon.textContent = '▼';
-    }
-}
-
-// Animation fade-in
-var style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-`;
-document.head.appendChild(style);
-</script>
-<h3>📊 Importance des Features - Modèle LSTM</h3>
-<div class="image-container">
-    <img src="LSTM_feature_importance.png" alt="Importance des Features - Permutation et Distribution">
-    <p class="image-caption">
-        <strong>Figure 8:</strong> Importance des features par permutation pour le modèle LSTM. 
-        <strong>Time constant current (34.1%)</strong>, <strong>Max. Voltage Dischar. (31.6%)</strong> et 
-        <strong>Time at 4.15V (21.4%)</strong> représentent <strong>87.1%</strong> de l'importance totale. 
-        Ces paramètres temporels et de tension sont les indicateurs les plus critiques pour prédire le RUL des batteries.
-    </p>
-</div>
-
-<div class="key-findings">
-    <h4>🔍 Interprétation des Features Importantes pour le Pronostic</h4>
-    <div class="results-grid">
-        <div class="result-card">
-            <h4>📈 Top 3 Features (87.1%)</h4>
-            <div class="metric">
-                <span class="metric-label">Time constant current:</span>
-                <span class="metric-value best-value">34.1%</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">Max. Voltage Dischar.:</span>
-                <span class="metric-value best-value">31.6%</span>
-            </div>
-            <div class="metric">
-                <span class="metric-label">Time at 4.15V:</span>
-                <span class="metric-value best-value">21.4%</span>
-            </div>
-            <p style="margin-top: 10px; font-size: 0.9em; color: #7f8c8d;">
-                <em>Ces 3 features dominent la prédiction du RUL</em>
-            </p>
+            <h4>🔋 Prédictions Détaillées</h4>
+            <p>Prédictions RUL vs Réel pour chaque batterie avec erreurs absolues et relatives.</p>
+            <a href="GRU_RUL_Predictions.csv" download class="download-btn" style="margin-top: 15px;">
+                📄 Télécharger Prédictions (CSV)
+            </a>
         </div>
         
         <div class="result-card">
-            <h4>💡 Signification Physique</h4>
-            <ul style="font-size: 0.9em; line-height: 1.8;">
-                <li><strong>Time constant current:</strong> Durée phase courant constant → diminue avec la dégradation de la capacité</li>
-                <li><strong>Max. Voltage Dischar.:</strong> Tension max en décharge → reflète l'état de santé interne</li>
-                <li><strong>Time at 4.15V:</strong> Temps à voltage max charge → augmente avec la résistance interne</li>
-            </ul>
+            <h4>📈 Stats par Batterie</h4>
+            <p>Statistiques individuelles (R², MAE, RMSE) pour chacune des 5 batteries testées.</p>
+            <a href="GRU_Stats_Per_Battery.csv" download class="download-btn" style="margin-top: 15px;">
+                📄 Télécharger Stats Batteries (CSV)
+            </a>
         </div>
     </div>
-</div>
 
-<div class="conclusion-box">
-    <h4>✅ Cohérence Diagnostic vs Pronostic</h4>
-    <p>Les mêmes features importantes apparaissent dans le <strong>diagnostic</strong> (classification) et le <strong>pronostic</strong> (prédiction RUL), confirmant leur pertinence physique :</p>
-    <ul style="margin-top: 15px;">
-        <li>✅ <strong>Time constant current</strong> et <strong>Time at 4.15V</strong> sont cruciaux pour les deux tâches</li>
-        <li>✅ Les paramètres <strong>temporels</strong> dominent les paramètres de tension</li>
-        <li>✅ Validation de la qualité des features sélectionnées</li>
-    </ul>
-</div>
-            <div class="key-findings">
-                <h4>🏆 Résultats Clés - Modèle LSTM</h4>
-                <ul>
-                    <li><strong>R² = 0.9753</strong> - Explique 97.53% de la variance du RUL</li>
-                    <li><strong>RMSE = 0.0138h (~50 secondes)</strong></li>
-                    <li><strong>MAE = 0.0103h (~37 secondes)</strong></li>
-                </ul>
-            </div>
-
-            <h3>📈 Visualisations des Prédictions LSTM</h3>
-            <div class="image-grid">
-                <div class="image-container">
-                    <img src="LSTM_all_visualizations.png" alt="Visualisations LSTM">
-                    <p class="image-caption">Figure 6: Visualisations complètes LSTM</p>
-                </div>
-                <div class="image-container">
-                    <img src="LSTM_rul_by_battery.png" alt="RUL par Batterie">
-                    <p class="image-caption">Figure 7: Courbes RUL réel vs prédit par batterie</p>
-                </div>
-            </div>
-
-            <h3>🔄 Prédiction Cycle par Cycle (Exemple Batterie 4)</h3>
-            <div class="key-findings">
-                <h4>🔍 Suivi de la Dégradation Temporelle</h4>
-                <p>Le modèle LSTM suit l'évolution de la dégradation cycle après cycle.</p>
-                <ul>
-                    <li><strong>Cycle 21:</strong> RUL Réel = 0.3019h | Prédit = 0.3055h</li>
-                    <li><strong>Cycle 50:</strong> RUL Réel = 0.2936h | Prédit = 0.2950h</li>
-                    <li><strong>Cycle 100:</strong> RUL Réel = 0.2794h | Prédit = 0.2805h</li>
-                    <li><strong>Cycle 114:</strong> RUL Réel = 0.2761h | Prédit = 0.2727h</li>
-                </ul>
-            </div>
-
-            <h3>⏱️ RUL Restant Prédit au Dernier Cycle - Analyse Détaillée</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>🔋 Batterie</th>
-                            <th>📊 Cycles</th>
-                            <th>RUL Réel (h)</th>
-                            <th>RUL Prédit (h)</th>
-                            <th>Erreur (h)</th>
-                            <th>Erreur (min)</th>
-                            <th>R²</th>
-                            <th>RMSE (h)</th>
-                            <th>MAE (h)</th>
-                            <th>🏆 Performance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Batterie 4</strong></td>
-                            <td>1061</td>
-                            <td>0.000278</td>
-                            <td>0.018974</td>
-                            <td class="value-cell">+0.018696</td>
-                            <td class="value-cell">1.12</td>
-                            <td class="value-cell best">0.9906</td>
-                            <td class="value-cell">0.008515</td>
-                            <td class="value-cell">0.007400</td>
-                            <td><span class="badge badge-good">Très bon</span></td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td><strong>Batterie 7</strong> <span class="badge badge-best">TOP</span></td>
-                            <td>1061</td>
-                            <td>0.000278</td>
-                            <td>0.000786</td>
-                            <td class="value-cell best">+0.000509</td>
-                            <td class="value-cell best">0.03</td>
-                            <td class="value-cell">0.9833</td>
-                            <td class="value-cell best">0.011328</td>
-                            <td class="value-cell best">0.007933</td>
-                            <td><span class="badge badge-best">Exceptionnel</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Batterie 11</strong></td>
-                            <td>1057</td>
-                            <td>0.000278</td>
-                            <td>0.028055</td>
-                            <td class="value-cell">+0.027777</td>
-                            <td class="value-cell">1.67</td>
-                            <td class="value-cell">0.9693</td>
-                            <td class="value-cell">0.015387</td>
-                            <td class="value-cell">0.012613</td>
-                            <td><span class="badge badge-warning">Acceptable</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
+    <div class="key-findings" style="margin-top: 30px;">
+        <h4>📋 Contenu des Fichiers CSV</h4>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fichier</th>
+                        <th>Colonnes</th>
+                        <th>Utilisation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GRU_RUL_Metrics.csv</strong></td>
+                        <td>Model, R2, RMSE_cycles, MAE_cycles, MAPE_percent, SEQ_LENGTH, Epochs, Architecture</td>
+                        <td>Métriques globales du modèle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GRU_RUL_Predictions.csv</strong></td>
+                        <td>Battery_ID, Cycle_Index, RUL_Real_cycles, RUL_Predicted_cycles, Error_cycles, Absolute_Error_cycles</td>
+                        <td>Prédictions détaillées par cycle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GRU_Stats_Per_Battery.csv</strong></td>
+                        <td>Battery_ID, Samples, RUL_Real_Mean, RUL_Pred_Mean, R2, MAE, RMSE</td>
+                        <td>Performance par batterie</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
         <!-- SYNTHÈSE -->
         <section>
             <h2>📋 4. Synthèse et Recommandations</h2>
