@@ -1,0 +1,2 @@
+MTBF_cycles,MTTR_cycles,Failure_Rate_per_cycle,Repair_Rate_per_cycle,Availability_percent,Reliability_100cycles,Reliability_200cycles,Reliability_300cycles,Median_Survival_cycles,Best_Model,Weibull_Beta,Weibull_Eta
+1109.357142857143,2.0,0.0009014229605305517,0.5,99.8200398483193,91.38011457230768,83.50325339248077,76.30536862165332,1107.0,Log-Normale,107.8332408371551,1113.560651145372
