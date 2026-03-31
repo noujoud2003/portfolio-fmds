@@ -3,74 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conclusion Générale | Maintenance Prédictive Intelligente</title>
+    <title>Conclusion Générale | Synthèse des Trois Études de Cas</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
         body {
+            margin: 0; padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-x: hidden;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientAnimation 18s ease infinite;
+            color: #2c3e50;
+            min-height: 100vh;
         }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Navigation */
         .navbar {
-            background: rgba(15, 32, 39, 0.95);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
             padding: 15px 0;
             position: fixed;
@@ -79,7 +29,6 @@
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -87,405 +36,168 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
-            padding: 0 20px;
         }
-
         .nav-btn {
             background: rgba(52, 152, 219, 0.25);
             color: #ecf0f1;
             border: 1px solid #3498db;
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9em;
+            font-size: 0.95em;
             transition: all 0.3s ease;
-            display: inline-block;
         }
-
         .nav-btn:hover {
             background: #3498db;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
-
-        .nav-btn.active {
-            background: #3498db;
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.5);
-        }
-
-        /* Container */
+        .active { background: #3498db !important; }
         .container {
             max-width: 1400px;
-            margin: 0 auto;
-            padding: 140px 20px 50px;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            color: white;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
-            border-radius: 20px;
-            margin-bottom: 50px;
-            animation: fadeInUp 1s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: pulse 2s infinite;
-        }
-
-        .header .subtitle {
-            font-size: 1.5em;
-            opacity: 0.95;
-            margin-bottom: 30px;
-        }
-
-        .header .author {
-            font-size: 1.2em;
-            font-style: italic;
-            opacity: 0.9;
-        }
-
-        /* Sections */
-        .section {
-            background: white;
-            margin: 40px 0;
+            margin: 140px auto 80px;
             padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            animation: fadeInUp 0.8s ease;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
         }
-
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.4s; }
-        .section:nth-child(4) { animation-delay: 0.6s; }
-
-        h2 {
-            color: #2a5298;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 4px solid #667eea;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        h1 { 
+            color: #3498db; 
+            text-align: center; 
+            margin-bottom: 15px; 
+            font-size: 3em; 
         }
-
-        h3 {
-            color: #1e3c72;
-            font-size: 1.8em;
-            margin: 35px 0 20px 0;
+        .subtitle { 
+            text-align: center; 
+            color: #7f8c8d; 
+            font-size: 1.35em; 
+            margin-bottom: 50px; 
+            font-style: italic;
         }
-
-        h4 {
-            color: #764ba2;
-            font-size: 1.4em;
-            margin: 25px 0 15px 0;
+        h2 { 
+            color: #2980b9; 
+            margin-top: 60px; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 12px; 
         }
-
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+        h3 { 
+            color: #16a085; 
+            margin-top: 40px; 
         }
-
-        .card {
+        .intro-box {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 35px;
+            padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            animation: slideInLeft 0.8s ease;
-        }
-
-        .card:nth-child(2) { animation: slideInRight 0.8s ease; }
-        .card:nth-child(3) { animation: slideInLeft 0.8s ease 0.2s both; }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .card h4 {
-            color: white;
-            font-size: 1.6em;
-            margin-bottom: 20px;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            padding-bottom: 10px;
-        }
-
-        .metric {
-            display: flex;
-            justify-content: space-between;
-            margin: 12px 0;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .metric-label {
-            font-weight: 500;
-            font-size: 1.05em;
-        }
-
-        .metric-value {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #00b894;
-        }
-
-        /* Tables */
-        .table-container {
-            overflow-x: auto;
             margin: 30px 0;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
-
-        table {
+        .key-findings {
+            background: #e8f6f3;
+            border-left: 6px solid #16a085;
+            padding: 30px;
+            margin: 35px 0;
+            border-radius: 12px;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            margin: 35px 0;
+        }
+        .result-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .result-card:hover {
+            transform: translateY(-8px);
+        }
+        .comparison-table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
             background: white;
-            font-size: 0.95em;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-
-        thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .comparison-table th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-        }
-
-        th {
-            padding: 18px 15px;
-            text-align: left;
+            padding: 18px 14px;
+            text-align: center;
             font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 0.5px;
         }
-
-        th:first-child { border-top-left-radius: 12px; }
-        th:last-child { border-top-right-radius: 12px; }
-
-        td {
-            padding: 16px 15px;
+        .comparison-table td {
+            padding: 16px 14px;
             border-bottom: 1px solid #ecf0f1;
+            text-align: center;
             vertical-align: middle;
         }
-
-        tbody tr {
-            transition: all 0.3s ease;
-        }
-
-        tbody tr:hover {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            transform: scale(1.01);
-        }
-
-        tbody tr:nth-child(even) {
+        .comparison-table tr:nth-child(even) {
             background: #f8f9fa;
         }
-
-        .highlight-row {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
-            font-weight: 600;
-            border-left: 4px solid #28a745;
+        .highlight {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            font-weight: 700;
         }
-
         .badge {
             display: inline-block;
             padding: 6px 14px;
-            border-radius: 20px;
+            border-radius: 50px;
             font-size: 0.8em;
             font-weight: 700;
             text-transform: uppercase;
         }
-
-        .badge-best {
-            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
-            color: white;
-        }
-
-        .badge-good {
-            background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
-            color: white;
-        }
-
-        .badge-warning {
-            background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);
-            color: #2d3436;
-        }
-
-        /* Intro Box */
-        .intro-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-left: 5px solid #667eea;
-            padding: 30px;
-            margin: 30px 0;
+        .badge-batteries { background: #3498db; color: white; }
+        .badge-roulements { background: #f39c12; color: white; }
+        .badge-moteurs { background: #e74c3c; color: white; }
+        .metric-bar {
+            height: 10px;
+            background: #ecf0f1;
             border-radius: 10px;
-            font-size: 1.1em;
-            line-height: 1.8;
+            margin: 8px 0;
+            overflow: hidden;
         }
-
-        /* Key Findings */
-        .key-findings {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            border-left: 5px solid #fdcb6e;
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 10px;
+        .metric-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2980b9);
         }
-
-        .key-findings h4 {
-            color: #d63031;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-
-        .key-findings ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .key-findings li {
-            padding: 10px 0;
-            padding-left: 35px;
-            position: relative;
-            font-size: 1.05em;
-        }
-
-        .key-findings li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #00b894;
-            font-weight: bold;
-            font-size: 1.3em;
-        }
-
-        /* Conclusion Box */
-        .conclusion-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border: 3px solid #667eea;
-            padding: 40px;
-            margin: 40px 0;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .conclusion-box h4 {
-            color: #2a5298;
-            font-size: 2em;
-            margin-bottom: 25px;
-        }
-
-        .conclusion-box p {
-            font-size: 1.15em;
-            line-height: 1.9;
+        img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             margin: 20px 0;
         }
-
-        .highlight {
-            background: linear-gradient(120deg, #ffeaa7 0%, #fdcb6e 100%);
-            padding: 4px 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            color: #2d3436;
-        }
-
-        /* Images */
-        .image-container {
-            margin: 40px 0;
-            text-align: center;
-            animation: fadeIn 1s ease;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .image-container img:hover {
-            transform: scale(1.02);
-        }
-
-        .image-caption {
-            margin-top: 15px;
-            font-style: italic;
-            color: #636e72;
-            font-size: 1em;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            display: inline-block;
-        }
-
-        /* Footer */
         .footer {
-            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
-            color: white;
             text-align: center;
-            padding: 50px 20px;
             margin-top: 80px;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .footer p {
-            margin: 10px 0;
+            padding: 40px;
+            color: #bdc3c7;
+            border-top: 1px solid rgba(255,255,255,0.2);
             font-size: 1.1em;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2em;
-            }
-            
-            .header .subtitle {
-                font-size: 1.2em;
-            }
-            
-            .section {
-                padding: 30px 20px;
-            }
-            
-            h2 {
-                font-size: 2em;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-container {
-                gap: 8px;
-            }
-            
-            .nav-btn {
-                padding: 8px 12px;
-                font-size: 0.8em;
-            }
+        .conclusion-final {
+            background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
-
-        /* Floating Animation for Icons */
-        .floating {
-            animation: float 3s ease-in-out infinite;
+        @media (max-width: 768px) {
+            .container { padding: 25px; margin: 120px auto 40px; }
+            h1 { font-size: 2.4em; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-btn">Accueil</a>
@@ -495,531 +207,157 @@
             <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
             <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
             <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
-            <a href="conclusion.html" class="nav-btn active">Conclusion Générale</a>
+            <a href="#" class="nav-btn active">Conclusion Générale</a>
             <a href="contact.html" class="nav-btn">Contact</a>
         </div>
     </nav>
 
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>🎓 Conclusion Générale</h1>
-            <p class="subtitle">Maintenance Prédictive Intelligente par Intelligence Artificielle</p>
-            <p class="author">Projet réalisé par l'équipe ENSIT</p>
+        <h1>🏁 Conclusion Générale</h1>
+        <p class="subtitle">Synthèse des trois études de cas en Maintenance Intelligente<br>
+        <strong>Batteries Lithium-ion • Roulements • Moteurs Turbofan</strong></p>
+
+        <div class="intro-box">
+            <h3>📌 Bilan Global du Projet</h3>
+            <p style="font-size: 1.15em; line-height: 1.7;">
+                Ce travail de fin d'études a exploré la <strong>Maintenance Prédictive 4.0</strong> à travers trois systèmes industriels critiques : 
+                les batteries lithium-ion 18650, les roulements mécaniques et les moteurs turbofan d'avion.<br><br>
+                Chaque étude a combiné une analyse FMDS approfondie, un diagnostic par apprentissage automatique et un pronostic RUL par réseaux de neurones récurrents.
+                L'objectif commun : transformer la maintenance corrective ou préventive systématique en une stratégie proactive, rentable et sécurisée.
+            </p>
         </div>
 
-        <!-- Section 1: Synthèse des Résultats -->
-        <section class="section">
-            <h2>📊 Synthèse des Résultats</h2>
-            
-            <div class="intro-box">
-                <p>Ce projet de maintenance prédictive a démontré l'efficacité des approches hybrides combinant <strong>analyse FMDS</strong>, <strong>diagnostic par Machine Learning</strong> et <strong>pronostic par Deep Learning</strong> sur trois systèmes industriels critiques : batteries lithium-ion, moteurs d'avion turbofan et roulements industriels.</p>
-            </div>
+        <h2>📊 1. Synthèse Comparative des Résultats</h2>
+        <div class="key-findings">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Critère</th>
+                        <th>🔋 Batteries Li-ion</th>
+                        <th>⚙️ Roulements</th>
+                        <th>✈️ Moteurs Turbofan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>MTBF</strong></td>
+                        <td class="highlight">1109.36 cycles</td>
+                        <td class="highlight">~206 cycles (simulé)</td>
+                        <td class="highlight">206.3 cycles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disponibilité</strong></td>
+                        <td>99.82%</td>
+                        <td>99.5% (estimée)</td>
+                        <td>99.52%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Meilleur modèle FMDS</strong></td>
+                        <td>Log-Normale (β≈108)</td>
+                        <td>Weibull (simulation roulements)</td>
+                        <td>Weibull (β=2.34)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diagnostic (meilleur modèle)</strong></td>
+                        <td>Random Forest<br><span class="badge badge-batteries">89.3% acc. • AUC 0.988</span></td>
+                        <td>Classification supervisée (RF/SVM)<br><span class="badge badge-roulements">~90% acc.</span></td>
+                        <td>Random Forest / CNN+LSTM<br><span class="badge badge-moteurs">90.4% acc. • AUC 0.991</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pronostic RUL (meilleur modèle)</strong></td>
+                        <td>GRU<br><span class="badge badge-batteries">R²=97.45% • MAE=38.42 cycles</span></td>
+                        <td>Modèles de régression (MATLAB)<br><span class="badge badge-roulements">R² élevé</span></td>
+                        <td>CNN+LSTM<br><span class="badge badge-moteurs">R²=84.2% • MAE=12.61 cycles</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Usure observée</strong></td>
+                        <td>Progressive (β > 1)</td>
+                        <td>Progressive (roulements)</td>
+                        <td>Progressive (β=2.34)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <div class="cards-grid">
-                <div class="card">
-                    <h4>🔋 Batteries Li-ion</h4>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Modèle:</span>
-                        <span class="metric-value">GRU</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">R²:</span>
-                        <span class="metric-value">97.45%</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">MAE:</span>
-                        <span class="metric-value">38.42 cycles</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Disponibilité:</span>
-                        <span class="metric-value">99.82%</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h4>✈️ Moteurs Turbofan</h4>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Modèle:</span>
-                        <span class="metric-value">CNN+LSTM</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">R²:</span>
-                        <span class="metric-value">84.2%</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">RMSE:</span>
-                        <span class="metric-value">16.51 cycles</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">AUC-ROC:</span>
-                        <span class="metric-value">0.991</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h4>⚙️ Roulements Industriels</h4>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Modèle:</span>
-                        <span class="metric-value">Random Forest</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Accuracy:</span>
-                        <span class="metric-value">89.3%</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">AUC-ROC:</span>
-                        <span class="metric-value">0.988</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">MTBF:</span>
-                        <span class="metric-value">192.3 cycles</span>
-                    </div>
-                </div>
-            </div>
-
-            <h3>📈 Tableau Comparatif Global</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Système</th>
-                            <th>Modèle Optimal</th>
-                            <th>Métrique Principale</th>
-                            <th>Performance</th>
-                            <th>MTBF</th>
-                            <th>Statut</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-row">
-                            <td><strong>Batteries Li-ion</strong></td>
-                            <td>GRU</td>
-                            <td>R²</td>
-                            <td><span class="badge badge-best">97.45%</span></td>
-                            <td>1109 cycles</td>
-                            <td><span class="badge badge-best">Excellent</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Moteurs Turbofan</strong></td>
-                            <td>CNN+LSTM</td>
-                            <td>R²</td>
-                            <td><span class="badge badge-good">84.2%</span></td>
-                            <td>206 cycles</td>
-                            <td><span class="badge badge-good">Très Bon</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Roulements Industriels</strong></td>
-                            <td>Random Forest</td>
-                            <td>Accuracy</td>
-                            <td><span class="badge badge-good">89.3%</span></td>
-                            <td>192.3 cycles</td>
-                            <td><span class="badge badge-good">Bon</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Section 2: Apports du Projet -->
-        <section class="section">
-            <h2>🎯 Apports et Contributions</h2>
-            
-            <div class="key-findings">
-                <h4>✅ Contributions Méthodologiques</h4>
-                <ul>
-                    <li><strong>Pipeline complet</strong> : De l'acquisition des données à la prédiction du RUL en passant par l'analyse FMDS et le diagnostic</li>
-                    <li><strong>Approche hybride</strong> : Combinaison optimale de méthodes statistiques (FMDS) et d'intelligence artificielle (ML/DL)</li>
-                    <li><strong>Comparaison rigoureuse</strong> : Évaluation de 5+ architectures de deep learning sur 3 systèmes différents</li>
-                    <li><strong>Interprétabilité</strong> : Analyse de l'importance des features et visualisations détaillées</li>
-                    <li><strong>Reproductibilité</strong> : Code source complet et documentation des méthodologies</li>
+        <h2>🌟 2. Enseignements Clés Communs</h2>
+        <div class="results-grid">
+            <div class="result-card">
+                <h3>✅ Succès Méthodologiques</h3>
+                <ul style="line-height: 1.8;">
+                    <li>✅ <strong>FMDS</strong> : confirmation systématique d’une usure progressive (Weibull / Log-Normale)</li>
+                    <li>✅ <strong>Diagnostic</strong> : détection fiable des états critiques (AUC > 0.98)</li>
+                    <li>✅ <strong>Pronostic</strong> : modèles RNN (GRU / CNN+LSTM) très performants sur données temporelles</li>
+                    <li>✅ Intégration réussie des données simulées + réelles (MATLAB + NASA C-MAPSS / HNEI)</li>
                 </ul>
             </div>
-
-            <h3>💡 Innovations Techniques</h3>
-            <div class="cards-grid">
-                <div class="card">
-                    <h4>🔬 Modélisation Avancée</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 8px 0;">✓ Architecture CNN+LSTM hybride pour moteurs</li>
-                        <li style="padding: 8px 0;">✓ Bidirectional GRU optimisé pour batteries</li>
-                        <li style="padding: 8px 0;">✓ Random Forest avec feature selection pour roulements</li>
-                        <li style="padding: 8px 0;">✓ Regularisation avancée (Dropout, L2)</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>📊 Analyse FMDS Approfondie</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 8px 0;">✓ Ajustement multi-lois (Weibull, Log-Normale, Gamma)</li>
-                        <li style="padding: 8px 0;">✓ Calcul des indicateurs B10/B50/B90</li>
-                        <li style="padding: 8px 0;">✓ Taux de défaillance instantané h(t)</li>
-                        <li style="padding: 8px 0;">✓ Validation par QQ-Plot et Kaplan-Meier</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>🎓 Diagnostic Intelligent</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 8px 0;">✓ Classification multi-classes (4 états batteries)</li>
-                        <li style="padding: 8px 0;">✓ Classification binaire Normal/Défaillant (roulements)</li>
-                        <li style="padding: 8px 0;">✓ AUC-ROC > 0.98 pour tous les systèmes</li>
-                        <li style="padding: 8px 0;">✓ Feature importance analysée (RMS, Kurtosis, etc.)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Focus Roulements Industriels -->
-        <section class="section">
-            <h2>⚙️ Focus : Roulements Industriels</h2>
-            
-            <div class="intro-box">
-                <p>L'étude des roulements industriels s'appuie sur le <strong>dataset NASA C-MAPSS adapté</strong>, comprenant <strong>100 unités d'entraînement</strong> et <strong>100 unités de test</strong>, avec <strong>21 capteurs</strong> mesurant vibrations, température et pression en conditions contrôlées.</p>
-            </div>
-
-            <h3>📊 Résultats FMDS - Roulements</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Indicateur</th>
-                            <th>Valeur</th>
-                            <th>Interprétation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-row">
-                            <td><strong>MTBF</strong></td>
-                            <td>192.3 cycles</td>
-                            <td>Durée moyenne entre remplacements</td>
-                        </tr>
-                        <tr>
-                            <td><strong>MTTR</strong></td>
-                            <td>14.2 cycles</td>
-                            <td>Temps moyen de remplacement</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Disponibilité</strong></td>
-                            <td>93.1%</td>
-                            <td>Système industriel satisfaisant</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Modèle Weibull β</strong></td>
-                            <td>2.1</td>
-                            <td>Usure progressive confirmée ✓</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Paramètre η</strong></td>
-                            <td>215 cycles</td>
-                            <td>63.2% de défaillance atteinte</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>🎯 Indicateurs de Fiabilité B10/B50/B90</h3>
-            <div class="cards-grid">
-                <div class="card">
-                    <h4>B10 - Vie Minimale</h4>
-                    <div class="metric">
-                        <span class="metric-label">Valeur:</span>
-                        <span class="metric-value">89 cycles</span>
-                    </div>
-                    <p style="margin-top: 10px; font-size: 0.9em;">
-                        10% des roulements défaillants avant ce seuil
-                    </p>
-                </div>
-                
-                <div class="card">
-                    <h4>B50 - Vie Médiane</h4>
-                    <div class="metric">
-                        <span class="metric-label">Valeur:</span>
-                        <span class="metric-value">199 cycles</span>
-                    </div>
-                    <p style="margin-top: 10px; font-size: 0.9em;">
-                        50% des roulements défaillants (médiane)
-                    </p>
-                </div>
-                
-                <div class="card">
-                    <h4>B90 - Vie Caractéristique</h4>
-                    <div class="metric">
-                        <span class="metric-label">Valeur:</span>
-                        <span class="metric-value">332 cycles</span>
-                    </div>
-                    <p style="margin-top: 10px; font-size: 0.9em;">
-                        90% des roulements défaillants avant ce seuil
-                    </p>
-                </div>
-            </div>
-
-            <h3>🤖 Performance Diagnostic - Random Forest</h3>
-            <div class="key-findings">
-                <h4>📋 Métriques de Classification</h4>
-                <ul>
-                    <li><strong>Accuracy:</strong> 89.3% - Meilleure performance globale</li>
-                    <li><strong>Précision:</strong> 0.892 - Excellent équilibre faux positifs</li>
-                    <li><strong>Rappel:</strong> 0.893 - Détection efficace des défaillants</li>
-                    <li><strong>F1-Score:</strong> 0.892 - Bon compromis précision/rappel</li>
-                    <li><strong>AUC-ROC:</strong> 0.988 - Discrimination exceptionnelle</li>
+            <div class="result-card">
+                <h3>💡 Valeur Ajoutée Industrielle</h3>
+                <ul style="line-height: 1.8;">
+                    <li>📉 Réduction des arrêts non planifiés</li>
+                    <li>💰 Optimisation des coûts de maintenance (jusqu’à 30-40% estimés)</li>
+                    <li>🛡️ Augmentation de la sécurité (surtout pour les moteurs d’avion)</li>
+                    <li>♻️ Prolongement de la durée de vie utile (seconde vie des batteries)</li>
                 </ul>
             </div>
-
-            <h3>📈 Features Importantes pour le Diagnostic</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Importance</th>
-                            <th>Pourquoi Important?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-row">
-                            <td><strong>RMS Vibratoire</strong></td>
-                            <td>28%</td>
-                            <td>Indicateur global d'énergie vibratoire</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Kurtosis</strong></td>
-                            <td>22%</td>
-                            <td>Détection d'impacts (défauts localisés)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Facteur de Crête</strong></td>
-                            <td>18%</td>
-                            <td>Sensibilité aux pics transitoires</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Skewness</strong></td>
-                            <td>15%</td>
-                            <td>Asymétrie du signal (dégradation)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fréquences BPFO/BPFI</strong></td>
-                            <td>17%</td>
-                            <td>Identification type de défaut</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="result-card">
+                <h3>⚙️ Points Forts Techniques</h3>
+                <ul style="line-height: 1.8;">
+                    <li>Interprétabilité via feature importance (Random Forest)</li>
+                    <li>Architecture légère et déployable (GRU)</li>
+                    <li>Validation robuste (ROC, matrices de confusion, RMSE/MAE)</li>
+                    <li>Approche hybride FMDS + IA applicable à d’autres équipements</li>
+                </ul>
             </div>
+        </div>
 
-            <h3>🔮 Résultats Pronostic RUL - Réseau de Neurones</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Métrique</th>
-                            <th>Valeur</th>
-                            <th>Interprétation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-row">
-                            <td><strong>RMSE</strong></td>
-                            <td>18.4 cycles</td>
-                            <td>Erreur quadratique moyenne acceptable</td>
-                        </tr>
-                        <tr>
-                            <td><strong>MAE</strong></td>
-                            <td>14.2 cycles</td>
-                            <td>Anticipation ~2 semaines possible</td>
-                        </tr>
-                        <tr>
-                            <td><strong>RUL Score</strong></td>
-                            <td>156.8</td>
-                            <td>Pénalité faible pour erreurs</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>📋 Matrice de Décision Maintenance</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>État Roulement</th>
-                            <th>RUL Estimé</th>
-                            <th>Action Recommandée</th>
-                            <th>Niveau d'Alerte</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Normal</strong></td>
-                            <td>&gt; 100 cycles</td>
-                            <td>Surveillance routine</td>
-                            <td><span class="badge badge-best">Vert</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dégradation Débutante</strong></td>
-                            <td>50-100 cycles</td>
-                            <td>Augmentation fréquence monitoring</td>
-                            <td><span class="badge badge-good">Jaune</span></td>
-                        </tr>
-                        <tr style="background: #fff3cd;">
-                            <td><strong>Dégradation Avancée</strong></td>
-                            <td>20-50 cycles</td>
-                            <td>Planification intervention</td>
-                            <td><span class="badge badge-warning">Orange</span></td>
-                        </tr>
-                        <tr style="background: #ffcccc;">
-                            <td><strong>Défaillance Imminente</strong></td>
-                            <td>&lt; 20 cycles</td>
-                            <td>Intervention immédiate</td>
-                            <td><span class="badge badge-best">Rouge</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Section 4: Limites et Perspectives -->
-        <section class="section">
-            <h2>⚠️ Limites et Perspectives</h2>
-            
-            <h3>🔍 Limites Identifiées</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Catégorie</th>
-                            <th>Limite</th>
-                            <th>Impact</th>
-                            <th>Piste d'Amélioration</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Données</strong></td>
-                            <td>Dataset de laboratoire uniquement</td>
-                            <td>Généralisation limitée</td>
-                            <td>Collecte données industrielles réelles</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Modèles</strong></td>
-                            <td>Fenêtre temporelle fixe</td>
-                            <td>Optimisation sous-optimale</td>
-                            <td>Recherche automatique de fenêtre</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Validation</strong></td>
-                            <td>MTTR estimé (hypothèse)</td>
-                            <td>Disponibilité théorique</td>
-                            <td>Mesure en conditions réelles</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Déploiement</strong></td>
-                            <td>Modèles non optimisés pour edge</td>
-                            <td>Latence en temps réel</td>
-                            <td>Quantification et pruning</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>🚀 Perspectives d'Amélioration</h3>
-            <div class="cards-grid">
-                <div class="card">
-                    <h4>📅 Court Terme (1-6 mois)</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 10px 0;">✓ Validation croisée k-fold rigoureuse</li>
-                        <li style="padding: 10px 0;">✓ Test sur datasets FD002-FD004 (NASA)</li>
-                        <li style="padding: 10px 0;">✓ Feature engineering avancé</li>
-                        <li style="padding: 10px 0;">✓ Hyperparameter tuning automatisé</li>
+        <h2>⚠️ 3. Limites & Perspectives d’Amélioration</h2>
+        <div class="key-findings">
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>Limites communes</h4>
+                    <ul>
+                        <li>Données principalement simulées ou de laboratoire</li>
+                        <li>Variabilité limitée des conditions réelles (température, charge, etc.)</li>
+                        <li>MTTR souvent estimé</li>
                     </ul>
                 </div>
-
-                <div class="card">
-                    <h4>📅 Moyen Terme (6-12 mois)</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 10px 0;">✓ Intégration capteurs additionnels</li>
-                        <li style="padding: 10px 0;">✓ Mécanisme d'attention explicite</li>
-                        <li style="padding: 10px 0;">✓ Modèles d'ensemble (voting)</li>
-                        <li style="padding: 10px 0;">✓ API temps réel (Flask/FastAPI)</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h4>📅 Long Terme (1-2 ans)</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 10px 0;">✓ Transfer learning inter-systèmes</li>
-                        <li style="padding: 10px 0;">✓ Détection de concept drift</li>
-                        <li style="padding: 10px 0;">✓ Déploiement edge computing</li>
-                        <li style="padding: 10px 0;">✓ Intégration BMS/SCADA industriels</li>
+                <div class="result-card">
+                    <h4>Perspectives futures</h4>
+                    <ul>
+                        <li>Intégration de capteurs IoT en temps réel</li>
+                        <li>Modèles hybrides (CNN + Transformer + Attention)</li>
+                        <li>Déploiement Edge / Cloud pour maintenance industrielle</li>
+                        <li>Généralisation multi-équipements via Transfer Learning</li>
+                        <li>Intégration dans un jumeau numérique complet</li>
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Section 5: Conclusion Finale -->
-        <section class="section">
-            <div class="conclusion-box">
-                <h4>🏆 Conclusion Générale</h4>
-                <p>
-                    Ce projet a démontré la <span class="highlight">faisabilité et l'efficacité</span> d'une approche complète de maintenance prédictive 
-                    combinant analyse de fiabilité (FMDS), intelligence artificielle (Machine Learning et Deep Learning) 
-                    et recommandations opérationnelles pour trois systèmes industriels critiques.
-                </p>
-                <p>
-                    Les résultats obtenus sont <span class="highlight">prometteurs</span> : 
-                    <strong>R² jusqu'à 97.45%</strong> pour les batteries, 
-                    <strong>84.2%</strong> pour les moteurs d'avion, et 
-                    <strong>89.3% d'accuracy</strong> pour les roulements, 
-                    avec une détection <span class="highlight">100% des états critiques</span>.
-                </p>
-                <p>
-                    La méthodologie développée est <span class="highlight">générique et transférable</span> 
-                    à d'autres systèmes industriels, ouvrant la voie vers une maintenance véritablement 
-                    <span class="highlight">prédictive, économique et sécurisée</span>.
-                </p>
-                <p style="margin-top: 30px; font-size: 1.2em; font-style: italic;">
-                    "La maintenance du futur n'est plus corrective ni préventive, mais <strong>prédictive et intelligente</strong>."
-                </p>
-            </div>
+        <div class="conclusion-final">
+            <h2>🚀 Vers une Maintenance Prédictive Intelligente</h2>
+            <p style="font-size: 1.4em; line-height: 1.7; max-width: 900px; margin: 0 auto;">
+                Les trois études de cas démontrent clairement que l’alliance entre <strong>analyse FMDS</strong>, 
+                <strong>intelligence artificielle</strong> et <strong>données temporelles</strong> permet de passer 
+                d’une maintenance réactive à une stratégie véritablement prédictive, économique et sécurisée.
+            </p>
+            <p style="margin-top: 30px; font-size: 1.25em;">
+                Que ce soit pour les batteries du futur véhicule électrique, les roulements des machines industrielles 
+                ou les moteurs d’avion, la Maintenance 4.0 n’est plus une option : c’est une nécessité compétitive.
+            </p>
+            <p style="margin-top: 40px; font-size: 1.1em; opacity: 0.95;">
+                Ce projet constitue une base solide pour le déploiement industriel de systèmes de maintenance intelligente 
+                et ouvre la voie à de nombreuses applications dans l’industrie tunisienne et internationale.
+            </p>
+            <p style="margin-top: 35px; font-weight: bold; font-size: 1.3em;">
+                Merci à l’ENSIT • Option Automatique et Informatique Industrielle
+            </p>
+        </div>
 
-            <h3>📚 Références Bibliographiques</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Référence</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Dataset</strong></td>
-                            <td>NASA C-MAPSS: <a href="https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/" target="_blank">Prognostics Center of Excellence</a></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Batteries</strong></td>
-                            <td>Hawaii Natural Energy Institute - Battery RUL Dataset</td>
-                        </tr>
-                        <tr>
-                            <td><strong>FMDS</strong></td>
-                            <td>Saxena, A., et al. (2008). "Damage Propagation Modeling for Aircraft Engine Run-to-Failure Simulation"</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Deep Learning</strong></td>
-                            <td>Hochreiter, S., & Schmidhuber, J. (1997). "Long Short-Term Memory". Neural Computation</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <div class="footer">
+            <p>© 2026 Noujoud OUNI • Sami Hasni • Raouaa MELLITI | École Nationale Supérieure d’Ingénieurs de Tunis (ENSIT)</p>
+            <p style="margin-top: 10px;">Projet de Fin d’Études • Maintenance Prédictive & FMDS</p>
+        </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2026 Équipe ENSIT | Maintenance Prédictive Intelligente</p>
-        <p>Projet académique - Tous droits réservés</p>
-        <p style="margin-top: 20px; font-size: 0.9em;">
-            Développé avec ❤️ pour l'avenir de la maintenance industrielle
-        </p>
-    </footer>
 </body>
 </html>
