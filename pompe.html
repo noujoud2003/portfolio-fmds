@@ -5,39 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prédiction RUL Batteries Li-ion | Noujoud Ouni</title>
     <style>
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* --- STYLE GLOBAL & FOND BLANC --- */
         body {
             margin: 0; padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
-            background-size: 400% 400%;
-            animation: gradientAnimation 18s ease infinite;
+            background-color: #ffffff; /* FOND BLANC PUR */
             color: #2c3e50;
-            min-height: 100vh;
+            line-height: 1.6;
         }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- NAVIGATION --- */
         .navbar {
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #eee;
         }
         .nav-container {
             max-width: 1400px;
@@ -46,11 +39,12 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
+            padding: 0 20px;
         }
         .nav-btn {
-            background: rgba(52, 152, 219, 0.25);
-            color: #ecf0f1;
-            border: 1px solid #3498db;
+            background: white;
+            color: #2c3e50;
+            border: 1px solid #dee2e6;
             padding: 10px 16px;
             border-radius: 25px;
             text-decoration: none;
@@ -58,43 +52,52 @@
             font-size: 0.95em;
             transition: all 0.3s ease;
         }
-        .nav-btn:hover {
+        .nav-btn:hover, .active {
             background: #3498db;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
-        .active { background: #3498db !important; }
-
-        .container {
-            max-width: 1400px;
-            margin: 140px auto 80px;
-            padding: 50px;
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-        }
-        h1 { color: #3498db; text-align: center; margin-bottom: 20px; font-size: 2.8em; }
-        .subtitle { text-align: center; color: #7f8c8d; font-size: 1.2em; margin-bottom: 40px; font-style: italic; }
-        h2 { color: #2980b9; margin-top: 50px; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
-        h3 { color: #16a085; margin-top: 35px; }
-
-        .intro-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+
+        /* --- CONTENEUR PRINCIPAL --- */
+        .container {
+            max-width: 1200px;
+            margin: 120px auto 80px;
+            padding: 40px;
+            background: #ffffff;
+        }
+
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 10px; font-size: 2.8em; font-weight: 800; }
+        .subtitle { text-align: center; color: #7f8c8d; font-size: 1.2em; margin-bottom: 50px; font-style: italic; }
+        
+        h2 { 
+            color: #2980b9; 
+            margin-top: 60px; 
+            border-left: 6px solid #3498db; 
+            padding-left: 20px; 
+            font-size: 2em;
+        }
+        h3 { color: #16a085; margin-top: 40px; font-size: 1.5em; }
+
+        /* --- BOITES DE CONTENU --- */
+        .intro-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 30px;
             border-radius: 12px;
             margin: 30px 0;
+            border: 1px solid #e1e8ed;
         }
         .key-findings {
             background: #e8f6f3;
             border-left: 5px solid #16a085;
             padding: 20px;
             margin: 25px 0;
-            border-radius: 8px;
+            border-radius: 0 8px 8px 0;
         }
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin: 30px 0;
         }
@@ -102,259 +105,105 @@
             background: white;
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            transition: transform 0.3s ease;
         }
-        .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-        .metric {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #ecf0f1;
-        }
-        .metric-label { font-weight: 600; color: #7f8c8d; }
-        .metric-value { color: #2980b9; font-weight: 700; }
-        .best-value { color: #27ae60; font-weight: 700; }
+        .result-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
-        /* TABLEAUX PROFESSIONNELS AMÉLIORÉS + ANIMATIONS */
+        /* --- TABLEAUX --- */
         .table-container {
             overflow-x: auto;
             margin: 30px 0;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            animation: fadeInUp 0.6s ease-out;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
         }
+        table { width: 100%; border-collapse: collapse; background: white; font-size: 0.95em; }
+        thead { background: #f8f9fa; border-bottom: 2px solid #dee2e6; }
+        th { padding: 15px; text-align: left; font-weight: 700; color: #2c3e50; text-transform: uppercase; font-size: 0.85em; }
+        td { padding: 12px 15px; border-bottom: 1px solid #ecf0f1; color: #333; }
+        tbody tr:hover { background: #f1f4f8; }
+        .highlight-row { background: #d4edda !important; font-weight: 600; }
         
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            background: white;
-            font-size: 0.95em;
-        }
-        
-        thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        th {
-            padding: 16px 12px;
-            text-align: left;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.85em;
-            letter-spacing: 0.5px;
-            border: none;
-        }
-        
-        th:first-child {
-            border-top-left-radius: 12px;
-        }
-        
-        th:last-child {
-            border-top-right-radius: 12px;
-        }
-        
-        td {
-            padding: 14px 12px;
-            border-bottom: 1px solid #ecf0f1;
-            vertical-align: middle;
-        }
-        
-        tbody tr {
-            transition: all 0.3s ease;
-        }
-        
-        tbody tr:hover {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            transform: scale(1.01);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        tbody tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-        
-        tbody tr:nth-child(even):hover {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        
-        .highlight-row {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
-            font-weight: 600;
-            border-left: 4px solid #28a745;
-        }
-        
-        .highlight-row:hover {
-            background: linear-gradient(135deg, #c3e6cb 0%, #b1dfbb 100%) !important;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-left: 8px;
-        }
-        
-        .badge-best {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-        }
-        
-        .badge-good {
-            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
-            color: white;
-        }
-        
-        .badge-warning {
-            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
-            color: #212529;
-        }
-        
-        .metric-bar {
-            width: 100%;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-        
-        .metric-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 4px;
-            transition: width 0.6s ease;
-        }
-        
-        .metric-bar-fill.best {
-            background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
-        }
-        
-        .metric-bar-fill.good {
-            background: linear-gradient(90deg, #17a2b8 0%, #138496 100%);
-        }
-        
-        .value-cell {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .value-cell.best {
-            color: #27ae60;
-            font-weight: 700;
-        }
-        
-        .icon-cell {
-            font-size: 1.2em;
-            margin-right: 8px;
-        }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 700; }
+        .badge-best { background: #28a745; color: white; }
+        .badge-good { background: #17a2b8; color: white; }
+        .badge-warning { background: #ffc107; color: black; }
 
-        /* TABLEAU FMDS SPÉCIAL */
-        .fmds-table th {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-        }
-        
-        .fmds-table .indicator-name {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .fmds-table .indicator-value {
-            font-weight: 700;
-            color: #3498db;
-            font-size: 1.1em;
-        }
-
-        /* IMAGES CENTRÉES */
-        .image-container {
-            text-align: center;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            margin: 20px 0;
-            transition: transform 0.3s ease;
-        }
-        .image-container img:hover {
-            transform: scale(1.02);
-        }
-        .image-caption {
-            text-align: center;
-            color: #7f8c8d;
-            font-style: italic;
-            margin-top: 8px;
-        }
-        
-        .images-stack {
+        /* --- IMAGES & FIGURES (GRANDES & ANIMÉES) --- */
+        .figure-wrapper {
+            margin: 60px 0;
             display: flex;
             flex-direction: column;
-            gap: 30px;
             align-items: center;
-            margin: 40px 0;
+            animation: fadeInUp 1s ease-out forwards;
         }
-        
-        .footer {
+        .figure-large {
+            width: 90%; /* TRÈS GRAND */
+            max-width: 1100px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border: 5px solid white;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+        .figure-large:hover {
+            transform: scale(1.03); /* ZOOM AU SURVOL */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+        .image-caption {
+            margin-top: 20px;
             text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            color: #bdc3c7;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            color: #555;
+            font-style: italic;
+            font-size: 1.1em;
+            max-width: 900px;
+            line-height: 1.6;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
         }
-        
+
+        /* --- BOUTONS & LIENS --- */
         .download-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            margin: 10px 5px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            font-weight: 600;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #3498db; color: white;
+            padding: 12px 25px; border-radius: 25px;
+            text-decoration: none; font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+            margin: 5px;
         }
-        
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        .download-btn:hover { background: #2980b9; transform: translateY(-2px); }
+
+        .video-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #fff; color: #c0392b;
+            border: 2px solid #c0392b;
+            padding: 10px 20px; border-radius: 25px;
+            text-decoration: none; font-weight: bold;
+            margin: 10px 0; transition: all 0.3s ease;
         }
-        
+        .video-link:hover { background: #c0392b; color: white; }
+
         .conclusion-box {
             background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
             border: 2px solid #667eea;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 10px;
+            padding: 25px; margin: 30px 0; border-radius: 10px;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 120px auto 40px;
-            }
-            table {
-                font-size: 0.85em;
-            }
-            th, td {
-                padding: 10px 8px;
-            }
+            .container { padding: 20px; margin-top: 140px; }
+            .figure-large { width: 100%; }
+            h1 { font-size: 2em; }
         }
     </style>
 </head>
 <body>
+
+    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-btn">Accueil</a>
@@ -378,53 +227,59 @@
             <div class="intro-box">
                 <h3>📌 Introduction – Pourquoi prédire le RUL ?</h3>
                 <p>Les batteries lithium-ion (NMC-LCO 18650 – 2.8 Ah) sont essentielles dans les véhicules électriques, le stockage d'énergie renouvelable et les systèmes critiques. Prédire leur durée de vie restante (RUL) permet d'anticiper les pannes, d'optimiser la maintenance prédictive et de prolonger leur usage en seconde vie.</p>
-                <div style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px;">
+                
+                <!-- LIEN VIDÉO GMAO -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="https://youtu.be/2hLLxCEbcTk" target="_blank" class="video-link">
+                        🎥 Vidéo Explicative : Qu'est-ce que la GMAO ?
+                    </a>
+                </div>
+
+                <div style="margin-top: 25px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;">
                     <p><strong>📂 Dataset :</strong> Hawaii Natural Energy Institute – 14 cellules – plus de 1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.</p>
                     <a href="Battery_RUL.csv" class="download-btn" download>📥 Télécharger le Dataset</a>
                 </div>
             </div>
         </section>
 
-        <!-- FMDS -->
+        <!-- SECTION FMDS COMPLÈTE -->
         <section>
             <h2>📊 1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
             
             <div class="intro-box">
                 <h3>🎯 Objectif de l'Analyse FMDS</h3>
-                <p>L'analyse FMDS permet d'évaluer quantitativement la performance des batteries lithium-ion à travers quatre dimensions interdépendantes : <strong>Fiabilité</strong> (capacité à fonctionner sans panne), <strong>Maintenabilité</strong> (facilité de réparation), <strong>Disponibilité</strong> (temps opérationnel) et <strong>Sécurité</strong> (fonctionnement sans danger).</p>
+                <p>L'analyse FMDS permet d'évaluer quantitativement la performance des batteries lithium-ion à travers quatre dimensions interdépendantes : <strong>Fiabilité</strong>, <strong>Maintenabilité</strong>, <strong>Disponibilité</strong> et <strong>Sécurité</strong>.</p>
             </div>
 
-            <!-- Indicateurs FMDS Principaux -->
             <div class="key-findings">
                 <h4>📋 Résultats Clés FMDS</h4>
                 <div class="results-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div class="result-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <h4 style="color: white;">MTBF</h4>
-                        <p style="color: white; font-size: 2em; font-weight: bold; margin: 10px 0;">1109.36</p>
-                        <p style="color: #ecf0f1; font-size: 0.9em;">cycles (≈ 163 jours)</p>
+                    <div class="result-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+                        <h4>MTBF</h4>
+                        <p style="font-size: 2em; font-weight: bold;">1109.36</p>
+                        <p>cycles (≈ 163 jours)</p>
                     </div>
-                    <div class="result-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <h4 style="color: white;">MTTR</h4>
-                        <p style="color: white; font-size: 2em; font-weight: bold; margin: 10px 0;">2.00</p>
-                        <p style="color: #ecf0f1; font-size: 0.9em;">cycles (hypothèse)</p>
+                    <div class="result-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; text-align: center;">
+                        <h4>MTTR</h4>
+                        <p style="font-size: 2em; font-weight: bold;">2.00</p>
+                        <p>cycles (hypothèse)</p>
                     </div>
-                    <div class="result-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <h4 style="color: white;">Disponibilité</h4>
-                        <p style="color: white; font-size: 2em; font-weight: bold; margin: 10px 0;">99.82%</p>
-                        <p style="color: #ecf0f1; font-size: 0.9em;">Excellente</p>
+                    <div class="result-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; text-align: center;">
+                        <h4>Disponibilité</h4>
+                        <p style="font-size: 2em; font-weight: bold;">99.82%</p>
+                        <p>Excellente</p>
                     </div>
-                    <div class="result-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        <h4 style="color: white;">Taux Défaillance</h4>
-                        <p style="color: white; font-size: 2em; font-weight: bold; margin: 10px 0;">0.0009</p>
-                        <p style="color: #ecf0f1; font-size: 0.9em;">par cycle</p>
+                    <div class="result-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; text-align: center;">
+                        <h4>Taux Défaillance</h4>
+                        <p style="font-size: 2em; font-weight: bold;">0.0009</p>
+                        <p>par cycle</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Tableau Indicateurs Détaillés -->
             <h3>📋 Indicateurs FMDS Détaillés</h3>
             <div class="table-container">
-                <table class="fmds-table">
+                <table>
                     <thead>
                         <tr>
                             <th>📊 Indicateur</th>
@@ -470,17 +325,10 @@
                             <td>Dégradation progressive confirmée</td>
                             <td><span class="badge badge-best">Validé</span></td>
                         </tr>
-                        <tr>
-                            <td class="indicator-name">Médiane de survie</td>
-                            <td class="indicator-value">1107.0 cycles</td>
-                            <td>50% des batteries défaillantes</td>
-                            <td><span class="badge badge-good">Stable</span></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Comparaison des Modèles de Fiabilité -->
             <h3>📐 Comparaison des Modèles de Fiabilité</h3>
             <div class="table-container">
                 <table>
@@ -519,30 +367,18 @@
                             <td class="value-cell">-52.37</td>
                             <td><span class="badge badge-warning">3ème</span></td>
                         </tr>
-                        <tr>
-                            <td><span class="icon-cell">⚡</span>Exponentielle</td>
-                            <td>λ=0.000901</td>
-                            <td class="value-cell">226.32</td>
-                            <td class="value-cell">226.96</td>
-                            <td class="value-cell">-112.16</td>
-                            <td><span class="badge badge-warning">4ème</span></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Visualisations FMDS -->
-            <h3>📈 Visualisations FMDS Complètes</h3>
-            <div class="image-container">
-                <img src="FMDS_Analyse_Complete_Batteries.png" alt="Analyse FMDS Complète - 9 Visualisations">
+            <!-- IMAGE FMDS GRANDE -->
+            <div class="figure-wrapper">
+                <img src="FMDS_Analyse_Complete_Batteries.png" alt="Analyse FMDS Complète" class="figure-large">
                 <p class="image-caption">
-                    <strong>Figure 1:</strong> Analyse FMDS complète - Distribution des temps de vie, fonctions de fiabilité R(t), 
-                    taux de risque h(t), Kaplan-Meier, QQ-Plot Weibull, indicateurs FMDS, variabilité inter-batteries, 
-                    corrélations features vs RUL, et évolution de la disponibilité
+                    <strong>Figure 1:</strong> Analyse FMDS complète - Distribution des temps de vie, fonctions de fiabilité R(t), taux de risque h(t), Kaplan-Meier, QQ-Plot Weibull, indicateurs FMDS, variabilité inter-batteries, corrélations features vs RUL, et évolution de la disponibilité.
                 </p>
             </div>
 
-            <!-- Interprétation Weibull -->
             <div class="key-findings">
                 <h4>🔍 Interprétation du Modèle Weibull</h4>
                 <div class="results-grid">
@@ -568,21 +404,9 @@
                             Correspond à la durée de vie caractéristique du système
                         </p>
                     </div>
-                    <div class="result-card">
-                        <h4>📈 MTTF (Mean Time To Failure)</h4>
-                        <div class="metric">
-                            <span class="metric-label">MTTF:</span>
-                            <span class="metric-value best-value">1109.36 cycles</span>
-                        </div>
-                        <p style="margin-top: 10px; font-size: 0.9em; color: #555;">
-                            Durée de vie moyenne théorique<br>
-                            Cohérent avec le MTBF observé (1109 cycles)
-                        </p>
-                    </div>
                 </div>
             </div>
 
-            <!-- Fiabilité Prédite -->
             <h3>📈 Fiabilité Prédite par Horizon Temporel</h3>
             <div class="table-container">
                 <table>
@@ -629,54 +453,6 @@
                 </table>
             </div>
 
-            <!-- Analyse du Taux de Risque par Batterie -->
-            <h3>⚠️ Analyse du Taux de Risque par Batterie</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>🔋 Batterie</th>
-                            <th>📊 Durée de Vie (cycles)</th>
-                            <th>⚠️ Taux de Risque h(t)</th>
-                            <th>🚨 Niveau de Risque</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="background: #ffcccc;">
-                            <td><strong>Batterie #5</strong></td>
-                            <td>1133.0</td>
-                            <td class="value-cell best">0.615178</td>
-                            <td><span class="badge badge-best">Élevé</span></td>
-                        </tr>
-                        <tr style="background: #ffe5cc;">
-                            <td><strong>Batterie #1</strong></td>
-                            <td>1112.0</td>
-                            <td class="value-cell">0.083362</td>
-                            <td><span class="badge badge-good">Élevé</span></td>
-                        </tr>
-                        <tr>
-                            <td>Batterie #2</td>
-                            <td>1107.0</td>
-                            <td class="value-cell">0.051508</td>
-                            <td><span class="badge badge-good">Élevé</span></td>
-                        </tr>
-                        <tr>
-                            <td>Batterie #3</td>
-                            <td>1107.0</td>
-                            <td class="value-cell">0.051508</td>
-                            <td><span class="badge badge-good">Élevé</span></td>
-                        </tr>
-                        <tr>
-                            <td>Batterie #4</td>
-                            <td>1107.0</td>
-                            <td class="value-cell">0.051508</td>
-                            <td><span class="badge badge-good">Élevé</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Recommandations Maintenance -->
             <div class="conclusion-box">
                 <h4>💡 Recommandations pour la Maintenance</h4>
                 <div class="results-grid">
@@ -707,26 +483,15 @@
                 </div>
             </div>
 
-            <!-- Téléchargement des Résultats -->
             <div style="text-align: center; margin: 40px 0;">
                 <h3>📥 Télécharger les Résultats FMDS</h3>
-                <p style="color: #555; margin-bottom: 20px;">Tous les fichiers de résultats sont disponibles en téléchargement</p>
-                <a href="FMDS_Summary_Batteries.csv" download class="download-btn">
-                    📄 FMDS_Summary_Batteries.csv
-                </a>
-                <a href="FMDS_Reliability_Models.csv" download class="download-btn">
-                    📄 FMDS_Reliability_Models.csv
-                </a>
-                <a href="FMDS_KaplanMeier_Data.csv" download class="download-btn">
-                    📄 FMDS_KaplanMeier_Data.csv
-                </a>
-                <a href="FMDS_Analyse_Complete_Batteries.png" download class="download-btn">
-                    🖼️ FMDS_Analyse_Complete_Batteries.png
-                </a>
+                <a href="FMDS_Summary_Batteries.csv" download class="download-btn">📄 FMDS_Summary_Batteries.csv</a>
+                <a href="FMDS_Reliability_Models.csv" download class="download-btn">📄 FMDS_Reliability_Models.csv</a>
+                <a href="FMDS_KaplanMeier_Data.csv" download class="download-btn">📄 FMDS_KaplanMeier_Data.csv</a>
+                <a href="FMDS_Analyse_Complete_Batteries.png" download class="download-btn">🖼️ FMDS_Analyse_Complete_Batteries.png</a>
             </div>
 
-            <!-- Synthèse Finale -->
-            <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-top: 40px;">
+            <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; margin-top: 40px;">
                 <h3 style="color: white; margin-top: 0;">🏆 Synthèse FMDS - Batteries Lithium-ion</h3>
                 <p style="color: #ecf0f1; line-height: 1.8;">
                     L'analyse FMDS révèle une <strong>excellente disponibilité (99.82%)</strong> et un <strong>MTBF de 1109 cycles</strong> pour les batteries étudiées. 
@@ -739,120 +504,115 @@
             </div>
         </section>
 
-        <!-- DIAGNOSTIC AMÉLIORÉ -->
-        <section style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <!-- SECTION DIAGNOSTIC COMPLÈTE -->
+        <section>
             <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
             
-            <div class="key-findings" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
+            <div class="key-findings">
                 <h4>🎯 Objectif du Diagnostic</h4>
                 <p>Détecter en temps réel l'état de santé des batteries pour anticiper les défaillances et planifier la maintenance.</p>
                 <p><strong>📊 Split rigoureux :</strong> 9 batteries pour l’entraînement, 5 batteries totalement nouvelles pour le test (aucune fuite de données).</p>
             </div>
 
-            <!-- MÉTHODOLOGIE DE CLASSIFICATION -->
             <h3>📊 Méthodologie de Classification</h3>
-            <div class="table-container" style="overflow-x: auto; margin-bottom: 40px;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
+            <div class="table-container">
+                <table>
                     <thead>
-                        <tr style="background: #e9ecef;">
-                            <th style="padding: 12px; text-align: left;">🏷️ Classe</th>
-                            <th style="padding: 12px; text-align: left;">📈 Critère (RUL restant)</th>
-                            <th style="padding: 12px; text-align: left;">💡 Signification</th>
-                            <th style="padding: 12px; text-align: left;">⚡ Action</th>
+                        <tr>
+                            <th>🏷️ Classe</th>
+                            <th>📈 Critère (RUL restant)</th>
+                            <th>💡 Signification</th>
+                            <th>⚡ Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="highlight-row" style="background: #d4edda;">
-                            <td style="padding: 10px;"><span class="icon-cell">✅</span><strong>Excellent</strong></td>
-                            <td style="padding: 10px;">> 80% du RUL max</td>
-                            <td style="padding: 10px;">Batterie neuve/peu utilisée</td>
-                            <td style="padding: 10px;">Utilisation normale</td>
+                        <tr class="highlight-row">
+                            <td><span class="icon-cell">✅</span><strong>Excellent</strong></td>
+                            <td>> 80% du RUL max</td>
+                            <td>Batterie neuve/peu utilisée</td>
+                            <td>Utilisation normale</td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><span class="icon-cell">👍</span><strong>Bon</strong></td>
-                            <td style="padding: 10px;">55-80% du RUL max</td>
-                            <td style="padding: 10px;">Bon état général</td>
-                            <td style="padding: 10px;">Surveillance standard</td>
+                        <tr>
+                            <td><span class="icon-cell">👍</span><strong>Bon</strong></td>
+                            <td>55-80% du RUL max</td>
+                            <td>Bon état général</td>
+                            <td>Surveillance standard</td>
                         </tr>
                         <tr style="background: #fff3cd;">
-                            <td style="padding: 10px;"><span class="icon-cell">⚠️</span><strong>Moyen</strong></td>
-                            <td style="padding: 10px;">20-55% du RUL max</td>
-                            <td style="padding: 10px;">Dégradation visible</td>
-                            <td style="padding: 10px;">Surveillance renforcée</td>
+                            <td><span class="icon-cell">⚠️</span><strong>Moyen</strong></td>
+                            <td>20-55% du RUL max</td>
+                            <td>Dégradation visible</td>
+                            <td>Surveillance renforcée</td>
                         </tr>
                         <tr style="background: #f8d7da;">
-                            <td style="padding: 10px;"><span class="icon-cell">🚨</span><strong>Critique</strong></td>
-                            <td style="padding: 10px;">≤ 20% du RUL max</td>
-                            <td style="padding: 10px;">Risque de panne élevé</td>
-                            <td style="padding: 10px;">Remplacement imminent</td>
+                            <td><span class="icon-cell">🚨</span><strong>Critique</strong></td>
+                            <td>≤ 20% du RUL max</td>
+                            <td>Risque de panne élevé</td>
+                            <td>Remplacement imminent</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- PERFORMANCE COMPARATIVE -->
             <h3>🤖 Performance Comparative des Modèles</h3>
-            <div class="table-container" style="overflow-x: auto; margin-bottom: 40px;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
+            <div class="table-container">
+                <table>
                     <thead>
-                        <tr style="background: #e9ecef;">
-                            <th style="padding: 12px; text-align: left;">🧠 Modèle</th>
-                            <th style="padding: 12px; text-align: left;">📊 Accuracy</th>
-                            <th style="padding: 12px; text-align: left;">🎯 AUC macro</th>
-                            <th style="padding: 12px; text-align: left;">🏆 Rang</th>
+                        <tr>
+                            <th>🧠 Modèle</th>
+                            <th>📊 Accuracy</th>
+                            <th>🎯 AUC macro</th>
+                            <th>🏆 Rang</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="highlight-row" style="background: #d4edda;">
-                            <td style="padding: 10px;"><span class="icon-cell">🌲</span><strong>Random Forest</strong></td>
-                            <td style="padding: 10px;">
+                        <tr class="highlight-row">
+                            <td><span class="icon-cell">🌲</span><strong>Random Forest</strong></td>
+                            <td>
                                 83.98%
                                 <div class="metric-bar" style="height: 6px; background: #eee; border-radius: 3px; margin-top: 5px;">
                                     <div class="metric-bar-fill best" style="width: 84%; height: 100%; background: #28a745; border-radius: 3px;"></div>
                                 </div>
                             </td>
-                            <td style="padding: 10px;">0.977</td>
-                            <td style="padding: 10px;"><span class="badge badge-best" style="background: #28a745; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em;">1er</span></td>
+                            <td>0.977</td>
+                            <td><span class="badge badge-best">1er</span></td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><span class="icon-cell">⚡</span>SVM (RBF)</td>
-                            <td style="padding: 10px;">
+                        <tr>
+                            <td><span class="icon-cell">⚡</span>SVM (RBF)</td>
+                            <td>
                                 83.76%
                                 <div class="metric-bar" style="height: 6px; background: #eee; border-radius: 3px; margin-top: 5px;">
                                     <div class="metric-bar-fill good" style="width: 83.8%; height: 100%; background: #17a2b8; border-radius: 3px;"></div>
                                 </div>
                             </td>
-                            <td style="padding: 10px;">0.979</td>
-                            <td style="padding: 10px;"><span class="badge badge-good" style="background: #17a2b8; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em;">2ème</span></td>
+                            <td>0.979</td>
+                            <td><span class="badge badge-good">2ème</span></td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><span class="icon-cell">🌳</span>Decision Tree</td>
-                            <td style="padding: 10px;">
+                        <tr>
+                            <td><span class="icon-cell">🌳</span>Decision Tree</td>
+                            <td>
                                 80.43%
                                 <div class="metric-bar" style="height: 6px; background: #eee; border-radius: 3px; margin-top: 5px;">
                                     <div class="metric-bar-fill" style="width: 80.4%; height: 100%; background: #ffc107; border-radius: 3px;"></div>
                                 </div>
                             </td>
-                            <td style="padding: 10px;">0.947</td>
-                            <td style="padding: 10px;"><span class="badge badge-warning" style="background: #ffc107; color: black; padding: 4px 8px; border-radius: 12px; font-size: 0.8em;">3ème</span></td>
+                            <td>0.947</td>
+                            <td><span class="badge badge-warning">3ème</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- ANALYSE DÉTAILLÉE RANDOM FOREST -->
             <h3>📊 Analyse Détaillée - Random Forest (Meilleur Modèle)</h3>
             
-            <div class="results-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px;">
-                
-                <!-- Points Forts -->
-                <div class="result-card" style="background: #f8f9fa; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div class="results-grid">
+                <div class="result-card">
                     <h4>✅ Points Forts</h4>
-                    <div class="metric" style="margin-bottom: 10px;">
+                    <div class="metric">
                         <span class="metric-label">Accuracy (test, 5 batteries):</span>
                         <span class="metric-value best-value" style="font-weight: bold; color: #28a745;">83.98%</span>
                     </div>
-                    <div class="metric" style="margin-bottom: 10px;">
+                    <div class="metric">
                         <span class="metric-label">AUC macro (moyenne):</span>
                         <span class="metric-value best-value" style="font-weight: bold; color: #28a745;">0.977</span>
                     </div>
@@ -862,8 +622,7 @@
                     </div>
                 </div>
                 
-                <!-- Confusions Observées -->
-                <div class="result-card" style="background: #fff3cd; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <div class="result-card" style="background: #fff3cd;">
                     <h4>⚠️ Confusions Observées — Random Forest (Meilleur Modèle)</h4>
                     <ul style="font-size: 0.9em; line-height: 1.8; margin-left: 20px;">
                         <li><strong>Critique ↔ Moyen</strong> : 359 + 141 = <strong>500 cas</strong>  
@@ -881,86 +640,82 @@
                 </div>
             </div>
 
-            <!-- IMAGE FEATURE IMPORTANCE (seule, au-dessus) -->
-            <div class="images-stack">
-                <div class="image-container">
-                    <img src="imp.png" alt="Feature Importance">
-                    <p class="image-caption">
-                        <strong>Figure 3:</strong> Importance des features – <strong>Discharge Time</strong> (~26%) domine, suivi de <strong>Time constant current</strong> (~19%) et <strong>Time at 4.15V</strong> (~17%).
-                    </p>
-                </div>
+            <!-- IMAGE FEATURE IMPORTANCE -->
+            <div class="figure-wrapper">
+                <img src="imp.png" alt="Feature Importance" class="figure-large">
+                <p class="image-caption">
+                    <strong>Figure 2:</strong> Importance des features – <strong>Discharge Time</strong> (~26%) domine, suivi de <strong>Time constant current</strong> (~19%) et <strong>Time at 4.15V</strong> (~17%).
+                </p>
             </div>
 
-            <!-- TABLEAU FEATURES IMPORTANTES -->
             <h3>🔍 Interprétation des Features Importantes</h3>
-            <div class="table-container" style="overflow-x: auto; margin-bottom: 40px;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
+            <div class="table-container">
+                <table>
                     <thead>
-                        <tr style="background: #e9ecef;">
-                            <th style="padding: 12px; text-align: left;">📊 Feature</th>
-                            <th style="padding: 12px; text-align: left;">📈 Importance</th>
-                            <th style="padding: 12px; text-align: left;">💡 Pourquoi Important?</th>
+                        <tr>
+                            <th>📊 Feature</th>
+                            <th>📈 Importance</th>
+                            <th>💡 Pourquoi Important?</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="highlight-row" style="background: #d4edda;">
-                            <td style="padding: 10px;"><strong>Discharge Time (s)</strong></td>
-                            <td style="padding: 10px;">~26%</td>
-                            <td style="padding: 10px;">Directement lié à la capacité restante de la batterie</td>
+                       <tr class="highlight-row">
+                            <td><strong>Discharge Time (s)</strong></td>
+                            <td>~26%</td>
+                            <td>Directement lié à la capacité restante de la batterie</td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><strong>Time constant current (s)</strong></td>
-                            <td style="padding: 10px;">~19%</td>
-                            <td style="padding: 10px;">Phase CC – diminue avec le vieillissement</td>
+                        <tr>
+                            <td><strong>Time constant current (s)</strong></td>
+                            <td>~19%</td>
+                            <td>Phase CC – diminue avec le vieillissement</td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><strong>Time at 4.15V (s)</strong></td>
-                            <td style="padding: 10px;">~17%</td>
-                            <td style="padding: 10px;">Indicateur de dégradation du voltage max en charge</td>
+                        <tr>
+                            <td><strong>Time at 4.15V (s)</strong></td>
+                            <td>~17%</td>
+                            <td>Indicateur de dégradation du voltage max en charge</td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><strong>Max. Voltage Dischar. (V)</strong></td>
-                            <td style="padding: 10px;">~16%</td>
-                            <td style="padding: 10px;">Tension maximale atteinte pendant la décharge – indicateur de santé interne</td>
+                        <tr>
+                            <td><strong>Max. Voltage Dischar. (V)</strong></td>
+                            <td>~16%</td>
+                            <td>Tension maximale atteinte pendant la décharge – indicateur de santé interne</td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><strong>Decrement 3.6-3.4V (s)</strong></td>
-                            <td style="padding: 10px;">~11%</td>
-                            <td style="padding: 10px;">Vitesse de décharge en fin de cycle – reflète la résistance interne</td>
+                        <tr>
+                            <td><strong>Decrement 3.6-3.4V (s)</strong></td>
+                            <td>~11%</td>
+                            <td>Vitesse de décharge en fin de cycle – reflète la résistance interne</td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><strong>Min. Voltage Charg. (V)</strong></td>
-                            <td style="padding: 10px;">~7%</td>
-                            <td style="padding: 10px;">Tension minimale pendant la charge – sensible aux défauts de cellule</td>
+                        <tr>
+                            <td><strong>Min. Voltage Charg. (V)</strong></td>
+                            <td>~7%</td>
+                            <td>Tension minimale pendant la charge – sensible aux défauts de cellule</td>
                         </tr>
-                        <tr style="background: #fff;">
-                            <td style="padding: 10px;"><strong>Charging time (s)</strong></td>
-                            <td style="padding: 10px;">~3%</td>
-                            <td style="padding: 10px;">Durée totale de charge – peu discriminant ici</td>
+                        <tr>
+                            <td><strong>Charging time (s)</strong></td>
+                            <td>~3%</td>
+                            <td>Durée totale de charge – peu discriminant ici</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- IMAGES MATRICES ET ROC (empilées verticalement) -->
-            <div class="images-stack">
-                <div class="image-container">
-                    <img src="3f.png" alt="Matrices de Confusion">
-                    <p class="image-caption">
-                        <strong>Figure 4:</strong> Matrices de confusion comparées – Random Forest montre la meilleure diagonalité (moins d’erreurs hors diagonale).
-                    </p>
-                </div>
-                <div class="image-container">
-                    <img src="exe.png" alt="Courbes ROC">
-                    <p class="image-caption">
-                        <strong>Figure 5:</strong> Courbes ROC multi-classes – Random Forest (AUC macro = 0.977) > SVM (0.979) > Decision Tree (0.947). Détail par classe : Critical 0.972, Excellent 0.997, Good 0.983, Medium 0.955.
-                    </p>
-                </div>
+            <!-- IMAGE MATRICES CONFUSION -->
+            <div class="figure-wrapper">
+                <img src="3f.png" alt="Matrices de Confusion" class="figure-large">
+                <p class="image-caption">
+                    <strong>Figure 3:</strong> Matrices de confusion comparées – Random Forest montre la meilleure diagonalité (moins d’erreurs hors diagonale).
+                </p>
             </div>
 
-            <!-- ANALYSE DES COURBES ROC -->
+            <!-- IMAGE COURBES ROC -->
+            <div class="figure-wrapper">
+                <img src="exe.png" alt="Courbes ROC" class="figure-large">
+                <p class="image-caption">
+                    <strong>Figure 4:</strong> Courbes ROC multi-classes – Random Forest (AUC macro = 0.977) > SVM (0.979) > Decision Tree (0.947). Détail par classe : Critical 0.972, Excellent 0.997, Good 0.983, Medium 0.955.
+                </p>
+            </div>
+
             <h3>📈 Analyse des Courbes ROC</h3>
-            <div class="key-findings" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
+            <div class="key-findings">
                 <h4>🎯 Capacité de Discrimination</h4>
                 <ul>
                     <li><strong>AUC ≥ 0.95</strong> pour tous les modèles → <span class="highlight" style="background: yellow; padding: 2px 4px;">Excellente discrimination</span>.</li>
@@ -970,8 +725,7 @@
                 </ul>
             </div>
 
-            <!-- CONCLUSION -->
-            <div class="conclusion-box" style="background: #e7f3ff; padding: 20px; border-radius: 8px; border-left: 5px solid #2980b9; margin-top: 30px;">
+            <div class="conclusion-box">
                 <h4>✅ Conclusion du Diagnostic</h4>
                 <p>Le modèle <strong>Random Forest</strong> est retenu avec <strong>83.98% d'accuracy</strong> sur 5 batteries inconnues et un <strong>AUC macro de 0.977</strong>. Ses avantages :</p>
                 <ul style="margin-top: 15px; line-height: 2;">
@@ -990,17 +744,16 @@
             </div>
         </section>
 
-        <!-- SECTION COMPARAISON DES MODÈLES - GRU BATTERIES -->
+        <!-- SECTION GRU COMPLÈTE -->
         <section>
-            <h2>📊 Pronostic et Prédiction de la Durée de Vie Restante (RUL) des Batteries Lithium-ion</h2>
+            <h2>📊 3. Pronostic et Prédiction de la Durée de Vie Restante (RUL) des Batteries Lithium-ion</h2>
             
             <div class="intro-box">
                 <h3>🎯 Analyse Comparative des Performances</h3>
                 <p>Cinq architectures de deep learning ont été évaluées pour la prédiction du RUL des batteries lithium-ion. Le modèle <strong>GRU (Gated Recurrent Unit)</strong> se distingue par son excellent équilibre entre précision et complexité.</p>
             </div>
 
-            <!-- Tableau Comparatif Animé -->
-            <div class="table-container" style="margin: 30px 0;">
+            <div class="table-container">
                 <table id="comparisonTable">
                     <thead>
                         <tr>
@@ -1044,283 +797,202 @@
                 </table>
             </div>
 
-            <!-- Boutons d'Action -->
             <div style="text-align: center; margin: 40px 0;">
                 <a href="GRU_RUL_Predictions.csv" download class="download-btn" style="margin-right: 15px;">
                     📥 Télécharger Prédictions vs Réel (CSV)
                 </a>
-                <button onclick="toggleArchitecture()" class="download-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                    🏗️ Voir Architecture Détaillée
-                </button>
             </div>
 
-            <!-- Section Architecture (Cachée par défaut) -->
-            <div id="architectureSection" style="display: none; animation: fadeIn 0.5s ease;">
+            <h3>🏗️ Architecture du Modèle GRU</h3>
+            <div class="key-findings">
+                <h4>🎯 Choix du GRU pour la Prédiction Temporelle</h4>
+                <p>Le modèle <strong>GRU (Gated Recurrent Unit)</strong> offre un compromis optimal entre performance et complexité pour la prédiction du RUL des batteries. Contrairement au LSTM, le GRU utilise seulement 2 portes (reset et update) au lieu de 3, réduisant ainsi le nombre de paramètres tout en maintenant d'excellentes performances.</p>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>📊 Couche</th>
+                            <th>🔧 Configuration</th>
+                            <th>📈 Paramètres</th>
+                            <th>💡 Objectif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><strong>Input</strong></td>
+                            <td>Séquences temporelles</td>
+                            <td>(20 cycles, 7 features)</td>
+                            <td>Fenêtre glissante de 20 cycles</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GRU (1)</strong></td>
+                            <td>64 unités, return_sequences=True</td>
+                            <td>~13,824 paramètres</td>
+                            <td>Extraction features temporelles</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dropout (1)</strong></td>
+                            <td>rate=0.3</td>
+                            <td>0 paramètres</td>
+                            <td>Régularisation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GRU (2)</strong></td>
+                            <td>32 unités, return_sequences=False</td>
+                            <td>~12,416 paramètres</td>
+                            <td>Compression temporelle</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dropout (2)</strong></td>
+                            <td>rate=0.3</td>
+                            <td>0 paramètres</td>
+                            <td>Régularisation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dense (1)</strong></td>
+                            <td>64 neurones, ReLU</td>
+                            <td>~2,112 paramètres</td>
+                            <td>Apprentissage non-linéaire</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dropout (3)</strong></td>
+                            <td>rate=0.2</td>
+                            <td>0 paramètres</td>
+                            <td>Régularisation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dense (2)</strong></td>
+                            <td>32 neurones, ReLU</td>
+                            <td>~2,080 paramètres</td>
+                            <td>Réduction dimension</td>
+                        </tr>
+                        <tr style="background: #d4edda;">
+                            <td><strong>Dense (Output)</strong></td>
+                            <td>1 neurone (linéaire)</td>
+                            <td>~33 paramètres</td>
+                            <td><strong>Prédiction RUL (cycles)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>📊 Résumé Architecture GRU</h4>
+                    <div class="metric">
+                        <span class="metric-label">Total Paramètres:</span>
+                        <span class="metric-value best-value">~30,465</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Couches GRU:</span>
+                        <span class="metric-value">2 (64 + 32 unités)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Couches Denses:</span>
+                        <span class="metric-value">3 (64 + 32 + 1)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Dropout Total:</span>
+                        <span class="metric-value">0.3, 0.3, 0.2</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Séquence Length:</span>
+                        <span class="metric-value">20 cycles</span>
+                    </div>
+                </div>
                 
-                <h3>🏗️ Architecture du Modèle GRU</h3>
-                <div class="key-findings">
-                    <h4>🎯 Choix du GRU pour la Prédiction Temporelle</h4>
-                    <p>Le modèle <strong>GRU (Gated Recurrent Unit)</strong> offre un compromis optimal entre performance et complexité pour la prédiction du RUL des batteries. Contrairement au LSTM, le GRU utilise seulement 2 portes (reset et update) au lieu de 3, réduisant ainsi le nombre de paramètres tout en maintenant d'excellentes performances.</p>
-                </div>
-
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>📊 Couche</th>
-                                <th>🔧 Configuration</th>
-                                <th>📈 Paramètres</th>
-                                <th>💡 Objectif</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="highlight-row">
-                                <td><strong>Input</strong></td>
-                                <td>Séquences temporelles</td>
-                                <td>(20 cycles, 7 features)</td>
-                                <td>Fenêtre glissante de 20 cycles</td>
-                            </tr>
-                            <tr>
-                                <td><strong>GRU (1)</strong></td>
-                                <td>64 unités, return_sequences=True</td>
-                                <td>~13,824 paramètres</td>
-                                <td>Extraction features temporelles</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dropout (1)</strong></td>
-                                <td>rate=0.3</td>
-                                <td>0 paramètres</td>
-                                <td>Régularisation</td>
-                            </tr>
-                            <tr>
-                                <td><strong>GRU (2)</strong></td>
-                                <td>32 unités, return_sequences=False</td>
-                                <td>~12,416 paramètres</td>
-                                <td>Compression temporelle</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dropout (2)</strong></td>
-                                <td>rate=0.3</td>
-                                <td>0 paramètres</td>
-                                <td>Régularisation</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dense (1)</strong></td>
-                                <td>64 neurones, ReLU</td>
-                                <td>~2,112 paramètres</td>
-                                <td>Apprentissage non-linéaire</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dropout (3)</strong></td>
-                                <td>rate=0.2</td>
-                                <td>0 paramètres</td>
-                                <td>Régularisation</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dense (2)</strong></td>
-                                <td>32 neurones, ReLU</td>
-                                <td>~2,080 paramètres</td>
-                                <td>Réduction dimension</td>
-                            </tr>
-                            <tr style="background: #d4edda;">
-                                <td><strong>Dense (Output)</strong></td>
-                                <td>1 neurone (linéaire)</td>
-                                <td>~33 paramètres</td>
-                                <td><strong>Prédiction RUL (cycles)</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h4>📊 Résumé Architecture GRU</h4>
-                        <div class="metric">
-                            <span class="metric-label">Total Paramètres:</span>
-                            <span class="metric-value best-value">~30,465</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-label">Couches GRU:</span>
-                            <span class="metric-value">2 (64 + 32 unités)</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-label">Couches Denses:</span>
-                            <span class="metric-value">3 (64 + 32 + 1)</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-label">Dropout Total:</span>
-                            <span class="metric-value">0.3, 0.3, 0.2</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-label">Séquence Length:</span>
-                            <span class="metric-value">20 cycles</span>
-                        </div>
-                    </div>
-                    
-                    <div class="result-card">
-                        <h4>✅ Avantages du GRU vs LSTM</h4>
-                        <ul style="font-size: 0.9em; line-height: 1.8;">
-                            <li><strong>Moins de paramètres :</strong> ~30k vs ~40k pour BiLSTM</li>
-                            <li><strong>Entraînement plus rapide :</strong> 15-20% plus rapide</li>
-                            <li><strong>Performance équivalente :</strong> R² = 0.9745 vs 0.9744</li>
-                            <li><strong>2 portes seulement :</strong> Reset + Update (vs 3 pour LSTM)</li>
-                            <li><strong>Moins de mémoire :</strong> Idéal pour déploiement embarqué</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3>📚 Pourquoi le GRU est le Meilleur Modèle ?</h3>
-                <div class="key-findings">
-                    <h4>🏆 Analyse des Performances</h4>
-                    <div class="results-grid">
-                        <div class="result-card">
-                            <h4>1. Meilleur Équilibre Global</h4>
-                            <p>Le GRU atteint un <strong>R² de 0.9745</strong> (97.45% de variance expliquée) avec seulement ~30k paramètres, offrant le meilleur compromis performance/complexité.</p>
-                        </div>
-                        <div class="result-card">
-                            <h4>2. Généralisation Excellente</h4>
-                            <p><strong>R² moyen par batterie : 0.9746 ± 0.0187</strong> → Très faible variance, confirmant la robustesse du modèle sur différentes batteries.</p>
-                        </div>
-                        <div class="result-card">
-                            <h4>3. Efficacité Computationnelle</h4>
-                            <p>Architecture plus légère que BiLSTM (~25% de paramètres en moins) avec des performances quasi-identiques, permettant un déploiement plus facile en temps réel.</p>
-                        </div>
-                        <div class="result-card">
-                            <h4>4. Précision Temporelle</h4>
-                            <p><strong>MAE = 38.42 cycles</strong> → Erreur moyenne de ~38 cycles, suffisante pour planifier la maintenance 2-3 semaines à l'avance.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="conclusion-box">
-                    <h4>💡 Explication Technique</h4>
-                    <p>Le GRU surpasse légèrement le BiLSTM car :</p>
-                    <ul style="margin-top: 15px; line-height: 2;">
-                        <li>✅ <strong>Moins de risques d'overfitting</strong> avec moins de paramètres</li>
-                        <li>✅ <strong>Convergence plus rapide</strong> grâce à l'architecture simplifiée</li>
-                        <li>✅ <strong>Features temporelles suffisantes</strong> capturées par les 2 couches GRU</li>
-                        <li>✅ <strong>Régularisation efficace</strong> (Dropout 0.3 + 0.3 + 0.2)</li>
-                        <li>✅ <strong>Early stopping optimal</strong> à l'epoch 45, évitant le surapprentissage</li>
+                <div class="result-card">
+                    <h4>✅ Avantages du GRU vs LSTM</h4>
+                    <ul style="font-size: 0.9em; line-height: 1.8;">
+                        <li><strong>Moins de paramètres :</strong> ~30k vs ~40k pour BiLSTM</li>
+                        <li><strong>Entraînement plus rapide :</strong> 15-20% plus rapide</li>
+                        <li><strong>Performance équivalente :</strong> R² = 0.9745 vs 0.9744</li>
+                        <li><strong>2 portes seulement :</strong> Reset + Update (vs 3 pour LSTM)</li>
+                        <li><strong>Moins de mémoire :</strong> Idéal pour déploiement embarqué</li>
                     </ul>
                 </div>
-
-                <h3>📈 Visualisations des Résultats</h3>
-                <div class="image-container">
-                    <img src="GRU_RUL_Global_Visualisations.png" alt="Visualisations Globales GRU">
-                    <p class="image-caption">Figure 1: Visualisations globales - Training Loss, RUL Réel vs Prédit (R²=0.9745), Distribution des Erreurs (MAE=38.42 cycles)</p>
-                </div>
-
-                <div class="image-container">
-                    <img src="GRU_RUL_Courbes_Par_Batterie.png" alt="Courbes par Batterie">
-                    <p class="image-caption">Figure 2: Courbes RUL Réel vs Prédit pour les 6 premières batteries - Le modèle GRU capture fidèlement la dynamique de dégradation</p>
-                </div>
-
             </div>
 
-            <!-- Script JavaScript pour toggle -->
-            <script>
-            function toggleArchitecture() {
-                var section = document.getElementById('architectureSection');
-                var btn = event.target;
-                
-                if (section.style.display === 'none' || section.style.display === '') {
-                    section.style.display = 'block';
-                    btn.textContent = '🔼 Masquer l\'Architecture';
-                    btn.style.background = 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
-                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                    section.style.display = 'none';
-                    btn.textContent = '🏗️ Voir Architecture Détaillée';
-                    btn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                }
-            }
+            <h3>📚 Pourquoi le GRU est le Meilleur Modèle ?</h3>
+            <div class="key-findings">
+                <h4>🏆 Analyse des Performances</h4>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h4>1. Meilleur Équilibre Global</h4>
+                        <p>Le GRU atteint un <strong>R² de 0.9745</strong> (97.45% de variance expliquée) avec seulement ~30k paramètres, offrant le meilleur compromis performance/complexité.</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>2. Généralisation Excellente</h4>
+                        <p><strong>R² moyen par batterie : 0.9746 ± 0.0187</strong> → Très faible variance, confirmant la robustesse du modèle sur différentes batteries.</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>3. Efficacité Computationnelle</h4>
+                        <p>Architecture plus légère que BiLSTM (~25% de paramètres en moins) avec des performances quasi-identiques, permettant un déploiement plus facile en temps réel.</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>4. Précision Temporelle</h4>
+                        <p><strong>MAE = 38.42 cycles</strong> → Erreur moyenne de ~38 cycles, suffisante pour planifier la maintenance 2-3 semaines à l'avance.</p>
+                    </div>
+                </div>
+            </div>
 
-            // Animation fade-in
-            var style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(-20px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .best-model {
-                    animation: pulse 2s infinite;
-                }
-                @keyframes pulse {
-                    0%, 100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.4); }
-                    50% { box-shadow: 0 0 0 10px rgba(39, 174, 96, 0); }
-                }
-            `;
-            document.head.appendChild(style);
-            </script>
-        </section>
+            <div class="conclusion-box">
+                <h4>💡 Explication Technique</h4>
+                <p>Le GRU surpasse légèrement le BiLSTM car :</p>
+                <ul style="margin-top: 15px; line-height: 2;">
+                    <li>✅ <strong>Moins de risques d'overfitting</strong> avec moins de paramètres</li>
+                    <li>✅ <strong>Convergence plus rapide</strong> grâce à l'architecture simplifiée</li>
+                    <li>✅ <strong>Features temporelles suffisantes</strong> capturées par les 2 couches GRU</li>
+                    <li>✅ <strong>Régularisation efficace</strong> (Dropout 0.3 + 0.3 + 0.2)</li>
+                    <li>✅ <strong>Early stopping optimal</strong> à l'epoch 45, évitant le surapprentissage</li>
+                </ul>
+            </div>
 
-        <!-- SECTION TÉLÉCHARGEMENT DES RÉSULTATS -->
-        <section>
-            <h2>📥 Téléchargement des Résultats</h2>
+            <h3>📈 Visualisations des Résultats</h3>
             
+            <!-- IMAGE GRU GLOBAL -->
+            <div class="figure-wrapper">
+                <img src="GRU_RUL_Global_Visualisations.png" alt="Visualisations Globales GRU" class="figure-large">
+                <p class="image-caption">
+                    <strong>Figure 5:</strong> Visualisations globales - Training Loss, RUL Réel vs Prédit (R²=0.9745), Distribution des Erreurs (MAE=38.42 cycles)
+                </p>
+            </div>
+
+            <!-- IMAGE GRU PAR BATTERIE -->
+            <div class="figure-wrapper">
+                <img src="GRU_RUL_Courbes_Par_Batterie.png" alt="Courbes par Batterie" class="figure-large">
+                <p class="image-caption">
+                    <strong>Figure 6:</strong> Courbes RUL Réel vs Prédit pour les 6 premières batteries - Le modèle GRU capture fidèlement la dynamique de dégradation
+                </p>
+            </div>
+
+            <h2>📥 Téléchargement des Résultats</h2>
             <div class="results-grid">
                 <div class="result-card">
                     <h4>📊 Métriques Globales</h4>
                     <p>Fichier contenant les métriques de performance du modèle GRU (R², RMSE, MAE, MAPE).</p>
-                    <a href="GRU_RUL_Metrics.csv" download class="download-btn" style="margin-top: 15px;">
-                        📄 Télécharger Metrics (CSV)
-                    </a>
+                    <a href="GRU_RUL_Metrics.csv" download class="download-btn" style="margin-top: 15px;">📄 Télécharger Metrics (CSV)</a>
                 </div>
-                
                 <div class="result-card">
                     <h4>🔋 Prédictions Détaillées</h4>
                     <p>Prédictions RUL vs Réel pour chaque batterie avec erreurs absolues et relatives.</p>
-                    <a href="GRU_RUL_Predictions.csv" download class="download-btn" style="margin-top: 15px;">
-                        📄 Télécharger Prédictions (CSV)
-                    </a>
+                    <a href="GRU_RUL_Predictions.csv" download class="download-btn" style="margin-top: 15px;">📄 Télécharger Prédictions (CSV)</a>
                 </div>
-                
                 <div class="result-card">
                     <h4>📈 Stats par Batterie</h4>
                     <p>Statistiques individuelles (R², MAE, RMSE) pour chacune des 5 batteries testées.</p>
-                    <a href="GRU_Stats_Per_Battery.csv" download class="download-btn" style="margin-top: 15px;">
-                        📄 Télécharger Stats Batteries (CSV)
-                    </a>
-                </div>
-            </div>
-
-            <div class="key-findings" style="margin-top: 30px;">
-                <h4>📋 Contenu des Fichiers CSV</h4>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Fichier</th>
-                                <th>Colonnes</th>
-                                <th>Utilisation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>GRU_RUL_Metrics.csv</strong></td>
-                                <td>Model, R2, RMSE_cycles, MAE_cycles, MAPE_percent, SEQ_LENGTH, Epochs, Architecture</td>
-                                <td>Métriques globales du modèle</td>
-                            </tr>
-                            <tr>
-                                <td><strong>GRU_RUL_Predictions.csv</strong></td>
-                                <td>Battery_ID, Cycle_Index, RUL_Real_cycles, RUL_Predicted_cycles, Error_cycles, Absolute_Error_cycles</td>
-                                <td>Prédictions détaillées par cycle</td>
-                            </tr>
-                            <tr>
-                                <td><strong>GRU_Stats_Per_Battery.csv</strong></td>
-                                <td>Battery_ID, Samples, RUL_Real_Mean, RUL_Pred_Mean, R2, MAE, RMSE</td>
-                                <td>Performance par batterie</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <a href="GRU_Stats_Per_Battery.csv" download class="download-btn" style="margin-top: 15px;">📄 Télécharger Stats Batteries (CSV)</a>
                 </div>
             </div>
         </section>
 
+        <!-- CONCLUSION GÉNÉRALE -->
         <section>
             <h2>🏆 Conclusion Générale & Perspectives</h2>
             
-            <div class="intro-box">
+            <div class="intro-box" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); color: white;">
                 <h3 style="color: white; margin-top: 0;">📌 Synthèse du Projet</h3>
                 <p style="color: #ecf0f1; line-height: 1.7;">
                     Ce projet de <strong>maintenance intelligente</strong> démontre l’efficacité d’une approche hybride 
@@ -1377,7 +1049,6 @@
             </div>
 
             <h3>🚀 Améliorations</h3>
-            
             <div class="table-container">
                 <table>
                     <thead>
@@ -1447,6 +1118,13 @@
                 </a>
             </div>
         </section>
+
     </div>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 40px; background: #f8f9fa; color: #7f8c8d; border-top: 1px solid #eee;">
+        <p>&copy; 2026 Noujoud Ouni - Projet Maintenance Intelligente Industry 4.0</p>
+    </footer>
+
 </body>
 </html>
