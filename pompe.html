@@ -810,18 +810,22 @@
             </div>
         </div>
         
-        <div class="result-card">
-            <h4>⚠️ Confusions Observées</h4>
-            <ul style="font-size: 0.9em; line-height: 1.8;">
-                <li>Bon ↔ Moyen : ~135–153 cas</li>
-                <li>Critique ↔ Moyen : ~159 cas</li>
-                <li>Excellent ↔ Bon : ~14 cas</li>
-            </ul>
-            <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">
-                <em>Confusions normales entre classes adjacentes (dégradation progressive)</em>
-            </p>
-        </div>
-    </div>
+       <div class="result-card">
+    <h4>⚠️ Confusions Observées — Random Forest (Meilleur Modèle)</h4>
+    <ul style="font-size: 0.9em; line-height: 1.8;">
+        <li><strong>Critique ↔ Moyen</strong> : 359 + 141 = <strong>500 cas</strong>  
+            <br><small>(359 critiques prédits comme moyens, 141 moyens prédits comme critiques)</small></li>
+        <li><strong>Bon ↔ Moyen</strong> : 119 + 82 = <strong>201 cas</strong>  
+            <br><small>(119 bons prédits comme moyens, 82 moyens prédits comme bons)</small></li>
+        <li><strong>Excellent ↔ Bon</strong> : 84 + 66 = <strong>150 cas</strong>  
+            <br><small>(84 excellents prédits comme bons, 66 bons prédits comme excellents)</small></li>
+        <li><strong>Critique ↔ Bon</strong> : 7 + 0 = <strong>7 cas</strong>  
+            <br><small>(négligeable, mais présent)</small></li>
+    </ul>
+    <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">
+        <em>Les principales confusions concernent les classes adjacentes ou extrêmes (Critique/Moyen), ce qui est cohérent avec une dégradation progressive de l’état. La forte confusion Critique↔Moyen suggère un besoin d’amélioration pour distinguer ces deux états opposés.</em>
+    </p>
+</div>
 
     <div class="image-container">
         <img src="imp.png" alt="Feature Importance">
@@ -839,26 +843,41 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="highlight-row">
-                    <td><strong>Discharge Time (s)</strong></th>
-                    <td class="value-cell best">26.1%</td>
-                    <td>Directement lié à la capacité restante de la batterie</td>
-                </tr>
-                <tr>
-                    <td><strong>Time constant current (s)</strong></th>
-                    <td class="value-cell">19.2%</td>
-                    <td>Phase CC – diminue avec le vieillissement</td>
-                </tr>
-                <tr>
-                    <td><strong>Time at 4.15V (s)</strong></th>
-                    <td class="value-cell">17.3%</td>
-                    <td>Indicateur de dégradation du voltage max en charge</td>
-                </tr>
-                <tr>
-                    <td><strong>Decrement 3.6-3.4V (s)</strong></th>
-                    <td class="value-cell">~11%</td>
-                    <td>Vitesse de décharge en fin de cycle</td>
-                </tr>
+               <tr class="highlight-row">
+    <td><strong>Discharge Time (s)</strong></td>
+    <td class="value-cell best">~26%</td>
+    <td>Directement lié à la capacité restante de la batterie</td>
+</tr>
+<tr>
+    <td><strong>Time constant current (s)</strong></td>
+    <td class="value-cell">~19%</td>
+    <td>Phase CC – diminue avec le vieillissement</td>
+</tr>
+<tr>
+    <td><strong>Time at 4.15V (s)</strong></td>
+    <td class="value-cell">~17%</td>
+    <td>Indicateur de dégradation du voltage max en charge</td>
+</tr>
+<tr>
+    <td><strong>Max. Voltage Dischar. (V)</strong></td>
+    <td class="value-cell">~16%</td>
+    <td>Tension maximale atteinte pendant la décharge – indicateur de santé interne</td>
+</tr>
+<tr>
+    <td><strong>Decrement 3.6-3.4V (s)</strong></td>
+    <td class="value-cell">~11%</td>
+    <td>Vitesse de décharge en fin de cycle – reflète la résistance interne</td>
+</tr>
+<tr>
+    <td><strong>Min. Voltage Charg. (V)</strong></td>
+    <td class="value-cell">~7%</td>
+    <td>Tension minimale pendant la charge – sensible aux défauts de cellule</td>
+</tr>
+<tr>
+    <td><strong>Charging time (s)</strong></td>
+    <td class="value-cell">~3%</td>
+    <td>Durée totale de charge – peu discriminant ici</td>
+</tr>
             </tbody>
         </table>
     </div>
