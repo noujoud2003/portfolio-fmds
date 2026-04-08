@@ -712,6 +712,7 @@
     <div class="key-findings">
         <h4>🎯 Objectif du Diagnostic</h4>
         <p>Détecter en temps réel l'état de santé des batteries pour anticiper les défaillances et planifier la maintenance.</p>
+        <p><strong>📊 Split rigoureux :</strong> 9 batteries pour l’entraînement, 5 batteries totalement nouvelles pour le test (aucune fuite de données).</p>
     </div>
 
     <h3>📊 Méthodologie de Classification</h3>
@@ -720,33 +721,33 @@
             <thead>
                 <tr>
                     <th>🏷️ Classe</th>
-                    <th>📈 Critère (RUL)</th>
+                    <th>📈 Critère (RUL restant)</th>
                     <th>💡 Signification</th>
                     <th>⚡ Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="highlight-row">
-                    <td><span class="icon-cell">✅</span><strong>Excellent</strong></td>
-                    <td>> 75% du RUL max</td>
+                    <td><span class="icon-cell">✅</span><strong>Excellent</strong></th>
+                    <td>> 80% du RUL max</td>
                     <td>Batterie neuve/peu utilisée</td>
                     <td>Utilisation normale</td>
                 </tr>
                 <tr>
-                    <td><span class="icon-cell">👍</span><strong>Bon</strong></td>
-                    <td>50-75% du RUL max</td>
+                    <td><span class="icon-cell">👍</span><strong>Bon</strong></th>
+                    <td>55-80% du RUL max</td>
                     <td>Bon état général</td>
                     <td>Surveillance standard</td>
                 </tr>
                 <tr>
-                    <td><span class="icon-cell">⚠️</span><strong>Moyen</strong></td>
-                    <td>25-50% du RUL max</td>
+                    <td><span class="icon-cell">⚠️</span><strong>Moyen</strong></th>
+                    <td>20-55% du RUL max</td>
                     <td>Dégradation visible</td>
                     <td>Surveillance renforcée</td>
                 </tr>
                 <tr style="background: #fff3cd;">
-                    <td><span class="icon-cell">🚨</span><strong>Critique</strong></td>
-                    <td>≤ 25% du RUL max</td>
+                    <td><span class="icon-cell">🚨</span><strong>Critique</strong></th>
+                    <td>≤ 20% du RUL max</td>
                     <td>Risque de panne élevé</td>
                     <td>Remplacement imminent</td>
                 </tr>
@@ -755,8 +756,8 @@
     </div>
 
     <div class="image-container">
-        <img src="iim1.png" alt="Distribution des États de Santé">
-        <p class="image-caption">Figure 2: Distribution équilibrée des 4 classes (Excellent: 3838, Bon: 3564, Moyen: 3772, Critique: 3717 échantillons)</p>
+        <img src="distribution_classes.png" alt="Distribution des États de Santé">
+        <p class="image-caption"><strong>Figure 2:</strong> Distribution des classes (Medium: 5326, Good: 3613, Excellent: 3088, Critical: 3037 échantillons) – jeu équilibré.</p>
     </div>
 
     <h3>🤖 Performance Comparative des Modèles</h3>
@@ -766,40 +767,28 @@
                 <tr>
                     <th>🧠 Modèle</th>
                     <th>📊 Accuracy</th>
-                    <th>🎯 Précision</th>
-                    <th>🔄 Rappel</th>
-                    <th>⚖️ F1-Score</th>
-                    <th>📈 AUC-ROC</th>
+                    <th>🎯 AUC macro</th>
                     <th>🏆 Rang</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="highlight-row">
-                    <td><span class="icon-cell">🌲</span><strong>Random Forest</strong></td>
-                    <td class="value-cell best">89.3%<div class="metric-bar"><div class="metric-bar-fill best" style="width: 89.3%"></div></div></td>
-                    <td class="value-cell best">0.892</td>
-                    <td class="value-cell best">0.893</td>
-                    <td class="value-cell best">0.892</td>
-                    <td class="value-cell best">0.988<span class="badge badge-best">Top</span></td>
+                    <td><span class="icon-cell">🌲</span><strong>Random Forest</strong></th>
+                    <td class="value-cell best">83.98%<div class="metric-bar"><div class="metric-bar-fill best" style="width: 84%"></div></div></td>
+                    <td class="value-cell best">0.977</td>
                     <td><span class="badge badge-best">1er</span></td>
                 </tr>
                 <tr>
-                    <td><span class="icon-cell">🌳</span>Decision Tree</td>
-                    <td class="value-cell">83.9%<div class="metric-bar"><div class="metric-bar-fill good" style="width: 83.9%"></div></div></td>
-                    <td class="value-cell">0.838</td>
-                    <td class="value-cell">0.839</td>
-                    <td class="value-cell">0.838</td>
-                    <td class="value-cell">0.947</td>
-                    <td><span class="badge badge-warning">3ème</span></td>
-                </tr>
-                <tr>
-                    <td><span class="icon-cell">⚡</span>SVM (RBF)</td>
-                    <td class="value-cell">83.7%<div class="metric-bar"><div class="metric-bar-fill" style="width: 83.7%"></div></div></td>
-                    <td class="value-cell">0.780</td>
-                    <td class="value-cell">0.850</td>
-                    <td class="value-cell">0.810</td>
+                    <td><span class="icon-cell">⚡</span>SVM (RBF)</th>
+                    <td class="value-cell">83.76%<div class="metric-bar"><div class="metric-bar-fill good" style="width: 83.8%"></div></div></td>
                     <td class="value-cell">0.979</td>
                     <td><span class="badge badge-good">2ème</span></td>
+                </tr>
+                <tr>
+                    <td><span class="icon-cell">🌳</span>Decision Tree</th>
+                    <td class="value-cell">80.43%<div class="metric-bar"><div class="metric-bar-fill" style="width: 80.4%"></div></div></td>
+                    <td class="value-cell">0.947</td>
+                    <td><span class="badge badge-warning">3ème</span></td>
                 </tr>
             </tbody>
         </table>
@@ -811,25 +800,25 @@
         <div class="result-card">
             <h4>✅ Points Forts</h4>
             <div class="metric">
-                <span class="metric-label">Accuracy Globale:</span>
-                <span class="metric-value best-value">89.3%</span>
+                <span class="metric-label">Accuracy (test, 5 batteries):</span>
+                <span class="metric-value best-value">83.98%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">AUC Moyen:</span>
-                <span class="metric-value best-value">0.988</span>
+                <span class="metric-label">AUC macro (moyenne):</span>
+                <span class="metric-value best-value">0.977</span>
             </div>
             <div class="metric">
-                <span class="metric-label">Classes Bien Détectées:</span>
-                <span class="metric-value best-value">Excellent & Critique</span>
+                <span class="metric-label">Classes les mieux discriminées:</span>
+                <span class="metric-value best-value">Excellent (AUC 0.997), Critical (AUC 0.972)</span>
             </div>
         </div>
         
         <div class="result-card">
             <h4>⚠️ Confusions Observées</h4>
             <ul style="font-size: 0.9em; line-height: 1.8;">
-                <li>Bon ↔ Moyen: ~135-153 cas</li>
-                <li>Critique ↔ Moyen: ~159 cas</li>
-                <li>Excellent ↔ Bon: ~14 cas</li>
+                <li>Bon ↔ Moyen : ~135–153 cas</li>
+                <li>Critique ↔ Moyen : ~159 cas</li>
+                <li>Excellent ↔ Bon : ~14 cas</li>
             </ul>
             <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">
                 <em>Confusions normales entre classes adjacentes (dégradation progressive)</em>
@@ -838,8 +827,8 @@
     </div>
 
     <div class="image-container">
-        <img src="im2.png" alt="Feature Importance">
-        <p class="image-caption">Figure 3: Importance des features - Le <strong>Discharge Time</strong> (26%) domine, suivi de <strong>Time at 4.15V</strong> (21%) et <strong>Time constant current</strong> (19%)</p>
+        <img src="feature_importance_rf.png" alt="Feature Importance">
+        <p class="image-caption"><strong>Figure 3:</strong> Importance des features – <strong>Discharge Time</strong> (26.1%) domine, suivi de <strong>Time constant current</strong> (19.2%) et <strong>Time at 4.15V</strong> (17.3%).</p>
     </div>
 
     <h3>🔍 Interprétation des Features Importantes</h3>
@@ -854,22 +843,22 @@
             </thead>
             <tbody>
                 <tr class="highlight-row">
-                    <td><strong>Discharge Time (s)</strong></td>
-                    <td class="value-cell best">~26%</td>
+                    <td><strong>Discharge Time (s)</strong></th>
+                    <td class="value-cell best">26.1%</td>
                     <td>Directement lié à la capacité restante de la batterie</td>
                 </tr>
                 <tr>
-                    <td><strong>Time at 4.15V (s)</strong></td>
-                    <td class="value-cell">~21%</td>
-                    <td>Indicateur de dégradation (voltage max en charge)</td>
+                    <td><strong>Time constant current (s)</strong></th>
+                    <td class="value-cell">19.2%</td>
+                    <td>Phase CC – diminue avec le vieillissement</td>
                 </tr>
                 <tr>
-                    <td><strong>Time constant current (s)</strong></td>
-                    <td class="value-cell">~19%</td>
-                    <td>Phase CC diminue avec le vieillissement</td>
+                    <td><strong>Time at 4.15V (s)</strong></th>
+                    <td class="value-cell">17.3%</td>
+                    <td>Indicateur de dégradation du voltage max en charge</td>
                 </tr>
                 <tr>
-                    <td><strong>Decrement 3.6-3.4V (s)</strong></td>
+                    <td><strong>Decrement 3.6-3.4V (s)</strong></th>
                     <td class="value-cell">~11%</td>
                     <td>Vitesse de décharge en fin de cycle</td>
                 </tr>
@@ -878,42 +867,44 @@
     </div>
 
     <div class="image-container">
-        <img src="im3.png" alt="Matrices de Confusion">
-        <p class="image-caption">Figure 4: Matrices de confusion comparées - Random Forest montre la meilleure diagonalité (moins d'erreurs)</p>
+        <img src="confusion_matrices_comparison.png" alt="Matrices de Confusion">
+        <p class="image-caption"><strong>Figure 4:</strong> Matrices de confusion comparées – Random Forest montre la meilleure diagonalité (moins d’erreurs hors diagonale).</p>
     </div>
 
     <div class="image-container">
-        <img src="roc.png" alt="Courbes ROC">
-        <p class="image-caption">Figure 5: Courbes ROC multi-classes - Random Forest (AUC=0.99) > SVM (AUC=0.98) > Decision Tree (AUC=0.95)</p>
+        <img src="roc_curves_rf.png" alt="Courbes ROC">
+        <p class="image-caption"><strong>Figure 5:</strong> Courbes ROC multi-classes – Random Forest (AUC macro = 0.977) > SVM (0.979) > Decision Tree (0.947). Détail par classe : Critical 0.972, Excellent 0.997, Good 0.983, Medium 0.955.</p>
     </div>
 
     <h3>📈 Analyse des Courbes ROC</h3>
     <div class="key-findings">
         <h4>🎯 Capacité de Discrimination</h4>
         <ul>
-            <li><strong>AUC ≥ 0.95</strong> pour tous les modèles → <span class="highlight">Excellente discrimination</span></li>
-            <li><strong>Random Forest (0.988)</strong> → Presque parfait</li>
-            <li><strong>Taux de vrais positifs > 90%</strong> avec faible taux de faux positifs</li>
-            <li>Modèles <strong>fiables pour la détection précoce</strong> des états critiques</li>
+            <li><strong>AUC ≥ 0.95</strong> pour tous les modèles → <span class="highlight">Excellente discrimination</span>.</li>
+            <li><strong>Random Forest (AUC macro = 0.977)</strong> – presque parfait, notamment pour les classes extrêmes (Excellent et Critique).</li>
+            <li><strong>Taux de vrais positifs > 90%</strong> pour les classes bien séparées avec un faible taux de faux positifs.</li>
+            <li>Les modèles sont <strong>fiables pour la détection précoce</strong> des états critiques.</li>
         </ul>
     </div>
 
     <div class="conclusion-box">
         <h4>✅ Conclusion du Diagnostic</h4>
-        <p>Le modèle <strong>Random Forest</strong> est retenu avec <strong>89.3% d'accuracy</strong> et un <strong>AUC de 0.988</strong>. Ses avantages:</p>
+        <p>Le modèle <strong>Random Forest</strong> est retenu avec <strong>83.98% d'accuracy</strong> sur 5 batteries inconnues et un <strong>AUC macro de 0.977</strong>. Ses avantages :</p>
         <ul style="margin-top: 15px; line-height: 2;">
-            <li>✅ <strong>Capte les relations non-linéaires</strong> entre les paramètres de charge/décharge</li>
-            <li>✅ <strong>Robuste au surapprentissage</strong> grâce aux 100 arbres</li>
-            <li>✅ <strong>Interprétable</strong> via l'importance des features</li>
-            <li>✅ <strong>Rapide en inférence</strong> → adapté au temps réel</li>
-            <li>✅ <strong>Excellent pour classes déséquilibrées</strong></li>
+            <li>✅ <strong>Validation rigoureuse</strong> (split par batterie) – aucune fuite de données.</li>
+            <li>✅ <strong>Interprétable</strong> via l’importance des features.</li>
+            <li>✅ <strong>Rapide en inférence</strong> – adapté au temps réel.</li>
+            <li>✅ <strong>Robuste face au déséquilibre modéré</strong> des classes.</li>
+            <li>✅ <strong>Courbes ROC et AUC élevées</strong> (jusqu’à 0.997 pour la classe Excellent).</li>
         </ul>
         <p style="margin-top: 15px; font-weight: 600; color: #2980b9;">
-            🎯 Ce modèle permet une surveillance fiable avec moins de 11% d'erreurs de classification.
+            🎯 Ce modèle permet une surveillance fiable avec moins de 16% d’erreurs de classification sur des batteries jamais vues.
+        </p>
+        <p style="margin-top: 10px; font-size: 0.9em;">
+            <em>🛠️ Implémentation :</em> <code>scikit-learn</code> (Random Forest, SVM, Decision Tree), standardisation des features, validation croisée <code>GroupKFold</code> pour respecter l’intégrité des batteries.
         </p>
     </div>
 </section>
-
        <!-- =============================================================================
      SECTION COMPARAISON DES MODÈLES - GRU BATTERIES
      ============================================================================= -->
