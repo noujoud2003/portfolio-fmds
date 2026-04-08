@@ -21,44 +21,65 @@
         }
 
         /* --- NAVIGATION --- */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            border-bottom: 1px solid #eee;
-        }
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            padding: 0 20px;
-        }
-        .nav-btn {
-            background: white;
-            color: #2c3e50;
-            border: 1px solid #dee2e6;
-            padding: 10px 16px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95em;
-            transition: all 0.3s ease;
-        }
-        .nav-btn:hover, .active {
-            background: #3498db;
-            color: white;
-            border-color: #3498db;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
-        }
+      /* --- STYLE DE LA NAVIGATION (BARRE DU HAUT) --- */
+.navbar {
+    /* Dégradé Bleu Foncé pour l'arrière-plan global de la barre */
+    background: linear-gradient(90deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne si besoin */
+    justify-content: center; /* Centre les boutons horizontalement */
+    gap: 15px; /* Espace entre les boutons */
+    padding: 0 20px;
+}
+
+.nav-btn {
+    /* Style des boutons comme sur l'image */
+    background: rgba(52, 152, 219, 0.15); /* Fond bleu très transparent */
+    color: #ecf0f1; /* Texte blanc cassé */
+    border: 1px solid rgba(100, 180, 255, 0.4); /* Bordure fine bleu clair */
+    padding: 12px 24px;
+    border-radius: 50px; /* Forme de capsule arrondie */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px); /* Effet de flou derrière le bouton */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Effet au survol de la souris */
+.nav-btn:hover {
+    background: rgba(52, 152, 219, 0.4); /* Devient plus bleu */
+    border-color: #3498db;
+    transform: translateY(-3px); /* Monte légèrement */
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); /* Ombre lumineuse bleue */
+    color: white;
+}
+
+/* Style du bouton actif (page en cours) */
+.nav-btn.active {
+    background: #3498db; /* Bleu solide */
+    border-color: #3498db;
+    color: white;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+}
+
+/* Ajustement pour que le contenu ne soit pas caché sous la barre fixe */
+body {
+    padding-top: 100px; /* Augmenté car la barre est plus haute maintenant */
+}
 
         /* --- CONTENEUR PRINCIPAL --- */
         .container {
@@ -204,19 +225,24 @@
 <body>
 
     <!-- NAVIGATION -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-btn">Accueil</a>
-            <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
-            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
-            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
-            <a href="pompe.html" class="nav-btn active">Étude de cas 1 - Batteries</a>
-            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
-            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
-            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
-            <a href="contact.html" class="nav-btn">Contact</a>
-        </div>
-    </nav>
+ <!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-container">
+        <!-- Les liens vers vos pages -->
+        <a href="index.html" class="nav-btn">Accueil</a>
+        <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
+        <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+        <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+        
+        <!-- Bouton Actif (exemple sur la page Batteries) -->
+        <a href="pompe.html" class="nav-btn active">Étude de cas 1 - Batteries</a>
+        
+        <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
+        <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
+        <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+</nav>>
 
     <div class="container">
         <h1>🔋 Prédiction du Remaining Useful Life (RUL)</h1>
