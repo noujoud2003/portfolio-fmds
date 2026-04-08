@@ -705,8 +705,48 @@
         </p>
     </div>
 </section>
-    <!-- DIAGNOSTIC AMÉLIORÉ -->
+   <!-- DIAGNOSTIC AMÉLIORÉ -->
 <section style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <style>
+        /* Rendre tous les textes des tableaux noirs */
+        table, th, td {
+            color: #000 !important;
+        }
+        th {
+            background-color: #e9ecef !important;
+            color: #000 !important;
+        }
+        td {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+        /* Empiler les images verticalement */
+        .images-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            margin: 40px 0;
+        }
+        .image-container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .image-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+
     <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
     
     <div class="key-findings" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
@@ -847,12 +887,14 @@
         </div>
     </div>
 
-    <!-- IMAGE FEATURE IMPORTANCE -->
-    <div class="image-container" style="text-align: center; margin: 40px 0;">
-        <img src="imp.png" alt="Feature Importance" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <p class="image-caption" style="margin-top: 10px; font-style: italic; color: #666;">
-            <strong>Figure 3:</strong> Importance des features – <strong>Discharge Time</strong> (~26%) domine, suivi de <strong>Time constant current</strong> (~19%) et <strong>Time at 4.15V</strong> (~17%).
-        </p>
+    <!-- IMAGE FEATURE IMPORTANCE (seule, au-dessus) -->
+    <div class="images-stack">
+        <div class="image-container">
+            <img src="imp.png" alt="Feature Importance">
+            <p class="image-caption">
+                <strong>Figure 3:</strong> Importance des features – <strong>Discharge Time</strong> (~26%) domine, suivi de <strong>Time constant current</strong> (~19%) et <strong>Time at 4.15V</strong> (~17%).
+            </p>
+        </div>
     </div>
 
     <!-- TABLEAU FEATURES IMPORTANTES -->
@@ -906,17 +948,17 @@
         </table>
     </div>
 
-    <!-- IMAGES MATRICES ET ROC -->
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 40px 0;">
-        <div class="image-container" style="flex: 1; min-width: 300px; text-align: center;">
-            <img src="3f.png" alt="Matrices de Confusion" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <p class="image-caption" style="margin-top: 10px; font-style: italic; color: #666;">
+    <!-- IMAGES MATRICES ET ROC (empilées verticalement) -->
+    <div class="images-stack">
+        <div class="image-container">
+            <img src="3f.png" alt="Matrices de Confusion">
+            <p class="image-caption">
                 <strong>Figure 4:</strong> Matrices de confusion comparées – Random Forest montre la meilleure diagonalité (moins d’erreurs hors diagonale).
             </p>
         </div>
-        <div class="image-container" style="flex: 1; min-width: 300px; text-align: center;">
-            <img src="exe.png" alt="Courbes ROC" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <p class="image-caption" style="margin-top: 10px; font-style: italic; color: #666;">
+        <div class="image-container">
+            <img src="exe.png" alt="Courbes ROC">
+            <p class="image-caption">
                 <strong>Figure 5:</strong> Courbes ROC multi-classes – Random Forest (AUC macro = 0.977) > SVM (0.979) > Decision Tree (0.947). Détail par classe : Critical 0.972, Excellent 0.997, Good 0.983, Medium 0.955.
             </p>
         </div>
