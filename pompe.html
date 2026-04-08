@@ -705,205 +705,237 @@
         </p>
     </div>
 </section>
-      <!-- DIAGNOSTIC AMÉLIORÉ -->
-<section>
+    <!-- DIAGNOSTIC AMÉLIORÉ -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 20px;">
     <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
     
-    <div class="key-findings">
+    <div class="key-findings" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
         <h4>🎯 Objectif du Diagnostic</h4>
         <p>Détecter en temps réel l'état de santé des batteries pour anticiper les défaillances et planifier la maintenance.</p>
         <p><strong>📊 Split rigoureux :</strong> 9 batteries pour l’entraînement, 5 batteries totalement nouvelles pour le test (aucune fuite de données).</p>
     </div>
 
+    <!-- MÉTHODOLOGIE DE CLASSIFICATION -->
     <h3>📊 Méthodologie de Classification</h3>
-    <div class="table-container">
-        <table>
+    <div class="table-container" style="overflow-x: auto; margin-bottom: 40px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
             <thead>
-                <tr>
-                    <th>🏷️ Classe</th>
-                    <th>📈 Critère (RUL restant)</th>
-                    <th>💡 Signification</th>
-                    <th>⚡ Action</th>
+                <tr style="background: #e9ecef;">
+                    <th style="padding: 12px; text-align: left;">🏷️ Classe</th>
+                    <th style="padding: 12px; text-align: left;">📈 Critère (RUL restant)</th>
+                    <th style="padding: 12px; text-align: left;">💡 Signification</th>
+                    <th style="padding: 12px; text-align: left;">⚡ Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="highlight-row">
-                    <td><span class="icon-cell">✅</span><strong>Excellent</strong></th>
-                    <td>> 80% du RUL max</td>
-                    <td>Batterie neuve/peu utilisée</td>
-                    <td>Utilisation normale</td>
+                <tr class="highlight-row" style="background: #d4edda;">
+                    <td style="padding: 10px;"><span class="icon-cell">✅</span><strong>Excellent</strong></td>
+                    <td style="padding: 10px;">> 80% du RUL max</td>
+                    <td style="padding: 10px;">Batterie neuve/peu utilisée</td>
+                    <td style="padding: 10px;">Utilisation normale</td>
                 </tr>
-                <tr>
-                    <td><span class="icon-cell">👍</span><strong>Bon</strong></th>
-                    <td>55-80% du RUL max</td>
-                    <td>Bon état général</td>
-                    <td>Surveillance standard</td>
-                </tr>
-                <tr>
-                    <td><span class="icon-cell">⚠️</span><strong>Moyen</strong></th>
-                    <td>20-55% du RUL max</td>
-                    <td>Dégradation visible</td>
-                    <td>Surveillance renforcée</td>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><span class="icon-cell">👍</span><strong>Bon</strong></td>
+                    <td style="padding: 10px;">55-80% du RUL max</td>
+                    <td style="padding: 10px;">Bon état général</td>
+                    <td style="padding: 10px;">Surveillance standard</td>
                 </tr>
                 <tr style="background: #fff3cd;">
-                    <td><span class="icon-cell">🚨</span><strong>Critique</strong></th>
-                    <td>≤ 20% du RUL max</td>
-                    <td>Risque de panne élevé</td>
-                    <td>Remplacement imminent</td>
+                    <td style="padding: 10px;"><span class="icon-cell">⚠️</span><strong>Moyen</strong></td>
+                    <td style="padding: 10px;">20-55% du RUL max</td>
+                    <td style="padding: 10px;">Dégradation visible</td>
+                    <td style="padding: 10px;">Surveillance renforcée</td>
+                </tr>
+                <tr style="background: #f8d7da;">
+                    <td style="padding: 10px;"><span class="icon-cell">🚨</span><strong>Critique</strong></td>
+                    <td style="padding: 10px;">≤ 20% du RUL max</td>
+                    <td style="padding: 10px;">Risque de panne élevé</td>
+                    <td style="padding: 10px;">Remplacement imminent</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-   
-
+    <!-- PERFORMANCE COMPARATIVE -->
     <h3>🤖 Performance Comparative des Modèles</h3>
-    <div class="table-container">
-        <table>
+    <div class="table-container" style="overflow-x: auto; margin-bottom: 40px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
             <thead>
-                <tr>
-                    <th>🧠 Modèle</th>
-                    <th>📊 Accuracy</th>
-                    <th>🎯 AUC macro</th>
-                    <th>🏆 Rang</th>
+                <tr style="background: #e9ecef;">
+                    <th style="padding: 12px; text-align: left;">🧠 Modèle</th>
+                    <th style="padding: 12px; text-align: left;">📊 Accuracy</th>
+                    <th style="padding: 12px; text-align: left;">🎯 AUC macro</th>
+                    <th style="padding: 12px; text-align: left;">🏆 Rang</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="highlight-row">
-                    <td><span class="icon-cell">🌲</span><strong>Random Forest</strong></th>
-                    <td class="value-cell best">83.98%<div class="metric-bar"><div class="metric-bar-fill best" style="width: 84%"></div></div></td>
-                    <td class="value-cell best">0.977</td>
-                    <td><span class="badge badge-best">1er</span></td>
+                <tr class="highlight-row" style="background: #d4edda;">
+                    <td style="padding: 10px;"><span class="icon-cell">🌲</span><strong>Random Forest</strong></td>
+                    <td style="padding: 10px;">
+                        83.98%
+                        <div class="metric-bar" style="height: 6px; background: #eee; border-radius: 3px; margin-top: 5px;">
+                            <div class="metric-bar-fill best" style="width: 84%; height: 100%; background: #28a745; border-radius: 3px;"></div>
+                        </div>
+                    </td>
+                    <td style="padding: 10px;">0.977</td>
+                    <td style="padding: 10px;"><span class="badge badge-best" style="background: #28a745; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em;">1er</span></td>
                 </tr>
-                <tr>
-                    <td><span class="icon-cell">⚡</span>SVM (RBF)</th>
-                    <td class="value-cell">83.76%<div class="metric-bar"><div class="metric-bar-fill good" style="width: 83.8%"></div></div></td>
-                    <td class="value-cell">0.979</td>
-                    <td><span class="badge badge-good">2ème</span></td>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><span class="icon-cell">⚡</span>SVM (RBF)</td>
+                    <td style="padding: 10px;">
+                        83.76%
+                        <div class="metric-bar" style="height: 6px; background: #eee; border-radius: 3px; margin-top: 5px;">
+                            <div class="metric-bar-fill good" style="width: 83.8%; height: 100%; background: #17a2b8; border-radius: 3px;"></div>
+                        </div>
+                    </td>
+                    <td style="padding: 10px;">0.979</td>
+                    <td style="padding: 10px;"><span class="badge badge-good" style="background: #17a2b8; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em;">2ème</span></td>
                 </tr>
-                <tr>
-                    <td><span class="icon-cell">🌳</span>Decision Tree</th>
-                    <td class="value-cell">80.43%<div class="metric-bar"><div class="metric-bar-fill" style="width: 80.4%"></div></div></td>
-                    <td class="value-cell">0.947</td>
-                    <td><span class="badge badge-warning">3ème</span></td>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><span class="icon-cell">🌳</span>Decision Tree</td>
+                    <td style="padding: 10px;">
+                        80.43%
+                        <div class="metric-bar" style="height: 6px; background: #eee; border-radius: 3px; margin-top: 5px;">
+                            <div class="metric-bar-fill" style="width: 80.4%; height: 100%; background: #ffc107; border-radius: 3px;"></div>
+                        </div>
+                    </td>
+                    <td style="padding: 10px;">0.947</td>
+                    <td style="padding: 10px;"><span class="badge badge-warning" style="background: #ffc107; color: black; padding: 4px 8px; border-radius: 12px; font-size: 0.8em;">3ème</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <!-- ANALYSE DÉTAILLÉE RANDOM FOREST -->
     <h3>📊 Analyse Détaillée - Random Forest (Meilleur Modèle)</h3>
     
-    <div class="results-grid">
-        <div class="result-card">
+    <div class="results-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        
+        <!-- Points Forts -->
+        <div class="result-card" style="background: #f8f9fa; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
             <h4>✅ Points Forts</h4>
-            <div class="metric">
+            <div class="metric" style="margin-bottom: 10px;">
                 <span class="metric-label">Accuracy (test, 5 batteries):</span>
-                <span class="metric-value best-value">83.98%</span>
+                <span class="metric-value best-value" style="font-weight: bold; color: #28a745;">83.98%</span>
             </div>
-            <div class="metric">
+            <div class="metric" style="margin-bottom: 10px;">
                 <span class="metric-label">AUC macro (moyenne):</span>
-                <span class="metric-value best-value">0.977</span>
+                <span class="metric-value best-value" style="font-weight: bold; color: #28a745;">0.977</span>
             </div>
             <div class="metric">
                 <span class="metric-label">Classes les mieux discriminées:</span>
-                <span class="metric-value best-value">Excellent (AUC 0.997), Critical (AUC 0.972)</span>
+                <span class="metric-value best-value" style="font-weight: bold; color: #28a745;">Excellent (AUC 0.997), Critical (AUC 0.972)</span>
             </div>
         </div>
         
-       <div class="result-card">
-    <h4>⚠️ Confusions Observées — Random Forest (Meilleur Modèle)</h4>
-    <ul style="font-size: 0.9em; line-height: 1.8;">
-        <li><strong>Critique ↔ Moyen</strong> : 359 + 141 = <strong>500 cas</strong>  
-            <br><small>(359 critiques prédits comme moyens, 141 moyens prédits comme critiques)</small></li>
-        <li><strong>Bon ↔ Moyen</strong> : 119 + 82 = <strong>201 cas</strong>  
-            <br><small>(119 bons prédits comme moyens, 82 moyens prédits comme bons)</small></li>
-        <li><strong>Excellent ↔ Bon</strong> : 84 + 66 = <strong>150 cas</strong>  
-            <br><small>(84 excellents prédits comme bons, 66 bons prédits comme excellents)</small></li>
-        <li><strong>Critique ↔ Bon</strong> : 7 + 0 = <strong>7 cas</strong>  
-            <br><small>(négligeable, mais présent)</small></li>
-    </ul>
-    <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">
-        <em>Les principales confusions concernent les classes adjacentes ou extrêmes (Critique/Moyen), ce qui est cohérent avec une dégradation progressive de l’état. La forte confusion Critique↔Moyen suggère un besoin d’amélioration pour distinguer ces deux états opposés.</em>
-    </p>
-</div>
-
-    <div class="image-container">
-        <img src="imp.png" alt="Feature Importance">
-        <p class="image-caption"><strong>Figure 3:</strong> Importance des features – <strong>Discharge Time</strong> (26.1%) domine, suivi de <strong>Time constant current</strong> (19.2%) et <strong>Time at 4.15V</strong> (17.3%).</p>
+        <!-- Confusions Observées -->
+        <div class="result-card" style="background: #fff3cd; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h4>⚠️ Confusions Observées — Random Forest (Meilleur Modèle)</h4>
+            <ul style="font-size: 0.9em; line-height: 1.8; margin-left: 20px;">
+                <li><strong>Critique ↔ Moyen</strong> : 359 + 141 = <strong>500 cas</strong>  
+                    <br><small>(359 critiques prédits comme moyens, 141 moyens prédits comme critiques)</small></li>
+                <li><strong>Bon ↔ Moyen</strong> : 119 + 82 = <strong>201 cas</strong>  
+                    <br><small>(119 bons prédits comme moyens, 82 moyens prédits comme bons)</small></li>
+                <li><strong>Excellent ↔ Bon</strong> : 84 + 66 = <strong>150 cas</strong>  
+                    <br><small>(84 excellents prédits comme bons, 66 bons prédits comme excellents)</small></li>
+                <li><strong>Critique ↔ Bon</strong> : 7 + 0 = <strong>7 cas</strong>  
+                    <br><small>(négligeable, mais présent)</small></li>
+            </ul>
+            <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">
+                <em>Les principales confusions concernent les classes adjacentes ou extrêmes (Critique/Moyen), ce qui est cohérent avec une dégradation progressive de l’état. La forte confusion Critique↔Moyen suggère un besoin d’amélioration pour distinguer ces deux états opposés.</em>
+            </p>
+        </div>
     </div>
 
+    <!-- IMAGE FEATURE IMPORTANCE -->
+    <div class="image-container" style="text-align: center; margin: 40px 0;">
+        <img src="imp.png" alt="Feature Importance" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <p class="image-caption" style="margin-top: 10px; font-style: italic; color: #666;">
+            <strong>Figure 3:</strong> Importance des features – <strong>Discharge Time</strong> (~26%) domine, suivi de <strong>Time constant current</strong> (~19%) et <strong>Time at 4.15V</strong> (~17%).
+        </p>
+    </div>
+
+    <!-- TABLEAU FEATURES IMPORTANTES -->
     <h3>🔍 Interprétation des Features Importantes</h3>
-    <div class="table-container">
-        <table>
+    <div class="table-container" style="overflow-x: auto; margin-bottom: 40px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
             <thead>
-                <tr>
-                    <th>📊 Feature</th>
-                    <th>📈 Importance</th>
-                    <th>💡 Pourquoi Important?</th>
+                <tr style="background: #e9ecef;">
+                    <th style="padding: 12px; text-align: left;">📊 Feature</th>
+                    <th style="padding: 12px; text-align: left;">📈 Importance</th>
+                    <th style="padding: 12px; text-align: left;">💡 Pourquoi Important?</th>
                 </tr>
             </thead>
             <tbody>
-               <tr class="highlight-row">
-    <td><strong>Discharge Time (s)</strong></td>
-    <td class="value-cell best">~26%</td>
-    <td>Directement lié à la capacité restante de la batterie</td>
-</tr>
-<tr>
-    <td><strong>Time constant current (s)</strong></td>
-    <td class="value-cell">~19%</td>
-    <td>Phase CC – diminue avec le vieillissement</td>
-</tr>
-<tr>
-    <td><strong>Time at 4.15V (s)</strong></td>
-    <td class="value-cell">~17%</td>
-    <td>Indicateur de dégradation du voltage max en charge</td>
-</tr>
-<tr>
-    <td><strong>Max. Voltage Dischar. (V)</strong></td>
-    <td class="value-cell">~16%</td>
-    <td>Tension maximale atteinte pendant la décharge – indicateur de santé interne</td>
-</tr>
-<tr>
-    <td><strong>Decrement 3.6-3.4V (s)</strong></td>
-    <td class="value-cell">~11%</td>
-    <td>Vitesse de décharge en fin de cycle – reflète la résistance interne</td>
-</tr>
-<tr>
-    <td><strong>Min. Voltage Charg. (V)</strong></td>
-    <td class="value-cell">~7%</td>
-    <td>Tension minimale pendant la charge – sensible aux défauts de cellule</td>
-</tr>
-<tr>
-    <td><strong>Charging time (s)</strong></td>
-    <td class="value-cell">~3%</td>
-    <td>Durée totale de charge – peu discriminant ici</td>
-</tr>
+               <tr class="highlight-row" style="background: #d4edda;">
+                    <td style="padding: 10px;"><strong>Discharge Time (s)</strong></td>
+                    <td style="padding: 10px;">~26%</td>
+                    <td style="padding: 10px;">Directement lié à la capacité restante de la batterie</td>
+                </tr>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><strong>Time constant current (s)</strong></td>
+                    <td style="padding: 10px;">~19%</td>
+                    <td style="padding: 10px;">Phase CC – diminue avec le vieillissement</td>
+                </tr>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><strong>Time at 4.15V (s)</strong></td>
+                    <td style="padding: 10px;">~17%</td>
+                    <td style="padding: 10px;">Indicateur de dégradation du voltage max en charge</td>
+                </tr>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><strong>Max. Voltage Dischar. (V)</strong></td>
+                    <td style="padding: 10px;">~16%</td>
+                    <td style="padding: 10px;">Tension maximale atteinte pendant la décharge – indicateur de santé interne</td>
+                </tr>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><strong>Decrement 3.6-3.4V (s)</strong></td>
+                    <td style="padding: 10px;">~11%</td>
+                    <td style="padding: 10px;">Vitesse de décharge en fin de cycle – reflète la résistance interne</td>
+                </tr>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><strong>Min. Voltage Charg. (V)</strong></td>
+                    <td style="padding: 10px;">~7%</td>
+                    <td style="padding: 10px;">Tension minimale pendant la charge – sensible aux défauts de cellule</td>
+                </tr>
+                <tr style="background: #fff;">
+                    <td style="padding: 10px;"><strong>Charging time (s)</strong></td>
+                    <td style="padding: 10px;">~3%</td>
+                    <td style="padding: 10px;">Durée totale de charge – peu discriminant ici</td>
+                </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="image-container">
-        <img src="3f.png" alt="Matrices de Confusion">
-        <p class="image-caption"><strong>Figure 4:</strong> Matrices de confusion comparées – Random Forest montre la meilleure diagonalité (moins d’erreurs hors diagonale).</p>
+    <!-- IMAGES MATRICES ET ROC -->
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 40px 0;">
+        <div class="image-container" style="flex: 1; min-width: 300px; text-align: center;">
+            <img src="3f.png" alt="Matrices de Confusion" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <p class="image-caption" style="margin-top: 10px; font-style: italic; color: #666;">
+                <strong>Figure 4:</strong> Matrices de confusion comparées – Random Forest montre la meilleure diagonalité (moins d’erreurs hors diagonale).
+            </p>
+        </div>
+        <div class="image-container" style="flex: 1; min-width: 300px; text-align: center;">
+            <img src="exe.png" alt="Courbes ROC" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <p class="image-caption" style="margin-top: 10px; font-style: italic; color: #666;">
+                <strong>Figure 5:</strong> Courbes ROC multi-classes – Random Forest (AUC macro = 0.977) > SVM (0.979) > Decision Tree (0.947). Détail par classe : Critical 0.972, Excellent 0.997, Good 0.983, Medium 0.955.
+            </p>
+        </div>
     </div>
 
-    <div class="image-container">
-        <img src="exe.png" alt="Courbes ROC">
-        <p class="image-caption"><strong>Figure 5:</strong> Courbes ROC multi-classes – Random Forest (AUC macro = 0.977) > SVM (0.979) > Decision Tree (0.947). Détail par classe : Critical 0.972, Excellent 0.997, Good 0.983, Medium 0.955.</p>
-    </div>
-
+    <!-- ANALYSE DES COURBES ROC -->
     <h3>📈 Analyse des Courbes ROC</h3>
-    <div class="key-findings">
+    <div class="key-findings" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
         <h4>🎯 Capacité de Discrimination</h4>
         <ul>
-            <li><strong>AUC ≥ 0.95</strong> pour tous les modèles → <span class="highlight">Excellente discrimination</span>.</li>
+            <li><strong>AUC ≥ 0.95</strong> pour tous les modèles → <span class="highlight" style="background: yellow; padding: 2px 4px;">Excellente discrimination</span>.</li>
             <li><strong>Random Forest (AUC macro = 0.977)</strong> – presque parfait, notamment pour les classes extrêmes (Excellent et Critique).</li>
             <li><strong>Taux de vrais positifs > 90%</strong> pour les classes bien séparées avec un faible taux de faux positifs.</li>
             <li>Les modèles sont <strong>fiables pour la détection précoce</strong> des états critiques.</li>
         </ul>
     </div>
 
-    <div class="conclusion-box">
+    <!-- CONCLUSION -->
+    <div class="conclusion-box" style="background: #e7f3ff; padding: 20px; border-radius: 8px; border-left: 5px solid #2980b9; margin-top: 30px;">
         <h4>✅ Conclusion du Diagnostic</h4>
         <p>Le modèle <strong>Random Forest</strong> est retenu avec <strong>83.98% d'accuracy</strong> sur 5 batteries inconnues et un <strong>AUC macro de 0.977</strong>. Ses avantages :</p>
         <ul style="margin-top: 15px; line-height: 2;">
@@ -917,7 +949,7 @@
             🎯 Ce modèle permet une surveillance fiable avec moins de 16% d’erreurs de classification sur des batteries jamais vues.
         </p>
         <p style="margin-top: 10px; font-size: 0.9em;">
-            <em>🛠️ Implémentation :</em> <code>scikit-learn</code> (Random Forest, SVM, Decision Tree), standardisation des features, validation croisée <code>GroupKFold</code> pour respecter l’intégrité des batteries.
+            <em>🛠️ Implémentation :</em> <code style="background: #f0f0f0; padding: 2px 4px; border-radius: 4px;">scikit-learn</code> (Random Forest, SVM, Decision Tree), standardisation des features, validation croisée <code style="background: #f0f0f0; padding: 2px 4px; border-radius: 4px;">GroupKFold</code> pour respecter l’intégrité des batteries.
         </p>
     </div>
 </section>
