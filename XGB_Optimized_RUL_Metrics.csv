@@ -1,0 +1,2 @@
+Model,R2,RMSE_cycles,MAE_cycles,MAPE_percent,SEQ_LENGTH,Best_round,max_depth,learning_rate,early_stopping_rounds
+XGBoost_Optimized,0.9779599905014038,46.47291350295487,32.769535064697266,27.522340960473045,20,992,6,0.1,10
