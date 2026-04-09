@@ -320,366 +320,231 @@
     </nav>
 
     <div class="container">
-        <h1>🏆 Conclusion Générale</h1>
-        <p class="subtitle">Synthèse des Trois Études de Cas en Maintenance Prédictive</p>
+    <h1>🏆 Conclusion Générale</h1>
+    <p class="subtitle">Synthèse des Trois Études de Cas en Maintenance Prédictive</p>
 
-        <!-- Introduction -->
-        <section>
-            <div class="intro-box">
-                <h3>📌 Bilan du Projet</h3>
-                <p>Ce projet de maintenance intelligente a exploré l'application combinée de l'analyse <strong>FMDS</strong> (Fiabilité, Maintenabilité, Disponibilité, Sécurité) et des techniques de <strong>maintenance prédictive</strong> sur trois systèmes industriels critiques : les batteries lithium-ion, les roulements de moteurs et les moteurs d'avion turbofan.</p>
-                <p style="margin-top: 15px; font-weight: 500;">
-                    ✅ <strong>Approche unifiée</strong> : Méthodologie reproductible appliquée à trois cas différents<br>
-                    ✅ <strong>Validation expérimentale</strong> : Modèles testés sur datasets réels (NASA, FEMTO, HNEI)<br>
-                    ✅ <strong>Recommandations actionnables</strong> : Stratégies de maintenance optimisées pour chaque système
-                </p>
-            </div>
-        </section>
-
-        <!-- Résumé des 3 études -->
-        <section>
-            <h2>📊 Résumé des Trois Études de Cas</h2>
-            <div class="summary-grid">
-                <!-- Batteries -->
-                <div class="case-card batteries">
-                    <h4>🔋 Batteries Li-ion 18650</h4>
-                    <p><strong>Dataset :</strong> Hawaii Natural Energy Institute (14 cellules)</p>
-                    <div class="metric">
-                        <span class="metric-label">MTBF</span>
-                        <span class="metric-value best-value">1109 cycles</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Disponibilité</span>
-                        <span class="metric-value best-value">99.82%</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Diagnostic</span>
-                        <span class="metric-value">Random Forest (83.98%)</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Pronostic</span>
-                        <span class="metric-value best-value">GRU (R²=97.45%)</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">MAE RUL</span>
-                        <span class="metric-value">38.42 cycles</span>
-                    </div>
-                </div>
-
-                <!-- Roulements -->
-                <div class="case-card roulements">
-                    <h4>⚙️ Roulements Industriels</h4>
-                    <p><strong>Dataset :</strong> NASA C-MAPSS / FEMTO Bearing</p>
-                    <div class="metric">
-                        <span class="metric-label">MTBF</span>
-                        <span class="metric-value best-value">192 cycles</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Disponibilité</span>
-                        <span class="metric-value best-value">93.1%</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Diagnostic</span>
-                        <span class="metric-value best-value">Random Forest (92%)</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Pronostic</span>
-                        <span class="metric-value">Réseau de Neurones</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">RMSE RUL</span>
-                        <span class="metric-value">12.5-16.5 cycles</span>
-                    </div>
-                </div>
-
-                <!-- Moteurs -->
-                <div class="case-card moteurs">
-                    <h4>✈️ Moteurs Turbofan</h4>
-                    <p><strong>Dataset :</strong> NASA C-MAPSS FD001</p>
-                    <div class="metric">
-                        <span class="metric-label">MTBF</span>
-                        <span class="metric-value best-value">206 cycles</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Disponibilité</span>
-                        <span class="metric-value best-value">99.52%</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Diagnostic</span>
-                        <span class="metric-value best-value">CNN+LSTM (AUC=0.991)</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">Meilleur Pronostic</span>
-                        <span class="metric-value">CNN+LSTM (R²=84.2%)</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-label">MAE RUL</span>
-                        <span class="metric-value">12.61 cycles</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Comparaison FMDS -->
-        <section>
-            <h2>📈 Comparaison des Indicateurs FMDS</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>📊 Indicateur</th>
-                            <th>🔋 Batteries</th>
-                            <th>⚙️ Roulements</th>
-                            <th>✈️ Moteurs</th>
-                            <th>🎯 Interprétation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-row">
-                            <td><strong>MTBF (cycles)</strong></td>
-                            <td class="best-value">1109</td>
-                            <td>192</td>
-                            <td>206</td>
-                            <td>Batteries : durée de vie la plus longue</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Disponibilité</strong></td>
-                            <td class="best-value">99.82%</td>
-                            <td>93.1%</td>
-                            <td>99.52%</td>
-                            <td>Tous systèmes : excellente disponibilité</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Modèle de défaillance</strong></td>
-                            <td>Log-Normale</td>
-                            <td>Weibull (β=2.1)</td>
-                            <td>Weibull (β=2.34)</td>
-                            <td>Tous : usure progressive (β>1) ✓</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Taux de défaillance λ</strong></td>
-                            <td class="best-value">0.0009/cycle</td>
-                            <td>0.0052/cycle</td>
-                            <td>0.00485/cycle</td>
-                            <td>Batteries : risque le plus faible</td>
-                        </tr>
-                        <tr>
-                            <td><strong>MTTR estimé</strong></td>
-                            <td>2 cycles</td>
-                            <td>8-14 cycles</td>
-                            <td>1 cycle</td>
-                            <td>Moteurs : maintenance la plus rapide</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Performance des modèles -->
-        <section>
-            <h2>🤖 Performance Comparative des Modèles IA</h2>
-            
-            <h3>🔍 Diagnostic (Classification des États de Santé)</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>🧠 Système</th>
-                            <th>🏆 Meilleur Modèle</th>
-                            <th>📊 Accuracy</th>
-                            <th>📈 AUC-ROC</th>
-                            <th>🎯 Rappel (Critique)</th>
-                            <th>💡 Avantage Clé</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="highlight-row">
-    <td>🔋 Batteries</td>
-    <td>Random Forest</td>
-    <td class="best-value">83.98%</td> <!-- Accuracy -->
-    <td class="best-value">0.977</td> <!-- AUC Macro -->
-    <td style="color: #e74c3c; font-weight: bold;">65.7%</td> <!-- Rappel Critique (CORRIGÉ) -->
-    <td>Interprétable + Robuste</td>
-</tr>
-                        <tr>
-                            <td>⚙️ Roulements</td>
-                            <td>Random Forest</td>
-                            <td class="best-value">92%</td>
-                            <td class="best-value">0.97</td>
-                            <td>88.4%</td>
-                            <td>Excellent équilibre précision/rappel</td>
-                        </tr>
-                        <tr>
-                            <td>✈️ Moteurs</td>
-                            <td>CNN+LSTM</td>
-                            <td>88.0%</td>
-                            <td class="best-value">0.991</td>
-                            <td class="best-value">100%</td>
-                            <td>Détection parfaite des états critiques</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>🔮 Pronostic (Prédiction du RUL)</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>🧠 Système</th>
-                            <th>🏆 Meilleur Modèle</th>
-                            <th>📊 R²</th>
-                            <th>📉 RMSE (cycles)</th>
-                            <th>📏 MAE (cycles)</th>
-                            <th>💡 Avantage Clé</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-row">
-                            <td>🔋 Batteries</td>
-                            <td>GRU</td>
-                            <td class="best-value">97.45%</td>
-                            <td>49.95</td>
-                            <td class="best-value">38.42</td>
-                            <td>Meilleur équilibre performance/complexité</td>
-                        </tr>
-                        <tr>
-                            <td>⚙️ Roulements</td>
-                            <td>Réseau de Neurones</td>
-                            <td>85%</td>
-                            <td class="best-value">12.5-14.8</td>
-                            <td class="best-value">12.1-12.6</td>
-                            <td>Précision exceptionnelle sur signaux vibratoires</td>
-                        </tr>
-                        <tr>
-                            <td>✈️ Moteurs</td>
-                            <td>CNN+LSTM</td>
-                            <td>84.2%</td>
-                            <td>16.51</td>
-                            <td>12.61</td>
-                            <td>Architecture hybride pour données multivariées</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Insights transversaux -->
-        <section>
-            <h2>💡 Insights Transversaux & Leçons Apprises</h2>
-            
-            <div class="key-findings">
-                <h4>✅ Ce qui a fonctionné</h4>
-                <div class="comparison-grid">
-                    <div class="comparison-item">
-                        <div class="comparison-value">🔄</div>
-                        <div class="comparison-label">Approche FMDS + IA = Synergie puissante pour la maintenance prédictive</div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="comparison-value">🌲</div>
-                        <div class="comparison-label">Random Forest : Modèle de référence pour le diagnostic (robuste, interprétable)</div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="comparison-value">🧠</div>
-                        <div class="comparison-label">Architectures récurrentes (GRU/LSTM) : Optimales pour le pronostic temporel</div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="comparison-value">📊</div>
-                        <div class="comparison-label">Features engineering : Critique pour la performance des modèles</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="key-findings" style="border-left-color: #e74c3c; background: #fdedec;">
-                <h4>⚠️ Limites identifiées</h4>
-                <ul style="margin: 10px 0 0 20px; line-height: 1.8;">
-                    <li><strong>Données de laboratoire :</strong> Conditions contrôlées ≠ environnement industriel réel</li>
-                    <li><strong>MTTR estimé :</strong> Hypothèses de maintenance non validées expérimentalement</li>
-                    <li><strong>Généralisation :</strong> Modèles spécifiques à chaque type de système</li>
-                    <li><strong>Interprétabilité :</strong> Modèles deep learning = "boîte noire" partielle</li>
-                    <li><strong>Données déséquilibrées :</strong> Classes critiques sous-représentées dans certains datasets</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Recommandations stratégiques -->
-        <section>
-            <h2>🎯 Recommandations Stratégiques pour le Déploiement Industriel</h2>
-            
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>📅 Phase</th>
-                            <th>🔧 Actions Prioritaires</th>
-                            <th>🎯 Objectifs</th>
-                            <th>📊 KPI de Succès</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-row">
-                            <td><strong>Phase 1</strong><br><small>(0-3 mois)</small></td>
-                            <td>
-                                • Déploiement pilote sur équipements critiques<br>
-                                • Intégration capteurs IoT temps réel<br>
-                                • Formation équipes maintenance
-                            </td>
-                            <td>Validation méthodologie en conditions réelles</td>
-                            <td>• Réduction 20% pannes imprévues<br>• Adoption ≥80% par les équipes</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Phase 2</strong><br><small>(3-9 mois)</small></td>
-                            <td>
-                                • Extension à l'ensemble du parc machines<br>
-                                • Dashboard de supervision centralisé<br>
-                                • Optimisation stocks pièces de rechange
-                            </td>
-                            <td>Industrialisation de la maintenance prédictive</td>
-                            <td>• Disponibilité équipements >98%<br>• Réduction coûts maintenance 25%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Phase 3</strong><br><small>(9-18 mois)</small></td>
-                            <td>
-                                • Transfer learning entre équipements similaires<br>
-                                • Intégration jumeau numérique (Digital Twin)<br>
-                                • Maintenance autonome avec feedback loop
-                            </td>
-                            <td>Excellence opérationnelle & innovation continue</td>
-                            <td>• MTBF +30%<br>• ROI maintenance >300%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Conclusion finale -->
-        <section>
-            <div class="conclusion-box">
-                <h3 style="margin-top: 0; color: #2980b9;">🏁 Conclusion Finale</h3>
-                <p style="font-size: 1.1em; line-height: 1.8;">
-                    Ce projet démontre que l'intégration de l'<strong>analyse FMDS</strong> et des <strong>techniques d'intelligence artificielle</strong> constitue une approche puissante et reproductible pour la maintenance prédictive industrielle.
-                </p>
-                <p style="line-height: 1.8; margin-top: 15px;">
-                    🔹 <strong>Pour les batteries lithium-ion</strong>, le modèle GRU atteint un R² de 97.45%, permettant une planification de maintenance avec une erreur moyenne de seulement 38 cycles.<br>
-                    🔹 <strong>Pour les roulements</strong>, Random Forest et les réseaux de neurones offrent une détection précoce des défauts avec plus de 90% de précision.<br>
-                    🔹 <strong>Pour les moteurs d'avion</strong>, l'architecture CNN+LSTM garantit une détection à 100% des états critiques, essentielle pour la sécurité aérienne.
-                </p>
-                <p style="line-height: 1.8; margin-top: 15px; font-weight: 600; color: #27ae60;">
-                    🚀 La méthodologie développée est <strong>générique, scalable et transférable</strong> à d'autres systèmes industriels. 
-                    Son déploiement progressif, accompagné d'une formation des équipes et d'une intégration dans les processus existants, 
-                    ouvre la voie vers une maintenance véritablement <strong>prédictive, économique et durable</strong>.
-                </p>
-            </div>
-        </section>
-
-        <!-- Téléchargements -->
-       
-
-        <div class="footer">
-            <p>© 2026 Noujoud Ouni | Maintenance Intelligente & Prédiction RUL | Projet de Fin d'Études</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">École Nationale Supérieure d'Ingénieurs de Tunis (ENSIT)</p>
+    <!-- Introduction -->
+    <section>
+        <div class="intro-box">
+            <h3>📌 Bilan du Projet</h3>
+            <p>Ce projet de maintenance intelligente a exploré l'application combinée de l'analyse <strong>FMDS</strong> (Fiabilité, Maintenabilité, Disponibilité, Sécurité) et des techniques de <strong>maintenance prédictive</strong> sur trois systèmes industriels critiques : les batteries lithium-ion, les roulements de moteurs et les moteurs d'avion turbofan.</p>
+            <p style="margin-top: 15px; font-weight: 500;">
+                ✅ <strong>Approche unifiée</strong> : Méthodologie reproductible appliquée à trois cas différents<br>
+                ✅ <strong>Validation expérimentale</strong> : Modèles testés sur datasets réels (NASA, FEMTO, HNEI)<br>
+                ✅ <strong>Recommandations actionnables</strong> : Stratégies de maintenance optimisées pour chaque système
+            </p>
         </div>
+    </section>
+
+    <!-- Résumé des 3 études -->
+    <section>
+        <h2>📊 Résumé des Trois Études de Cas</h2>
+        <div class="summary-grid">
+            <!-- Batteries -->
+            <div class="case-card batteries">
+                <h4>🔋 Batteries Li-ion 18650</h4>
+                <p><strong>Dataset :</strong> Hawaii Natural Energy Institute (14 cellules)</p>
+                <div class="metric">
+                    <span class="metric-label">MTBF</span>
+                    <span class="metric-value best-value">1109 cycles</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Disponibilité</span>
+                    <span class="metric-value best-value">99.82%</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Meilleur Diagnostic</span>
+                    <span class="metric-value">Random Forest (83.98%)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Meilleur Pronostic</span>
+                    <span class="metric-value best-value">🏆 XGBoost (R²=97.80%)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">MAE RUL</span>
+                    <span class="metric-value best-value">32.77 cycles</span>
+                </div>
+            </div>
+
+            <!-- Roulements -->
+            <div class="case-card roulements">
+                <h4>⚙️ Roulements Industriels</h4>
+                <p><strong>Dataset :</strong> NASA C-MAPSS / FEMTO Bearing</p>
+                <div class="metric">
+                    <span class="metric-label">MTBF</span>
+                    <span class="metric-value best-value">192 cycles</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Disponibilité</span>
+                    <span class="metric-value best-value">93.1%</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Meilleur Diagnostic</span>
+                    <span class="metric-value best-value">Random Forest (92%)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Meilleur Pronostic</span>
+                    <span class="metric-value">Réseau de Neurones</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">RMSE RUL</span>
+                    <span class="metric-value">12.5-16.5 cycles</span>
+                </div>
+            </div>
+
+            <!-- Moteurs -->
+            <div class="case-card moteurs">
+                <h4>✈️ Moteurs Turbofan</h4>
+                <p><strong>Dataset :</strong> NASA C-MAPSS FD001</p>
+                <div class="metric">
+                    <span class="metric-label">MTBF</span>
+                    <span class="metric-value best-value">206 cycles</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Disponibilité</span>
+                    <span class="metric-value best-value">99.52%</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Meilleur Diagnostic</span>
+                    <span class="metric-value best-value">CNN+LSTM (AUC=0.991)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Meilleur Pronostic</span>
+                    <span class="metric-value">CNN+LSTM (R²=84.2%)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">MAE RUL</span>
+                    <span class="metric-value">12.61 cycles</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparaison FMDS -->
+    <section>
+        <h2>📈 Comparaison des Indicateurs FMDS</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr><th>📊 Indicateur</th><th>🔋 Batteries</th><th>⚙️ Roulements</th><th>✈️ Moteurs</th><th>🎯 Interprétation</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row"><td><strong>MTBF (cycles)</strong></td><td class="best-value">1109</td><td>192</td><td>206</td><td>Batteries : durée de vie la plus longue</td></tr>
+                    <tr><td><strong>Disponibilité</strong></td><td class="best-value">99.82%</td><td>93.1%</td><td>99.52%</td><td>Tous systèmes : excellente disponibilité</td></tr>
+                    <tr><td><strong>Modèle de défaillance</strong></td><td>Log-Normale</td><td>Weibull (β=2.1)</td><td>Weibull (β=2.34)</td><td>Tous : usure progressive (β>1) ✓</td></tr>
+                    <tr><td><strong>Taux de défaillance λ</strong></td><td class="best-value">0.0009/cycle</td><td>0.0052/cycle</td><td>0.00485/cycle</td><td>Batteries : risque le plus faible</td></tr>
+                    <tr><td><strong>MTTR estimé</strong></td><td>2 cycles</td><td>8-14 cycles</td><td>1 cycle</td><td>Moteurs : maintenance la plus rapide</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Performance des modèles -->
+    <section>
+        <h2>🤖 Performance Comparative des Modèles IA</h2>
+        
+        <h3>🔍 Diagnostic (Classification des États de Santé)</h3>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>🧠 Système</th><th>🏆 Meilleur Modèle</th><th>📊 Accuracy</th><th>📈 AUC-ROC</th><th>🎯 Rappel (Critique)</th><th>💡 Avantage Clé</th></tr></thead>
+                <tbody>
+                    <tr class="highlight-row"><td>🔋 Batteries</td><td>Random Forest</td><td class="best-value">83.98%</td><td class="best-value">0.977</td><td style="color:#e74c3c;">65.7%</td><td>Interprétable + Robuste</td></tr>
+                    <tr><td>⚙️ Roulements</td><td>Random Forest</td><td class="best-value">92%</td><td class="best-value">0.97</td><td>88.4%</td><td>Excellent équilibre précision/rappel</td></tr>
+                    <tr><td>✈️ Moteurs</td><td>CNN+LSTM</td><td>88.0%</td><td class="best-value">0.991</td><td class="best-value">100%</td><td>Détection parfaite des états critiques</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>🔮 Pronostic (Prédiction du RUL)</h3>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>🧠 Système</th><th>🏆 Meilleur Modèle</th><th>📊 R²</th><th>📉 RMSE (cycles)</th><th>📏 MAE (cycles)</th><th>💡 Avantage Clé</th></tr></thead>
+                <tbody>
+                    <tr class="highlight-row"><td>🔋 Batteries</td><td><strong>XGBoost</strong></td><td class="best-value">97.80%</td><td>46.47</td><td class="best-value">32.77</td><td>Rapide, interprétable, robuste sur petit jeu de données</td></tr>
+                    <tr><td>⚙️ Roulements</td><td>Réseau de Neurones</td><td>85%</td><td class="best-value">12.5-14.8</td><td class="best-value">12.1-12.6</td><td>Précision exceptionnelle sur signaux vibratoires</td></tr>
+                    <tr><td>✈️ Moteurs</td><td>CNN+LSTM</td><td>84.2%</td><td>16.51</td><td>12.61</td><td>Architecture hybride pour données multivariées</td></tr>
+                </tbody>
+            </table>
+            <p class="image-caption" style="margin-top: 10px;">Note : XGBoost surpasse le GRU (R²=97.45%, MAE=38.42 cycles) sur les batteries, grâce à sa régularisation naturelle et son exploitation des décalages temporels.</p>
+        </div>
+    </section>
+
+    <!-- Insights transversaux -->
+    <section>
+        <h2>💡 Insights Transversaux & Leçons Apprises</h2>
+        <div class="key-findings">
+            <h4>✅ Ce qui a fonctionné</h4>
+            <div class="comparison-grid">
+                <div class="comparison-item"><div class="comparison-value">🔄</div><div class="comparison-label">Approche FMDS + IA = Synergie puissante pour la maintenance prédictive</div></div>
+                <div class="comparison-item"><div class="comparison-value">🌲</div><div class="comparison-label">Random Forest : Modèle de référence pour le diagnostic (robuste, interprétable)</div></div>
+                <div class="comparison-item"><div class="comparison-value">⚡</div><div class="comparison-label">XGBoost : Meilleur modèle pour le pronostic sur petits jeux de données tabulaires</div></div>
+                <div class="comparison-item"><div class="comparison-value">📊</div><div class="comparison-label">Features engineering et décalages temporels : Clés pour surpasser les réseaux récurrents</div></div>
+            </div>
+        </div>
+        <div class="key-findings" style="border-left-color: #e74c3c; background: #fdedec;">
+            <h4>⚠️ Limites identifiées</h4>
+            <ul style="margin: 10px 0 0 20px; line-height: 1.8;">
+                <li><strong>Données de laboratoire :</strong> Conditions contrôlées ≠ environnement industriel réel</li>
+                <li><strong>MTTR estimé :</strong> Hypothèses de maintenance non validées expérimentalement</li>
+                <li><strong>Généralisation :</strong> Modèles spécifiques à chaque type de système</li>
+                <li><strong>Interprétabilité :</strong> Modèles deep learning = "boîte noire" partielle (XGBoost y remédie)</li>
+                <li><strong>Données déséquilibrées :</strong> Classes critiques sous-représentées (rappel 65.7% pour batteries)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Recommandations stratégiques -->
+    <section>
+        <h2>🎯 Recommandations Stratégiques pour le Déploiement Industriel</h2>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>📅 Phase</th><th>🔧 Actions Prioritaires</th><th>🎯 Objectifs</th><th>📊 KPI de Succès</th></tr></thead>
+                <tbody>
+                    <tr class="highlight-row"><td><strong>Phase 1</strong><br><small>(0-3 mois)</small></td>
+                        <td>• Déploiement pilote sur équipements critiques<br>• Intégration capteurs IoT temps réel<br>• Formation équipes maintenance</td>
+                        <td>Validation méthodologie en conditions réelles</td>
+                        <td>• Réduction 20% pannes imprévues<br>• Adoption ≥80% par les équipes</td>
+                    </tr>
+                    <tr><td><strong>Phase 2</strong><br><small>(3-9 mois)</small></td>
+                        <td>• Extension à l'ensemble du parc machines<br>• Dashboard de supervision centralisé<br>• Optimisation stocks pièces de rechange</td>
+                        <td>Industrialisation de la maintenance prédictive</td>
+                        <td>• Disponibilité équipements >98%<br>• Réduction coûts maintenance 25%</td>
+                    </tr>
+                    <tr><td><strong>Phase 3</strong><br><small>(9-18 mois)</small></td>
+                        <td>• Transfer learning entre équipements similaires<br>• Intégration jumeau numérique (Digital Twin)<br>• Maintenance autonome avec feedback loop</td>
+                        <td>Excellence opérationnelle & innovation continue</td>
+                        <td>• MTBF +30%<br>• ROI maintenance >300%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Conclusion finale -->
+    <section>
+        <div class="conclusion-box">
+            <h3 style="margin-top: 0; color: #2980b9;">🏁 Conclusion Finale</h3>
+            <p style="font-size: 1.1em; line-height: 1.8;">
+                Ce projet démontre que l'intégration de l'<strong>analyse FMDS</strong> et des <strong>techniques d'intelligence artificielle</strong> constitue une approche puissante et reproductible pour la maintenance prédictive industrielle.
+            </p>
+            <p style="line-height: 1.8; margin-top: 15px;">
+                🔹 <strong>Pour les batteries lithium-ion</strong>, le modèle <strong>XGBoost</strong> atteint un R² de 97,80% avec une erreur moyenne de 32,8 cycles, surpassant le GRU (97,45% / 38,4 cycles). Cette performance s’explique par la régularisation naturelle de XGBoost et son exploitation des décalages temporels via l’aplatissement des séquences.<br>
+                🔹 <strong>Pour les roulements</strong>, Random Forest et les réseaux de neurones offrent une détection précoce des défauts avec plus de 90% de précision.<br>
+                🔹 <strong>Pour les moteurs d'avion</strong>, l'architecture CNN+LSTM garantit une détection à 100% des états critiques, essentielle pour la sécurité aérienne.
+            </p>
+            <p style="line-height: 1.8; margin-top: 15px; font-weight: 600; color: #27ae60;">
+                🚀 La méthodologie développée est <strong>générique, scalable et transférable</strong> à d'autres systèmes industriels. 
+                Son déploiement progressif, accompagné d'une formation des équipes et d'une intégration dans les processus existants, 
+                ouvre la voie vers une maintenance véritablement <strong>prédictive, économique et durable</strong>.
+            </p>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>© 2026 Noujoud Ouni | Maintenance Intelligente & Prédiction RUL | Projet de Fin d'Études</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">École Nationale Supérieure d'Ingénieurs de Tunis (ENSIT)</p>
     </div>
+</div>
 
     <script>
         // Animation des barres de progression au chargement
