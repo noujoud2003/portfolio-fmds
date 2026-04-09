@@ -352,10 +352,10 @@
                     <span class="metric-label">Disponibilité</span>
                     <span class="metric-value best-value">99.82%</span>
                 </div>
-                <div class="metric">
-                    <span class="metric-label">Meilleur Diagnostic</span>
-                    <span class="metric-value">Random Forest (83.98%)</span>
-                </div>
+              <div class="metric">
+    <span class="metric-label">Meilleur Diagnostic</span>
+    <span class="metric-value">Random Forest (85.1% / recall critique 83% seuil=0.25)</span>
+</div>
                 <div class="metric">
                     <span class="metric-label">Meilleur Pronostic</span>
                     <span class="metric-value best-value">🏆 XGBoost (R²=97.80%)</span>
@@ -448,7 +448,14 @@
             <table>
                 <thead><tr><th>🧠 Système</th><th>🏆 Meilleur Modèle</th><th>📊 Accuracy</th><th>📈 AUC-ROC</th><th>🎯 Rappel (Critique)</th><th>💡 Avantage Clé</th></tr></thead>
                 <tbody>
-                    <tr class="highlight-row"><td>🔋 Batteries</td><td>Random Forest</td><td class="best-value">83.98%</td><td class="best-value">0.977</td><td style="color:#e74c3c;">65.7%</td><td>Interprétable + Robuste</td></tr>
+                    <tr class="highlight-row">
+    <td>🔋 Batteries</td>
+    <td>Random Forest (seuil 0.25)</td>
+    <td class="best-value">85.14%</td>
+    <td class="best-value">0.974</td>
+    <td style="color:#27ae60; font-weight:bold;">83.0%</td>
+    <td>Optimisé pour la sécurité (compromis rappel/précision)</td>
+</tr>
                     <tr><td>⚙️ Roulements</td><td>Random Forest</td><td class="best-value">92%</td><td class="best-value">0.97</td><td>88.4%</td><td>Excellent équilibre précision/rappel</td></tr>
                     <tr><td>✈️ Moteurs</td><td>CNN+LSTM</td><td>88.0%</td><td class="best-value">0.991</td><td class="best-value">100%</td><td>Détection parfaite des états critiques</td></tr>
                 </tbody>
@@ -488,7 +495,7 @@
                 <li><strong>MTTR estimé :</strong> Hypothèses de maintenance non validées expérimentalement</li>
                 <li><strong>Généralisation :</strong> Modèles spécifiques à chaque type de système</li>
                 <li><strong>Interprétabilité :</strong> Modèles deep learning = "boîte noire" partielle (XGBoost y remédie)</li>
-                <li><strong>Données déséquilibrées :</strong> Classes critiques sous-représentées (rappel 65.7% pour batteries)</li>
+          
             </ul>
         </div>
     </section>
@@ -523,7 +530,7 @@
     <!-- Conclusion finale -->
     <section>
         <div class="conclusion-box">
-            <h3 style="margin-top: 0; color: #2980b9;">🏁 Conclusion Finale</h3>
+            <h3 style="margin-top: 0; color: #2980b9;"> Conclusion Finale</h3>
             <p style="font-size: 1.1em; line-height: 1.8;">
                 Ce projet démontre que l'intégration de l'<strong>analyse FMDS</strong> et des <strong>techniques d'intelligence artificielle</strong> constitue une approche puissante et reproductible pour la maintenance prédictive industrielle.
             </p>
