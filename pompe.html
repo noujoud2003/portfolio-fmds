@@ -866,11 +866,11 @@ body {
             </div>
             <div class="metric">
                 <span class="metric-label">Random Forest (diagnostic) :</span>
-                <span class="metric-value best-value">Accuracy = 83,98% | AUC = 0,977</span>
+                <span class="metric-value best-value">Accuracy = 85,1% | Recall Critique = 83,0% (seuil 0,25)</span>
             </div>
             <div class="metric">
                 <span class="metric-label">SVM (diagnostic) :</span>
-                <span class="metric-value">Accuracy = 83,76%</span>
+                <span class="metric-value">Accuracy = 78,0% | Recall Critique = 97,8%</span>
             </div>
             <div class="metric">
                 <span class="metric-label">FMDS (disponibilité) :</span>
@@ -884,6 +884,7 @@ body {
                 <li>Pipeline complet : FMDS → diagnostic (Random Forest, SVM) → pronostic (XGBoost)</li>
                 <li>Validation réaliste : 9 batteries pour l’entraînement, 5 pour le test</li>
                 <li>Comparaison rigoureuse de 5 modèles (GRU, BiLSTM, CNN+GRU, XGBoost)</li>
+                <li>Optimisation du seuil de décision pour améliorer le rappel critique (65% → 83%)</li>
                 <li>Interprétabilité des décisions (importance des features, courbes ROC)</li>
                 <li>Code reproductible et prêt pour l’intégration industrielle</li>
             </ul>
@@ -894,7 +895,7 @@ body {
             <ul style="line-height: 1.7;">
                 <li>Jeu de données limité à 14 batteries (conditions de laboratoire)</li>
                 <li>Absence de validation sur des batteries réelles en exploitation</li>
-                <li>Classification perfectible pour la classe « critique » (rappel ~65%)</li>
+                <li>Le SVM a une précision critique faible (68,7%) malgré un excellent rappel</li>
                 <li>Les modèles séquentiels (GRU) souffrent d’un léger surapprentissage</li>
             </ul>
         </div>
@@ -916,7 +917,7 @@ body {
                             <li>Ingénierie de features supplémentaires (pentes, intégrales)</li>
                         </ul>
                     </td>
-                    <td>Gain de R² : +2 à 3%<br>Réduction du MAE à <30 cycles</td>
+                    <td>Gain de R² : +2 à 3%<br>Réduction du MAE à <30 cycles</div>
                     <td><span class="badge badge-best">🔥 Haute</span></td>
                 </tr>
                 <tr>
@@ -927,21 +928,21 @@ body {
                             <li>Test d’architectures hybrides (CNN + XGBoost)</li>
                             <li>Déploiement d’une API Flask/FastAPI pour la prédiction en temps réel</li>
                         </ul>
-                     </td>
-                    <td>Précision améliorée de 5%<br>Démonstration industrielle</td>
-                    <td><span class="badge badge-good">📈 Moyenne</span></td>
+                      </div>
+                    <td>Précision améliorée de 5%<br>Démonstration industrielle</div>
+                    <td><span class="badge badge-good">📈 Moyenne</span></div>
                 </tr>
                 <tr>
-                    <td><strong>Long terme</strong><br><small>6–12 mois</small></td>
+                    <td><strong>Long terme</strong><br><small>6–12 mois</small></div>
                     <td>
                         <ul style="margin:0; padding-left:15px;">
                             <li>Transfer learning vers d’autres chimies (LFP, NMC)</li>
                             <li>Validation sur données réelles de parc de véhicules</li>
                             <li>Intégration dans un BMS (Battery Management System) embarqué</li>
                         </ul>
-                     </td>
-                    <td>Solution industrialisable<br>Réduction des coûts de maintenance</td>
-                    <td><span class="badge badge-warning">🔮 Future</span></td>
+                      </div>
+                    <td>Solution industrialisable<br>Réduction des coûts de maintenance</div>
+                    <td><span class="badge badge-warning">🔮 Future</span></div>
                 </tr>
             </tbody>
         </table>
@@ -951,11 +952,10 @@ body {
         <h4>🎯 Conclusion finale</h4>
         <p style="line-height: 1.7;">
             <strong>➡️ Ce projet valide l’approche Maintenance 4.0 :</strong> la combinaison d’un indicateur FMDS, 
-            de modèles de diagnostic (Random Forest, SVM) et d’un modèle de pronostic <strong>XGBoost</strong> permet 
+            de modèles de diagnostic (Random Forest optimisé, SVM) et d’un modèle de pronostic <strong>XGBoost</strong> permet 
             d’atteindre des performances de pointe pour l’estimation de la durée de vie restante des batteries.<br><br>
-            <strong>Diagnostic :</strong> accuracy ~84% sur des batteries inconnues.<br>
-            <strong>Pronostic :</strong> R² = 97,80% avec une erreur moyenne de <strong>32,8 cycles</strong> (≈ 5 jours de marge).<br><br>
-            XGBoost surpasse le GRU grâce à sa régularisation implicite, sa rapidité d’entraînement et son interprétabilité.
+            <strong>Diagnostic :</strong> Le Random Forest avec seuil à 0,25 atteint un rappel critique de <strong>83,0%</strong> (contre 65% initial) et une précision de 81,7%, offrant le meilleur compromis sécurité / fausses alarmes. Le SVM peut être utilisé pour une détection extrêmement sensible (rappel 97,8%) au prix de nombreuses fausses alertes.<br>
+            <strong>Pronostic :</strong> XGBoost obtient un R² de <strong>97,80%</strong> avec une erreur moyenne de <strong>32,8 cycles</strong> (≈ 5 jours de marge), surpassant le GRU.<br><br>
             L’approche est <strong>fiable, généralisable</strong> et possède un <strong>fort potentiel d’industrialisation</strong>.
         </p>
     </div>
