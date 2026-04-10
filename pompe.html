@@ -723,9 +723,10 @@ body {
             <li><strong>Régularisation naturelle :</strong> les hyperparamètres (subsample, colsample, early stopping) limitent le surapprentissage, contrairement aux GRU qui sur‑ajustent sur 14 batteries.</li>
             <li><strong>Exploitation des décalages temporels :</strong> en aplatissant les séquences (20 cycles × 7 features = 140 variables), XGBoost apprend des règles du type <em>« si la tension minimale au cycle t‑5 est inférieure à 3,85 V, alors la RUL chute de 15 cycles »</em>.</li>
             <li><strong>Stabilité sur petit jeu de données :</strong> les arbres de décision sont moins sensibles à la rareté des exemples que les réseaux de neurones.</li>
-            <li><strong>Courbe d’apprentissage saine :</strong> pas de surapprentissage (train/val RMSE proches) ni de sous‑apprentissage (convergence lente mais régulière jusqu’au 992e round).</li>
+           
         </ul>
     </div>
+
 
     <div class="results-grid">
         <div class="result-card">
@@ -755,10 +756,22 @@ body {
         <img src="XGB_Optimized_RUL_Global_Visualisations.png" alt="Visualisations globales XGBoost" class="figure-large">
         <p class="image-caption"><strong>Figure 5a :</strong> Courbe d’apprentissage (RMSE train/val), top 10 features importantes, RUL prédite vs réelle, distribution des erreurs (biais centré sur 0).</p>
     </div>
+        <div style="max-width: 850px; margin: 25px auto; padding: 25px; background-color: #f8f9fa; border-radius: 10px; border-left: 6px solid #0066cc; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h3 style="color: #0066cc; margin-top: 0;">Analyse de l'Overfitting</h3>
+    <p style="font-size: 16.5px; line-height: 1.7; color: #333;">
+        L’analyse de la courbe d’apprentissage a révélé un écart modéré entre le RMSE sur les données d’entraînement 
+        et sur l’ensemble de validation, indiquant un <strong>surapprentissage léger</strong>. 
+        Ce phénomène a toutefois été contrôlé grâce à l’early stopping. 
+        Les performances obtenues sur le jeu de test indépendant 
+        (<strong>R² = 0.978</strong>, <strong>MAE = 32,77 cycles</strong>) demeurent excellentes 
+        et témoignent d’une bonne capacité de généralisation du modèle.
+    </p>
+</div>
     <div class="figure-wrapper">
         <img src="XGB_Optimized_RUL_Courbes_Par_Batterie.png" alt="Courbes par batterie XGBoost" class="figure-large">
         <p class="image-caption"><strong>Figure 5b :</strong> Prédictions XGBoost pour 6 batteries de test – le modèle suit fidèlement la dégradation, avec des MAE individuels compris entre 22,6 et 41,5 cycles.</p>
     </div>
+    
 
     <!-- ==================== PARTIE GRU (pour comparaison) ==================== -->
     <h3>🔄 Comparaison avec l’architecture GRU</h3>
