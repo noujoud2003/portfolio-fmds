@@ -529,7 +529,7 @@ body {
       <!-- SECTION DIAGNOSTIC COMPLÈTE (RÉSULTATS FINAUX) -->
 <section>
     <h2>🔍 2. Diagnostic — Classification des États de Santé</h2>
-
+    
     <div class="key-findings">
         <h4>🎯 Objectif du Diagnostic</h4>
         <p>Détecter en temps réel l'état de santé des batteries lithium-ion pour anticiper les défaillances et planifier la maintenance préventive.</p>
@@ -594,39 +594,39 @@ body {
                     <td>🌲 <strong>Random Forest</strong><br><small>(seuil optimisé 0.10)</small></td>
                     <td>
                         <strong>87.3%</strong>
-                        <div class="metric-bar" style="height:4px;background:#eee;margin-top:5px;">
-                            <div style="width:87.3%;height:100%;background:#28a745;"></div>
+                        <div class="metric-bar" style="height:4px; background:#eee; margin-top:5px; border-radius:2px;">
+                            <div style="width:87.3%; height:100%; background:#28a745; border-radius:2px;"></div>
                         </div>
                     </td>
                     <td>
                         71.2% (seuil défaut)<br>
                         <strong style="color:#28a745;">93.5% (seuil 0.10) ✅</strong>
                     </td>
-                    <td>0.974</td>
+                    <td><strong>0.974</strong></td>
                     <td><span class="badge badge-best">Équilibre + sécurité</span></td>
                 </tr>
                 <tr>
                     <td>⚡ <strong>SVM (RBF)</strong></td>
                     <td>
-                        78.0%
-                        <div class="metric-bar" style="height:4px;background:#eee;margin-top:5px;">
-                            <div style="width:78%;height:100%;background:#17a2b8;"></div>
+                        <strong>78.0%</strong>
+                        <div class="metric-bar" style="height:4px; background:#eee; margin-top:5px; border-radius:2px;">
+                            <div style="width:78%; height:100%; background:#17a2b8; border-radius:2px;"></div>
                         </div>
                     </td>
-                    <td><strong>97.8%</strong> (faux positifs élevés)</td>
-                    <td>0.963</td>
+                    <td><strong style="color:#dc3545;">97.8%</strong> <small>(faux positifs élevés)</small></td>
+                    <td><strong>0.963</strong></td>
                     <td><span class="badge badge-good">Sécurité maximale</span></td>
                 </tr>
                 <tr>
                     <td>🌳 <strong>Decision Tree</strong></td>
                     <td>
-                        83.6%
-                        <div class="metric-bar" style="height:4px;background:#eee;margin-top:5px;">
-                            <div style="width:83.6%;height:100%;background:#ffc107;"></div>
+                        <strong>83.6%</strong>
+                        <div class="metric-bar" style="height:4px; background:#eee; margin-top:5px; border-radius:2px;">
+                            <div style="width:83.6%; height:100%; background:#ffc107; border-radius:2px;"></div>
                         </div>
                     </td>
                     <td>70.4%</td>
-                    <td>0.900</td>
+                    <td><strong>0.900</strong></td>
                     <td><span class="badge badge-warning">Interprétabilité</span></td>
                 </tr>
             </tbody>
@@ -637,6 +637,7 @@ body {
         <div class="result-card">
             <h4>🏆 Modèle retenu : Random Forest avec seuil optimisé (0.10)</h4>
             <p>Après optimisation du seuil de décision (passage de 0.50 à <strong>0.10</strong>), le Random Forest atteint :</p>
+            
             <div class="metric">
                 <span class="metric-label">Recall Critique :</span>
                 <span class="metric-value best-value">93.5%</span>
@@ -653,32 +654,41 @@ body {
                 <span class="metric-label">AUC macro :</span>
                 <span class="metric-value">0.974</span>
             </div>
+
             <p>Ce compromis est idéal en contexte industriel : seulement <strong>6.5% de batteries critiques manquées</strong> (69 sur 1066), au prix d'un taux de fausses alarmes maîtrisé de 21.2%.</p>
             <p><em>Justification du choix métier :</em> en maintenance prédictive, manquer une batterie critique est plus coûteux qu'une fausse alarme. Le seuil abaissé à 0.10 reflète ce compromis assumé.</p>
         </div>
+
         <div class="result-card" style="background:#f0f7ff;">
             <h4>🔒 Alternative sécurité maximale : SVM</h4>
-            <p>Recall Critique de <strong>97.8%</strong> (quasi-parfait, seulement 23 batteries critiques manquées sur 1066) mais précision plus faible (68.7%) → 474 batteries Moyennes classées à tort comme Critiques. À réserver aux applications où le coût d'une défaillance est extrêmement élevé (aviation, médical).</p>
+            <p>Recall Critique de <strong>97.8%</strong> (seulement 23 batteries critiques manquées sur 1066), mais précision plus faible (68.7%) → <strong>474 batteries Moyennes</strong> classées à tort comme Critiques.<br>
+            À réserver aux applications où le coût d'une défaillance est extrêmement élevé (aviation, médical, spatial).</p>
         </div>
     </div>
 
+    <!-- Matrices de confusion -->
     <div class="figure-wrapper">
-        <img src="Capture d’écran 2026-04-12 171843.png" alt="Matrices de confusion" class="figure-large">
+        <img src="Capture d’écran 2026-04-12 171843.png" 
+             alt="Matrices de confusion des trois modèles" 
+             class="figure-large">
         <p class="image-caption">
-            <strong>Figure 2 :</strong> Matrices de confusion des trois modèles (RF avec seuil optimisé 0.10).
-            Random Forest présente la meilleure diagonalité globale (Acc=87.3%, Recall Crit=93.5%).
-            Le SVM maximise le recall Critical mais génère 474 faux positifs sur la classe Medium.
+            <strong>Figure 2 :</strong> Matrices de confusion des trois modèles (RF avec seuil optimisé à 0.10). 
+            Random Forest présente la meilleure diagonalité globale (Acc=87.3%, Recall Crit=93.5%). 
+            Le SVM maximise le recall Critical mais génère 474 faux positifs sur la classe Medium. 
             Le Decision Tree reste plus fragile sur la détection critique (70.4%).
         </p>
     </div>
 
+    <!-- Feature Importance -->
     <div class="figure-wrapper">
-        <img src="feature_importance_Random_Forest.png" alt="Feature Importance Random Forest" class="figure-large">
+        <img src="feature_importance_Random_Forest.png" 
+             alt="Importance des features Random Forest" 
+             class="figure-large">
         <p class="image-caption">
-            <strong>Figure 3 :</strong> Importance des features — Random Forest.
-            <strong>Discharge Time</strong> domine (29%), suivi de <strong>Decrement 3.6-3.4V</strong> (18.4%)
-            et <strong>Time constant current</strong> (16.4%). La distribution équilibrée entre 7 features
-            confirme la robustesse du modèle (pas de dépendance excessive à un seul capteur).
+            <strong>Figure 3 :</strong> Importance des features — Random Forest. 
+            <strong>Discharge Time</strong> domine (29%), suivi de <strong>Decrement 3.6-3.4V</strong> (18.4%) 
+            et <strong>Time constant current</strong> (16.4%). La distribution équilibrée entre les 7 features 
+            confirme la robustesse du modèle.
         </p>
     </div>
 
@@ -732,20 +742,26 @@ body {
         </table>
     </div>
 
+    <!-- ROC Random Forest -->
     <div class="figure-wrapper">
-        <img src="roc_curves_Random_Forest.png" alt="Courbes ROC Random Forest" class="figure-large">
+        <img src="roc_curves_Random_Forest.png" 
+             alt="Courbes ROC Random Forest" 
+             class="figure-large">
         <p class="image-caption">
-            <strong>Figure 4a :</strong> Courbes ROC multi-classes — Random Forest (AUC macro = 0.974).
-            AUC par classe : Critical 0.962, Excellent 0.995, Good 0.985, Medium 0.953.
+            <strong>Figure 4a :</strong> Courbes ROC multi-classes — Random Forest (AUC macro = 0.974). 
+            AUC par classe : Critical 0.962, Excellent 0.995, Good 0.985, Medium 0.953. 
             Toutes les classes dépassent 0.95, confirmant une discrimination quasi-parfaite.
         </p>
     </div>
+
+    <!-- ROC SVM -->
     <div class="figure-wrapper">
-        <img src="roc_curves_SVM.png" alt="Courbes ROC SVM" class="figure-large">
+        <img src="roc_curves_SVM.png" 
+             alt="Courbes ROC SVM" 
+             class="figure-large">
         <p class="image-caption">
-            <strong>Figure 4b :</strong> Courbes ROC — SVM (AUC macro = 0.963).
-            La classe Critical atteint AUC = 0.980, justifiant son usage comme alternative
-            à sécurité maximale malgré l'accuracy globale plus faible.
+            <strong>Figure 4b :</strong> Courbes ROC — SVM (AUC macro = 0.963). 
+            La classe Critical atteint AUC = 0.980, justifiant son usage comme alternative à sécurité maximale.
         </p>
     </div>
 
@@ -756,23 +772,26 @@ body {
             <li>✅ <strong>Recall Critique = 93.5%</strong> — seulement 69 batteries critiques manquées sur 1066.</li>
             <li>✅ <strong>Accuracy globale = 87.3%</strong> — meilleure que sans optimisation (85.1%).</li>
             <li>✅ <strong>AUC macro = 0.974</strong> — discrimination quasi-parfaite sur les 4 classes.</li>
-            <li>✅ <strong>Validation rigoureuse</strong> — split par batterie entière, SMOTE uniquement sur train.</li>
+            <li>✅ <strong>Validation rigoureuse</strong> — split par batterie entière, SMOTE uniquement sur le train.</li>
             <li>✅ <strong>Interprétabilité</strong> — importance des features cohérente avec la physique de dégradation Li-ion.</li>
             <li>✅ <strong>Aucun surapprentissage</strong> — performances train et test cohérentes.</li>
         </ul>
-        <p style="margin-top:12px;font-size:0.9em;color:#555;">
-            <strong>Limite identifiée :</strong> RUL_initial calculé sur l'ensemble du dataset avant le split.
-            L'impact est négligeable ici (toutes les batteries partagent ~1100 cycles initiaux),
+        
+        <p style="margin-top:12px; font-size:0.92em; color:#555;">
+            <strong>Limite identifiée :</strong> RUL_initial calculé sur l'ensemble du dataset avant le split. 
+            L'impact est négligeable ici (toutes les batteries partagent un nombre de cycles initiaux très proche), 
             mais une version production calculerait cette valeur uniquement sur les données d'entraînement.
         </p>
-        <p style="margin-top:15px;font-weight:600;color:#2980b9;">
-            🎯 Ce modèle permet une surveillance fiable des batteries Li-ion, avec un excellent compromis
+        
+        <p style="margin-top:15px; font-weight:600; color:#2980b9;">
+            🎯 Ce modèle permet une surveillance fiable des batteries Li-ion, avec un excellent compromis 
             entre détection des défaillances critiques et limitation des alarmes intempestives.
         </p>
-        <p style="margin-top:10px;font-size:0.9em;">
-            <em>🛠️ Implémentation :</em> <code>scikit-learn</code> + <code>imbalanced-learn</code> (SMOTE).
-            Recherche du seuil optimal sur la plage [0.10–0.55] par maximisation du recall Critical.
-            Modèle, scaler, encodeur et seuil sauvegardés via <code>joblib</code> pour inférence en production.
+        
+        <p style="margin-top:10px; font-size:0.9em; color:#666;">
+            <em>🛠️ Implémentation :</em> scikit-learn + imbalanced-learn (SMOTE). 
+            Optimisation du seuil sur la plage [0.10–0.55] par maximisation du recall Critical. 
+            Modèle, scaler, encodeur et seuil sauvegardés via joblib pour inférence en production.
         </p>
     </div>
 </section>
@@ -974,20 +993,20 @@ body {
     </div>
 </section>
 
-     <!-- CONCLUSION GÉNÉRALE -->
+ <!-- CONCLUSION GÉNÉRALE -->
 <section>
     <h2>🏆 Conclusion Générale & Perspectives</h2>
-
+    
     <div class="intro-box" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); color: white;">
         <h3 style="color: white; margin-top: 0;">📌 Synthèse du Projet</h3>
         <p style="color: #ecf0f1; line-height: 1.7;">
-            Ce projet de <strong>maintenance intelligente</strong> démontre l'efficacité d'une approche hybride
-            combinant <strong>FMDS</strong>, <strong>diagnostic (machine learning)</strong> et
-            <strong>pronostic (XGBoost)</strong> pour estimer la durée de vie restante (RUL) des batteries lithium-ion.
-            Contre toute attente, un modèle tabulaire non-séquentiel (<strong>XGBoost</strong>) surpasse les réseaux
-            de neurones récurrents (GRU) grâce à sa régularisation naturelle et sa robustesse sur petit jeu de données.
-            Côté diagnostic, l'optimisation du seuil de décision du Random Forest permet d'atteindre
-            <strong>93,5% de rappel critique</strong> — un niveau opérationnel industriel.
+            Ce projet de <strong>maintenance intelligente</strong> démontre l'efficacité d'une approche hybride 
+            combinant <strong>FMDS</strong>, <strong>diagnostic par apprentissage automatique</strong> et 
+            <strong>pronostic</strong> pour la surveillance des batteries lithium-ion.<br><br>
+            Un modèle tabulaire (<strong>XGBoost</strong>) surpasse le réseau de neurones récurrent (GRU) en pronostic RUL, 
+            grâce à sa robustesse sur ce jeu de données de taille limitée. Côté diagnostic, l'optimisation du seuil 
+            de décision du Random Forest permet d'atteindre un <strong>recall critique de 93,5 %</strong>, 
+            un niveau pertinent pour une application industrielle.
         </p>
     </div>
 
@@ -995,59 +1014,58 @@ body {
         <div class="result-card" style="border-top: 4px solid #27ae60;">
             <h4>✅ Résultats Clés</h4>
             <div class="metric">
-                <span class="metric-label">🏆 XGBoost (pronostic RUL) :</span>
+                <span class="metric-label">🏆 XGBoost (Pronostic RUL) :</span>
                 <span class="metric-value best-value">R² = 97,8% | MAE = 32,8 cycles</span>
             </div>
             <div class="metric">
-                <span class="metric-label">GRU (pronostic RUL) :</span>
-                <span class="metric-value">R² = 97,5% | MAE = 38,4 cycles</span>
+                <span class="metric-label">GRU (Pronostic RUL) :</span>
+                <span class="metric-value">R² = 97,45% | MAE = 38,4 cycles</span>
             </div>
             <div class="metric">
-                <span class="metric-label">🏆 Random Forest (diagnostic, seuil 0,10) :</span>
-                <span class="metric-value best-value">Accuracy = 87,3% | Recall Critique = 93,5%</span>
+                <span class="metric-label">🏆 Random Forest (Diagnostic) :</span>
+                <span class="metric-value best-value">Accuracy = 87,3% | Recall Critique = 93,5% (seuil 0,10)</span>
             </div>
             <div class="metric">
-                <span class="metric-label">SVM (diagnostic) :</span>
+                <span class="metric-label">SVM (Diagnostic) :</span>
                 <span class="metric-value">Accuracy = 78,0% | Recall Critique = 97,8%</span>
             </div>
             <div class="metric">
-                <span class="metric-label">FMDS (disponibilité) :</span>
-                <span class="metric-value best-value">99,82% | MTTF = 1109 cycles</span>
+                <span class="metric-label">FMDS (Disponibilité) :</span>
+                <span class="metric-value best-value">99,82% | MTTF ≈ 1109 cycles</span>
             </div>
         </div>
 
         <div class="result-card" style="border-top: 4px solid #3498db;">
-            <h4>🎯 Contributions</h4>
+            <h4>🎯 Contributions Principales</h4>
             <ul style="line-height: 1.7;">
-                <li>Pipeline complet : FMDS → diagnostic (Random Forest, Decision Tree, SVM) → pronostic (XGBoost, GRU)</li>
-                <li>Validation réaliste : 9 batteries entraînement, 5 batteries test — split strict par batterie entière</li>
-                <li>Comparaison rigoureuse de 5 modèles avec métriques industrielles (Recall Critique, AUC, F1)</li>
-                <li>Optimisation du seuil de décision RF : Recall Critique 71,2% → <strong>93,5%</strong> (gain de +22 points)</li>
-                <li>Rééquilibrage SMOTE appliqué uniquement sur le train — aucune fuite de données</li>
-                <li>Interprétabilité via importance des features (cohérente avec la physique Li-ion)</li>
-                <li>Code reproductible et artefacts sauvegardés (<code>joblib</code>) pour déploiement</li>
+                <li>Pipeline complet : FMDS → Diagnostic (Random Forest optimisé, SVM, Decision Tree) → Pronostic (XGBoost vs GRU)</li>
+                <li>Validation réaliste par split strict par batterie (9 en entraînement, 5 en test)</li>
+                <li>Optimisation du seuil de décision : gain de +22 points de Recall Critique (71,2% → 93,5%)</li>
+                <li>Gestion du déséquilibre avec SMOTE appliqué uniquement sur le jeu d'entraînement</li>
+                <li>Interprétabilité forte via l'importance des features, cohérente avec la physique du vieillissement Li-ion</li>
+                <li>Code reproductible et artefacts sauvegardés (joblib) pour un déploiement facile</li>
             </ul>
         </div>
 
         <div class="result-card" style="border-top: 4px solid #e74c3c;">
-            <h4>⚠️ Limites</h4>
+            <h4>⚠️ Limites du Projet</h4>
             <ul style="line-height: 1.7;">
-                <li>Jeu de données limité à 14 batteries (conditions de laboratoire NASA)</li>
-                <li>Absence de validation sur des batteries réelles en exploitation terrain</li>
-                <li>Seuil RF abaissé à 0,10 génère 21,2% de fausses alarmes (268 Medium → Critical) — compromis assumé</li>
-                <li>Le SVM offre un recall exceptionnel (97,8%) mais 474 faux positifs limitent son usage général</li>
-                <li>RUL_initial calculé sur l'ensemble du dataset — impact négligeable ici (~1100 cycles constants), à corriger en production</li>
+                <li>Jeu de données limité à 14 batteries issues de tests en laboratoire (NASA)</li>
+                <li>Absence de validation sur batteries en conditions réelles d'exploitation (véhicules électriques, stockage stationnaire)</li>
+                <li>Le seuil RF à 0,10 génère environ 21% de fausses alarmes (compromis métier assumé)</li>
+                <li>SVM très conservateur : recall exceptionnel mais nombre élevé de faux positifs</li>
+                <li><strong>RUL_initial</strong> calculé sur l'ensemble du dataset (impact négligeable car nombre de cycles initiaux très proche entre batteries)</li>
             </ul>
         </div>
     </div>
 
-    <h3>🚀 Améliorations envisagées</h3>
+    <h3>🚀 Améliorations & Perspectives</h3>
     <div class="table-container">
         <table>
             <thead>
                 <tr>
                     <th>Horizon</th>
-                    <th>Amélioration</th>
+                    <th>Amélioration proposée</th>
                     <th>Impact attendu</th>
                     <th>Priorité</th>
                 </tr>
@@ -1057,67 +1075,61 @@ body {
                     <td><strong>Court terme</strong><br><small>1–3 mois</small></td>
                     <td>
                         <ul style="margin:0; padding-left:15px;">
-                            <li>Validation croisée par batterie (Leave-One-Battery-Out) pour score plus robuste</li>
-                            <li>Optimisation des hyperparamètres XGBoost via Optuna</li>
-                            <li>Ingénierie de features temporelles (pentes, moyennes glissantes sur 5 cycles)</li>
+                            <li>Validation croisée Leave-One-Battery-Out</li>
+                            <li>Optimisation des hyperparamètres avec Optuna</li>
+                            <li>Ingénierie de features temporelles (pentes, statistiques glissantes)</li>
                         </ul>
                     </td>
-                    <td>Gain R² : +1 à 2%<br>MAE &lt; 30 cycles<br>Recall Critique stabilisé</td>
+                    <td>Amélioration du R² et stabilisation du Recall Critique</td>
                     <td><span class="badge badge-best">🔥 Haute</span></td>
                 </tr>
                 <tr>
                     <td><strong>Moyen terme</strong><br><small>3–6 mois</small></td>
                     <td>
                         <ul style="margin:0; padding-left:15px;">
-                            <li>Test sur dataset externe (Stanford, Oxford) pour valider la généralisation</li>
-                            <li>Ajout de capteurs de température et d'impédance</li>
-                            <li>Déploiement d'une API FastAPI pour prédiction en temps réel</li>
+                            <li>Tests sur datasets externes (Stanford, Oxford, CALCE)</li>
+                            <li>Ajout de données de température et d'impédance</li>
+                            <li>Déploiement d'une API FastAPI + dashboard de monitoring</li>
                         </ul>
                     </td>
-                    <td>Preuve de généralisation<br>Démonstration industrielle</td>
+                    <td>Validation de la généralisation</td>
                     <td><span class="badge badge-good">📈 Moyenne</span></td>
                 </tr>
                 <tr>
                     <td><strong>Long terme</strong><br><small>6–12 mois</small></td>
                     <td>
                         <ul style="margin:0; padding-left:15px;">
-                            <li>Transfer learning vers d'autres chimies (LFP, NMC)</li>
-                            <li>Validation sur données réelles de parc de véhicules électriques</li>
-                            <li>Intégration dans un BMS (Battery Management System) embarqué</li>
+                            <li>Transfer learning vers d'autres chimies de batteries (LFP, NMC, LTO)</li>
+                            <li>Validation sur données de terrain (parcs de véhicules électriques)</li>
+                            <li>Intégration dans un Battery Management System (BMS) embarqué</li>
                         </ul>
                     </td>
-                    <td>Solution industrialisable<br>Réduction des coûts de maintenance</td>
-                    <td><span class="badge badge-warning">🔮 Future</span></td>
+                    <td>Solution industrialisable</td>
+                    <td><span class="badge badge-warning">🔮 Long terme</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="conclusion-box">
-        <h4>🎯 Conclusion finale</h4>
+        <h4>🎯 Conclusion Finale</h4>
         <p style="line-height: 1.7;">
-            <strong>➡️ Ce projet valide l'approche Maintenance 4.0 :</strong> la combinaison d'un indicateur FMDS,
-            de modèles de diagnostic et d'un modèle de pronostic XGBoost permet d'atteindre des performances
-            de niveau industriel pour la surveillance des batteries lithium-ion.<br><br>
-
-            <strong>Diagnostic :</strong> Le Random Forest avec seuil optimisé à 0,10 atteint un recall critique de
-            <strong>93,5%</strong> (seulement 69 batteries critiques manquées sur 1066) et une accuracy globale de
-            <strong>87,3%</strong> — soit +22 points de recall et +2 points d'accuracy par rapport au seuil par défaut.
-            Le SVM reste disponible comme alternative à sécurité maximale (recall 97,8%) pour les applications
-            à coût de défaillance extrêmement élevé.<br><br>
-
-            <strong>Pronostic :</strong> XGBoost obtient R² = <strong>97,8%</strong> avec MAE = <strong>32,8 cycles</strong>
-            (~5 jours de marge sur 1100 cycles), surpassant le GRU sur ce jeu de données de taille limitée.<br><br>
-
-            L'approche est <strong>fiable, interprétable</strong> et possède un <strong>fort potentiel d'industrialisation</strong>,
-            avec comme prochaine étape naturelle une validation sur un dataset externe et le déploiement d'une API de prédiction.
+            Ce projet valide l’intérêt de l’approche <strong>Maintenance 4.0</strong> pour les batteries lithium-ion. 
+            La combinaison d’un indicateur de santé FMDS, d’un diagnostic robuste (Random Forest optimisé) et d’un 
+            pronostic précis (XGBoost) permet d’atteindre des performances de bon niveau industriel.<br><br>
+            
+            <strong>Diagnostic :</strong> Recall Critique de <strong>93,5 %</strong> avec une accuracy de <strong>87,3 %</strong>.<br>
+            <strong>Pronostic :</strong> XGBoost atteint un <strong>R² de 97,8 %</strong> et un MAE de <strong>32,8 cycles</strong>, 
+            surpassant le GRU sur ce dataset.<br><br>
+            
+            L’approche est <strong>interprétable, reproductible</strong> et présente un <strong>fort potentiel d’industrialisation</strong>. 
+            La prochaine étape clé sera la validation sur des datasets externes et des conditions opérationnelles réelles.
         </p>
     </div>
 
-
-    <div style="text-align: center; margin: 30px 0;">
+    <div style="text-align: center; margin: 40px 0 20px;">
         <a href="#" class="download-btn" onclick="window.print(); return false;">
-            🖨️ Générer un PDF
+            🖨️ Générer un PDF du rapport
         </a>
     </div>
 </section>
