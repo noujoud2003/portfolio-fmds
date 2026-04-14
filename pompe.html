@@ -576,7 +576,85 @@ body {
             </tbody>
         </table>
     </div>
+    <!-- ==================== AMDEC - Demande du Professeur ==================== -->
+    <h3>📋 AMDEC - Analyse des Modes de Défaillance</h3>
+    <p style="margin-bottom: 15px; color:#555;">
+        Analyse des mécanismes de défaillance selon le triplet <strong>Nœud – Cause – Effet</strong> 
+        et la méthode AMDEC vue en cours.
+    </p>
 
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nœud / Composant</th>
+                    <th>Mode de Défaillance</th>
+                    <th>Effet Observé</th>
+                    <th>Cause Possible</th>
+                    <th>Gravité (S)</th>
+                    <th>Occurrence (O)</th>
+                    <th>Détectabilité (D)</th>
+                    <th><strong>RPN</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td>Cellule complète</td>
+                    <td>Thermal Runaway</td>
+                    <td>Chauffe rapide, gonflement, feu ou explosion</td>
+                    <td>Surcharge, surchauffe, choc mécanique</td>
+                    <td><strong>10</strong></td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td><strong>120</strong></td>
+                </tr>
+                <tr>
+                    <td>Électrode Positive (NMC)</td>
+                    <td>Délamination / Fissuration</td>
+                    <td>Perte rapide de capacité</td>
+                    <td>Cycles répétés, vieillissement</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td>5</td>
+                    <td><strong>210</strong></td>
+                </tr>
+                <tr>
+                    <td>Électrode Négative (Graphite)</td>
+                    <td>Formation de dendrites</td>
+                    <td>Court-circuit interne</td>
+                    <td>Charge rapide à basse température</td>
+                    <td>9</td>
+                    <td>4</td>
+                    <td>6</td>
+                    <td><strong>216</strong></td>
+                </tr>
+                <tr>
+                    <td>Électrolyte</td>
+                    <td>Décomposition / Gazage</td>
+                    <td>Gonflement, augmentation de pression</td>
+                    <td>Température élevée</td>
+                    <td>8</td>
+                    <td>5</td>
+                    <td>4</td>
+                    <td><strong>160</strong></td>
+                </tr>
+                <tr>
+                    <td>Séparateur</td>
+                    <td>Perforation / Rupture</td>
+                    <td>Court-circuit brutal</td>
+                    <td>Défaut fabrication, vieillissement</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td><strong>60</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="font-size:0.9em; color:#555; margin-top:10px;">
+        <strong>RPN</strong> = Gravité × Occurrence × Détectabilité. Plus le score est élevé, plus la défaillance est critique.
+    </p>
     <h3>🤖 Performance Comparative des Modèles</h3>
     <div class="table-container">
         <table>
