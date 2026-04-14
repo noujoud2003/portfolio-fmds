@@ -576,85 +576,87 @@ body {
             </tbody>
         </table>
     </div>
-    <!-- ==================== AMDEC - Demande du Professeur ==================== -->
-    <h3>📋 AMDEC - Analyse des Modes de Défaillance</h3>
-    <p style="margin-bottom: 15px; color:#555;">
-        Analyse des mécanismes de défaillance selon le triplet <strong>Nœud – Cause – Effet</strong> 
-        et la méthode AMDEC vue en cours.
-    </p>
+   <!-- ==================== SECTION AMDEC ==================== -->
+<section>
+    <h2>📋 AMDEC – Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité</h2>
+    
+    <div class="intro-box">
+        <p>L’<strong>AMDEC</strong> (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) est une méthode structurée permettant d’identifier les défaillances potentielles des batteries lithium-ion, d’analyser leurs causes et d’évaluer leur niveau de criticité. 
+        Dans ce projet, nous l’avons adaptée aux 4 classes de santé définies par le modèle Random Forest.</p>
+    </div>
 
     <div class="table-container">
         <table>
             <thead>
                 <tr>
-                    <th>Nœud / Composant</th>
-                    <th>Mode de Défaillance</th>
-                    <th>Effet Observé</th>
-                    <th>Cause Possible</th>
-                    <th>Gravité (S)</th>
-                    <th>Occurrence (O)</th>
-                    <th>Détectabilité (D)</th>
-                    <th><strong>RPN</strong></th>
+                    <th>Classe</th>
+                    <th>Mode de Défaillance Principal</th>
+                    <th>Causes Physiques Principales</th>
+                    <th>Effets Observés</th>
+                    <th>Criticité</th>
+                    <th>Détection par le Modèle</th>
+                    <th>Action Recommandée</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="highlight-row">
-                    <td>Cellule complète</td>
-                    <td>Thermal Runaway</td>
-                    <td>Chauffe rapide, gonflement, feu ou explosion</td>
-                    <td>Surcharge, surchauffe, choc mécanique</td>
-                    <td><strong>10</strong></td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td><strong>120</strong></td>
+                <tr style="background:#f8d7da;">
+                    <td><strong>🚨 Critique</strong><br>(RUL ≤ 20%)</td>
+                    <td>Usure avancée + risque de Thermal Runaway</td>
+                    <td>Perte importante de lithium, forte augmentation de résistance interne, début de dendrites</td>
+                    <td>Capacité très faible, échauffement anormal, risque d’instabilité thermique</td>
+                    <td><strong>Très élevée</strong></td>
+                    <td>Recall = 95,6% (seuil optimisé à 0,10)</td>
+                    <td><strong>Remplacement immédiat</strong></td>
                 </tr>
-                <tr>
-                    <td>Électrode Positive (NMC)</td>
-                    <td>Délamination / Fissuration</td>
-                    <td>Perte rapide de capacité</td>
-                    <td>Cycles répétés, vieillissement</td>
-                    <td>7</td>
-                    <td>6</td>
-                    <td>5</td>
-                    <td><strong>210</strong></td>
+                
+                <tr style="background:#fff3cd;">
+                    <td><strong>⚠️ Moyen</strong><br>(20% < RUL ≤ 55%)</td>
+                    <td>Vieillissement accéléré des électrodes</td>
+                    <td>Épaississement de la couche SEI, début de délamination</td>
+                    <td>Perte modérée de capacité, temps de décharge et charge dégradés</td>
+                    <td><strong>Moyenne</strong><br>(301 faux positifs avec Critique)</td>
+                    <td>Surveillance des features Discharge Time et Decrement 3.6-3.4V</td>
+                    <td>Planifier remplacement dans 2 à 4 semaines</td>
                 </tr>
+                
                 <tr>
-                    <td>Électrode Négative (Graphite)</td>
-                    <td>Formation de dendrites</td>
-                    <td>Court-circuit interne</td>
-                    <td>Charge rapide à basse température</td>
-                    <td>9</td>
-                    <td>4</td>
-                    <td>6</td>
-                    <td><strong>216</strong></td>
+                    <td><strong>👍 Bon</strong><br>(55% < RUL ≤ 80%)</td>
+                    <td>Usure normale</td>
+                    <td>Vieillissement progressif classique</td>
+                    <td>Légère diminution de capacité</td>
+                    <td><strong>Faible</strong></td>
+                    <td>Bonne discrimination</td>
+                    <td>Surveillance standard</td>
                 </tr>
-                <tr>
-                    <td>Électrolyte</td>
-                    <td>Décomposition / Gazage</td>
-                    <td>Gonflement, augmentation de pression</td>
-                    <td>Température élevée</td>
-                    <td>8</td>
-                    <td>5</td>
-                    <td>4</td>
-                    <td><strong>160</strong></td>
-                </tr>
-                <tr>
-                    <td>Séparateur</td>
-                    <td>Perforation / Rupture</td>
-                    <td>Court-circuit brutal</td>
-                    <td>Défaut fabrication, vieillissement</td>
-                    <td>10</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td><strong>60</strong></td>
+                
+                <tr style="background:#d4edda;">
+                    <td><strong>✅ Excellent</strong><br>(RUL > 80%)</td>
+                    <td>Aucune défaillance significative</td>
+                    <td>Batterie neuve ou très peu cyclée</td>
+                    <td>Performances nominales</td>
+                    <td><strong>Négligeable</strong></td>
+                    <td>Très bonne détection</td>
+                    <td>Aucune action particulière</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <p style="font-size:0.9em; color:#555; margin-top:10px;">
-        <strong>RPN</strong> = Gravité × Occurrence × Détectabilité. Plus le score est élevé, plus la défaillance est critique.
-    </p>
+    <div class="key-findings">
+        <h4>🔍 Justification du choix métier</h4>
+        <p>Le seuil de décision du Random Forest a été abaissé à <strong>0,10</strong> pour maximiser la sécurité. 
+        Cela permet d’atteindre un recall de <strong>95,6 %</strong> sur la classe Critique (seulement 47 cycles critiques manqués sur 1065), 
+        au prix de 301 faux positifs sur la classe Moyen. En maintenance prédictive, manquer une batterie critique est beaucoup plus coûteux qu’une fausse alarme.</p>
+    </div>
+
+    <div class="conclusion-box">
+        <h4>📌 Conclusion AMDEC</h4>
+        <p>Cette analyse confirme que les 4 classes définies dans le projet correspondent bien aux mécanismes réels de dégradation des batteries lithium-ion. 
+        Le modèle Random Forest optimisé permet de traduire cette analyse de criticité en une surveillance opérationnelle efficace et orientée sécurité.</p>
+    </div>
+</section>
+
+   
     <h3>🤖 Performance Comparative des Modèles</h3>
     <div class="table-container">
         <table>
