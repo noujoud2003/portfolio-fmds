@@ -578,12 +578,13 @@ body {
     </div>
    <!-- ==================== SECTION AMDEC ==================== -->
 <!-- SECTION AMDEC -->
+<!-- ==================== SECTION AMDEC ==================== -->
 <section>
     <h2>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h2>
     
     <div class="intro-box">
-        <p>L’AMDEC est une méthode structurée qui permet d’identifier les défaillances potentielles des batteries lithium-ion, d’analyser leurs causes et d’évaluer leur criticité. 
-        Dans ce projet, nous l’avons adaptée aux quatre classes de santé définies par le modèle Random Forest.</p>
+        <p>L’<strong>AMDEC</strong> (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) est une méthode structurée qui permet d’identifier les défaillances potentielles des batteries lithium-ion, d’analyser leurs causes et d’évaluer leur niveau de criticité. 
+        Dans ce projet, nous l’avons adaptée aux quatre classes de santé définies par le modèle Random Forest optimisé.</p>
     </div>
 
     <div class="table-container">
@@ -601,34 +602,37 @@ body {
             </thead>
             <tbody>
                 <tr style="background:#f8d7da;">
-                    <td><strong>🚨 Critique</strong> (RUL ≤ 20%)</td>
-                    <td>Usure avancée et risque de Thermal Runaway</td>
-                    <td>Perte importante de lithium, forte augmentation de résistance interne, dendrites</td>
-                    <td>Capacité très faible, échauffement anormal, risque d’instabilité</td>
+                    <td><strong>🚨 Critique</strong><br>(RUL ≤ 20%)</td>
+                    <td>Usure avancée + risque de Thermal Runaway</td>
+                    <td>Perte importante de lithium, forte augmentation de résistance interne, début de dendrites</td>
+                    <td>Capacité très faible, échauffement anormal, risque d’instabilité thermique</td>
                     <td><strong>Très élevée</strong></td>
-                    <td>Recall 95,6% (seuil optimisé à 0,10)</td>
-                    <td>Remplacement immédiat</td>
+                    <td>Recall = 95,6% (seuil optimisé à 0,10)</td>
+                    <td><strong>Remplacement immédiat</strong></td>
                 </tr>
+                
                 <tr style="background:#fff3cd;">
-                    <td><strong>⚠️ Moyen</strong> (20% < RUL ≤ 55%)</td>
+                    <td><strong>⚠️ Moyen</strong><br>(20% < RUL ≤ 55%)</td>
                     <td>Vieillissement accéléré des électrodes</td>
-                    <td>Épaississement SEI, début de délamination</td>
+                    <td>Épaississement de la couche SEI, début de délamination</td>
                     <td>Perte modérée de capacité, temps de charge/décharge dégradés</td>
-                    <td><strong>Moyenne</strong> (301 faux positifs)</td>
+                    <td><strong>Moyenne</strong><br>(301 faux positifs)</td>
                     <td>Surveillance des features Discharge Time et Decrement 3.6-3.4V</td>
                     <td>Planifier remplacement dans 2 à 4 semaines</td>
                 </tr>
+                
                 <tr>
-                    <td><strong>👍 Bon</strong> (55% < RUL ≤ 80%)</td>
+                    <td><strong>👍 Bon</strong><br>(55% < RUL ≤ 80%)</td>
                     <td>Usure normale</td>
-                    <td>Vieillissement progressif</td>
+                    <td>Vieillissement progressif classique</td>
                     <td>Légère diminution de capacité</td>
                     <td><strong>Faible</strong></td>
                     <td>Bonne discrimination</td>
                     <td>Surveillance standard</td>
                 </tr>
+                
                 <tr style="background:#d4edda;">
-                    <td><strong>✅ Excellent</strong> (RUL > 80%)</td>
+                    <td><strong>✅ Excellent</strong><br>(RUL > 80%)</td>
                     <td>Aucune défaillance significative</td>
                     <td>Batterie neuve ou très peu cyclée</td>
                     <td>Performances nominales</td>
@@ -642,9 +646,10 @@ body {
 
     <div class="key-findings">
         <h4>🔍 Justification du choix métier</h4>
-        <p>Le seuil du Random Forest a été abaissé à <strong>0,10</strong> afin de maximiser la sécurité. 
-        Cela permet d’atteindre un recall de <strong>95,6 %</strong> sur la classe Critique (seulement 47 cycles critiques manqués), 
-        au prix de 301 faux positifs sur la classe Moyen. En maintenance prédictive, manquer une batterie critique est beaucoup plus coûteux qu’une fausse alarme.</p>
+        <p>Le seuil de décision du Random Forest a été abaissé à <strong>0,10</strong> afin de maximiser la sécurité. 
+        Cela permet d’atteindre un recall de <strong>95,6 %</strong> sur la classe Critique (seulement 47 cycles critiques manqués sur 1065), 
+        au prix de 301 faux positifs sur la classe Moyen. 
+        En maintenance prédictive, manquer une batterie critique est beaucoup plus coûteux qu’une fausse alarme.</p>
     </div>
 </section>
    
