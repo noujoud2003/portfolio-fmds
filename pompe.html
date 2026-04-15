@@ -576,57 +576,10 @@ body {
             </tbody>
         </table>
     </div>
+    <section>
    <!-- ==================== SECTION AMDEC ==================== -->
     <!-- SECTION DIAGNOSTIC COMPLÈTE -->
-    <section>
-        <h2>🔍 2. Diagnostic — Classification des États de Santé</h2>
-      
-        <div class="key-findings">
-            <h4>🎯 Objectif du Diagnostic</h4>
-            <p>Détecter en temps réel l'état de santé des batteries lithium-ion pour anticiper les défaillances et planifier la maintenance préventive.</p>
-            <p><strong>📊 Split rigoureux :</strong> 9 batteries pour l'entraînement, 5 batteries totalement nouvelles pour le test — aucune donnée de test utilisée pendant l'entraînement.</p>
-            <p><strong>⚖️ Rééquilibrage :</strong> SMOTE (facteur 1.6) appliqué uniquement sur le train + pondération de classe (poids 2.0 pour la classe Critique).</p>
-        </div>
-
-        <h3>📊 Méthodologie de Classification</h3>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>🏷️ Classe</th>
-                        <th>📈 Critère (% RUL restant)</th>
-                        <th>💡 Signification</th>
-                        <th>⚡ Action recommandée</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="highlight-row">
-                        <td>✅ <strong>Excellent</strong></td>
-                        <td>&gt; 80%</td>
-                        <td>Batterie neuve ou peu utilisée</td>
-                        <td>Utilisation normale</td>
-                    </tr>
-                    <tr>
-                        <td>👍 <strong>Bon</strong></td>
-                        <td>55 – 80%</td>
-                        <td>Bon état général</td>
-                        <td>Surveillance standard</td>
-                    </tr>
-                    <tr style="background:#fff3cd;">
-                        <td>⚠️ <strong>Moyen</strong></td>
-                        <td>20 – 55%</td>
-                        <td>Dégradation visible</td>
-                        <td>Surveillance renforcée</td>
-                    </tr>
-                    <tr style="background:#f8d7da;">
-                        <td>🚨 <strong>Critique</strong></td>
-                        <td>≤ 20%</td>
-                        <td>Risque de panne élevé</td>
-                        <td>Remplacement imminent</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+  
 
         <!-- AMDEC -->
         <h3>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h3>
