@@ -834,6 +834,65 @@
                 </div>
             </div>
         </section>
+        <!-- ==================== SECTION AMDEC - MOTEURS D'AVION ==================== -->
+<section>
+    <h2>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h2>
+    
+    <div class="intro-box">
+        <p>L’<strong>AMDEC</strong> (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) est une méthode structurée utilisée en aéronautique pour identifier les défaillances potentielles des moteurs turbofan, analyser leurs causes racines et prioriser les actions de maintenance selon le niveau de risque. 
+        Dans ce projet, nous l’avons adaptée aux deux classes de santé définies par le modèle <strong>CNN+LSTM</strong> (seuil critique à 30 cycles de RUL restant).</p>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Classe</th>
+                    <th>Mode de Défaillance Principal</th>
+                    <th>Causes Physiques Principales</th>
+                    <th>Effets Observés</th>
+                    <th>Criticité</th>
+                    <th>Détection par le Modèle</th>
+                    <th>Action Recommandée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#f8d7da;">
+                    <td><strong>🚨 Critique</strong><br>(RUL ≤ 30 cycles)</td>
+                    <td>Usure avancée des composants critiques (aubes HP, chambre de combustion, roulements)</td>
+                    <td>Fissures thermiques, fluage, érosion par particules, perte de revêtement protecteur, fatigue mécanique</td>
+                    <td>Perte de poussée, vibrations excessives, augmentation de température EGT, risque de panne en vol</td>
+                    <td><strong>Très élevée</strong></td>
+                    <td>Rappel = 100% (AUC-ROC = 0.991)</td>
+                    <td><strong>Intervention immédiate</strong> : inspection détaillée + réparation ou remplacement</td>
+                </tr>
+                
+                <tr style="background:#d4edda;">
+                    <td><strong>✅ Sain</strong><br>(RUL > 30 cycles)</td>
+                    <td>Usure normale dans les limites du constructeur</td>
+                    <td>Vieillissement progressif classique des matériaux</td>
+                    <td>Performances nominales, pas d’impact sur la sécurité ou l’efficacité</td>
+                    <td><strong>Faible / Négligeable</strong></td>
+                    <td>Spécificité = 84%</td>
+                    <td>Surveillance normale selon le plan de maintenance programmée</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="key-findings">
+        <h4>🔍 Justification du choix métier (seuil à 30 cycles)</h4>
+        <p>Le seuil critique a été fixé à <strong>30 cycles de RUL</strong> conformément aux pratiques de la littérature NASA CMAPSS pour les moteurs turbofan. 
+        Ce choix permet d’atteindre un <strong>rappel de 100 %</strong> sur la classe Critique : <strong>aucun moteur critique n’est manqué</strong>. 
+        En aéronautique, la sécurité prime sur tout : le coût d’une panne en vol est inacceptable. Les 12 faux positifs (moteurs sains classés critiques) représentent un prix acceptable pour garantir la détection parfaite des situations dangereuses.</p>
+    </div>
+
+    <div class="conclusion-box">
+        <h4>📌 Conclusion AMDEC – Moteurs d’avion Turbofan</h4>
+        <p>L’AMDEC confirme la pertinence du modèle CNN+LSTM pour la maintenance prédictive des turboréacteurs. 
+        Le seuil à 30 cycles garantit une détection parfaite des moteurs en risque élevé, permettant aux équipes de maintenance d’intervenir avant tout danger pour la sécurité des vols.</p>
+    </div>
+</section>
 
         <!-- Pronostic Section -->
         <section>
