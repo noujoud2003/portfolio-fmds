@@ -835,65 +835,42 @@
             </div>
         </section>
         <!-- ==================== SECTION AMDEC - MOTEURS D'AVION ==================== -->
+<!-- AMDEC pour MOTEURS D'AVION -->
 <section>
-    <h2>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h2>
-    
+    <h2>📋 AMDEC – Moteurs d’Avion Turbofan</h2>
     <div class="intro-box">
-        <p>L’<strong>AMDEC</strong> (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) est une méthode structurée utilisée en aéronautique pour identifier les défaillances potentielles des moteurs turbofan, analyser leurs causes racines et prioriser les actions de maintenance selon le niveau de risque. 
-        Dans ce projet, nous l’avons adaptée aux deux classes de santé définies par le modèle <strong>CNN+LSTM</strong> (seuil critique à 30 cycles de RUL restant).</p>
+        <p>L’AMDEC est adaptée aux deux classes de santé du modèle CNN+LSTM (seuil critique à 30 cycles de RUL).</p>
     </div>
-
     <div class="table-container">
         <table>
-            <thead>
-                <tr>
-                    <th>Classe</th>
-                    <th>Mode de Défaillance Principal</th>
-                    <th>Causes Physiques Principales</th>
-                    <th>Effets Observés</th>
-                    <th>Criticité</th>
-                    <th>Détection par le Modèle</th>
-                    <th>Action Recommandée</th>
-                </tr>
-            </thead>
+            <thead><tr><th>Classe</th><th>Mode de défaillance</th><th>Causes physiques</th><th>Effets</th><th>Criticité</th><th>Détection</th><th>Action</th></tr></thead>
             <tbody>
                 <tr style="background:#f8d7da;">
-                    <td><strong>🚨 Critique</strong><br>(RUL ≤ 30 cycles)</td>
-                    <td>Usure avancée des composants critiques (aubes HP, chambre de combustion, roulements)</td>
-                    <td>Fissures thermiques, fluage, érosion par particules, perte de revêtement protecteur, fatigue mécanique</td>
-                    <td>Perte de poussée, vibrations excessives, augmentation de température EGT, risque de panne en vol</td>
-                    <td><strong>Très élevée</strong></td>
-                    <td>Rappel = 100% (AUC-ROC = 0.991)</td>
-                    <td><strong>Intervention immédiate</strong> : inspection détaillée + réparation ou remplacement</td>
+                    <td><strong>🚨 Critique</strong><br>(RUL ≤ 30 cycles)</div>
+                    <td>Usure avancée / défaillance imminente</div>
+                    <td>Fissures thermiques, fluage des aubes, érosion, roulements usés</div>
+                    <td>Perte de poussée, vibrations, surconsommation, risque panne en vol</div>
+                    <td><strong>Très élevée</strong> (tolérance zéro)</div>
+                    <td>CNN+LSTM : recall = 100%, AUC = 0,991</div>
+                    <td><strong>Intervention immédiate</strong> (arrêt, inspection, réparation)</div>
                 </tr>
-                
                 <tr style="background:#d4edda;">
-                    <td><strong>✅ Sain</strong><br>(RUL > 30 cycles)</td>
-                    <td>Usure normale dans les limites du constructeur</td>
-                    <td>Vieillissement progressif classique des matériaux</td>
-                    <td>Performances nominales, pas d’impact sur la sécurité ou l’efficacité</td>
-                    <td><strong>Faible / Négligeable</strong></td>
-                    <td>Spécificité = 84%</td>
-                    <td>Surveillance normale selon le plan de maintenance programmée</td>
+                    <td><strong>✅ Sain</strong><br>(RUL > 30 cycles)</div>
+                    <td>Aucune défaillance imminente</div>
+                    <td>Usure normale dans les limites constructeur</div>
+                    <td>Performances nominales</div>
+                    <td><strong>Négligeable</strong></div>
+                    <td>Spécificité = 84%, F1-score = 0,807</div>
+                    <td>Surveillance normale, maintenance programmée</div>
                 </tr>
             </tbody>
         </table>
     </div>
-
     <div class="key-findings">
-        <h4>🔍 Justification du choix métier (seuil à 30 cycles)</h4>
-        <p>Le seuil critique a été fixé à <strong>30 cycles de RUL</strong> conformément aux pratiques de la littérature NASA CMAPSS pour les moteurs turbofan. 
-        Ce choix permet d’atteindre un <strong>rappel de 100 %</strong> sur la classe Critique : <strong>aucun moteur critique n’est manqué</strong>. 
-        En aéronautique, la sécurité prime sur tout : le coût d’une panne en vol est inacceptable. Les 12 faux positifs (moteurs sains classés critiques) représentent un prix acceptable pour garantir la détection parfaite des situations dangereuses.</p>
-    </div>
-
-    <div class="conclusion-box">
-        <h4>📌 Conclusion AMDEC – Moteurs d’avion Turbofan</h4>
-        <p>L’AMDEC confirme la pertinence du modèle CNN+LSTM pour la maintenance prédictive des turboréacteurs. 
-        Le seuil à 30 cycles garantit une détection parfaite des moteurs en risque élevé, permettant aux équipes de maintenance d’intervenir avant tout danger pour la sécurité des vols.</p>
+        <h4>✈️ Justification aéronautique</h4>
+        <p>Le seuil à 30 cycles est issu de l’analyse FMDS (Weibull β=2,34, B10=89 cycles) et garantit un rappel critique de 100% – aucun moteur critique n’est manqué, ce qui est impératif pour la sécurité des vols. Les 12 faux positifs (moteurs sains classés critiques) sont acceptables car ils déclenchent des inspections supplémentaires sans danger.</p>
     </div>
 </section>
-
         <!-- Pronostic Section -->
         <section>
             <h2>🔮 3. Pronostic - Prédiction RUL (Deep Learning)</h2>
