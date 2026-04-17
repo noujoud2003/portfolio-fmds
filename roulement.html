@@ -729,6 +729,74 @@
                 </div>
             </div>
         </section>
+        <!-- SECTION AMDEC - ROULEMENTS INDUSTRIELS -->
+<section>
+    <h2>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h2>
+    
+    <div class="intro-box">
+        <p>L’<strong>AMDEC</strong> (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) est appliquée aux roulements industriels. Les classes de santé (Normal, Dégradation débutante, Dégradation avancée, Défaillance imminente) sont définies à partir du RUL estimé par le réseau de neurones, et les signatures vibratoires sont utilisées pour le diagnostic.</p>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mode de défaillance</th>
+                    <th>Causes physiques</th>
+                    <th>Effets observés</th>
+                    <th>Criticité</th>
+                    <th>Détection par le modèle</th>
+                    <th>Action recommandée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#f8d7da;">
+                    <td><strong>🚨 Défaillance imminente</strong><br>(RUL ≤ 20 cycles)</div>
+                    <td>Fissures étendues, écaillage sévère, rupture de cage, grippage.</div>
+                    <td>Vibrations extrêmes, bruit anormal, échauffement rapide, risque d’arrêt brutal.</div>
+                    <td><strong>Très élevée</strong><br>Rappel = 89% (RF)<br>Faux négatifs faibles</div>
+                    <td>Analyse vibratoire : RMS > seuil critique, kurtosis > 5, pics BPFO/BPFI nets.</div>
+                    <td><strong>Arrêt immédiat</strong> – Remplacer le roulement, inspection de l’arbre et du logement.</div>
+                </tr>
+                <tr style="background:#ffe5cc;">
+                    <td><strong>⚠️ Dégradation avancée</strong><br>(20 < RUL ≤ 50 cycles)</div>
+                    <td>Fatigue avancée, début d’écaillage, usure localisée.</div>
+                     домаћинствимаVibrations modérées à élevées, tendance à la hausse du RMS, pics fréquentiels apparaissent.</div>
+                    <td><strong>Élevée</strong><br>Précision = 89%</div>
+                    <td>RMS en augmentation, kurtosis > 4, détection des fréquences caractéristiques.</div>
+                    <td>Planifier remplacement dans ≤ 2 semaines, surveillance renforcée.</div>
+                </tr>
+                <tr style="background:#fff3cd;">
+                    <td><strong>🟡 Dégradation débutante</strong><br>(50 < RUL ≤ 100 cycles)</div>
+                    <td>Micro‑fissures, début de fatigue superficielle, contamination lubrifiant.</div>
+                    <td>Vibrations légèrement supérieures à la normale, kurtosis modéré (~3,5).</div>
+                    <td><strong>Moyenne</strong><br>Détection précoce possible</div>
+                    <td>Surveillance des tendances RMS et kurtosis, analyse spectrale fine.</div>
+                    <td>Augmenter fréquence des inspections, préparer la pièce de rechange.</div>
+                </tr>
+                <tr style="background:#d4edda;">
+                    <td><strong>✅ Normal</strong><br>(RUL > 100 cycles)</div>
+                    <td>Usure normale, fonctionnement sans défaut.</div>
+                    <td>Vibrations stables, RMS bas, kurtosis ≈ 3 (gaussien).</div>
+                    <td><strong>Négligeable</strong></div>
+                    <td>Surveillance de routine (pas d’alerte).</div>
+                    <td>Maintenance préventive programmée selon plan.</div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="key-findings">
+        <h4>🔍 Justification des seuils et des métriques</h4>
+        <p>Les seuils RUL (20, 50, 100 cycles) sont issus des indicateurs FMDS (B10 = 89 cycles, B50 = 199 cycles) et de la matrice de décision opérationnelle. Le diagnostic Random Forest atteint une <strong>précision de 89,3%</strong> et un <strong>rappel de 89,3%</strong> sur la classe défaillante, avec une AUC-ROC de 0,988. Les fausses alarmes sont limitées (~11%), ce qui est acceptable pour une maintenance préventive.</p>
+        <p style="margin-top: 12px;">📊 Les features vibratoires clés (RMS, kurtosis, fréquences BPFO/BPFI) sont cohérentes avec la physique des roulements, validant la pertinence du modèle.</p>
+    </div>
+
+    <div class="conclusion-box">
+        <h4>✅ Conclusion AMDEC – Roulements</h4>
+        <p>L’AMDEC confirme la bonne adéquation entre les modèles de diagnostic/pronostic et les modes de défaillance réels des roulements. Le seuil de 20 cycles pour la classe « Défaillance imminente » est justifié par le B10 (89 cycles) et par l’erreur de prédiction du réseau de neurones (MAE ~14 cycles). L’approche permet de déclencher des actions de maintenance ciblées, réduisant les arrêts imprévus.</p>
+    </div>
+</section>
 
         <!-- Pronostic Section -->
         <section>
