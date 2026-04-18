@@ -2,169 +2,538 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - FMDS & Maintenance Prédictive | Noujoud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Accueil - FMDS & Maintenance Prédictive | Noujoud Ouni</title>
     <style>
-        @keyframes gradientAnimation {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variables CSS */
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gradient-start: #0f2027;
+            --gradient-mid: #203a43;
+            --gradient-end: #2c5364;
+        }
+
+        @keyframes gradientMove {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #ecf0f1;
-            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
-            background-size: 400% 400%;
-            animation: gradientAnimation 18s ease infinite;
-            min-height: 100vh;
+            font-family: 'Segoe UI', 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+            background-size: 200% 200%;
+            animation: gradientMove 15s ease infinite;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
+
+        /* Navigation */
         .navbar {
             background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
+            backdrop-filter: blur(12px);
+            padding: 14px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s;
         }
         .nav-container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
+            padding: 0 20px;
         }
         .nav-btn {
-            background: rgba(52, 152, 219, 0.25);
-            color: #ecf0f1;
-            border: 1px solid #3498db;
-            padding: 10px 16px;
-            border-radius: 25px;
+            background: rgba(52, 152, 219, 0.2);
+            color: var(--light);
+            border: 1px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95em;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
+            letter-spacing: 0.3px;
         }
         .nav-btn:hover {
-            background: #3498db;
+            background: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 6px 14px rgba(52,152,219,0.4);
         }
         .nav-btn.active {
-            background: #3498db !important;
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
+            background: var(--primary);
+            box-shadow: 0 6px 14px rgba(52,152,219,0.5);
         }
-        .home-page {
-            height: 100vh;
-            background: url('main.png') no-repeat center center;
-            background-size: cover;
-            position: relative;
+
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            position: relative;
+            padding: 120px 20px 80px;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: brightness(0.85);
         }
-        .overlay {
-            background: rgba(0, 0, 0, 0.68);
-            padding: 80px 60px;
-            border-radius: 20px;
-            max-width: 1000px;
-            backdrop-filter: blur(10px);
-            animation: fadeInUp 1.4s ease-out;
+        .hero-content {
+            max-width: 1100px;
+            animation: fadeInUp 1s ease-out;
         }
-        .overlay h1 {
-            font-size: 4.2em;
-            margin: 0 0 30px;
-            color: #ecf0f1;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.7);
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #a0d0f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
         }
-        .overlay p {
-            font-size: 1.7em;
+        .hero p {
+            font-size: 1.3rem;
+            color: #f0f4f8;
             margin: 15px 0;
-            color: #bdc3c7;
+            line-height: 1.5;
         }
-        .footer {
-            position: absolute;
-            bottom: 30px;
-            width: 100%;
-            text-align: center;
-            color: #bdc3c7;
-            font-size: 1em;
-            opacity: 0.9;
+        .team {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 25px;
+            color: #d1e3f0;
+        }
+        .btn-scroll {
+            display: inline-block;
+            margin-top: 40px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-scroll:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52,152,219,0.5);
         }
 
-        /* Logo ENSIT - coin supérieur droit, clair et visible */
+        /* Section container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 70px 25px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto 0;
+            border-radius: 4px;
+        }
+
+        /* Cartes projets */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background: rgba(255,255,255,0.96);
+            border-radius: 28px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s forwards;
+        }
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 45px rgba(0,0,0,0.3);
+            background: white;
+        }
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .project-card h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        .project-card p {
+            color: #4a5b6e;
+            line-height: 1.5;
+            margin: 15px 0;
+        }
+        .badge-result {
+            background: var(--primary);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin: 5px 0;
+            font-weight: 600;
+        }
+        .btn-card {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary);
+            transition: 0.2s;
+        }
+        .btn-card:hover {
+            color: var(--primary-dark);
+            letter-spacing: 0.5px;
+        }
+
+        /* Section FMDS en bref (stats) */
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 30px 25px;
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            display: block;
+        }
+        .stat-label {
+            font-size: 1rem;
+            color: var(--light);
+            font-weight: 500;
+        }
+        .stat-item:hover {
+            transform: scale(1.03);
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Logo ENSIT flottant */
         .faculty-logo {
             position: fixed;
-            top: 90px;           /* juste sous la navbar */
-            right: 30px;         /* décalage à droite pour ne pas coller au bord */
-            width: 140px;        /* taille claire et professionnelle */
-            height: auto;
-            opacity: 0.95;       /* presque opaque pour bien voir */
-            z-index: 999;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-            background: rgba(255, 255, 255, 0.15); /* fond semi-blanc pour contraste */
-            padding: 8px;        /* petit espace intérieur */
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
+            top: 90px;
+            right: 25px;
+            width: 110px;
+            z-index: 1001;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
         .faculty-logo:hover {
-            opacity: 1;
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transform: scale(1.08);
+            background: white;
         }
 
-        @media (max-width: 768px) {
-            .overlay h1 { font-size: 3em; }
-            .overlay p { font-size: 1.4em; }
-            .overlay { padding: 50px 30px; }
-            .faculty-logo {
-                width: 100px;
-                top: 80px;
-                right: 15px;
-            }
+        /* Footer */
+        .footer {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            text-align: center;
+            padding: 35px 20px;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer a {
+            color: #a0d0f0;
+            text-decoration: none;
+        }
+
+        /* Animation au scroll (reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 1.9rem; }
+            .faculty-logo { width: 75px; top: 75px; right: 15px; }
+            .nav-btn { padding: 6px 14px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Barre de navigation -->
+
     <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="nav-btn">Accueil</a>
-        <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>  <!-- ← NOUVEAU -->
-        <a href="introduction.html" class="nav-btn">Introduction Générale</a>
-        <a href="planification.html" class="nav-btn">Planification & Scrum</a>
-        <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
-        <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
-        <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
-        <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
-        <a href="contact.html" class="nav-btn">Contact</a>
-      </div>
-</nav>
-
-    <!-- Logo ENSIT en haut à droite – maintenant clair -->
-    <img src="ensit-logo.jpg" alt="Logo ENSIT" class="faculty-logo">
-
-    <!-- Section d'accueil -->
-    <section class="home-page">
-        <div class="overlay">
-            <h1>Projet FMDS & Maintenance Prédictive</h1>
-            <p>Réalisé par : Noujoud Ouni – Sami Hasni – Raoua Meliti</p>
-            <p>Année universitaire : 2025 – 2026</p>
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn active">Accueil</a>
+            <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="pompe.html" class="nav-btn">Étude Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
         </div>
-        <div class="footer">
-            Maintenance Prédictive – Batteries • Roulements • Moteurs
+    </nav>
+
+    <!-- Logo ENSIT -->
+    <img src="ensit-logo.jpg" alt="ENSIT - École Nationale Supérieure d'Ingénieurs de Tunis" class="faculty-logo">
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>FMDS & Maintenance Prédictive</h1>
+            <p>Vers une industrie 4.0 fiable, disponible et sécurisée</p>
+            <div class="team">👥 Noujoud Ouni – Sami Hasni – Raoua Melliti</div>
+            <div class="team">📅 Année universitaire 2025 – 2026</div>
+            <a href="#projets" class="btn-scroll">📌 Découvrir nos études de cas</a>
         </div>
     </section>
+
+    <!-- Section des projets (études de cas) -->
+    <div class="container" id="projets">
+        <h2 class="section-title">🔬 Trois systèmes industriels critiques</h2>
+        <div class="cards-grid">
+            <!-- Batteries -->
+            <div class="project-card">
+                <div class="card-icon">🔋</div>
+                <h3>Batteries Li‑ion</h3>
+                <p>Dataset HNEI (14 cellules). Diagnostic + pronostic avec optimisation métier (seuil 0,10) → recall critique 95,6%.</p>
+                <div class="badge-result">🏆 XGBoost R² = 97,8%</div>
+                <div class="badge-result" style="background:#2ecc71;">MAE = 32,8 cycles</div>
+                <a href="pompe.html" class="btn-card">Explorer l'étude →</a>
+            </div>
+            <!-- Roulements -->
+            <div class="project-card">
+                <div class="card-icon">⚙️</div>
+                <h3>Roulements industriels</h3>
+                <p>NASA C‑MAPSS / FEMTO. Random Forest diagnostic (92% accuracy), réseau de neurones pour la RUL.</p>
+                <div class="badge-result">📊 RMSE = 14,8 cycles</div>
+                <div class="badge-result" style="background:#2ecc71;">MAE = 12,1 cycles</div>
+                <a href="roulement.html" class="btn-card">Explorer l'étude →</a>
+            </div>
+            <!-- Moteurs turbofan -->
+            <div class="project-card">
+                <div class="card-icon">✈️</div>
+                <h3>Moteurs d'avion</h3>
+                <p>CMAPSS FD001. CNN+LSTM : diagnostic AUC 0,991, rappel critique 100% (sécurité aérienne).</p>
+                <div class="badge-result">🏅 R² = 84,2%</div>
+                <div class="badge-result" style="background:#2ecc71;">MAE zone critique = 5,7 cycles</div>
+                <a href="moteur.html" class="btn-card">Explorer l'étude →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section FMDS - indicateurs clés (animation au scroll) -->
+    <div class="container reveal">
+        <h2 class="section-title">📊 Synthèse FMDS (études)</h2>
+        <div class="stats-row">
+            <div class="stat-item">
+                <span class="stat-number">99,82%</span>
+                <span class="stat-label">Disponibilité (batteries)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">93,1%</span>
+                <span class="stat-label">Disponibilité (roulements)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99,52%</span>
+                <span class="stat-label">Disponibilité (moteurs)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">1109</span>
+                <span class="stat-label">MTBF (cycles) – batteries</span>
+            </div>
+        </div>
+        <div class="stats-row">
+            <div class="stat-item">
+                <span class="stat-number">β=2,34</span>
+                <span class="stat-label">Weibull (moteurs) usure progressive</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">β=2,1</span>
+                <span class="stat-label">Weibull (roulements)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">97,8%</span>
+                <span class="stat-label">R² pronostic XGBoost (batteries)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section approche / méthodologie -->
+    <div class="container reveal">
+        <h2 class="section-title">🧠 Notre démarche</h2>
+        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+            <div class="project-card" style="background: rgba(255,255,255,0.93);">
+                <div class="card-icon">📈</div>
+                <h3>1. Analyse FMDS</h3>
+                <p>MTBF, MTTR, disponibilité, lois de fiabilité (Weibull, Log‑Normale), B10/B50/B90.</p>
+            </div>
+            <div class="project-card" style="background: rgba(255,255,255,0.93);">
+                <div class="card-icon">🔍</div>
+                <h3>2. Diagnostic IA</h3>
+                <p>Random Forest, SVM, CNN+LSTM. Classes de santé (Excellent → Critique) avec seuils optimisés métier.</p>
+            </div>
+            <div class="project-card" style="background: rgba(255,255,255,0.93);">
+                <div class="card-icon">⏳</div>
+                <h3>3. Pronostic RUL</h3>
+                <p>XGBoost, GRU, réseaux de neurones. Comparaison rigoureuse, split par batterie/moteur, early stopping.</p>
+            </div>
+            <div class="project-card" style="background: rgba(255,255,255,0.93);">
+                <div class="card-icon">⚙️</div>
+                <h3>4. Recommandations</h3>
+                <p>AMDEC, matrice de décision, alertes hiérarchiques, intégration possible ERP/GMAO.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section valeur ajoutée -->
+    <div class="container reveal">
+        <h2 class="section-title">💎 Ce que ce projet apporte</h2>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 32px; padding: 30px; text-align: center; backdrop-filter: blur(8px);">
+            <p style="font-size: 1.2rem; color: #f0f4f8; max-width: 900px; margin: 0 auto;">
+                Une méthodologie unifiée (FMDS → diagnostic → pronostic) validée sur trois cas réels avec des jeux de données publics. 
+                Optimisation des seuils pour prioriser la sécurité (recall critique 95,6% pour batteries, 100% pour moteurs). 
+                Comparaison rigoureuse de modèles : XGBoost surpasse les RNN sur petits volumes, tandis que CNN+LSTM excelle sur séquences longues.
+            </p>
+            <div style="margin-top: 35px;">
+                <a href="conclusion.html" class="btn-scroll" style="background: #2ecc71;">📄 Découvrir la conclusion générale</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 – Noujoud Ouni, Sami Hasni, Raoua Melliti – Master Industrie 4.0, ENSIT</p>
+        <p>Projet complet : FMDS, maintenance prédictive, IA pour batteries, roulements et moteurs d’avion</p>
+        <p><a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank">🔗 GitHub du projet</a> | <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">⬆️ Haut de page</a></p>
+    </footer>
+
+    <!-- Script pour animation au scroll (reveal) -->
+    <script>
+        // Animation des éléments au scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+        revealElements.forEach(el => observer.observe(el));
+
+        // Pour les cartes de projet déjà animées avec fadeInUp, on les laisse, mais on ajoute une petite amélioration
+        // Aucun conflit
+        console.log("Page d'accueil améliorée avec animations et design professionnel");
+    </script>
 </body>
 </html>
