@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction Générale - FMDS | Noujoud</title>
+    <title>Introduction Générale - FMDS & Maintenance Prédictive | Noujoud</title>
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
@@ -16,24 +16,34 @@
             100% { transform: scale(1); }
         }
 
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #2c3e50;
             min-height: 100vh;
         }
 
         .navbar {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
             padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .nav-container {
@@ -43,180 +53,405 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
+            padding: 0 20px;
         }
 
         .nav-btn {
-            background: rgba(52, 152, 219, 0.25);
+            background: rgba(52, 152, 219, 0.2);
             color: #ecf0f1;
             border: 1px solid #3498db;
-            padding: 10px 16px;
-            border-radius: 25px;
+            padding: 10px 18px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95em;
             transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
         }
 
         .nav-btn:hover {
             background: #3498db;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.5);
         }
 
         .nav-btn.active {
-            background: #3498db !important;
+            background: #3498db;
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 120px auto 60px;
             padding: 40px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            backdrop-filter: blur(2px);
         }
 
         h1 {
-            color: #3498db;
+            color: #2c3e50;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.6em;
+            margin-bottom: 20px;
+            font-size: 2.8em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         h2 {
             color: #2980b9;
             margin-top: 50px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
+            font-size: 1.9em;
+            border-left: 6px solid #3498db;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
         }
 
         p {
-            font-size: 1.1em;
+            font-size: 1.08em;
             line-height: 1.7;
             color: #34495e;
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         ul {
-            list-style-type: disc;
-            margin-left: 30px;
-            padding-left: 15px;
-            font-size: 1.1em;
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
         }
 
-        a.more {
-            color: #3498db;
+        ul li {
+            font-size: 1.05em;
+            line-height: 1.7;
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        ul li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
             font-weight: bold;
-            text-decoration: none;
-            transition: color 0.3s;
         }
 
-        a.more:hover {
-            color: #2980b9;
-            text-decoration: underline;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
 
-        img {
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: default;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .concept-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            border-color: #3498db;
+        }
+
+        .concept-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .concept-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .concept-desc {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        .image-wrapper {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .image-wrapper img {
             width: 100%;
             max-width: 700px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            margin: 30px auto;
-            display: block;
-            transition: transform 0.4s ease;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
-        img:hover {
-            transform: scale(1.05);
+        .image-wrapper img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .btn-more {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-more:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #2980b9, #1f618d);
         }
 
         .footer {
             text-align: center;
             margin-top: 60px;
-            padding: 20px;
+            padding: 25px;
             color: #7f8c8d;
             font-size: 0.9em;
-            border-top: 1px solid #ecf0f1;
+            border-top: 1px solid rgba(52, 73, 94, 0.1);
         }
 
         section {
             opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        section:nth-child(1) { animation-delay: 0.2s; }
-        section:nth-child(2) { animation-delay: 0.4s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
-        section:nth-child(4) { animation-delay: 0.8s; }
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 100px 20px 40px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .stats-grid, .concept-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Barre de navigation (identique à tes autres pages) -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
-     <div class="nav-container">
-        <a href="index.html" class="nav-btn">Accueil</a>
-        <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>  <!-- ← NOUVEAU -->
-        <a href="introduction.html" class="nav-btn">Introduction Générale</a>
-        <a href="planification.html" class="nav-btn">Planification & Scrum</a>
-        <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
-        <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
-        <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
-        <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
-        <a href="contact.html" class="nav-btn">Contact</a>
-      </div>
-</nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">Accueil</a>
+            <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
+            <a href="introduction.html" class="nav-btn active">Introduction Générale</a>
+            <a href="planification.html" class="nav-btn">Planification & Scrum</a>
+            <a href="pompe.html" class="nav-btn">Étude Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude Moteurs</a>
+            <a href="conclusion.html" class="nav-btn">Conclusion</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
+        </div>
+    </nav>
 
     <div class="container">
+        <h1>Introduction Générale</h1>
+        <div class="subtitle">FMDS & Maintenance Prédictive – Industrie 4.0</div>
 
-        <h1>Introduction Générale - FMDS & Maintenance Prédictive</h1>
-
+        <!-- Section 1: Contexte -->
         <section>
-            <h2>1. Contexte et Importance</h2>
+            <h2>📌 1. Contexte industriel</h2>
             <p>
-                Dans l’Industrie 4.0, la maintenance devient prédictive grâce à l’analyse FMDS et aux données temps réel.
+                L’industrie 4.0 transforme en profondeur la gestion des actifs de production. La collecte massive de données via l’IoT, le cloud et l’intelligence artificielle permet de passer d’une maintenance <strong>réactive ou systématique</strong> à une maintenance <strong>prédictive</strong>. 
+                L’objectif est d’anticiper les défaillances, d’optimiser les interventions et de réduire les coûts d’exploitation.
             </p>
-            <p>
-                Objectif : réduire les arrêts imprévus, optimiser les coûts et augmenter la sécurité.
-            </p>
-           
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">-30%</span>
+                    <span class="stat-label">Coûts de maintenance</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">-70%</span>
+                    <span class="stat-label">Pannes imprévues</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">+25%</span>
+                    <span class="stat-label">Disponibilité équipements</span>
+                </div>
+            </div>
         </section>
 
+        <!-- Section 2: Objectifs du projet -->
         <section>
-            <h2>2. Objectifs du projet</h2>
+            <h2>🎯 2. Objectifs du projet</h2>
             <ul>
-                <li>Maîtriser les concepts FMDS (MTBF, MTTR, disponibilité)</li>
-                <li>Appliquer la maintenance prédictive sur batteries, roulements et moteurs</li>
-                <li>Calculer la RUL et comparer les modèles</li>
+                <li>Maîtriser les concepts FMDS (MTBF, MTTR, disponibilité, sécurité)</li>
+                <li>Appliquer la maintenance prédictive sur trois systèmes critiques : batteries, roulements, moteurs d’avion</li>
+                <li>Calculer la RUL (Remaining Useful Life) et comparer plusieurs modèles d’IA (XGBoost, GRU, CNN+LSTM, Random Forest…)</li>
+                <li>Proposer des stratégies de maintenance optimisées (alertes hiérarchiques, seuils de criticité)</li>
             </ul>
-         
         </section>
 
+        <!-- Section 3: Problématique -->
         <section>
-            <h2>3. Problématique principale</h2>
+            <h2>❓ 3. Problématique</h2>
             <p>
-                Comment combiner FMDS et IA pour anticiper les pannes, réduire les coûts et améliorer la disponibilité industrielle ?
+                <strong>Comment combiner l’analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité) et les techniques d’apprentissage automatique pour anticiper les défaillances, réduire les coûts et améliorer la disponibilité industrielle ?</strong>
             </p>
-            
+            <p>
+                Ce projet apporte une réponse concrète à travers trois cas d’étude : batteries lithium-ion, roulements de moteurs et moteurs d’avion turbofan.
+            </p>
         </section>
 
+        <!-- Section 4: Concept FMDS -->
         <section>
-            <h2>4. Concept FMDS en un coup d’œil</h2>
-            <img src="con.png" alt="Concept FMDS">
+            <h2>📊 4. Le concept FMDS en détail</h2>
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <div class="concept-icon">🔧</div>
+                    <div class="concept-title">Fiabilité (R)</div>
+                    <div class="concept-desc">Probabilité qu’un équipement fonctionne sans panne sur une période donnée. Mesurée par le MTBF.</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">🛠️</div>
+                    <div class="concept-title">Maintenabilité (M)</div>
+                    <div class="concept-desc">Facilité et rapidité de réparation après une panne. Exprimée par le MTTR.</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">⏱️</div>
+                    <div class="concept-title">Disponibilité (D)</div>
+                    <div class="concept-desc">Taux de fonctionnement opérationnel : A = MTBF/(MTBF+MTTR).</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">🛡️</div>
+                    <div class="concept-title">Sécurité (S)</div>
+                    <div class="concept-desc">Capacité à éviter les risques pour les personnes et l’environnement.</div>
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <img src="con.png" alt="Schéma FMDS">
+            </div>
             <p>
-                Fiabilité – Maintenabilité – Disponibilité – Sécurité : les 4 piliers pour optimiser les systèmes industriels.
+                L’analyse FMDS fournit des indicateurs quantitatifs essentiels pour prioriser les actions de maintenance et justifier le passage à la maintenance prédictive.
             </p>
-            <a href=https://youtu.be/THjrUKtQcgo"_blank" class="more">Vidéo explicative FMDS & Industrie 4.0 →</a>
+            <a href="https://youtu.be/THjrUKtQcgo" target="_blank" class="btn-more">▶️ Voir la vidéo explicative FMDS & Industrie 4.0</a>
+        </section>
+
+        <!-- Section 5: Méthodologie -->
+        <section>
+            <h2>🧠 5. Approche méthodologique</h2>
+            <p>
+                La méthodologie suivie dans ce projet est structurée en trois étapes :
+            </p>
+            <ul>
+                <li><strong>Analyse FMDS :</strong> calcul du MTBF, MTTR, disponibilité, ajustement de lois de fiabilité (Weibull, Log‑Normale).</li>
+                <li><strong>Diagnostic :</strong> classification supervisée de l’état de santé (excellent, bon, moyen, critique) avec Random Forest, SVM, Decision Tree, CNN+LSTM.</li>
+                <li><strong>Pronostic :</strong> prédiction de la RUL (régression) avec XGBoost, GRU, réseaux de neurones, etc., et optimisation des seuils de décision.</li>
+            </ul>
+            <p>
+                Chaque cas d’étude respecte un split rigoureux par unité (batterie, moteur, roulement) pour éviter toute fuite de données.
+            </p>
+        </section>
+
+        <!-- Section 6: Plan du rapport -->
+        <section>
+            <h2>📚 6. Structure du rapport</h2>
+            <ul>
+                <li>Introduction générale (cette page)</li>
+                <li>Fondamentaux de la maintenance (définitions, types de maintenance)</li>
+                <li>Planification et méthode Scrum</li>
+                <li>Étude de cas 1 – Batteries lithium-ion (FMDS + diagnostic + pronostic + AMDEC)</li>
+                <li>Étude de cas 2 – Roulements industriels</li>
+                <li>Étude de cas 3 – Moteurs d’avion turbofan</li>
+                <li>Conclusion générale et perspectives</li>
+            </ul>
+            <p style="margin-top: 20px;">
+                Chaque étude de cas inclut : analyse FMDS complète, modélisation IA, optimisation métier (seuils, rappel critique), et recommandations opérationnelles.
+            </p>
         </section>
 
         <div class="footer">
-            Projet FMDS – Maintenance Prédictive – 2025/2026
+            <p>© 2026 Projet Maintenance Prédictive & Industrie 4.0 – ENSIT</p>
+            <p>Basé sur les données NASA, HNEI, FEMTO | Modèles XGBoost, Random Forest, CNN+LSTM, GRU</p>
         </div>
-
     </div>
 
 </body>
 </html>
-
