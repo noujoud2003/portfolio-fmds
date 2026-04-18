@@ -872,11 +872,13 @@
     </div>
 </section>
         <!-- Pronostic Section -->
-        <section>
-            <h2>🔮 3. Pronostic - Prédiction RUL (Deep Learning)</h2>
-            
-            <h3>🎯 Architecture du Modèle CNN+LSTM</h3>
-            <div class="architecture-box">
+      <!-- ==================== SECTION PRONOSTIC ==================== -->
+<section>
+    <h2>🔮 3. Pronostic – Prédiction du RUL (Deep Learning)</h2>
+
+    <!-- Architecture du modèle -->
+    <h3>🎯 Architecture du Modèle CNN+LSTM</h3>
+    <div class="architecture-box">
 Input (50 cycles, 21 capteurs)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
 Conv1D(filters=64, kernel_size=5, padding='same')<br>
@@ -895,233 +897,132 @@ Dense(64, activation='relu') + Dropout(0.3)<br>
 Dense(32, activation='relu')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
 Dense(1)  # Sortie RUL<br><br>
-<strong>Paramètres totaux</strong> : 118,785 paramètres
-            </div>
+<strong>Paramètres totaux</strong> : 118 785 paramètres
+    </div>
 
-            <h3>📊 Tableau Comparatif des Performances</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Modèle</th>
-                        <th>R²</th>
-                        <th>RMSE (cycles)</th>
-                        <th>MAE (cycles)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="background: #d4edda;">
-                        <td><strong>CNN+LSTM (notre)</strong></td>
-                        <td><strong>0.842</strong></td>
-                        <td><strong>16.51</strong></td>
-                        <td><strong>12.61</strong></td>
-                    </tr>
-                    <tr>
-                        <td>LSTM simple</td>
-                        <td>0.773</td>
-                        <td>19.82</td>
-                        <td>–</td>
-                    </tr>
-                    <tr>
-                        <td>GRU simple</td>
-                        <td>0.781</td>
-                        <td>19.45</td>
-                        <td>–</td>
-                    </tr>
-                    <tr>
-                        <td>CNN seul</td>
-                        <td>0.742</td>
-                        <td>21.13</td>
-                        <td>–</td>
-                    </tr>
-                    <tr>
-                        <td>Random Forest</td>
-                        <td>0.683</td>
-                        <td>23.41</td>
-                        <td>–</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Comparaison des modèles (graphique) -->
+    <div class="image-container">
+        <img src="10_model_comparison.png" alt="Comparaison des modèles de pronostic" class="figure-large">
+        <p class="image-caption">
+            <strong>Figure :</strong> Comparaison des performances des différents modèles de pronostic. 
+            Le CNN+LSTM atteint le meilleur R² (0,860) et le plus faible RMSE (15,55 cycles), surpassant nettement le LSTM simple, le GRU, le CNN seul et la Forêt Aléatoire.
+        </p>
+    </div>
 
-            <h3>🏆 Résultats Clés - Modèle CNN+LSTM</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Métrique</th>
-                        <th>Valeur</th>
-                        <th>Interprétation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>R²</strong></td>
-                        <td>0.842</td>
-                        <td>84% de la variance du RUL expliquée</td>
-                    </tr>
-                    <tr>
-                        <td><strong>RMSE</strong></td>
-                        <td>16.51 cycles</td>
-                        <td>Erreur quadratique moyenne</td>
-                    </tr>
-                    <tr>
-                        <td><strong>MAE</strong></td>
-                        <td>12.61 cycles</td>
-                        <td>Erreur absolue moyenne</td>
-                    </tr>
-                    <tr>
-                        <td><strong>AUC-ROC</strong></td>
-                        <td>0.991</td>
-                        <td>Discrimination exceptionnelle</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Tableau comparatif des performances (déjà présent, mais on le garde) -->
+    <h3>📊 Tableau Comparatif des Performances</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr><th>Modèle</th><th>R²</th><th>RMSE (cycles)</th><th>MAE (cycles)</th></tr>
+            </thead>
+            <tbody>
+                <tr style="background: #d4edda;"><td><strong>CNN+LSTM (notre)</strong></td><td><strong>0.860</strong></td><td><strong>15.55</strong></td><td><strong>12.61</strong></td></tr>
+                <tr><td>LSTM simple</td><td>0.773</td><td>19.82</td><td>–</td></tr>
+                <tr><td>GRU simple</td><td>0.781</td><td>19.45</td><td>–</td></tr>
+                <tr><td>CNN seul</td><td>0.742</td><td>21.13</td><td>–</td></tr>
+                <tr><td>Random Forest</td><td>0.683</td><td>23.41</td><td>–</td></tr>
+            </tbody>
+        </table>
+    </div>
 
-            <h3>📈 Analyse par Tranche de RUL</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Tranche RUL</th>
-                        <th>MAE (cycles)</th>
-                        <th>Précision</th>
-                        <th>Interprétation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="background: #d4edda;">
-                        <td><strong>0-30 cycles (Critique)</strong></td>
-                        <td><strong>5.7</strong></td>
-                        <td>Excellente</td>
-                        <td><strong>Très fiable pour la décision</strong></td>
-                    </tr>
-                    <tr>
-                        <td>31-80 cycles (Moyen)</td>
-                        <td>14.6</td>
-                        <td>Bonne</td>
-                        <td>Performance acceptable</td>
-                    </tr>
-                    <tr>
-                        <td>81-125 cycles (Élevé)</td>
-                        <td>13.1</td>
-                        <td>Bonne</td>
-                        <td>Erreur acceptable pour planification</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Analyse par tranche de RUL (graphique) -->
+    <div class="image-container">
+        <img src="11_tranche_analysis.png" alt="Analyse par tranche de RUL" class="figure-large">
+        <p class="image-caption">
+            <strong>Figure :</strong> Erreur absolue moyenne (MAE) par tranche de RUL. 
+            La zone critique (0‑30 cycles) est prédite avec une excellente précision (MAE = 5,7 cycles), ce qui est crucial pour la décision d’intervention immédiate.
+        </p>
+    </div>
 
-            <h3>📈 Visualisations des Prédictions</h3>
-            
-            <div class="image-container">
-                <img src="06_predictions_vs_reel.png" alt="Prédictions vs Réel">
-                <p class="image-caption">Figure 7: Prédictions vs RUL réel (R² = 0.842)</p>
-            </div>
+    <!-- Résultats clés du modèle (tableau existant) -->
+    <h3>🏆 Résultats Clés – Modèle CNN+LSTM</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Métrique</th><th>Valeur</th><th>Interprétation</th></tr></thead>
+            <tbody>
+                <tr><td><strong>R²</strong></td><td>0.860</td><td>86% de la variance du RUL expliquée</td></tr>
+                <tr><td><strong>RMSE</strong></td><td>15.55 cycles</td><td>Erreur quadratique moyenne</td></tr>
+                <tr><td><strong>MAE</strong></td><td>12.61 cycles</td><td>Erreur absolue moyenne</td></tr>
+                <tr><td><strong>AUC-ROC</strong></td><td>0.991</td><td>Discrimination exceptionnelle</td></tr>
+            </tbody>
+        </table>
+    </div>
 
-            <div class="image-container">
-                <img src="05_training_history.png" alt="Courbe d'apprentissage">
-                <p class="image-caption">Figure 8: Courbe d'apprentissage - Loss (early stopping à 23 époques)</p>
-            </div>
+    <!-- Visualisation de la variabilité inter-moteurs -->
+    <div class="image-container">
+        <img src="06_variabilite_inter_moteurs.png" alt="Variabilité inter-moteurs" class="figure-large">
+        <p class="image-caption">
+            <strong>Figure :</strong> Distribution des cycles de vie des 100 moteurs d’entraînement. 
+            On observe une grande variabilité (de 128 à 362 cycles), avec un MTBF de 206 cycles. 
+            Cette hétérogénéité justifie l’utilisation d’un modèle adaptatif comme le CNN+LSTM.
+        </p>
+    </div>
 
-            <h3>🔄 Prédiction Cycle par Cycle (Suivi Temporel)</h3>
-            <p>Le modèle CNN+LSTM suit l'évolution de la dégradation cycle après cycle, permettant une maintenance proactive.</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Exemple Moteur</th>
-                        <th>RUL Réel</th>
-                        <th>RUL Prédit</th>
-                        <th>Écart</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#14</td>
-                        <td>28 cycles</td>
-                        <td>24 cycles</td>
-                        <td>-4 cycles</td>
-                    </tr>
-                    <tr>
-                        <td>#17</td>
-                        <td>34 cycles</td>
-                        <td>31 cycles</td>
-                        <td>-3 cycles</td>
-                    </tr>
-                    <tr>
-                        <td>#3</td>
-                        <td>69 cycles</td>
-                        <td>50 cycles</td>
-                        <td>-19 cycles</td>
-                    </tr>
-                    <tr>
-                        <td>#16</td>
-                        <td>45 cycles</td>
-                        <td>48 cycles</td>
-                        <td>+3 cycles</td>
-                    </tr>
-                    <tr>
-                        <td>#15</td>
-                        <td>67 cycles</td>
-                        <td>58 cycles</td>
-                        <td>-9 cycles</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Comparaison RUL réelle vs prédite pour plusieurs moteurs (graphique) -->
+    <div class="image-container">
+        <img src="07_motor_comparison.png" alt="Comparaison RUL réelle vs prédite par moteur" class="figure-large">
+        <p class="image-caption">
+            <strong>Figure :</strong> Comparaison pour 20 moteurs de test. 
+            Les prédictions suivent globalement les valeurs réelles, avec une tendance à la sous-estimation pour certains moteurs (ex: moteur #3).
+        </p>
+    </div>
 
-            <h3>⏱️ Moteurs Critiques Identifiés</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Moteur</th>
-                        <th>RUL réel</th>
-                        <th>RUL prédit</th>
-                        <th>Écart</th>
-                        <th>Risque</th>
-                        <th>Action recommandée</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="background: #ffcccc;">
-                        <td><strong>#14</strong></td>
-                        <td><strong>28</strong></td>
-                        <td><strong>24</strong></td>
-                        <td>-4</td>
-                        <td><strong>Critique</strong></td>
-                        <td><strong>Intervention immédiate</strong></td>
-                    </tr>
-                    <tr style="background: #ffe5cc;">
-                        <td>#17</td>
-                        <td>34</td>
-                        <td>31</td>
-                        <td>-3</td>
-                        <td>Élevé</td>
-                        <td>Surveillance renforcée</td>
-                    </tr>
-                    <tr style="background: #ffe5cc;">
-                        <td>#3</td>
-                        <td>69</td>
-                        <td>50</td>
-                        <td>-19</td>
-                        <td>Élevé</td>
-                        <td>Planifier dans 20 cycles</td>
-                    </tr>
-                    <tr style="background: #ffe5cc;">
-                        <td>#16</td>
-                        <td>45</td>
-                        <td>48</td>
-                        <td>+3</td>
-                        <td>Élevé</td>
-                        <td>Planifier dans 20 cycles</td>
-                    </tr>
-                    <tr>
-                        <td>#15</td>
-                        <td>67</td>
-                        <td>58</td>
-                        <td>-9</td>
-                        <td>Moyen</td>
-                        <td>Planifier dans 30 cycles</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+    <!-- Visualisations des prédictions (figure existante) -->
+    <div class="image-container">
+        <img src="06_predictions_vs_reel.png" alt="Prédictions vs RUL réel" class="figure-large">
+        <p class="image-caption">
+            <strong>Figure :</strong> Nuage de points RUL prédite vs RUL réelle (R² = 0,860). 
+            Les points sont bien alignés autour de la diagonale, confirmant la bonne qualité du modèle.
+        </p>
+    </div>
 
+    <!-- Courbe d’apprentissage -->
+    <div class="image-container">
+        <img src="05_training_history.png" alt="Courbe d’apprentissage" class="figure-large">
+        <p class="image-caption">
+            <strong>Figure :</strong> Évolution de la loss (MSE) pendant l’entraînement. 
+            L’early stopping est intervenu à l’époque 23, évitant le surapprentissage. 
+            Les courbes train et validation restent proches, signe d’une bonne généralisation.
+        </p>
+    </div>
+
+    <!-- Prédiction cycle par cycle (tableau existant) -->
+    <h3>🔄 Prédiction Cycle par Cycle (Suivi Temporel)</h3>
+    <p>Le modèle CNN+LSTM suit l’évolution de la dégradation cycle après cycle, permettant une maintenance proactive.</p>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Exemple Moteur</th><th>RUL Réel</th><th>RUL Prédit</th><th>Écart</th></tr></thead>
+            <tbody>
+                <tr><td>#14</td><td>28 cycles</td><td>24 cycles</td><td>-4 cycles</td></tr>
+                <tr><td>#17</td><td>34 cycles</td><td>31 cycles</td><td>-3 cycles</td></tr>
+                <tr><td>#3</td><td>69 cycles</td><td>50 cycles</td><td>-19 cycles</td></tr>
+                <tr><td>#16</td><td>45 cycles</td><td>48 cycles</td><td>+3 cycles</td></tr>
+                <tr><td>#15</td><td>67 cycles</td><td>58 cycles</td><td>-9 cycles</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Moteurs critiques identifiés -->
+    <h3>⏱️ Moteurs Critiques Identifiés</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Moteur</th><th>RUL réel</th><th>RUL prédit</th><th>Écart</th><th>Risque</th><th>Action recommandée</th></tr></thead>
+            <tbody>
+                <tr style="background:#ffcccc;"><td><strong>#14</strong></td><td><strong>28</strong></td><td><strong>24</strong></td><td>-4</td><td><strong>Critique</strong></td><td><strong>Intervention immédiate</strong></td></tr>
+                <tr style="background:#ffe5cc;"><td>#17</td><td>34</td><td>31</td><td>-3</td><td>Élevé</td><td>Surveillance renforcée</td></tr>
+                <tr style="background:#ffe5cc;"><td>#3</td><td>69</td><td>50</td><td>-19</td><td>Élevé</td><td>Planifier dans 20 cycles</td></tr>
+                <tr style="background:#ffe5cc;"><td>#16</td><td>45</td><td>48</td><td>+3</td><td>Élevé</td><td>Planifier dans 20 cycles</td></tr>
+                <tr><td>#15</td><td>67</td><td>58</td><td>-9</td><td>Moyen</td><td>Planifier dans 30 cycles</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="key-findings">
+        <h4>📌 Synthèse du pronostic</h4>
+        <p>Le modèle CNN+LSTM atteint des performances solides : <strong>R² = 0,860</strong>, <strong>MAE = 12,6 cycles</strong>. L’erreur dans la zone critique (0‑30 cycles) est particulièrement faible (<strong>MAE = 5,7 cycles</strong>), ce qui permet de déclencher des alertes fiables. La comparaison avec d’autres modèles (LSTM, GRU, CNN, Random Forest) confirme la supériorité de l’architecture hybride convolution + récurrence bidirectionnelle.</p>
+    </div>
+</section>
         <!-- Synthesis Section -->
         <section>
             <h2>📋 4. Synthèse et Recommandations</h2>
