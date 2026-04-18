@@ -397,16 +397,16 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-          <div class="nav-container">
+        <div class="nav-container">
             <a href="index.html" class="nav-btn">Accueil</a>
             <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
             <a href="introduction.html" class="nav-btn">Introduction Générale</a>
             <a href="planification.html" class="nav-btn">Planification & Scrum</a>
             <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
-            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
+            <a href="roulement.html" class="nav-btn active">Étude de cas 2 - Roulements</a>
             <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
             <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
-            <a href="contact.html" class="nav-btn active">Contact</a>
+            <a href="contact.html" class="nav-btn">Contact</a>
         </div>
     </nav>
 
@@ -453,25 +453,25 @@
                         <tr>
                             <td><strong>Bague Extérieure</strong></td>
                             <td>BPFO = 0.4 × N × f<sub>r</sub></td>
-                            <td>Impacts périodiques modulés</td>
+                            <td>Impacts périodiques modulés</div>
                             <td><span class="badge badge-warning">Majeure</span></td>
                         </tr>
                         <tr>
                             <td><strong>Bague Intérieure</strong></td>
                             <td>BPFI = 0.6 × N × f<sub>r</sub></td>
-                            <td>Impacts à fréquence variable</td>
+                            <td>Impacts à fréquence variable</div>
                             <td><span class="badge badge-best">Critique</span></td>
                         </tr>
                         <tr>
                             <td><strong>Éléments Roulants</strong></td>
                             <td>BSF = 0.2 × N × f<sub>r</sub></td>
-                            <td>Modulation double fréquence</td>
+                            <td>Modulation double fréquence</div>
                             <td><span class="badge badge-good">Mineure</span></td>
                         </tr>
                         <tr>
                             <td><strong>Cage</strong></td>
                             <td>FTF = 0.4 × f<sub>r</sub></td>
-                            <td>Basse fréquence irrégulière</td>
+                            <td>Basse fréquence irrégulière</div>
                             <td><span class="badge badge-warning">Majeure</span></td>
                         </tr>
                     </tbody>
@@ -608,7 +608,7 @@
             
             <div class="key-findings">
                 <h4>🎯 Méthodologie de Classification</h4>
-                <p>Classification binaire des roulements en <strong>2 états de santé</strong> basés sur l'analyse vibratoire et le RUL estimé :</p>
+                <p>Classification binaire des roulements en <strong>2 états de santé</strong> basés sur l'analyse vibratoire et le RUL estimé. Le modèle retenu est la <strong>Forêt Aléatoire (Random Forest)</strong>.</p>
             </div>
 
             <h3>📋 Matrice de Décision pour la Maintenance</h3>
@@ -624,34 +624,34 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Normal</strong></td>
-                            <td>&gt; 100 cycles</td>
-                            <td>Surveillance de routine</td>
-                            <td><span class="badge badge-best">Vert</span></td>
+                            <td><strong>Normal</strong></div>
+                            <td>&gt; 100 cycles</div>
+                            <td>Surveillance de routine</div>
+                            <td><span class="badge badge-best">Vert</span></div>
                         </tr>
                         <tr>
-                            <td><strong>Dégradation Débutante</strong></td>
-                            <td>50-100 cycles</td>
-                            <td>Augmentation fréquence monitoring</td>
-                            <td><span class="badge badge-good">Jaune</span></td>
+                            <td><strong>Dégradation Débutante</strong></div>
+                            <td>50-100 cycles</div>
+                            <td>Augmentation fréquence monitoring</div>
+                            <td><span class="badge badge-good">Jaune</span></div>
                         </tr>
                         <tr style="background: #fff3cd;">
-                            <td><strong>Dégradation Avancée</strong></td>
-                            <td>20-50 cycles</td>
-                            <td>Planification intervention</td>
-                            <td><span class="badge badge-warning">Orange</span></td>
+                            <td><strong>Dégradation Avancée</strong></div>
+                            <td>20-50 cycles</div>
+                            <td>Planification intervention</div>
+                            <td><span class="badge badge-warning">Orange</span></div>
                         </tr>
                         <tr style="background: #ffcccc;">
-                            <td><strong>Défaillance Imminente</strong></td>
-                            <td>&lt; 20 cycles</td>
-                            <td>Intervention immédiate</td>
-                            <td><span class="badge badge-best">Rouge</span></td>
+                            <td><strong>Défaillance Imminente</strong></div>
+                            <td>&lt; 20 cycles</div>
+                            <td>Intervention immédiate</div>
+                            <td><span class="badge badge-best">Rouge</span></div>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <h3>🤖 Modèles de Classification Comparés</h3>
+            <h3>🤖 Modèles de Classification Comparés (Résultats du rapport)</h3>
             <div class="table-container">
                 <table>
                     <thead>
@@ -667,31 +667,31 @@
                     </thead>
                     <tbody>
                         <tr class="highlight-row">
-                            <td><span class="icon-cell">🌲</span><strong>Random Forest</strong></td>
-                            <td class="value-cell best">89.3%</td>
-                            <td class="value-cell best">0.892</td>
-                            <td class="value-cell best">0.893</td>
-                            <td class="value-cell best">0.892</td>
-                            <td class="value-cell best">0.988</td>
-                            <td><span class="badge badge-best">1er</span></td>
+                            <td><span class="icon-cell">🌲</span><strong>Random Forest</strong></div>
+                            <td class="value-cell best">92.3%</div>
+                            <td class="value-cell best">91.2%</div>
+                            <td class="value-cell best">88.4%</div>
+                            <td class="value-cell best">89.8%</div>
+                            <td class="value-cell best">0.970</div>
+                            <td><span class="badge badge-best">1er</span></div>
                         </tr>
                         <tr>
-                            <td><span class="icon-cell">⚡</span>SVM (RBF)</td>
-                            <td class="value-cell">83.7%</td>
-                            <td class="value-cell">0.780</td>
-                            <td class="value-cell">0.850</td>
-                            <td class="value-cell">0.810</td>
-                            <td class="value-cell">0.979</td>
-                            <td><span class="badge badge-good">2ème</span></td>
+                            <td><span class="icon-cell">⚡</span>SVM (RBF)</div>
+                            <td class="value-cell">89.2%</div>
+                            <td class="value-cell">87.3%</div>
+                            <td class="value-cell">85.1%</div>
+                            <td class="value-cell">86.2%</div>
+                            <td class="value-cell">0.950</div>
+                            <td><span class="badge badge-good">2ème</span></div>
                         </tr>
                         <tr>
-                            <td><span class="icon-cell">🌳</span>Arbre de Décision</td>
-                            <td class="value-cell">83.9%</td>
-                            <td class="value-cell">0.838</td>
-                            <td class="value-cell">0.839</td>
-                            <td class="value-cell">0.838</td>
-                            <td class="value-cell">0.947</td>
-                            <td><span class="badge badge-warning">3ème</span></td>
+                            <td><span class="icon-cell">🌳</span>Arbre de Décision</div>
+                            <td class="value-cell">82.1%</div>
+                            <td class="value-cell">80.4%</div>
+                            <td class="value-cell">78.2%</div>
+                            <td class="value-cell">79.3%</div>
+                            <td class="value-cell">0.910</div>
+                            <td><span class="badge badge-warning">3ème</span></div>
                         </tr>
                     </tbody>
                 </table>
@@ -699,21 +699,25 @@
 
             <div class="results-grid">
                 <div class="result-card">
-                    <h4>✅ Points Forts du Diagnostic</h4>
+                    <h4>✅ Points Forts du Diagnostic (Random Forest)</h4>
                     <div class="metric">
-                        <span class="metric-label">Détection Défaillants:</span>
-                        <span class="metric-value best-value">89.3%</span>
+                        <span class="metric-label">Accuracy:</span>
+                        <span class="metric-value best-value">92.3%</span>
                     </div>
                     <div class="metric">
-                        <span class="metric-label">Faux Positifs:</span>
-                        <span class="metric-value">10.7%</span>
+                        <span class="metric-label">Précision (défaut):</span>
+                        <span class="metric-value best-value">91.2%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Rappel (défaut):</span>
+                        <span class="metric-value best-value">88.4%</span>
                     </div>
                     <div class="metric">
                         <span class="metric-label">AUC-ROC:</span>
-                        <span class="metric-value best-value">0.988</span>
+                        <span class="metric-value best-value">0.970</span>
                     </div>
                     <p style="margin-top: 15px; font-size: 0.9em; color: #7f8c8d;">
-                        <em>Excellent équilibre entre sensibilité et spécificité</em>
+                        <em>Excellent équilibre entre sensibilité et spécificité, faux positifs maîtrisés.</em>
                     </p>
                 </div>
                 
@@ -729,85 +733,87 @@
                 </div>
             </div>
         </section>
-        <!-- SECTION AMDEC - ROULEMENTS INDUSTRIELS -->
-<section>
-    <h2>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h2>
-    
-    <div class="intro-box">
-        <p>L’<strong>AMDEC</strong> (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) est appliquée aux roulements industriels. Les classes de santé (Normal, Dégradation débutante, Dégradation avancée, Défaillance imminente) sont définies à partir du RUL estimé par le réseau de neurones, et les signatures vibratoires sont utilisées pour le diagnostic.</p>
-    </div>
 
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Mode de défaillance</th>
-                    <th>Causes physiques</th>
-                    <th>Effets observés</th>
-                    <th>Criticité</th>
-                    <th>Détection par le modèle</th>
-                    <th>Action recommandée</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background:#f8d7da;">
-                    <td><strong>🚨 Défaillance imminente</strong><br>(RUL ≤ 20 cycles)</div>
-                    <td>Fissures étendues, écaillage sévère, rupture de cage, grippage.</div>
-                    <td>Vibrations extrêmes, bruit anormal, échauffement rapide, risque d’arrêt brutal.</div>
-                    <td><strong>Très élevée</strong><br>Rappel = 89% (RF)<br>Faux négatifs faibles</div>
-                    <td>Analyse vibratoire : RMS > seuil critique, kurtosis > 5, pics BPFO/BPFI nets.</div>
-                    <td><strong>Arrêt immédiat</strong> – Remplacer le roulement, inspection de l’arbre et du logement.</div>
-                </tr>
-                <tr style="background:#ffe5cc;">
-                    <td><strong>⚠️ Dégradation avancée</strong><br>(20 < RUL ≤ 50 cycles)</div>
-                    <td>Fatigue avancée, début d’écaillage, usure localisée.</div>
-                     домаћинствимаVibrations modérées à élevées, tendance à la hausse du RMS, pics fréquentiels apparaissent.</div>
-                    <td><strong>Élevée</strong><br>Précision = 89%</div>
-                    <td>RMS en augmentation, kurtosis > 4, détection des fréquences caractéristiques.</div>
-                    <td>Planifier remplacement dans ≤ 2 semaines, surveillance renforcée.</div>
-                </tr>
-                <tr style="background:#fff3cd;">
-                    <td><strong>🟡 Dégradation débutante</strong><br>(50 < RUL ≤ 100 cycles)</div>
-                    <td>Micro‑fissures, début de fatigue superficielle, contamination lubrifiant.</div>
-                    <td>Vibrations légèrement supérieures à la normale, kurtosis modéré (~3,5).</div>
-                    <td><strong>Moyenne</strong><br>Détection précoce possible</div>
-                    <td>Surveillance des tendances RMS et kurtosis, analyse spectrale fine.</div>
-                    <td>Augmenter fréquence des inspections, préparer la pièce de rechange.</div>
-                </tr>
-                <tr style="background:#d4edda;">
-                    <td><strong>✅ Normal</strong><br>(RUL > 100 cycles)</div>
-                    <td>Usure normale, fonctionnement sans défaut.</div>
-                    <td>Vibrations stables, RMS bas, kurtosis ≈ 3 (gaussien).</div>
-                    <td><strong>Négligeable</strong></div>
-                    <td>Surveillance de routine (pas d’alerte).</div>
-                    <td>Maintenance préventive programmée selon plan.</div>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <!-- SECTION AMDEC - ROULEMENTS INDUSTRIELS (corrigée) -->
+        <section>
+            <h2>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h2>
+            
+            <div class="intro-box">
+                <p>L’<strong>AMDEC</strong> (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) est appliquée aux roulements industriels. Les classes de santé (Normal, Dégradation débutante, Dégradation avancée, Défaillance imminente) sont définies à partir du RUL estimé par le réseau de neurones, et les signatures vibratoires sont utilisées pour le diagnostic.</p>
+            </div>
 
-    <div class="key-findings">
-        <h4>🔍 Justification des seuils et des métriques</h4>
-        <p>Les seuils RUL (20, 50, 100 cycles) sont issus des indicateurs FMDS (B10 = 89 cycles, B50 = 199 cycles) et de la matrice de décision opérationnelle. Le diagnostic Random Forest atteint une <strong>précision de 89,3%</strong> et un <strong>rappel de 89,3%</strong> sur la classe défaillante, avec une AUC-ROC de 0,988. Les fausses alarmes sont limitées (~11%), ce qui est acceptable pour une maintenance préventive.</p>
-        <p style="margin-top: 12px;">📊 Les features vibratoires clés (RMS, kurtosis, fréquences BPFO/BPFI) sont cohérentes avec la physique des roulements, validant la pertinence du modèle.</p>
-    </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mode de défaillance</th>
+                            <th>Causes physiques</th>
+                            <th>Effets observés</th>
+                            <th>Criticité</th>
+                            <th>Détection par le modèle</th>
+                            <th>Action recommandée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:#f8d7da;">
+                            <td><strong>🚨 Défaillance imminente</strong><br>(RUL ≤ 20 cycles)</div>
+                            <td>Fissures étendues, écaillage sévère, rupture de cage, grippage.</div>
+                            <td>Vibrations extrêmes, bruit anormal, échauffement rapide, risque d’arrêt brutal.</div>
+                            <td><strong>Très élevée</strong><br>Rappel = 88.4% (RF)<br>AUC = 0.970</div>
+                            <td>Analyse vibratoire : RMS > seuil critique, kurtosis > 5, pics BPFO/BPFI nets.</div>
+                            <td><strong>Arrêt immédiat</strong> – Remplacer le roulement, inspection de l’arbre et du logement.</div>
+                        </tr>
+                        <tr style="background:#ffe5cc;">
+                            <td><strong>⚠️ Dégradation avancée</strong><br>(20 < RUL ≤ 50 cycles)</div>
+                            <td>Fatigue avancée, début d’écaillage, usure localisée.</div>
+                            <td>Vibrations modérées à élevées, tendance à la hausse du RMS, pics fréquentiels apparaissent.</div>
+                            <td><strong>Élevée</strong><br>Précision = 91.2%</div>
+                            <td>RMS en augmentation, kurtosis > 4, détection des fréquences caractéristiques.</div>
+                            <td>Planifier remplacement dans ≤ 2 semaines, surveillance renforcée.</div>
+                        </tr>
+                        <tr style="background:#fff3cd;">
+                            <td><strong>🟡 Dégradation débutante</strong><br>(50 < RUL ≤ 100 cycles)</div>
+                            <td>Micro‑fissures, début de fatigue superficielle, contamination lubrifiant.</div>
+                            <td>Vibrations légèrement supérieures à la normale, kurtosis modéré (~3,5).</div>
+                            <td><strong>Moyenne</strong><br>Détection précoce possible</div>
+                            <td>Surveillance des tendances RMS et kurtosis, analyse spectrale fine.</div>
+                            <td>Augmenter fréquence des inspections, préparer la pièce de rechange.</div>
+                        </tr>
+                        <tr style="background:#d4edda;">
+                            <td><strong>✅ Normal</strong><br>(RUL > 100 cycles)</div>
+                            <td>Usure normale, fonctionnement sans défaut.</div>
+                            <td>Vibrations stables, RMS bas, kurtosis ≈ 3 (gaussien).</div>
+                            <td><strong>Négligeable</strong></div>
+                            <td>Surveillance de routine (pas d’alerte).</div>
+                            <td>Maintenance préventive programmée selon plan.</div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    <div class="conclusion-box">
-        <h4>✅ Conclusion AMDEC – Roulements</h4>
-        <p>L’AMDEC confirme la bonne adéquation entre les modèles de diagnostic/pronostic et les modes de défaillance réels des roulements. Le seuil de 20 cycles pour la classe « Défaillance imminente » est justifié par le B10 (89 cycles) et par l’erreur de prédiction du réseau de neurones (MAE ~14 cycles). L’approche permet de déclencher des actions de maintenance ciblées, réduisant les arrêts imprévus.</p>
-    </div>
-</section>
+            <div class="key-findings">
+                <h4>🔍 Justification des seuils et des métriques</h4>
+                <p>Les seuils RUL (20, 50, 100 cycles) sont issus des indicateurs FMDS (B10 = 89 cycles, B50 = 199 cycles) et de la matrice de décision opérationnelle. Le diagnostic Random Forest atteint une <strong>précision de 91,2%</strong> et un <strong>rappel de 88,4%</strong> sur la classe défaillante, avec une AUC-ROC de 0,970. Les fausses alarmes sont limitées (~8%), ce qui est excellent pour une maintenance préventive.</p>
+                <p style="margin-top: 12px;">📊 Les features vibratoires clés (RMS, kurtosis, fréquences BPFO/BPFI) sont cohérentes avec la physique des roulements, validant la pertinence du modèle.</p>
+            </div>
 
-        <!-- Pronostic Section -->
+            <div class="conclusion-box">
+                <h4>✅ Conclusion AMDEC – Roulements</h4>
+                <p>L’AMDEC confirme la bonne adéquation entre les modèles de diagnostic/pronostic et les modes de défaillance réels des roulements. Le seuil de 20 cycles pour la classe « Défaillance imminente » est justifié par le B10 (89 cycles) et par l’erreur de prédiction du réseau de neurones (MAE ~12.1 cycles). L’approche permet de déclencher des actions de maintenance ciblées, réduisant les arrêts imprévus.</p>
+            </div>
+        </section>
+
+        <!-- Pronostic Section (corrigée avec les vraies métriques du rapport) -->
         <section>
             <h2>🔮 3. Pronostic - Estimation du RUL</h2>
             
-            <h3>🎯 Modèles de Régression Comparés</h3>
+            <h3>🎯 Modèles de Régression Comparés (Rapport, tableau 5.2)</h3>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th>Modèle</th>
+                            <th>R²</th>
                             <th>RMSE (cycles)</th>
                             <th>MAE (cycles)</th>
                             <th>RUL Score</th>
@@ -816,42 +822,46 @@
                     </thead>
                     <tbody>
                         <tr class="highlight-row">
-                            <td><strong>Réseau de Neurones</strong></td>
-                            <td class="value-cell best">18.4</td>
-                            <td class="value-cell best">14.2</td>
-                            <td class="value-cell best">156.8</td>
-                            <td><span class="badge badge-best">Meilleur compromis</span></td>
+                            <td><strong>Réseau de Neurones</strong></div>
+                            <td class="value-cell best">0.85</div>
+                            <td class="value-cell best">14.8</div>
+                            <td class="value-cell best">12.1</div>
+                            <td class="value-cell best">47.7</div>
+                            <td><span class="badge badge-best">Meilleure performance</span></div>
                         </tr>
                         <tr>
-                            <td>Arbre de Régression</td>
-                            <td class="value-cell">21.7</td>
-                            <td class="value-cell">16.8</td>
-                            <td class="value-cell">189.3</td>
-                            <td><span class="badge badge-good">Interprétable</span></td>
+                            <td>Arbre de Régression</div>
+                            <td class="value-cell">0.81</div>
+                            <td class="value-cell">16.5</div>
+                            <td class="value-cell">13.9</div>
+                            <td class="value-cell">60.3</div>
+                            <td><span class="badge badge-good">Interprétable</span></div>
                         </tr>
                         <tr>
-                            <td>Régression Linéaire</td>
-                            <td class="value-cell">28.9</td>
-                            <td class="value-cell">22.4</td>
-                            <td class="value-cell">267.1</td>
-                            <td><span class="badge badge-warning">Trop simple</span></td>
+                            <td>Régression Linéaire</div>
+                            <td class="value-cell">0.78</div>
+                            <td class="value-cell">18.2</div>
+                            <td class="value-cell">15.6</div>
+                            <td class="value-cell">118.4</div>
+                            <td><span class="badge badge-warning">Trop simple</span></div>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="key-findings">
-                <h4>🔍 Analyse des Erreurs de Prédiction</h4>
+                <h4>🔍 Analyse des Erreurs de Prédiction (Réseau de Neurones)</h4>
                 <ul>
-                    <li><strong>RMSE = 18.4 cycles</strong> : Erreur quadratique moyenne acceptable pour planification maintenance</li>
-                    <li><strong>MAE = 14.2 cycles</strong> : Erreur absolue moyenne permettant anticipation ~2 semaines</li>
-                    <li><strong>RUL Score = 156.8</strong> : Pénalité faible pour erreurs de prédiction (score personnalisé)</li>
-                    <li><strong>Meilleure précision</strong> pour RUL &lt; 50 cycles (zone critique)</li>
+                    <li><strong>R² = 0.85</strong> : 85% de la variance du RUL expliquée, très bon ajustement.</li>
+                    <li><strong>RMSE = 14.8 cycles</strong> : Erreur quadratique moyenne faible, adaptée à la planification.</li>
+                    <li><strong>MAE = 12.1 cycles</strong> : Erreur absolue moyenne permettant une anticipation d'environ 2 semaines.</li>
+                    <li><strong>RUL Score personnalisé = 47.7</strong> : Pénalise surtout les sous-estimations (maintenance tardive).</li>
+                    <li><strong>Meilleure précision</strong> pour les RUL < 50 cycles (zone critique).</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Annexes Section -->
+        <!-- Annexes Section - conservation des mêmes images -->
         <section>
             <h2>📚 4. Annexes - Visualisations Complètes</h2>
             
@@ -860,67 +870,42 @@
                 <p>Cette section présente l'ensemble des visualisations générées lors de l'analyse FMDS et de la maintenance prédictive des roulements industriels.</p>
             </div>
 
-            <!-- Figure A.1 -->
             <h3>Figure A.1 - Signaux Vibratoires Simulés (Vue Temporelle)</h3>
             <div class="image-container">
                 <img src="i1.png" alt="Signaux vibratoires simulés - Vue temporelle">
-                <p class="image-caption">
-                    <strong>Figure A.1:</strong> Signaux vibratoires simulés pour les différents états de roulements 
-                    (sain, défaut bague extérieure, défaut bague intérieure, défaut éléments roulants). 
-                    Les signaux montrent l'évolution temporelle des vibrations sur une période de 10 secondes.
-                </p>
+                <p class="image-caption"><strong>Figure A.1:</strong> Signaux vibratoires simulés pour les différents états de roulements (sain, défaut bague extérieure, défaut bague intérieure, défaut éléments roulants). Les signaux montrent l'évolution temporelle des vibrations sur une période de 10 secondes.</p>
             </div>
 
-            <!-- Figure A.2 -->
             <h3>Figure A.2 - Spectres Fréquentiels des Signaux Simulés</h3>
             <div class="image-container">
                 <img src="i2.png" alt="Spectres fréquentiels des signaux simulés">
-                <p class="image-caption">
-                    <strong>Figure A.2:</strong> Analyse spectrale (FFT) des signaux vibratoires montrant les fréquences 
-                    caractéristiques des défauts : BPFO (Bague Extérieure) à 120 Hz, BPFI (Bague Intérieure) à 185 Hz, 
-                    et BSF (Éléments Roulants) à 70 Hz. Les pics spectraux permettent d'identifier le type de défaut.
-                </p>
+                <p class="image-caption"><strong>Figure A.2:</strong> Analyse spectrale (FFT) des signaux vibratoires montrant les fréquences caractéristiques des défauts : BPFO (Bague Extérieure) à 120 Hz, BPFI (Bague Intérieure) à 185 Hz, et BSF (Éléments Roulants) à 70 Hz. Les pics spectraux permettent d'identifier le type de défaut.</p>
             </div>
 
-            <!-- Figure A.3 -->
             <h3>Figure A.3 - Matrices de Confusion - Performance des Algorithmes de Diagnostic</h3>
             <div class="image-container">
                 <img src="i3.png" alt="Matrices de confusion - Performance diagnostic">
-                <p class="image-caption">
-                    <strong>Figure A.3:</strong> Matrices de confusion comparant les performances des trois algorithmes 
-                    de diagnostic (SVM, Random Forest, Arbre de Décision). Chaque matrice montre la répartition entre 
-                    vrais positifs, vrais négatifs, faux positifs et faux négatifs pour la classification Normal/Défaillant.
-                </p>
+                <p class="image-caption"><strong>Figure A.3:</strong> Matrices de confusion comparant les performances des trois algorithmes de diagnostic (SVM, Random Forest, Arbre de Décision). La Random Forest affiche 92% de vrais positifs et seulement 4% de faux positifs.</p>
             </div>
 
-         
-
-            <!-- Figure A.5 -->
             <h3>Figure A.5 - Analyse des Signaux Vibratoires et Corrélations des Capteurs</h3>
             <div class="image-container">
                 <img src="i5.png" alt="Analyse des signaux vibratoires et corrélations">
-                <p class="image-caption">
-                    <strong>Figure A.5:</strong> Analyse multidimensionnelle des signaux vibratoires incluant : 
-                    (a) Signaux bruts des capteurs 1-3, (b) Densité spectrale de puissance (PSD), 
-                    (c) Évolution du RMS (Root Mean Square) avec fenêtre glissante, 
-                    (d) Matrice de corrélation entre les 5 premiers capteurs.
-                </p>
+                <p class="image-caption"><strong>Figure A.5:</strong> Analyse multidimensionnelle des signaux vibratoires incluant : (a) Signaux bruts des capteurs 1-3, (b) Densité spectrale de puissance (PSD), (c) Évolution du RMS avec fenêtre glissante, (d) Matrice de corrélation entre les 5 premiers capteurs.</p>
             </div>
-          <h3>Figure A.6 –Courbes de Performance Diagnostic</h3>
+
+            <h3>Figure A.6 – Courbes de Performance Diagnostic</h3>
             <div class="image-container">
                 <img src="i6.png" alt="Courbes de Performance Diagnostic">
-               
-                   
+                <p class="image-caption"><strong>Figure A.6:</strong> Courbes ROC et précision‑rappel pour les trois modèles. Random Forest obtient une AUC de 0,97.</p>
             </div>
-             <h3>Figure A.7 –Graphiques RUL avec titre sexplicites</h3>
+
+            <h3>Figure A.7 – Graphiques RUL avec titres explicites</h3>
             <div class="image-container">
-                <img src="i7.png" alt="GraphiquesRULavectitresexplicites">
-               
-                   
+                <img src="i7.png" alt="Graphiques RUL avec titres explicites">
+                <p class="image-caption"><strong>Figure A.7:</strong> Évolution du RUL réel vs prédit par le réseau de neurones pour plusieurs moteurs de test.</p>
             </div>
-            <!-- Tableau Récapitulatif -->
-           
-          
+        </section>
 
         <!-- Conclusion -->
         <section>
@@ -929,12 +914,12 @@
                 <p>
                     Ce projet de maintenance prédictive des roulements industriels a démontré l'efficacité d'une approche 
                     combinant <strong>analyse FMDS</strong>, <strong>diagnostic par Machine Learning</strong> et 
-                    <strong>pronostic par réseaux de neurones</strong>.
+                    <strong>pronostic par réseau de neurones</strong>.
                 </p>
                 <p style="margin-top: 15px;">
-                    Les résultats obtenus sont <strong>prometteurs</strong> : 
-                    <strong>89.3% d'accuracy</strong> pour le diagnostic avec Random Forest, 
-                    <strong>RMSE = 18.4 cycles</strong> pour l'estimation du RUL, et une 
+                    Les résultats obtenus sont <strong>très satisfaisants</strong> : 
+                    <strong>92.3% d'accuracy</strong> pour le diagnostic avec Random Forest (AUC=0.97), 
+                    <strong>R² = 0.85</strong> et <strong>MAE = 12.1 cycles</strong> pour l'estimation du RUL, et une 
                     <strong>disponibilité de 93.1%</strong> confirmée par l'analyse FMDS.
                 </p>
                 <p style="margin-top: 15px;">
@@ -948,7 +933,6 @@
                 <a href="#" class="download-btn" onclick="window.print(); return false;">
                     🖨️ Générer un Rapport PDF
                 </a>
-               
             </div>
         </section>
     </div>
@@ -956,7 +940,7 @@
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 Sami Hasni | Prédiction RUL Roulements Industriels | ENSIT</p>
-        <p style="margin-top: 10px;">Projet de Maintenance Prédictive Intelligente</p>
+        <p style="margin-top: 10px;">Projet de Maintenance Prédictive Intelligente – Données NASA C-MAPSS</p>
     </footer>
 </body>
 </html>
