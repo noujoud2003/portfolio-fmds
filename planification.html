@@ -2,128 +2,293 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planification & Scrum | Noujoud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Planification & Scrum | Noujoud - FMDS</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
         }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulseLight {
+            0% { box-shadow: 0 0 0 0 rgba(52,152,219,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(52,152,219,0); }
+            100% { box-shadow: 0 0 0 0 rgba(52,152,219,0); }
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Inter', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
             background-size: 400% 400%;
             animation: gradientAnimation 18s ease infinite;
             color: #2c3e50;
             min-height: 100vh;
+            scroll-behavior: smooth;
         }
+
+        /* Navigation */
         .navbar {
             background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
+            backdrop-filter: blur(12px);
+            padding: 14px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         .nav-container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
+            padding: 0 20px;
         }
         .nav-btn {
-            background: rgba(52, 152, 219, 0.25);
+            background: rgba(52, 152, 219, 0.2);
             color: #ecf0f1;
             border: 1px solid #3498db;
-            padding: 10px 16px;
-            border-radius: 25px;
+            padding: 10px 20px;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95em;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
         .nav-btn:hover {
             background: #3498db;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 6px 14px rgba(52,152,219,0.4);
         }
-        .active {
-            background: #3498db !important;
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
+        .nav-btn.active {
+            background: #3498db;
+            box-shadow: 0 6px 14px rgba(52,152,219,0.5);
         }
+
+        /* Container principal */
         .container {
-            max-width: 1100px;
-            margin: 140px auto 80px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.94);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-            backdrop-filter: blur(8px);
+            max-width: 1200px;
+            margin: 130px auto 80px;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            backdrop-filter: blur(4px);
         }
+
         h1 {
-            color: #3498db;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.8em;
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
         }
-        h2, h3 {
-            color: #2980b9;
-            margin-top: 50px;
+
+        .subtitle {
+            text-align: center;
+            color: #5d6e7e;
+            font-size: 1.15rem;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #e0e7ef;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 10px;
         }
-        h3 {
-            animation: pulse 3s infinite;
+
+        /* Grille méthodologie */
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
-        p, li {
-            color: #34495e;
-            font-size: 1.1em;
-            line-height: 1.7;
+        .method-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px 22px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 1px solid #edf2f7;
         }
-        ul {
-            padding-left: 30px;
+        .method-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+            border-color: #3498db;
         }
-        img {
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .method-card h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .method-card p {
+            color: #4a5b6e;
+            line-height: 1.5;
+        }
+
+        /* Timeline Scrum (sprints) */
+        .timeline {
+            background: #f8fafc;
+            border-radius: 28px;
+            padding: 30px;
+            margin: 50px 0;
+            border-left: 6px solid #3498db;
+        }
+        .timeline h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #1e4663;
+        }
+        .sprint-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .sprint-item {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            border-top: 4px solid #3498db;
+        }
+        .sprint-item:hover {
+            transform: scale(1.02);
+            background: #f0f9ff;
+        }
+        .sprint-week {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #3498db;
+        }
+        .sprint-title {
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        /* Cycle en V (schéma stylisé) */
+        .v-cycle {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .v-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .step {
+            background: #ecf5fb;
+            border-radius: 40px;
+            padding: 15px 20px;
+            text-align: center;
+            flex: 1;
+            font-weight: 600;
+            color: #1e4663;
+            transition: all 0.3s;
+        }
+        .step:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* Gantt image */
+        .gantt-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .gantt-container img {
             width: 100%;
-            max-width: 900px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            margin: 30px auto;
-            display: block;
-            transition: transform 0.4s ease;
+            max-width: 950px;
+            border-radius: 24px;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            cursor: pointer;
         }
-        img:hover {
-            transform: scale(1.03);
+        .gantt-container img:hover {
+            transform: scale(1.02);
         }
-        section {
-            opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        section:nth-child(1) { animation-delay: 0.2s; }
-        section:nth-child(2) { animation-delay: 0.4s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
-        section:nth-child(4) { animation-delay: 0.8s; }
+
+        /* Footer */
         .footer {
             text-align: center;
             margin-top: 60px;
-            padding: 30px;
+            padding: 30px 20px;
             color: #bdc3c7;
-            font-size: 0.9em;
+            font-size: 0.9rem;
             border-top: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+        }
+
+        .footer a {
+            color: #a0d0f0;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 18px;
+                margin: 110px 20px 50px;
+            }
+            h1 { font-size: 2rem; }
+            .method-card h3 { font-size: 1.4rem; }
+            .sprint-list { flex-direction: column; }
+            .step { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -135,60 +300,134 @@
             <a href="autre.html" class="nav-btn">Fondamentaux Maintenance</a>
             <a href="introduction.html" class="nav-btn">Introduction Générale</a>
             <a href="planification.html" class="nav-btn active">Planification & Scrum</a>
-            <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
-            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
-            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
+            <a href="pompe.html" class="nav-btn">Étude Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude Moteurs</a>
             <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
             <a href="contact.html" class="nav-btn">Contact</a>
         </div>
     </nav>
 
     <div class="container">
-        <h1>Planification du Projet - FMDS</h1>
+        <h1>📅 Planification & Méthodologie</h1>
+        <div style="text-align: center;">
+            <div class="subtitle">Agilité Scrum + Cycle en V pour une gestion rigoureuse et flexible</div>
+        </div>
 
-        <section>
-            <h3>1. Objectif et méthodologie choisie</h3>
-            <p>
-                Pour ce projet, nous avons adopté une approche hybride combinant la méthodologie Agile (Scrum) et le cycle en V. 
-                Cette combinaison permet de bénéficier de la flexibilité de Scrum pour les itérations rapides et de la rigueur du cycle en V pour la validation à chaque étape clé.
-            </p>
-        </section>
+        <!-- Section méthodologie hybride -->
+        <div class="method-grid">
+            <div class="method-card fade-up delay-1">
+                <div class="card-icon">🔄</div>
+                <h3>Scrum (Agile)</h3>
+                <p>Sprints de 2 semaines, revues quotidiennes, adaptation continue. Idéal pour itérations rapides sur les modèles IA et l'analyse FMDS.</p>
+            </div>
+            <div class="method-card fade-up delay-2">
+                <div class="card-icon">📐</div>
+                <h3>Cycle en V</h3>
+                <p>Vérification et validation à chaque phase : conception → réalisation → tests. Assure la robustesse des livrables.</p>
+            </div>
+            <div class="method-card fade-up delay-3">
+                <div class="card-icon">⚡</div>
+                <h3>Hybride Scrum‑V</h3>
+                <p>Les grandes phases suivent le cycle en V (besoins, conception, validation) tandis que le développement itératif utilise Scrum.</p>
+            </div>
+        </div>
 
-        <section>
-            <h3>2. Méthodologie Scrum</h3>
-            <p>
-                Scrum est une méthode agile basée sur des itérations courtes appelées sprints. 
-                Chaque sprint permet de livrer une partie fonctionnelle, favorisant la collaboration, la communication et l’adaptabilité aux changements.
-            </p>
-            <img src="srcum.png" alt="Méthodologie Scrum">
-        </section>
+        <!-- Timeline Scrum -->
+        <div class="timeline fade-up delay-2">
+            <h3>📌 Organisation des Sprints (Scrum)</h3>
+            <div class="sprint-list">
+                <div class="sprint-item">
+                    <div class="sprint-week">Sprint 1<br>(J1–J14)</div>
+                    <div class="sprint-title">Analyse FMDS & collecte données</div>
+                    <div>MTBF, Weibull, disponibilité, pré‑traitement</div>
+                </div>
+                <div class="sprint-item">
+                    <div class="sprint-week">Sprint 2<br>(J15–J28)</div>
+                    <div class="sprint-title">Modèles diagnostic</div>
+                    <div>Random Forest, SVM, optimisation seuil (batteries)</div>
+                </div>
+                <div class="sprint-item">
+                    <div class="sprint-week">Sprint 3<br>(J29–J42)</div>
+                    <div class="sprint-title">Pronostic RUL</div>
+                    <div>XGBoost, GRU, CNN+LSTM, comparaison</div>
+                </div>
+                <div class="sprint-item">
+                    <div class="sprint-week">Sprint 4<br>(J43–J56)</div>
+                    <div class="sprint-title">Généralisation</div>
+                    <div>Étude roulements + moteurs, AMDEC</div>
+                </div>
+                <div class="sprint-item">
+                    <div class="sprint-week">Sprint 5<br>(J57–J70)</div>
+                    <div class="sprint-title">Rédaction & portfolio</div>
+                    <div>Rapport final, page web, dépôt GitHub</div>
+                </div>
+            </div>
+        </div>
 
-        <section>
-            <h3>3. Cycle en V</h3>
-            <p>
-                Le cycle en V est une méthode structurée et linéaire qui garantit la vérification et la validation à chaque niveau. 
-                Il se décompose en trois grandes phases :
+        <!-- Cycle en V stylisé -->
+        <div class="v-cycle fade-up delay-3">
+            <h3>🔁 Cycle en V appliqué au projet</h3>
+            <div class="v-steps">
+                <div class="step">📌 Analyse besoins</div>
+                <div class="step">⚙️ Spécifications techniques</div>
+                <div class="step">🧠 Conception modèles IA</div>
+                <div class="step">💻 Développement (sprints)</div>
+                <div class="step">✅ Validation unitaire</div>
+                <div class="step">📊 Validation globale (test batteries/moteurs)</div>
+                <div class="step">📄 Livraison & documentation</div>
+            </div>
+            <p style="margin-top: 30px; color:#2c3e50; font-style:italic; text-align:center;">
+                Chaque phase du cycle en V a fait l’objet d’une validation croisée avec les données de test (split par unité), garantissant l’absence de fuite.
             </p>
-            <ul>
-                <li><strong>Conception :</strong> recherches préliminaires, définition des besoins et étude du projet.</li>
-                <li><strong>Réalisation :</strong> collecte et traitement des données, développement et entraînement des modèles IA.</li>
-                <li><strong>Validation :</strong> évaluation des performances, tests de robustesse et généralisation des modèles.</li>
+        </div>
+
+        <!-- Diagramme de Gantt interactif (image existante) -->
+        <div class="gantt-container fade-up delay-4">
+            <h3 style="color:#2c3e50; margin-bottom: 20px;">📊 Diagramme de Gantt – Suivi des tâches</h3>
+            <img src="newgantt.png" alt="Diagramme de Gantt détaillé du projet FMDS" loading="lazy">
+            <p style="margin-top: 16px; font-size: 0.9rem; color: #4a627a;">
+                Planification temporelle avec dépendances, jalons clés et répartition des sprints.
+            </p>
+        </div>
+
+        <!-- Outils collaboratifs et suivi -->
+        <div style="background: #eef2fa; border-radius: 24px; padding: 25px; margin-top: 30px;">
+            <h3 style="color: #1e4663;">🛠️ Outils de gestion utilisés</h3>
+            <ul style="display: flex; flex-wrap: wrap; gap: 30px; list-style: none; margin-top: 20px;">
+                <li>✅ <strong>GitHub</strong> – versionning du code et suivi des issues</li>
+                <li>✅ <strong>Trello / Notion</strong> – backlog, sprints, revues quotidiennes</li>
+                <li>✅ <strong>Google Drive</strong> – partage de rapports, figures et données</li>
+                <li>✅ <strong>Discord / Teams</strong> – réunions de synchronisation</li>
             </ul>
-            <img src="cyclev.png" alt="Cycle en V">
-        </section>
-
-        <section>
-            <h2>4. Planification visuelle du projet</h2>
-            <p>
-                Après avoir défini les méthodologies, nous avons utilisé un diagramme de Gantt pour planifier les tâches, identifier les dépendances, gérer les priorités et assurer un suivi efficace tout au long du projet.
-            </p>
-            <img src="newgantt.png" alt="Diagramme de Gantt">
-        </section>
+            <p style="margin-top: 20px;">Cette organisation a permis une livraison itérative et une réactivité face aux ajustements (ex : optimisation du seuil à 0,10 pour les batteries).</p>
+        </div>
 
         <div class="footer">
-            Projet FMDS – Maintenance Prédictive – Noujoud – Mars 2026
+            <p>© 2026  Projet FMDS & Maintenance Prédictive | Méthodologie Agile – Scrum & Cycle en V</p>
+            <p><a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank">🔗 Dépôt GitHub</a> | <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">⬆️ Haut de page</a></p>
         </div>
     </div>
 
+    <!-- Petit script pour déclencher les animations (déjà en CSS, mais on assure le fade-up) -->
+    <script>
+        // Ajoute la classe 'visible' pour les éléments fade-up s'ils sont déjà dans le viewport
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
