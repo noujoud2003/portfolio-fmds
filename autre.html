@@ -2,14 +2,43 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Fondamentaux de la Maintenance Industrielle | Noujoud</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -20,15 +49,17 @@
             animation: gradientAnimation 18s ease infinite;
             min-height: 100vh;
         }
+
+        /* NAVIGATION */
         .navbar {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
             padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
         }
         .nav-container {
             max-width: 1400px;
@@ -37,271 +68,387 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
+            padding: 0 20px;
         }
         .nav-btn {
             background: rgba(52, 152, 219, 0.25);
             color: #ecf0f1;
             border: 1px solid #3498db;
-            padding: 10px 16px;
-            border-radius: 25px;
+            padding: 10px 18px;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95em;
+            font-size: 0.9em;
             transition: all 0.3s ease;
+            letter-spacing: 0.3px;
         }
         .nav-btn:hover {
             background: #3498db;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
-        .active {
+        .nav-btn.active {
             background: #3498db !important;
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
         }
+
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 140px auto 80px;
-            padding: 40px 20px;
+            padding: 0 25px;
         }
+
         h1 {
-            color: white;
             text-align: center;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            margin-bottom: 50px;
-            font-size: 2.8em;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #b0e0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
         }
+
+        .subhead {
+            text-align: center;
+            color: #ecf0f1;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        /* GRID CARDS */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
+
         .card {
-            background: rgba(255,255,255,0.94);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(8px);
-            border-left: 5px solid #3498db;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border-left: 6px solid #3498db;
+            backdrop-filter: blur(2px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
         }
+
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(52,152,219,0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(52, 152, 219, 0.3);
+            border-left-color: #2ecc71;
         }
+
+        /* Animation différée pour chaque carte (via JS ou CSS nth-child, mais on va utiliser intersection observer plus tard) */
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+        .card:nth-child(4) { animation-delay: 0.2s; }
+        .card:nth-child(5) { animation-delay: 0.25s; }
+        .card:nth-child(6) { animation-delay: 0.3s; }
+        .card:nth-child(7) { animation-delay: 0.35s; }
+        .card:nth-child(8) { animation-delay: 0.4s; }
+
         .card h2 {
-            color: #3498db;
-            margin: 0 0 15px;
-            font-size: 1.5em;
+            color: #1e4663;
+            margin: 0 0 15px 0;
+            font-size: 1.65rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #e0e7ef;
+            padding-bottom: 10px;
         }
+
+        .card h2 span {
+            font-size: 2rem;
+        }
+
         .card p.summary {
-            color: #555;
-            font-size: 1.05em;
-            line-height: 1.5;
-            margin: 0 0 15px;
+            color: #2c3e50;
+            font-size: 1rem;
+            line-height: 1.55;
+            margin: 0 0 18px 0;
+            font-weight: 500;
         }
+
         .card ul {
-            margin: 10px 0 20px 20px;
-            color: #444;
+            margin: 12px 0 20px 20px;
+            color: #2c3e50;
+            list-style-type: none;
         }
-        .card .more-link {
+
+        .card ul li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+            line-height: 1.45;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 4px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .more-link {
             display: inline-block;
-            background: #3498db;
+            background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
-            padding: 10px 18px;
-            border-radius: 25px;
+            padding: 8px 20px;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.85rem;
             transition: all 0.3s;
+            margin-top: 5px;
         }
-        .card .more-link:hover {
-            background: #2980b9;
-            transform: scale(1.05);
+
+        .more-link:hover {
+            background: #1f618d;
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
+
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            background: rgba(0,0,0,0.05);
+            padding: 8px 14px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.2s;
+            width: fit-content;
+        }
+
+        .video-link:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Pied de page */
         .footer {
             text-align: center;
-            color: white;
-            padding: 40px;
-            opacity: 0.8;
-            font-size: 0.95em;
+            color: rgba(255,255,255,0.8);
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer a {
+            color: #b0e0ff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                margin-top: 180px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .card h2 {
+                font-size: 1.3rem;
+            }
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-btn">Accueil</a>
             <a href="autre.html" class="nav-btn active">Fondamentaux Maintenance</a>
             <a href="introduction.html" class="nav-btn">Introduction Générale</a>
             <a href="planification.html" class="nav-btn">Planification & Scrum</a>
-            <a href="pompe.html" class="nav-btn">Étude de cas 1 - Batteries</a>
-            <a href="roulement.html" class="nav-btn">Étude de cas 2 - Roulements</a>
-            <a href="moteur.html" class="nav-btn">Étude de cas 3 - Moteurs</a>
+            <a href="pompe.html" class="nav-btn">Étude Batteries</a>
+            <a href="roulement.html" class="nav-btn">Étude Roulements</a>
+            <a href="moteur.html" class="nav-btn">Étude Moteurs</a>
             <a href="conclusion.html" class="nav-btn">Conclusion Générale</a>
             <a href="contact.html" class="nav-btn">Contact</a>
         </div>
     </nav>
 
     <div class="container">
-        <h1>Fondamentaux de la Maintenance Industrielle</h1>
+        <h1>📘 Fondamentaux de la Maintenance Industrielle</h1>
+        <div class="subhead">Concepts clés, méthodes modernes & ressources opérationnelles</div>
+
         <div class="grid">
-
+            <!-- Carte 1 : Généralités -->
             <div class="card">
-                <h2>1. Généralités</h2>
-                <p class="summary">La maintenance industrielle regroupe toutes les actions visant à maintenir ou rétablir un équipement dans un état permettant d’assurer sa fonction requise. Elle est essentielle pour garantir la fiabilité, la disponibilité et la sécurité des installations tout en maîtrisant les coûts.</p>
+                <h2><span>📌</span> 1. Généralités</h2>
+                <p class="summary">La maintenance regroupe toutes les actions techniques, administratives et de management visant à maintenir ou rétablir un bien dans un état capable d’accomplir une fonction requise (AFNOR).</p>
                 <ul>
-                    <li><strong>Définition & historique</strong> : Apparue avec l’industrialisation, elle est passée du réactif (après panne) au proactif depuis les années 1950-60 (AFNOR NF X 60-000).</li>
-                    <li><strong>Types principaux</strong> : corrective (après défaillance), préventive (planifiée), prédictive (basée sur l’état réel), et conditionnelle.</li>
-                    <li><strong>Normes clés</strong> : ISO 55000 (gestion des actifs), NF EN 13306 (terminologie), AFNOR X 60-010 (niveaux d’intervention).</li>
+                    <li><strong>Définition & historique</strong> : Évolution du correctif → préventif → prédictif (Industrie 4.0).</li>
+                    <li><strong>Types principaux</strong> : corrective, préventive systématique, conditionnelle, prédictive.</li>
+                    <li><strong>Normes essentielles</strong> : ISO 55000 (gestion d’actifs), NF EN 13306 (terminologie).</li>
                 </ul>
-                <a href="https://fr.wikipedia.org/wiki/Maintenance" target="_blank" class="more-link">En savoir plus</a>
+                <a href="https://fr.wikipedia.org/wiki/Maintenance" target="_blank" class="more-link">📖 Documentation AFNOR →</a>
             </div>
 
+            <!-- Carte 2 : Maintenance 4.0 & GMAO -->
             <div class="card">
-                <h2>2. Maintenance 4.0 & GMAO</h2>
-                <p class="summary">La Maintenance 4.0 exploite l’IoT, le Big Data, le cloud et l’IA pour transformer la maintenance en processus connecté, intelligent et proactif. Les GMAO modernes centralisent les données, automatisent les workflows et facilitent la prise de décision en temps réel.</p>
+                <h2><span>⚙️</span> 2. Maintenance 4.0 & GMAO</h2>
+                <p class="summary">La GMAO (Gestion de Maintenance Assistée par Ordinateur) est le pivot de la maintenance 4.0 : IoT, big data, IA et cloud pour anticiper les pannes.</p>
                 <ul>
-                    <li><strong>Outils phares</strong> : SAP PM/EAM, Fiix, UpKeep, IBM Maximo, Mobility Work.</li>
-                    <li><strong>Avantages majeurs</strong> : Réduction des arrêts non planifiés (30-50 %), optimisation des stocks et meilleure traçabilité.</li>
-                    <li><strong>Exemples concrets</strong> : Siemens avec MindSphere pour la surveillance connectée, Schneider Electric via EcoStruxure pour une maintenance augmentée.</li>
+                    <li><strong>Outils leaders</strong> : IBM Maximo, SAP PM, Fiix, Mobility Work, UpKeep.</li>
+                    <li><strong>Bénéfices</strong> : −30% coûts, −70% pannes imprévues, traçabilité totale.</li>
+                    <li><strong>Exemples</strong> : Siemens MindSphere, Schneider Electric EcoStruxure.</li>
                 </ul>
-                <a href="https://www.ibm.com/topics/maintenance-4-0" target="_blank" class="more-link">En savoir plus</a>
-                <!-- LIEN VIDÉO DISCRET -->
-          <p style="margin-top: 15px; font-size: 1.1em;"> 
-            🎥 <a href="https://youtu.be/2hLLxCEbcTk" target="_blank" style="color: black; text-decoration: underline; font-weight: 600;">
-                  Voir la vidéo explicative : Qu'est-ce que la GMAO ?
-             </a>
-         </p>
-                 <p style="margin-top: 15px; font-size: 1.1em;"> 
-            🎥 <a href="https://youtu.be/szX40MdBUFA" target="_blank" style="color: black; text-decoration: underline; font-weight: 600;">
-                  Voir la vidéo explicative : Qu'est-ce que la maintenance 4.0?
-             </a>
-         </p>
+                <a href="https://www.ibm.com/topics/maintenance-4-0" target="_blank" class="more-link">🔍 Maintenance 4.0 expliquée</a>
+                <div>
+                    <a href="https://youtu.be/2hLLxCEbcTk" target="_blank" class="video-link">🎥 Qu'est-ce que la GMAO ?</a>
+                    <a href="https://youtu.be/szX40MdBUFA" target="_blank" class="video-link">🎥 Maintenance 4.0 en pratique</a>
+                </div>
             </div>
 
+            <!-- Carte 3 : Lean Maintenance -->
             <div class="card">
-                <h2>3. Lean Maintenance</h2>
-                <p class="summary">Inspirée du Lean Manufacturing, la Lean Maintenance élimine les gaspillages (temps perdu, sur-maintenance, stocks inutiles) pour maximiser l’efficacité des processus de maintenance avec un minimum de ressources.</p>
+                <h2><span>📉</span> 3. Lean Maintenance</h2>
+                <p class="summary">Élimination des gaspillages (temps, stocks, sur‑maintenance) pour améliorer la valeur ajoutée, inspirée du Lean Manufacturing.</p>
                 <ul>
-                    <li><strong>Outils essentiels</strong> : TPM (maintenance productive totale), 5S (organisation), RCM (maintenance centrée sur la fiabilité), Lean Six Sigma.</li>
-                    <li><strong>Principes clés</strong> : Implication des opérateurs (maintenance autonome), amélioration continue (Kaizen), réduction des temps morts.</li>
-                    <li><strong>Exemples d’impact</strong> : Réduction de 20-40 % des temps de recherche grâce au 5S, hausse de l’OEE via TPM dans l’automobile et l’aéronautique.</li>
+                    <li><strong>Outils clés</strong> : TPM (Total Productive Maintenance), 5S, RCM, Kaizen.</li>
+                    <li><strong>Principes</strong> : maintenance autonome par les opérateurs, amélioration continue, réduction des temps d’arrêt.</li>
+                    <li><strong>Résultats typiques</strong> : +20% OEE, −40% temps de recherche (5S).</li>
                 </ul>
-                <a href="https://www.leanproduction.com/tpm.html" target="_blank" class="more-link">En savoir plus</a>
-
-              <p style="margin-top: 15px; font-size: 1.1em;"> 
-            🎥 <a href="https://www.youtube.com/watch?v=gmjilLL8xk8&pp=ygUPbGVhbiBtYWludGVuYWNl" target="_blank" style="color: black; text-decoration: underline; font-weight: 600;">
-                  Voir la vidéo explicative : Qu'est-ce que lean maintenance ?
-             </a>
-         </p>
-            </div>
-            <div class="card">
-                <h2>4. Maintenance Prédictive</h2>
-                <p class="summary">Basée sur l’analyse de données en temps réel, la maintenance prédictive anticipe les défaillances avant qu’elles ne surviennent, permettant d’intervenir au moment optimal et d’éviter les arrêts imprévus coûteux.</p>
-                <ul>
-                    <li><strong>Techniques courantes</strong> : Analyse vibratoire (usure roulements), thermographie infrarouge (surchauffe), ultrasons (fuites), analyse d’huile.</li>
-                    <li><strong>Outils & technologies</strong> : Capteurs IoT, Python (scikit-learn), TensorFlow/Keras pour l’IA, MATLAB pour le signal.</li>
-                    <li><strong>Bénéfices</strong> : Réduction de 25-40 % des coûts de maintenance, jusqu’à 70 % des pannes imprévues évitées.</li>
-                </ul>
-                <a href="https://www.ibm.com/topics/predictive-maintenance" target="_blank" class="more-link">En savoir plus</a>
-         
-             <p style="margin-top: 15px; font-size: 1.1em;"> 
-            🎥 <a href="https://youtu.be/RmVWKLbLq2Y?list=PLldSvyce5wd7kKt0p4hUT9FTH66NZat1_" target="_blank" style="color: black; text-decoration: underline; font-weight: 600;">
-                  Voir la vidéo explicative : Qu'est-ce que  maintenance prédective ?
-             </a>
-         </p>
-   </div>
-            <div class="card">
-                <h2>5. Pronostic & PHM (Prognostics and Health Management)</h2>
-                <p class="summary">Le PHM va au-delà de la détection : il estime la durée de vie restante (RUL) des composants et optimise les décisions de maintenance grâce à des modèles avancés, améliorant sécurité et rentabilité.</p>
-                <ul>
-                    <li><strong>Approches</strong> : Modèles physiques (basés sur lois physiques), data-driven (machine learning), hybrides (combinaison des deux).</li>
-                    <li><strong>Applications typiques</strong> : Aéronautique (moteurs d’avion), énergie (éoliennes, turbines à gaz), ferroviaire et défense.</li>
-                    <li><strong>Avantages</strong> : Planification optimisée, réduction des coûts logistiques, augmentation de la disponibilité des systèmes critiques.</li>
-                </ul>
-                <a href="https://phmsociety.org/" target="_blank" class="more-link">En savoir plus</a>
-           
-             <p style="margin-top: 15px; font-size: 1.1em;"> 
-            🎥 <a href="https://youtu.be/1P36k2QfauY" target="_blank" style="color: black; text-decoration: underline; font-weight: 600;">
-                  Voir la vidéo explicative : Qu'est-ce que Pronostic & PHM (Prognostics and Health Management) ?
-             </a>
-         </p>
-             </div>
-
-            <div class="card">
-                <h2>6. Management énergétique ISO 50001</h2>
-                <p class="summary">La norme ISO 50001 fournit un cadre structuré pour mettre en place un système de management de l’énergie (SME) visant l’amélioration continue de la performance énergétique, avec des gains économiques et environnementaux mesurables.</p>
-                <ul>
-                    <li><strong>Principes fondamentaux</strong> : Politique énergétique, audits, indicateurs de performance (EnPI), cycle PDCA (Plan-Do-Check-Act).</li>
-                    <li><strong>Bénéfices observés</strong> : Réduction de 5-20 % de la consommation énergétique, baisse des émissions CO₂, retour sur investissement rapide.</li>
-                </ul>
-                <a href="https://www.iso.org/standard/69426.html" target="_blank" class="more-link">En savoir plus</a>
-           
-             <p style="margin-top: 15px; font-size: 1.1em;"> 
-            🎥 <a href="https://youtu.be/yjen38DuWSQ" target="_blank" style="color: black; text-decoration: underline; font-weight: 600;">
-                  Voir la vidéo explicative : Qu'est-ce queManagement énergétique ISO 50001   ?
-             </a>
-         </p>
- </div>
-            <div class="card">
-                <h2>7. Conclusion & Perspectives</h2>
-                <p class="summary">La maintenance évolue rapidement vers des systèmes intelligents et autonomes. Les concepts actuels (prédictif, PHM, Lean) convergent vers une maintenance stratégique, soutenue par le numérique, pour une compétitivité accrue.</p>
-                <ul>
-                    <li><strong>Digital Twin</strong> : Jumeaux numériques pour simuler, tester et optimiser les équipements en virtuel.</li>
-                    <li><strong>Maintenance autonome</strong> : Systèmes auto-diagnostiqués et auto-réparants via IA et robotique.</li>
-                    <li><strong>Autres tendances</strong> : Réalité augmentée pour la formation, maintenance prescriptive, blockchain pour la traçabilité.</li>
-                </ul>
-                <a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank" class="more-link">En savoir plus</a>
+                <a href="https://www.leanproduction.com/tpm.html" target="_blank" class="more-link">📘 Lean Maintenance & TPM</a>
+                <a href="https://www.youtube.com/watch?v=gmjilLL8xk8" target="_blank" class="video-link">🎥 Comprendre Lean Maintenance</a>
             </div>
 
+            <!-- Carte 4 : Maintenance Prédictive -->
+            <div class="card">
+                <h2><span>🔮</span> 4. Maintenance Prédictive</h2>
+                <p class="summary">Basée sur l’analyse de données réelles (vibrations, températures, courant) pour anticiper les défaillances et planifier l’intervention au bon moment.</p>
+                <ul>
+                    <li><strong>Techniques</strong> : analyse vibratoire, thermographie, ultrasons, analyse d’huile.</li>
+                    <li><strong>Stack technologique</strong> : capteurs IoT, Python (scikit-learn, XGBoost), TensorFlow.</li>
+                    <li><strong>Bénéfices</strong> : −25 à 40% coûts, +20% disponibilité, réduction des pannes critiques.</li>
+                </ul>
+                <a href="https://www.ibm.com/topics/predictive-maintenance" target="_blank" class="more-link">📡 Guide maintenance prédictive</a>
+                <a href="https://youtu.be/RmVWKLbLq2Y" target="_blank" class="video-link">🎥 Qu’est-ce que la maintenance prédictive ?</a>
+            </div>
+
+            <!-- Carte 5 : PHM & Pronostic RUL -->
+            <div class="card">
+                <h2><span>⏳</span> 5. PHM & Pronostic (RUL)</h2>
+                <p class="summary">Le Prognostics and Health Management (PHM) estime la durée de vie restante (Remaining Useful Life) et permet une maintenance pro-active.</p>
+                <ul>
+                    <li><strong>Approches</strong> : modèles physiques, data-driven (ML/DL), hybrides.</li>
+                    <li><strong>Applications</strong> : aéronautique (moteurs), éoliennes, batteries, défense.</li>
+                    <li><strong>Métriques clés</strong> : R², RMSE, MAE, Score RUL personnalisé.</li>
+                </ul>
+                <a href="https://phmsociety.org/" target="_blank" class="more-link">🌐 PHM Society (ressources)</a>
+                <a href="https://youtu.be/1P36k2QfauY" target="_blank" class="video-link">🎥 Qu’est-ce que le PHM ?</a>
+            </div>
+
+            <!-- Carte 6 : Management énergétique ISO 50001 -->
+            <div class="card">
+                <h2><span>⚡</span> 6. ISO 50001 – Énergie</h2>
+                <p class="summary">Norme internationale pour un Système de Management de l’Énergie (SME), axée sur l’amélioration continue de la performance énergétique.</p>
+                <ul>
+                    <li><strong>Démarche</strong> : politique énergétique, planification, audits, indicateurs EnPI.</li>
+                    <li><strong>Résultats concrets</strong> : réduction 5‑20% consommation, baisse CO₂, ROI rapide.</li>
+                    <li><strong>Liens avec maintenance</strong> : efficacité équipements → réduction des déperditions.</li>
+                </ul>
+                <a href="https://www.iso.org/standard/69426.html" target="_blank" class="more-link">📄 ISO 50001 officiel</a>
+                <a href="https://youtu.be/yjen38DuWSQ" target="_blank" class="video-link">🎥 Explication ISO 50001</a>
+            </div>
+
+            <!-- Carte 7 : Perspectives (Digital Twin, IA) -->
+            <div class="card">
+                <h2><span>🚀</span> 7. Perspectives & Tendances</h2>
+                <p class="summary">La maintenance se dirige vers l’autonomie grâce aux jumeaux numériques, à l’IA générative et à la maintenance prescriptive.</p>
+                <ul>
+                    <li><strong>Digital Twin</strong> : simulation en temps réel, test virtuel des interventions.</li>
+                    <li><strong>Maintenance autonome</strong> : systèmes auto‑diagnostiqués, robotique.</li>
+                    <li><strong>Prescriptive maintenance</strong> : recommandations d’actions avec analyse causale.</li>
+                    <li><strong>Blockchain</strong> : traçabilité des interventions et des pièces.</li>
+                </ul>
+                <a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank" class="more-link">🔗 En savoir plus sur Digital Twin</a>
+            </div>
+
+            <!-- Carte 8 : Annexes & ressources téléchargeables (enrichie) -->
             <div class="card" id="annexes">
-                <h2>8. Annexes</h2>
-                <p class="summary">Ressources pratiques pour approfondir les fondamentaux : glossaire détaillé, checklists d'audit, templates Excel/PDF, normes et outils recommandés. Ces documents aident à appliquer concrètement les concepts vus dans le portfolio.</p>
+                <h2><span>📎</span> 8. Annexes – Boîte à outils</h2>
+                <p class="summary">Glossaire, checklists, templates Excel et normes pour passer à l’action.</p>
                 <ul>
-                    <li><strong>Glossaire</strong> : MTBF (Mean Time Between Failures), MTTR (Mean Time To Repair), RUL (Remaining Useful Life), OEE (Overall Equipment Effectiveness), TPM (Total Productive Maintenance), RCM (Reliability Centered Maintenance), GMAO (Gestion de Maintenance Assistée par Ordinateur).  
-                        → Explications détaillées : <a href="https://www.emaint.com/blog-the-7-most-important-maintenance-metrics" target="_blank">eMaint Metrics</a></li>
-                    
-                    <li><strong>Checklists & templates</strong> :
-                        <ul>
-                            <li>Audit 5S → <a href="https://citoolkit.com/wp-content/uploads/templates/5s_audit_checklist_manufacturing.pdf" target="_blank">Modèle PDF gratuit (CIToolkit)</a></li>
-                            <li>Audit 5S+1 (avec maintenance) → <a href="https://www.creationtech.com/wp-content/uploads/2020/11/5S1-self-assessment-Rev-A.xlsx" target="_blank">Fichier Excel audit</a></li>
-                        </ul>
+                    <li><strong>Glossaire essentiel</strong> : MTBF, MTTR, RUL, OEE, TPM, RCM, GMAO.</li>
+                    <li><strong>Checklists audit 5S</strong> : 
+                        <a href="https://citoolkit.com/wp-content/uploads/templates/5s_audit_checklist_manufacturing.pdf" target="_blank">PDF gratuit (CIToolkit)</a> & 
+                        <a href="https://www.creationtech.com/wp-content/uploads/2020/11/5S1-self-assessment-Rev-A.xlsx" target="_blank">Excel interactif</a>
                     </li>
-                    
-                    <li><strong>Fiche d’intervention maintenance</strong> → Modèles gratuits :
-                        <ul>
-                            <li><a href="https://fr.organilog.com/2092-fiche-intervention-rapport" target="_blank">Modèle PDF/Word (Organilog)</a></li>
-                            <li><a href="https://www.terresnumeriques.com/blog/le-blog-de-terres-numeriques-7/fiche-intervention-modele-gratuit-13" target="_blank">Modèle Kizeo Forms (personnalisable)</a></li>
-                        </ul>
+                    <li><strong>Fiche d’intervention maintenance</strong> : 
+                        <a href="https://fr.organilog.com/2092-fiche-intervention-rapport" target="_blank">Modèle Organilog</a> | 
+                        <a href="https://www.terresnumeriques.com/blog/le-blog-de-terres-numeriques-7/fiche-intervention-modele-gratuit-13" target="_blank">Kizeo Forms</a>
                     </li>
-                    
-                    <li><strong>Plan de maintenance préventive</strong> (calendrier / Gantt) :
-                        <ul>
-                            <li><a href="https://www.getsockeye.com/blog/preventive-maintenance-schedule-template" target="_blank">Templates Excel avancés (Sockeye)</a></li>
-                            <li><a href="https://www.template.net/schedule/maintenance/excel" target="_blank">Plusieurs modèles gratuits (Template.net)</a></li>
-                        </ul>
+                    <li><strong>Plan de maintenance préventive (Excel)</strong> : 
+                        <a href="https://www.getsockeye.com/blog/preventive-maintenance-schedule-template" target="_blank">Sockeye templates</a>
                     </li>
-                    
-                    <li><strong>Normes essentielles</strong> : ISO 55000, ISO 50001, NF EN 13306, AFNOR X60 → Pages officielles : <a href="https://www.iso.org" target="_blank">ISO.org</a> / <a href="https://www.afnor.org" target="_blank">AFNOR</a></li>
-                    
-                    <li><strong>Outils recommandés</strong> : Python (pandas, scikit-learn pour analyse prédictive), Grafana + InfluxDB (monitoring temps réel), Power BI (dashboards KPI comme OEE/MTBF).</li>
-                    
-                    <li><strong>Sites de référence</strong> : 
-                        <a href="https://www.afnor.org" target="_blank">AFNOR</a> | 
-                        <a href="https://phmsociety.org" target="_blank">PHM Society</a> | 
-                        <a href="https://www.reliabilityweb.com" target="_blank">Reliabilityweb</a>
-                    </li>
+                    <li><strong>Normes ISO / AFNOR</strong> : <a href="https://www.iso.org" target="_blank">ISO.org</a> | <a href="https://www.afnor.org" target="_blank">AFNOR</a></li>
+                    <li><strong>Outils recommandés</strong> : Python + scikit‑learn, Grafana + InfluxDB, Power BI.</li>
                 </ul>
-                <p style="font-style:italic; margin-top:20px; color:#555;">
-                    Ces liens mènent à des ressources gratuites et téléchargeables. Pour des versions personnalisées (adaptées à un secteur spécifique, avec mes exemples ou calculs avancés), contacte-moi via la page Contact !
+                <p style="margin-top: 15px; background: #eef2f9; padding: 8px 12px; border-radius: 16px; font-size:0.9rem;">
+                    📌 Ces liens mènent vers des ressources gratuites. Pour des versions personnalisées à votre secteur, contactez‑moi !
                 </p>
             </div>
-
         </div>
     </div>
 
     <div class="footer">
-        Portfolio – Noujoud – Mars 2026<br>
-        <a href="https://github.com/noujoud2003/portfolio-fmds" style="color:#3498db; text-decoration:none;">GitHub</a>
+        Portfolio – Noujoud Ouni – Master Industrie 4.0 (ENSIT)<br>
+        <a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank">🔗 GitHub du projet</a> | 
+        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">⬆️ Haut de page</a>
     </div>
+
+    <!-- Petit script pour assurer l'animation visible au scroll (amélioration) -->
+    <script>
+        (function() {
+            // Force l'opacité finale après chargement (les animations CSS sont déjà actives)
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.opacity = '1';
+            });
+
+            // Optionnel : animation supplémentaire au scroll (révéler les cartes au fur et à mesure)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // On observe chaque carte (si déjà visible, elle sera déjà active)
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        })();
+    </script>
 </body>
 </html>
