@@ -906,7 +906,100 @@
                 <p class="image-caption"><strong>Figure A.7:</strong> Évolution du RUL réel vs prédit par le réseau de neurones pour plusieurs moteurs de test.</p>
             </div>
         </section>
+<!-- SECTION LIMITES ET PERSPECTIVES -->
+<section>
+    <h2>⚠️ Limites et Perspectives d’Amélioration</h2>
 
+    <div class="intro-box">
+        <h3>📌 Retour d’expérience sur l’étude</h3>
+        <p>Bien que les résultats obtenus soient très satisfaisants (Random Forest à 92,3%, réseau de neurones MAE = 12,1 cycles), plusieurs limites ont été identifiées. Elles ouvrent des perspectives concrètes pour une version industrielle plus robuste.</p>
+    </div>
+
+    <div class="results-grid">
+        <!-- Limites -->
+        <div class="result-card" style="border-top: 4px solid #e74c3c;">
+            <h4>❌ Limites actuelles</h4>
+            <ul style="line-height: 1.7; margin-left: 20px;">
+                <li><strong>Données simulées :</strong> Les signaux vibratoires ont été générés sous MATLAB ; ils ne reflètent pas toutes les non‑linéarités du réel.</li>
+                <li><strong>Validation uniquement sur NASA C‑MAPSS :</strong> Pas de test sur d’autres jeux (FEMTO, IMS, etc.).</li>
+                <li><strong>Fenêtre fixe de 50 cycles :</strong> Non optimisée pour tous les régimes de dégradation.</li>
+                <li><strong>Clipping à 125 cycles :</strong> Perte d’information sur les moteurs sains en début de vie.</li>
+                <li><strong>Absence de capteurs multiples :</strong> Seules les vibrations sont utilisées (température, courant, acoustique pourraient améliorer la robustesse).</li>
+            </ul>
+        </div>
+
+        <!-- Perspectives -->
+        <div class="result-card" style="border-top: 4px solid #27ae60;">
+            <h4>🚀 Perspectives d’amélioration</h4>
+            <ul style="line-height: 1.7; margin-left: 20px;">
+                <li><strong>Données réelles :</strong> Tester sur des bancs d’essai industriels (FEMTO, PRONOSTIA).</li>
+                <li><strong>Optimisation des hyperparamètres :</strong> Utiliser Optuna ou GridSearch pour le réseau de neurones.</li>
+                <li><strong>Fenêtre dynamique :</strong> Recherche automatique de la longueur de séquence optimale.</li>
+                <li><strong>Modèles hybrides :</strong> Combiner CNN + LSTM + attention pour améliorer le pronostic.</li>
+                <li><strong>Intégration IoT :</strong> Déployer sur une carte embarquée (Raspberry Pi) avec acquisition temps réel.</li>
+                <li><strong>Digital twin :</strong> Coupler le modèle de pronostic à un jumeau numérique du roulement.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="key-findings">
+        <h4>📊 Feuille de route recommandée (3 phases)</h4>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Actions prioritaires</th>
+                        <th>Impact attendu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Court terme<br>(1‑3 mois)</strong></div>
+                        <td>
+                            • Valider sur dataset FEMTO Bearing<br>
+                            • Optimiser la fenêtre temporelle<br>
+                            • Mettre en place une API Flask pour les prédictions
+                         </div>
+                        <td>
+                            Gain de précision (MAE < 10 cycles)<br>
+                            Pré‑déploiement industriel
+                         </div>
+                    </tr>
+                    <tr>
+                        <td><strong>Moyen terme<br>(3‑6 mois)</strong></div>
+                        <td>
+                            • Ajouter des capteurs de température et courant<br>
+                            • Implémenter un mécanisme d’attention<br>
+                            • Développer un dashboard Grafana temps réel
+                         </div>
+                        <td>
+                            Meilleure interprétabilité<br>
+                            Surveillance en continu
+                         </div>
+                    </tr>
+                    <tr>
+                        <td><strong>Long terme<br>(6‑12 mois)</strong></div>
+                        <td>
+                            • Intégration dans un système embarqué (Edge AI)<br>
+                            • Transfer learning vers d’autres types de roulements<br>
+                            • Lien avec un ERP pour la gestion des stocks
+                         </div>
+                        <td>
+                            Solution industrialisée<br>
+                            Réduction des coûts de maintenance
+                         </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="conclusion-box">
+        <h4>💡 Conclusion sur les perspectives</h4>
+        <p>Les limites actuelles (données simulées, validation mono‑source) sont classiques dans un projet académique. Elles ne remettent pas en cause la qualité des modèles, mais indiquent clairement les axes à creuser pour une transposition industrielle. La feuille de route proposée permet de passer d’une preuve de concept à un outil opérationnel de maintenance prédictive.</p>
+    </div>
+</section>
         <!-- Conclusion -->
         <section>
             <div class="conclusion-box">
