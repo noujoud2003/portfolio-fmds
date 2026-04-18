@@ -11,24 +11,30 @@
             box-sizing: border-box;
         }
 
-        /* Variables CSS */
-        :root {
-            --primary: #3498db;
-            --primary-dark: #2980b9;
-            --secondary: #2ecc71;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --gradient-start: #0f2027;
-            --gradient-mid: #203a43;
-            --gradient-end: #2c5364;
+        /* Utilisation de l'ancienne photo comme fond principal */
+        body {
+            font-family: 'Segoe UI', 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background: url('main.png') no-repeat center center fixed;
+            background-size: cover;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            position: relative;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Assombrissement léger pour la lisibilité */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: -1;
         }
 
+        /* Animation fadeInUp pour les éléments */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -43,49 +49,6 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        body {
-            font-family: 'Segoe UI', 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
-            background-size: 200% 200%;
-            animation: gradientMove 15s ease infinite;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -111,8 +74,8 @@
         }
         .nav-btn {
             background: rgba(52, 152, 219, 0.2);
-            color: var(--light);
-            border: 1px solid var(--primary);
+            color: #ecf0f1;
+            border: 1px solid #3498db;
             padding: 10px 20px;
             border-radius: 40px;
             text-decoration: none;
@@ -122,12 +85,12 @@
             letter-spacing: 0.3px;
         }
         .nav-btn:hover {
-            background: var(--primary);
+            background: #3498db;
             transform: translateY(-2px);
             box-shadow: 0 6px 14px rgba(52,152,219,0.4);
         }
         .nav-btn.active {
-            background: var(--primary);
+            background: #3498db;
             box-shadow: 0 6px 14px rgba(52,152,219,0.5);
         }
 
@@ -140,12 +103,14 @@
             text-align: center;
             position: relative;
             padding: 120px 20px 80px;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: brightness(0.85);
         }
         .hero-content {
             max-width: 1100px;
             animation: fadeInUp 1s ease-out;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 50px 40px;
         }
         .hero h1 {
             font-size: 3.8rem;
@@ -172,7 +137,7 @@
         .btn-scroll {
             display: inline-block;
             margin-top: 40px;
-            background: var(--primary);
+            background: #3498db;
             color: white;
             padding: 12px 30px;
             border-radius: 50px;
@@ -182,7 +147,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         .btn-scroll:hover {
-            background: var(--primary-dark);
+            background: #2980b9;
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(52,152,219,0.5);
         }
@@ -198,17 +163,18 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 50px;
-            color: var(--light);
+            color: #ecf0f1;
             position: relative;
             display: inline-block;
             width: 100%;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         .section-title:after {
             content: '';
             display: block;
             width: 80px;
             height: 4px;
-            background: var(--secondary);
+            background: #2ecc71;
             margin: 15px auto 0;
             border-radius: 4px;
         }
@@ -247,7 +213,7 @@
         }
         .project-card h3 {
             font-size: 1.8rem;
-            color: var(--dark);
+            color: #2c3e50;
             margin-bottom: 15px;
         }
         .project-card p {
@@ -256,7 +222,7 @@
             margin: 15px 0;
         }
         .badge-result {
-            background: var(--primary);
+            background: #3498db;
             color: white;
             padding: 6px 14px;
             border-radius: 40px;
@@ -268,14 +234,14 @@
         .btn-card {
             display: inline-block;
             margin-top: 20px;
-            color: var(--primary);
+            color: #3498db;
             text-decoration: none;
             font-weight: 700;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 2px solid #3498db;
             transition: 0.2s;
         }
         .btn-card:hover {
-            color: var(--primary-dark);
+            color: #2980b9;
             letter-spacing: 0.5px;
         }
 
@@ -288,7 +254,7 @@
             margin: 50px 0;
         }
         .stat-item {
-            background: rgba(255,255,255,0.12);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(8px);
             border-radius: 32px;
             padding: 30px 25px;
@@ -301,17 +267,17 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--secondary);
+            color: #2ecc71;
             display: block;
         }
         .stat-label {
             font-size: 1rem;
-            color: var(--light);
+            color: #ecf0f1;
             font-weight: 500;
         }
         .stat-item:hover {
             transform: scale(1.03);
-            background: rgba(255,255,255,0.2);
+            background: rgba(0, 0, 0, 0.75);
         }
 
         /* Logo ENSIT flottant */
@@ -336,7 +302,7 @@
 
         /* Footer */
         .footer {
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.7);
             backdrop-filter: blur(8px);
             text-align: center;
             padding: 35px 20px;
@@ -366,6 +332,7 @@
             .section-title { font-size: 1.9rem; }
             .faculty-logo { width: 75px; top: 75px; right: 15px; }
             .nav-btn { padding: 6px 14px; font-size: 0.75rem; }
+            .hero-content { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -388,7 +355,7 @@
     <!-- Logo ENSIT -->
     <img src="ensit-logo.jpg" alt="ENSIT - École Nationale Supérieure d'Ingénieurs de Tunis" class="faculty-logo">
 
-    <!-- Hero -->
+    <!-- Hero section avec ancienne photo en fond (déjà sur body) -->
     <section class="hero">
         <div class="hero-content">
             <h1>FMDS & Maintenance Prédictive</h1>
@@ -500,7 +467,7 @@
     <!-- Section valeur ajoutée -->
     <div class="container reveal">
         <h2 class="section-title">💎 Ce que ce projet apporte</h2>
-        <div style="background: rgba(255,255,255,0.1); border-radius: 32px; padding: 30px; text-align: center; backdrop-filter: blur(8px);">
+        <div style="background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); border-radius: 32px; padding: 30px; text-align: center;">
             <p style="font-size: 1.2rem; color: #f0f4f8; max-width: 900px; margin: 0 auto;">
                 Une méthodologie unifiée (FMDS → diagnostic → pronostic) validée sur trois cas réels avec des jeux de données publics. 
                 Optimisation des seuils pour prioriser la sécurité (recall critique 95,6% pour batteries, 100% pour moteurs). 
@@ -530,10 +497,6 @@
             });
         }, { threshold: 0.2 });
         revealElements.forEach(el => observer.observe(el));
-
-        // Pour les cartes de projet déjà animées avec fadeInUp, on les laisse, mais on ajoute une petite amélioration
-        // Aucun conflit
-        console.log("Page d'accueil améliorée avec animations et design professionnel");
     </script>
 </body>
 </html>
