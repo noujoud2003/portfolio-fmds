@@ -251,13 +251,13 @@ body {
         <!-- INTRODUCTION -->
         <section>
             <div class="intro-box">
-                <h3>📌 Introduction – Pourquoi prédire le RUL ?</h3>
+                <h3> Introduction – Pourquoi prédire le RUL ?</h3>
                 <p>Les batteries lithium-ion (NMC-LCO 18650 – 2.8 Ah) sont essentielles dans les véhicules électriques, le stockage d'énergie renouvelable et les systèmes critiques. Prédire leur durée de vie restante (RUL) permet d'anticiper les pannes, d'optimiser la maintenance prédictive et de prolonger leur usage en seconde vie.</p>
                 
                
 
                 <div style="margin-top: 25px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;">
-                    <p><strong>📂 Dataset :</strong> Hawaii Natural Energy Institute – 14 cellules – plus de 1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.</p>
+                    <p><strong> Dataset :</strong> Hawaii Natural Energy Institute – 14 cellules – plus de 1000 cycles à 25°C – Charge C/2 – Décharge 1.5C.</p>
                     <a href="Battery_RUL.csv" class="download-btn" download>📥 Télécharger le Dataset</a>
                 </div>
             </div>
@@ -265,15 +265,15 @@ body {
 
         <!-- SECTION FMDS COMPLÈTE -->
         <section>
-            <h2>📊 1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
+            <h2>1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
             
             <div class="intro-box">
-                <h3>🎯 Objectif de l'Analyse FMDS</h3>
+                <h3> Objectif de l'Analyse FMDS</h3>
                 <p>L'analyse FMDS permet d'évaluer quantitativement la performance des batteries lithium-ion à travers quatre dimensions interdépendantes : <strong>Fiabilité</strong>, <strong>Maintenabilité</strong>, <strong>Disponibilité</strong> et <strong>Sécurité</strong>.</p>
             </div>
 
             <div class="key-findings">
-                <h4>📋 Résultats Clés FMDS</h4>
+                <h4> Résultats Clés FMDS</h4>
                 <div class="results-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                     <div class="result-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
                         <h4>MTBF</h4>
@@ -298,15 +298,15 @@ body {
                 </div>
             </div>
 
-            <h3>📋 Indicateurs FMDS Détaillés</h3>
+            <h3> Indicateurs FMDS Détaillés</h3>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>📊 Indicateur</th>
-                            <th>📈 Valeur</th>
-                            <th>💡 Interprétation</th>
-                            <th>📊 Performance</th>
+                            <th> Indicateur</th>
+                            <th> Valeur</th>
+                            <th> Interprétation</th>
+                            <th> Performance</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -350,22 +350,22 @@ body {
                 </table>
             </div>
 
-            <h3>📐 Comparaison des Modèles de Fiabilité</h3>
+            <h3> Comparaison des Modèles de Fiabilité</h3>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>🏆 Modèle</th>
-                            <th>📊 Paramètres</th>
-                            <th>📉 AIC</th>
-                            <th>📈 BIC</th>
-                            <th>🎯 Log-Likelihood</th>
-                            <th>🏅 Rang</th>
+                            <th> Modèle</th>
+                            <th> Paramètres</th>
+                            <th> AIC</th>
+                            <th>BIC</th>
+                            <th> Log-Likelihood</th>
+                            <th> Rang</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="highlight-row">
-                            <td><span class="icon-cell">🥇</span><strong>Log-Normale</strong></td>
+                            <td><span class="icon-cell"></span><strong>Log-Normale</strong></td>
                             <td>σ=0.006, scale=1109.33</td>
                             <td class="value-cell best">98.46</td>
                             <td class="value-cell">99.74</td>
@@ -373,7 +373,7 @@ body {
                             <td><span class="badge badge-best">1er</span></td>
                         </tr>
                         <tr>
-                            <td><span class="icon-cell">🥈</span>Gamma</td>
+                            <td><span class="icon-cell"></span>Gamma</td>
                             <td>α=24552.23, scale=0.05</td>
                             <td class="value-cell">98.53</td>
                             <td class="value-cell">99.81</td>
@@ -381,7 +381,7 @@ body {
                             <td><span class="badge badge-good">2ème</span></td>
                         </tr>
                         <tr>
-                            <td><span class="icon-cell">🥉</span>Weibull</td>
+                            <td><span class="icon-cell"></span>Weibull</td>
                             <td>β=107.83, η=1113.56</td>
                             <td class="value-cell">108.75</td>
                             <td class="value-cell">110.02</td>
@@ -401,10 +401,10 @@ body {
             </div>
 
             <div class="key-findings">
-                <h4>🔍 Interprétation du Modèle Weibull</h4>
+                <h4> Interprétation du Modèle Weibull</h4>
                 <div class="results-grid">
                     <div class="result-card">
-                        <h4>📊 Paramètre de Forme (β)</h4>
+                        <h4> Paramètre de Forme (β)</h4>
                         <div class="metric">
                             <span class="metric-label">Valeur β:</span>
                             <span class="metric-value best-value">107.833</span>
@@ -415,7 +415,7 @@ body {
                         </p>
                     </div>
                     <div class="result-card">
-                        <h4>📏 Paramètre d'Échelle (η)</h4>
+                        <h4> Paramètre d'Échelle (η)</h4>
                         <div class="metric">
                             <span class="metric-label">Valeur η:</span>
                             <span class="metric-value best-value">1113.56 cycles</span>
@@ -428,15 +428,15 @@ body {
                 </div>
             </div>
 
-            <h3>📈 Fiabilité Prédite par Horizon Temporel</h3>
+            <h3> Fiabilité Prédite par Horizon Temporel</h3>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>⏱️ Horizon Temporel</th>
-                            <th>📊 Fiabilité R(t)</th>
-                            <th>⚠️ Probabilité de Défaillance F(t)</th>
-                            <th>💡 Recommandation</th>
+                            <th> Horizon Temporel</th>
+                            <th> Fiabilité R(t)</th>
+                            <th> Probabilité de Défaillance F(t)</th>
+                            <th> Recommandation</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -462,7 +462,7 @@ body {
                             <td><strong>666 cycles (60% MTBF)</strong></td>
                             <td class="value-cell">~55%</td>
                             <td class="value-cell">~45%</td>
-                            <td><span class="badge badge-warning">⚠️ Surveillance critique</span></td>
+                            <td><span class="badge badge-warning"> Surveillance critique</span></td>
                         </tr>
                         <tr style="background: #ffcccc;">
                             <td><strong>887 cycles (80% MTBF)</strong></td>
@@ -475,10 +475,10 @@ body {
             </div>
 
             <div class="conclusion-box">
-                <h4>💡 Recommandations pour la Maintenance</h4>
+                <h4> Recommandations pour la Maintenance</h4>
                 <div class="results-grid">
                     <div class="result-card">
-                        <h4>🔧 Maintenance Préventive</h4>
+                        <h4> Maintenance Préventive</h4>
                         <ul style="font-size: 0.9em; line-height: 1.8;">
                             <li>Intervention recommandée avant <strong>887 cycles</strong> (80% MTBF)</li>
                             <li>Surveillance renforcée après <strong>666 cycles</strong> (60% MTBF)</li>
@@ -486,7 +486,7 @@ body {
                         </ul>
                     </div>
                     <div class="result-card">
-                        <h4>📦 Gestion des Stocks</h4>
+                        <h4> Gestion des Stocks</h4>
                         <ul style="font-size: 0.9em; line-height: 1.8;">
                             <li>Stock de batteries de rechange : <strong>1% de spare</strong></li>
                             <li>Commande prévisionnelle à 700 cycles</li>
@@ -494,7 +494,7 @@ body {
                         </ul>
                     </div>
                     <div class="result-card">
-                        <h4>📊 Surveillance Continue</h4>
+                        <h4> Surveillance Continue</h4>
                         <ul style="font-size: 0.9em; line-height: 1.8;">
                             <li>Monitoring des paramètres de charge/décharge</li>
                             <li>Détection précoce de dégradation anormale</li>
@@ -506,10 +506,10 @@ body {
 
             <div style="text-align: center; margin: 40px 0;">
                 <h3>📥 Télécharger les Résultats FMDS</h3>
-                <a href="FMDS_Summary_Batteries.csv" download class="download-btn">📄 FMDS_Summary_Batteries.csv</a>
-                <a href="FMDS_Reliability_Models.csv" download class="download-btn">📄 FMDS_Reliability_Models.csv</a>
-                <a href="FMDS_KaplanMeier_Data.csv" download class="download-btn">📄 FMDS_KaplanMeier_Data.csv</a>
-                <a href="FMDS_Analyse_Complete_Batteries.png" download class="download-btn">🖼️ FMDS_Analyse_Complete_Batteries.png</a>
+                <a href="FMDS_Summary_Batteries.csv" download class="download-btn"> FMDS_Summary_Batteries.csv</a>
+                <a href="FMDS_Reliability_Models.csv" download class="download-btn"> FMDS_Reliability_Models.csv</a>
+                <a href="FMDS_KaplanMeier_Data.csv" download class="download-btn"> FMDS_KaplanMeier_Data.csv</a>
+                <a href="FMDS_Analyse_Complete_Batteries.png" download class="download-btn"> FMDS_Analyse_Complete_Batteries.png</a>
             </div>
 
             <div class="intro-box" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; margin-top: 40px;">
@@ -528,47 +528,47 @@ body {
         <!-- SECTION DIAGNOSTIC COMPLÈTE -->
    <!-- SECTION DIAGNOSTIC COMPLÈTE (RÉSULTATS FINAUX) -->
 <section>
-    <h2>🔍 2. Diagnostic — Classification des États de Santé</h2>
+    <h2> 2. Diagnostic — Classification des États de Santé</h2>
    
     <div class="key-findings">
-        <h4>🎯 Objectif du Diagnostic</h4>
+        <h4> Objectif du Diagnostic</h4>
         <p>Détecter en temps réel l'état de santé des batteries lithium-ion pour anticiper les défaillances et planifier la maintenance préventive.</p>
-        <p><strong>📊 Split rigoureux :</strong> 9 batteries pour l'entraînement, 5 batteries totalement nouvelles pour le test — aucune donnée de test utilisée pendant l'entraînement.</p>
-        <p><strong>⚖️ Rééquilibrage :</strong> SMOTE (facteur 1.6) appliqué uniquement sur le train + pondération de classe (poids 2.0 pour la classe Critique).</p>
+        <p><strong> Split rigoureux :</strong> 9 batteries pour l'entraînement, 5 batteries totalement nouvelles pour le test — aucune donnée de test utilisée pendant l'entraînement.</p>
+        <p><strong> Rééquilibrage :</strong> SMOTE (facteur 1.6) appliqué uniquement sur le train + pondération de classe (poids 2.0 pour la classe Critique).</p>
     </div>
 
-    <h3>📊 Méthodologie de Classification</h3>
+    <h3> Méthodologie de Classification</h3>
     <div class="table-container">
         <table>
             <thead>
                 <tr>
-                    <th>🏷️ Classe</th>
-                    <th>📈 Critère (% RUL restant)</th>
-                    <th>💡 Signification</th>
-                    <th>⚡ Action recommandée</th>
+                    <th> Classe</th>
+                    <th> Critère (% RUL restant)</th>
+                    <th> Signification</th>
+                    <th> Action recommandée</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="highlight-row">
-                    <td>✅ <strong>Excellent</strong></td>
+                    <td> <strong>Excellent</strong></td>
                     <td>&gt; 80%</td>
                     <td>Batterie neuve ou peu utilisée</td>
                     <td>Utilisation normale</td>
                 </tr>
                 <tr>
-                    <td>👍 <strong>Bon</strong></td>
+                    <td> <strong>Bon</strong></td>
                     <td>55 – 80%</td>
                     <td>Bon état général</td>
                     <td>Surveillance standard</td>
                 </tr>
                 <tr style="background:#fff3cd;">
-                    <td>⚠️ <strong>Moyen</strong></td>
+                    <td> <strong>Moyen</strong></td>
                     <td>20 – 55%</td>
                     <td>Dégradation visible</td>
                     <td>Surveillance renforcée</td>
                 </tr>
                 <tr style="background:#f8d7da;">
-                    <td>🚨 <strong>Critique</strong></td>
+                    <td> <strong>Critique</strong></td>
                     <td>≤ 20%</td>
                     <td>Risque de panne élevé</td>
                     <td>Remplacement imminent</td>
@@ -582,7 +582,7 @@ body {
   
 
         <!-- AMDEC -->
-        <h3>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h3>
+        <h3> AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h3>
         <div class="intro-box">
             <p>L’AMDEC est une méthode structurée qui permet d’identifier les défaillances potentielles des batteries lithium-ion, d’analyser leurs causes et d’évaluer leur niveau de criticité. 
             Dans ce projet, nous l’avons adaptée aux quatre classes de santé définies par le modèle Random Forest optimisé.</p>
@@ -603,7 +603,7 @@ body {
                 </thead>
                 <tbody>
                     <tr style="background:#f8d7da;">
-                        <td><strong>🚨 Critique</strong><br>(RUL ≤ 20%)</td>
+                        <td><strong> Critique</strong><br>(RUL ≤ 20%)</td>
                         <td>Usure avancée + risque de Thermal Runaway</td>
                         <td>Perte importante de lithium, forte augmentation de résistance interne, début de dendrites</td>
                         <td>Capacité très faible, échauffement anormal, risque d’instabilité thermique</td>
@@ -612,7 +612,7 @@ body {
                         <td><strong>Remplacement immédiat</strong></td>
                     </tr>
                     <tr style="background:#fff3cd;">
-                        <td><strong>⚠️ Moyen</strong><br>(20% < RUL ≤ 55%)</td>
+                        <td><strong> Moyen</strong><br>(20% < RUL ≤ 55%)</td>
                         <td>Vieillissement accéléré des électrodes</td>
                         <td>Épaississement de la couche SEI, début de délamination</td>
                         <td>Perte modérée de capacité, temps de charge/décharge dégradés</td>
@@ -621,7 +621,7 @@ body {
                         <td>Planifier remplacement dans 2 à 4 semaines</td>
                     </tr>
                     <tr>
-                        <td><strong>👍 Bon</strong><br>(55% < RUL ≤ 80%)</td>
+                        <td><strong> Bon</strong><br>(55% < RUL ≤ 80%)</td>
                         <td>Usure normale</td>
                         <td>Vieillissement progressif classique</td>
                         <td>Légère diminution de capacité</td>
@@ -630,7 +630,7 @@ body {
                         <td>Surveillance standard</td>
                     </tr>
                     <tr style="background:#d4edda;">
-                        <td><strong>✅ Excellent</strong><br>(RUL > 80%)</td>
+                        <td><strong> Excellent</strong><br>(RUL > 80%)</td>
                         <td>Aucune défaillance significative</td>
                         <td>Batterie neuve ou très peu cyclée</td>
                         <td>Performances nominales</td>
@@ -643,7 +643,7 @@ body {
         </div>
 
         <div class="key-findings">
-            <h4>🔍 Justification du choix métier</h4>
+            <h4> Justification du choix métier</h4>
             <p>Le seuil de décision du Random Forest a été abaissé à <strong>0,10</strong> afin de maximiser la sécurité. 
             Cela permet d’atteindre un recall de <strong>95,6 %</strong> sur la classe Critique (seulement 47 cycles critiques manqués sur 1065), 
             au prix de 301 faux positifs sur la classe Moyen. 
@@ -651,35 +651,35 @@ body {
         </div>
     </section>
    
-    <h3>🤖 Performance Comparative des Modèles</h3>
+    <h3> Performance Comparative des Modèles</h3>
     <div class="table-container">
         <table>
             <thead>
                 <tr>
-                    <th>🧠 Modèle</th>
-                    <th>📊 Accuracy</th>
-                    <th>🎯 Recall Critique</th>
-                    <th>🎯 AUC macro</th>
-                    <th>🏆 Meilleur pour</th>
+                    <th> Modèle</th>
+                    <th> Accuracy</th>
+                    <th> Recall Critique</th>
+                    <th> AUC macro</th>
+                    <th> Meilleur pour</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="highlight-row">
-                    <td>🌲 <strong>Random Forest</strong><br><small>(seuil optimisé 0.10)</small></td>
+                    <td> <strong>Random Forest</strong><br><small>(seuil optimisé 0.10)</small></td>
                     <td><strong>87.6%</strong></td>
-                    <td><strong style="color:#28a745;">95.6% ✅</strong></td>
+                    <td><strong style="color:#28a745;">95.6% </strong></td>
                     <td><strong>0.974</strong></td>
                     <td><span class="badge badge-best">Équilibre + sécurité</span></td>
                 </tr>
                 <tr>
-                    <td>⚡ <strong>SVM (RBF)</strong></td>
+                    <td> <strong>SVM (RBF)</strong></td>
                     <td><strong>81.2%</strong></td>
                     <td><strong style="color:#dc3545;">96.0%</strong> <small>(faux positifs élevés)</small></td>
                     <td><strong>0.963</strong></td>
                     <td><span class="badge badge-good">Sécurité maximale</span></td>
                 </tr>
                 <tr>
-                    <td>🌳 <strong>Decision Tree</strong></td>
+                    <td> <strong>Decision Tree</strong></td>
                     <td><strong>83.6%</strong></td>
                     <td>71.5%</td>
                     <td><strong>0.900</strong></td>
@@ -691,7 +691,7 @@ body {
 
     <div class="results-grid">
         <div class="result-card">
-            <h4>🏆 Modèle retenu : Random Forest avec seuil optimisé (0.10)</h4>
+            <h4> Modèle retenu : Random Forest avec seuil optimisé (0.10)</h4>
             <p>Après optimisation du seuil de décision (passage de 0.50 à <strong>0.10</strong>), le Random Forest atteint :</p>
            
             <div class="metric">
@@ -717,7 +717,7 @@ body {
         </div>
 
         <div class="result-card" style="background:#f0f7ff;">
-            <h4>🔒 Alternative sécurité maximale : SVM</h4>
+            <h4> Alternative sécurité maximale : SVM</h4>
             <p>Recall Critique de <strong>96.0%</strong> (très élevé), mais avec un nombre important de faux positifs sur la classe Moyen. 
             À réserver aux applications où le coût d’une défaillance est extrêmement élevé (aviation, médical, spatial).</p>
         </div>
@@ -747,14 +747,14 @@ body {
         </p>
     </div>
 
-    <h3>🔍 Interprétation Physique des Features</h3>
+    <h3> Interprétation Physique des Features</h3>
     <div class="table-container">
         <table>
             <thead>
                 <tr>
-                    <th>📊 Feature</th>
-                    <th>📈 Importance RF</th>
-                    <th>💡 Pourquoi importante ?</th>
+                    <th> Feature</th>
+                    <th> Importance RF</th>
+                    <th> Pourquoi importante ?</th>
                 </tr>
             </thead>
             <tbody>
@@ -810,15 +810,15 @@ body {
     </div>
 
     <div class="conclusion-box">
-        <h4>✅ Conclusion du Diagnostic</h4>
+        <h4>Conclusion du Diagnostic</h4>
         <p>Le modèle <strong>Random Forest avec seuil de décision optimisé à 0.10</strong> est retenu pour le déploiement :</p>
         <ul>
-            <li>✅ <strong>Recall Critique = 95.6%</strong> — seulement 47 cycles critiques manqués sur 1065.</li>
-            <li>✅ <strong>Accuracy globale = 87.6%</strong></li>
-            <li>✅ <strong>AUC macro = 0.974</strong> — discrimination solide sur les 4 classes.</li>
-            <li>✅ <strong>Validation rigoureuse</strong> — split par batterie entière, SMOTE uniquement sur le train.</li>
-            <li>✅ <strong>Interprétabilité</strong> — importance des features cohérente avec la physique de dégradation Li-ion.</li>
-            <li>✅ <strong>Aucun surapprentissage</strong> — performances cohérentes entre entraînement et test.</li>
+            <li> <strong>Recall Critique = 95.6%</strong> — seulement 47 cycles critiques manqués sur 1065.</li>
+            <li> <strong>Accuracy globale = 87.6%</strong></li>
+            <li> <strong>AUC macro = 0.974</strong> — discrimination solide sur les 4 classes.</li>
+            <li> <strong>Validation rigoureuse</strong> — split par batterie entière, SMOTE uniquement sur le train.</li>
+            <li> <strong>Interprétabilité</strong> — importance des features cohérente avec la physique de dégradation Li-ion.</li>
+            <li> <strong>Aucun surapprentissage</strong> — performances cohérentes entre entraînement et test.</li>
         </ul>
        
         <p style="margin-top:12px; font-size:0.92em; color:#555;">
@@ -827,7 +827,7 @@ body {
         </p>
        
         <p style="margin-top:15px; font-weight:600; color:#2980b9;">
-            🎯 Ce modèle permet une surveillance fiable des batteries Li-ion, avec une priorité claire donnée à la détection précoce 
+             Ce modèle permet une surveillance fiable des batteries Li-ion, avec une priorité claire donnée à la détection précoce 
             des états critiques, au prix d'un taux de fausses alarmes maîtrisé.
         </p>
        
@@ -841,10 +841,10 @@ body {
 
   <!-- SECTION PRONOSTIC RUL : COMPARAISON GRU vs XGBoost -->
 <section>
-    <h2>📊 3. Pronostic et Prédiction de la Durée de Vie Restante (RUL) des Batteries Lithium-ion</h2>
+    <h2> 3. Pronostic et Prédiction de la Durée de Vie Restante (RUL) des Batteries Lithium-ion</h2>
 
     <div class="intro-box">
-        <h3>🎯 Analyse Comparative des Performances</h3>
+        <h3> Analyse Comparative des Performances</h3>
         <p>Deux familles de modèles ont été évaluées : les réseaux de neurones récurrents (<strong>GRU, BiLSTM</strong>) et les modèles de <em>machine learning</em> tabulaires (<strong>XGBoost</strong>). Contre‑intuitivement, le modèle non‑séquentiel <strong>XGBoost</strong> surpasse toutes les architectures deep learning sur ce jeu de données, démontrant que l’explicitation de la structure temporelle n’est pas toujours nécessaire lorsque les caractéristiques décalées sont bien exploitées.</p>
     </div>
 
@@ -856,7 +856,7 @@ body {
             </thead>
             <tbody>
                 <tr class="highlight-row best-model">
-                    <td><strong>🏆 XGBoost (optimisé)</strong></td>
+                    <td><strong> XGBoost (optimisé)</strong></td>
                     <td class="value-cell best">0.9780</td>
                     <td class="value-cell">46.47</td>
                     <td class="value-cell best">32.77</td>
@@ -897,9 +897,9 @@ body {
     </div>
 
     <!-- ==================== PARTIE XGBoost (modèle final) ==================== -->
-    <h3>🏆 Modèle retenu : XGBoost optimisé</h3>
+    <h3> Modèle retenu : XGBoost optimisé</h3>
     <div class="key-findings">
-        <h4>🎯 Pourquoi XGBoost surpasse le GRU ?</h4>
+        <h4> Pourquoi XGBoost surpasse le GRU ?</h4>
         <p>Malgré l’absence d’une couche récurrente explicite, XGBoost atteint un <strong>R² de 0,978</strong> et un <strong>MAE de 32,8 cycles</strong>, soit une amélioration de <strong>~5,6 cycles</strong> par rapport au GRU. Les raisons sont multiples :</p>
         <ul>
             <li><strong>Régularisation naturelle :</strong> les hyperparamètres (subsample, colsample, early stopping) limitent le surapprentissage, contrairement aux GRU qui sur‑ajustent sur 14 batteries.</li>
@@ -912,7 +912,7 @@ body {
 
     <div class="results-grid">
         <div class="result-card">
-            <h4>📊 Métriques XGBoost (test)</h4>
+            <h4> Métriques XGBoost (test)</h4>
             <div class="metric"><span class="metric-label">R² :</span><span class="metric-value best-value">0.9780 (97,80%)</span></div>
             <div class="metric"><span class="metric-label">RMSE :</span><span class="metric-value">46,47 cycles</span></div>
             <div class="metric"><span class="metric-label">MAE :</span><span class="metric-value best-value">32,77 cycles</span></div>
@@ -920,7 +920,7 @@ body {
             <div class="metric"><span class="metric-label">Meilleur round :</span><span class="metric-value">992 / 1000</span></div>
         </div>
         <div class="result-card">
-            <h4>⚙️ Hyperparamètres</h4>
+            <h4> Hyperparamètres</h4>
             <ul style="font-size:0.9em;">
                 <li><code>learning_rate = 0.1</code></li>
                 <li><code>max_depth = 6</code></li>
@@ -933,14 +933,14 @@ body {
     </div>
 
     <!-- Visualisations XGBoost -->
-    <h3>📈 Visualisations du modèle XGBoost</h3>
+    <h3> Visualisations du modèle XGBoost</h3>
     <div class="figure-wrapper">
         <img src="XGB_Optimized_RUL_Global_Visualisations.png" alt="Visualisations globales XGBoost" class="figure-large">
         <p class="image-caption"><strong>Figure 5a :</strong> Courbe d’apprentissage (RMSE train/val), top 10 features importantes, RUL prédite vs réelle, distribution des erreurs (biais centré sur 0).</p>
     </div>
        <div style="max-width: 920px; margin: 40px auto; padding: 30px; background-color: #f8f9fa; border-radius: 12px; border-left: 7px solid #0066cc; box-shadow: 0 4px 15px rgba(0,0,0,0.07);">
     <h3 style="color: #0066cc; margin: 0 0 20px 0; font-size: 1.45em;">
-        🔍 Analyse de l'Overfitting
+         Analyse de l'Overfitting
     </h3>
     <p style="font-size: 16.8px; line-height: 1.78; color: #2c3e50;">
         L’analyse de la courbe d’apprentissage a révélé un <strong>écart modéré</strong> entre le RMSE sur les données 
@@ -959,13 +959,13 @@ body {
     
 
     <!-- ==================== PARTIE GRU (pour comparaison) ==================== -->
-    <h3>🔄 Comparaison avec l’architecture GRU</h3>
+    <h3> Comparaison avec l’architecture GRU</h3>
     <div class="intro-box" style="background:#f0f7ff;">
         <p>Le GRU, bien que spécifiquement conçu pour les séquences temporelles, obtient des performances légèrement inférieures sur ce jeu de données. Il reste toutefois une référence académique et sa compréhension est précieuse pour illustrer les avantages et limites du deep learning pour la prédiction de RUL.</p>
     </div>
 
     <div class="table-container">
-        <h4>🏗️ Architecture du GRU utilisé</h4>
+        <h4> Architecture du GRU utilisé</h4>
         <table>
             <thead><tr><th>Couche</th><th>Configuration</th><th>Paramètres</th></tr></thead>
             <tbody>
@@ -1003,7 +1003,7 @@ body {
 
     <!-- Synthèse finale -->
     <div class="conclusion-box" style="background: #e8f5e9; border-left: 5px solid #2e7d32;">
-        <h4>💡 Conclusion : pourquoi XGBoost est le meilleur modèle pour ce jeu de données</h4>
+        <h4> Conclusion : pourquoi XGBoost est le meilleur modèle pour ce jeu de données</h4>
         <p style="line-height: 1.7;">Bien que le GRU soit théoriquement plus adapté aux séquences temporelles, le nombre limité de batteries (14) et la richesse des 7 caractéristiques électriques permettent à XGBoost de <strong>compenser l’absence de mémoire récurrente</strong> en exploitant les décalages temporels via les 140 variables aplaties. L’arbre de décision boosté offre :</p>
         <ul style="margin-top: 10px;">
             <li>✔ Une meilleure précision (MAE 32,8 vs 38,4 cycles)</li>
@@ -1011,26 +1011,26 @@ body {
             <li>✔ Une interprétabilité totale (importance des features, règles de décision)</li>
             <li>✔ Une robustesse accrue face au faible effectif de batteries</li>
         </ul>
-        <p style="margin-top: 15px;"><strong>➡️ XGBoost est donc le modèle retenu pour le déploiement industriel du pronostic de RUL.</strong></p>
+        <p style="margin-top: 15px;"><strong> XGBoost est donc le modèle retenu pour le déploiement industriel du pronostic de RUL.</strong></p>
     </div>
 
     <!-- Téléchargements supplémentaires -->
-    <h3>📥 Ressources complémentaires</h3>
+    <h3> Ressources complémentaires</h3>
     <div class="results-grid">
         <div class="result-card">
-            <h4>📊 Métriques XGBoost</h4>
+            <h4> Métriques XGBoost</h4>
             <a href="XGB_Optimized_RUL_Metrics.csv" download class="download-btn">📄 CSV</a>
         </div>
         <div class="result-card">
-            <h4>🔋 Prédictions détaillées XGBoost</h4>
+            <h4> Prédictions détaillées XGBoost</h4>
             <a href="XGB_Optimized_RUL_Predictions.csv" download class="download-btn">📄 CSV</a>
         </div>
         <div class="result-card">
-            <h4>📈 Stats par batterie (XGB)</h4>
+            <h4> Stats par batterie (XGB)</h4>
             <a href="XGB_Optimized_Stats_Per_Battery.csv" download class="download-btn">📄 CSV</a>
         </div>
         <div class="result-card">
-            <h4>📊 Métriques GRU</h4>
+            <h4> Métriques GRU</h4>
             <a href="GRU_RUL_Metrics.csv" download class="download-btn">📄 CSV</a>
         </div>
     </div>
@@ -1038,7 +1038,7 @@ body {
 
 <!-- CONCLUSION GÉNÉRALE -->
 <section>
-    <h2>🏆 Conclusion Générale & Perspectives</h2>
+    <h2> Conclusion Générale & Perspectives</h2>
    
     <div class="intro-box" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); color: white;">
         <h3 style="color: white; margin-top: 0;">📌 Synthèse du Projet</h3>
@@ -1056,9 +1056,9 @@ body {
 
     <div class="results-grid">
         <div class="result-card" style="border-top: 4px solid #27ae60;">
-            <h4>✅ Résultats Clés</h4>
+            <h4> Résultats Clés</h4>
             <div class="metric">
-                <span class="metric-label">🏆 XGBoost (Pronostic RUL) :</span>
+                <span class="metric-label"> XGBoost (Pronostic RUL) :</span>
                 <span class="metric-value best-value">R² = 97,8% | MAE = 32,8 cycles</span>
             </div>
             <div class="metric">
@@ -1066,7 +1066,7 @@ body {
                 <span class="metric-value">R² = 97,45% | MAE = 38,4 cycles</span>
             </div>
             <div class="metric">
-                <span class="metric-label">🏆 Random Forest (Diagnostic) :</span>
+                <span class="metric-label"> Random Forest (Diagnostic) :</span>
                 <span class="metric-value best-value">Accuracy = 87,6% | Recall Critique = 95,6% (seuil 0,10)</span>
             </div>
             <div class="metric">
@@ -1080,7 +1080,7 @@ body {
         </div>
 
         <div class="result-card" style="border-top: 4px solid #3498db;">
-            <h4>🎯 Contributions Principales</h4>
+            <h4> Contributions Principales</h4>
             <ul style="line-height: 1.7;">
                 <li>Pipeline complet : FMDS → Diagnostic (Random Forest optimisé, SVM, Decision Tree) → Pronostic (XGBoost vs GRU)</li>
                 <li>Validation réaliste par split strict par batterie (9 en entraînement, 5 en test)</li>
@@ -1092,7 +1092,7 @@ body {
         </div>
 
         <div class="result-card" style="border-top: 4px solid #e74c3c;">
-            <h4>⚠️ Limites du Projet</h4>
+            <h4> Limites du Projet</h4>
             <ul style="line-height: 1.7;">
                 <li>Jeu de données limité à 14 batteries issues de tests en laboratoire (NASA)</li>
                 <li>Absence de validation sur batteries en conditions réelles d'exploitation (véhicules électriques, stockage stationnaire)</li>
@@ -1103,7 +1103,7 @@ body {
         </div>
     </div>
 
-    <h3>🚀 Améliorations & Perspectives</h3>
+    <h3> Améliorations & Perspectives</h3>
     <div class="table-container">
         <table>
             <thead>
@@ -1125,7 +1125,7 @@ body {
                         </ul>
                     </td>
                     <td>Amélioration du R² et stabilisation du Recall Critique</td>
-                    <td><span class="badge badge-best">🔥 Haute</span></td>
+                    <td><span class="badge badge-best"> Haute</span></td>
                 </tr>
                 <tr>
                     <td><strong>Moyen terme</strong><br><small>3–6 mois</small></td>
@@ -1137,7 +1137,7 @@ body {
                         </ul>
                     </td>
                     <td>Validation de la généralisation</td>
-                    <td><span class="badge badge-good">📈 Moyenne</span></td>
+                    <td><span class="badge badge-good"> Moyenne</span></td>
                 </tr>
                 <tr>
                     <td><strong>Long terme</strong><br><small>6–12 mois</small></td>
@@ -1149,14 +1149,14 @@ body {
                         </ul>
                     </td>
                     <td>Solution industrialisable</td>
-                    <td><span class="badge badge-warning">🔮 Long terme</span></td>
+                    <td><span class="badge badge-warning"> Long terme</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="conclusion-box">
-        <h4>🎯 Conclusion Finale</h4>
+        <h4> Conclusion Finale</h4>
         <p style="line-height: 1.7;">
             Ce projet valide l’intérêt de l’approche <strong>Maintenance 4.0</strong> pour les batteries lithium-ion. 
             La combinaison d’un indicateur de santé FMDS, d’un diagnostic robuste (Random Forest optimisé) et d’un 
@@ -1176,7 +1176,7 @@ body {
 
     <div style="text-align: center; margin: 40px 0 20px;">
         <a href="#" class="download-btn" onclick="window.print(); return false;">
-            🖨️ Générer un PDF du rapport
+             Générer un PDF du rapport
         </a>
     </div>
 </section>
