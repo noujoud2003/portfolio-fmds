@@ -412,7 +412,7 @@
 
         <!-- Introduction Section -->
         <section>
-            <h2>📌 Introduction – Pourquoi prédire le RUL ?</h2>
+            <h2> Introduction – Pourquoi prédire le RUL ?</h2>
             <div class="intro-box">
                 <p>Les moteurs d'avion sont des systèmes critiques dont la défaillance en vol peut avoir des conséquences catastrophiques. La maintenance traditionnelle (corrective ou préventive systématique) est soit risquée, soit coûteuse.</p>
                 <br>
@@ -434,10 +434,10 @@
 
         <!-- FMDS Analysis -->
         <section>
-            <h2>📊 1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
+            <h2> 1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
             
             <div class="key-findings">
-                <h4>🎯 Résultats Clés FMDS</h4>
+                <h4> Résultats Clés FMDS</h4>
                 <table>
                     <thead>
                         <tr>
@@ -476,9 +476,9 @@
                 </table>
             </div>
 
-            <h3>📈 Visualisations FMDS Complètes</h3>
+            <h3> Visualisations FMDS Complètes</h3>
             
-            <h4>📊 Distribution des Cycles de Vie</h4>
+            <h4> Distribution des Cycles de Vie</h4>
             <p>La distribution des cycles de vie des 100 moteurs d'entraînement montre une grande variabilité, avec une durée de vie moyenne de <strong>206.3 cycles</strong>.</p>
             
             <table>
@@ -513,7 +513,7 @@
                 <p class="image-caption">Figure 1: Distribution des cycles de vie avec ajustement des lois</p>
             </div>
 
-            <h4>📈 Ajustement de la Loi de Weibull</h4>
+            <h4> Ajustement de la Loi de Weibull</h4>
             <p>L'ajustement de la loi de Weibull permet de caractériser le comportement de défaillance :</p>
             
             <table>
@@ -543,7 +543,7 @@
                 <p class="image-caption">Figure 2: QQ-Plot Weibull - Validation de l'ajustement</p>
             </div>
 
-            <h4>📊 Indicateurs de Fiabilité B10/B50/B90</h4>
+            <h4> Indicateurs de Fiabilité B10/B50/B90</h4>
             <table>
                 <thead>
                     <tr>
@@ -586,7 +586,7 @@
                 <p class="image-caption">Figure 3: Fonctions de fiabilité R(t) - Comparaison des lois</p>
             </div>
 
-            <h4>⚠️ Taux de Défaillance Instantané h(t)</h4>
+            <h4> Taux de Défaillance Instantané h(t)</h4>
             <p>Le taux de risque instantané montre une augmentation significative avec le temps, confirmant le comportement d'usure (β > 1) :</p>
             
             <table>
@@ -637,7 +637,7 @@
             </div>
 
             <div class="key-findings">
-                <h4>📋 Synthèse FMDS</h4>
+                <h4> Synthèse FMDS</h4>
                 <table>
                     <tr><td><strong>MTBF</strong></td><td>206.3 cycles</td></tr>
                     <tr><td><strong>β Weibull</strong></td><td>2.34 (usure progressive)</td></tr>
@@ -653,10 +653,10 @@
 
         <!-- Diagnostic Section -->
         <section>
-            <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
+            <h2> 2. Diagnostic - Classification des États de Santé</h2>
             
             <div class="key-findings">
-                <h4>🎯 Méthodologie de Classification</h4>
+                <h4> Méthodologie de Classification</h4>
                 <p>Classification des moteurs en <strong>2 états de santé</strong> basés sur le RUL restant (seuil critique à 30 cycles) :</p>
                 <table>
                     <thead>
@@ -684,7 +684,7 @@
                 </table>
             </div>
 
-            <h3>📊 Distribution des États de Santé</h3>
+            <h3> Distribution des États de Santé</h3>
             <table>
                 <thead>
                     <tr>
@@ -705,7 +705,7 @@
             </table>
             <p class="highlight">Distribution équilibrée pour une évaluation robuste</p>
 
-            <h3>🤖 Modèles de Classification Comparés</h3>
+            <h3> Modèles de Classification Comparés</h3>
             <table>
                 <thead>
                     <tr>
@@ -745,7 +745,7 @@
                 </tbody>
             </table>
 
-            <h3>📊 Performance du Modèle (CNN+LSTM)</h3>
+            <h3> Performance du Modèle (CNN+LSTM)</h3>
             
             <h4>Matrice de Confusion</h4>
             <table>
@@ -819,7 +819,7 @@
             </div>
 
             <div class="result-card" style="max-width: 500px; margin: 30px auto;">
-                <h4>🏆 Meilleur Modèle de Diagnostic</h4>
+                <h4> Meilleur Modèle de Diagnostic</h4>
                 <div class="metric">
                     <span class="metric-label">AUC-ROC:</span>
                     <span class="metric-value best-value">0.991</span>
@@ -837,7 +837,7 @@
         <!-- ==================== SECTION AMDEC - MOTEURS D'AVION ==================== -->
 <!-- AMDEC pour MOTEURS D'AVION -->
 <section>
-    <h2>📋 AMDEC – Moteurs d’Avion Turbofan</h2>
+    <h2> AMDEC – Moteurs d’Avion Turbofan</h2>
     <div class="intro-box">
         <p>L’AMDEC est adaptée aux deux classes de santé du modèle CNN+LSTM (seuil critique à 30 cycles de RUL).</p>
     </div>
@@ -846,7 +846,7 @@
             <thead><tr><th>Classe</th><th>Mode de défaillance</th><th>Causes physiques</th><th>Effets</th><th>Criticité</th><th>Détection</th><th>Action</th></tr></thead>
             <tbody>
                 <tr style="background:#f8d7da;">
-                    <td><strong>🚨 Critique</strong><br>(RUL ≤ 30 cycles)</div>
+                    <td><strong> Critique</strong><br>(RUL ≤ 30 cycles)</div>
                     <td>Usure avancée / défaillance imminente</div>
                     <td>Fissures thermiques, fluage des aubes, érosion, roulements usés</div>
                     <td>Perte de poussée, vibrations, surconsommation, risque panne en vol</div>
@@ -855,7 +855,7 @@
                     <td><strong>Intervention immédiate</strong> (arrêt, inspection, réparation)</div>
                 </tr>
                 <tr style="background:#d4edda;">
-                    <td><strong>✅ Sain</strong><br>(RUL > 30 cycles)</div>
+                    <td><strong> Sain</strong><br>(RUL > 30 cycles)</div>
                     <td>Aucune défaillance imminente</div>
                     <td>Usure normale dans les limites constructeur</div>
                     <td>Performances nominales</div>
@@ -874,10 +874,10 @@
         <!-- Pronostic Section -->
       <!-- ==================== SECTION PRONOSTIC ==================== -->
 <section>
-    <h2>🔮 3. Pronostic – Prédiction du RUL (Deep Learning)</h2>
+    <h2> 3. Pronostic – Prédiction du RUL (Deep Learning)</h2>
 
     <!-- Architecture du modèle -->
-    <h3>🎯 Architecture du Modèle CNN+LSTM</h3>
+    <h3> Architecture du Modèle CNN+LSTM</h3>
     <div class="architecture-box">
 Input (50 cycles, 21 capteurs)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
@@ -910,7 +910,7 @@ Dense(1)  # Sortie RUL<br><br>
     </div>
 
     <!-- Tableau comparatif des performances (déjà présent, mais on le garde) -->
-    <h3>📊 Tableau Comparatif des Performances</h3>
+    <h3> Tableau Comparatif des Performances</h3>
     <div class="table-container">
         <table>
             <thead>
@@ -936,7 +936,7 @@ Dense(1)  # Sortie RUL<br><br>
     </div>
 
     <!-- Résultats clés du modèle (tableau existant) -->
-    <h3>🏆 Résultats Clés – Modèle CNN+LSTM</h3>
+    <h3> Résultats Clés – Modèle CNN+LSTM</h3>
     <div class="table-container">
         <table>
             <thead><tr><th>Métrique</th><th>Valeur</th><th>Interprétation</th></tr></thead>
@@ -988,7 +988,7 @@ Dense(1)  # Sortie RUL<br><br>
     </div>
 
     <!-- Prédiction cycle par cycle (tableau existant) -->
-    <h3>🔄 Prédiction Cycle par Cycle (Suivi Temporel)</h3>
+    <h3> Prédiction Cycle par Cycle (Suivi Temporel)</h3>
     <p>Le modèle CNN+LSTM suit l’évolution de la dégradation cycle après cycle, permettant une maintenance proactive.</p>
     <div class="table-container">
         <table>
@@ -1004,7 +1004,7 @@ Dense(1)  # Sortie RUL<br><br>
     </div>
 
     <!-- Moteurs critiques identifiés -->
-    <h3>⏱️ Moteurs Critiques Identifiés</h3>
+    <h3> Moteurs Critiques Identifiés</h3>
     <div class="table-container">
         <table>
             <thead><tr><th>Moteur</th><th>RUL réel</th><th>RUL prédit</th><th>Écart</th><th>Risque</th><th>Action recommandée</th></tr></thead>
@@ -1019,15 +1019,15 @@ Dense(1)  # Sortie RUL<br><br>
     </div>
 
     <div class="key-findings">
-        <h4>📌 Synthèse du pronostic</h4>
+        <h4> Synthèse du pronostic</h4>
         <p>Le modèle CNN+LSTM atteint des performances solides : <strong>R² = 0,860</strong>, <strong>MAE = 12,6 cycles</strong>. L’erreur dans la zone critique (0‑30 cycles) est particulièrement faible (<strong>MAE = 5,7 cycles</strong>), ce qui permet de déclencher des alertes fiables. La comparaison avec d’autres modèles (LSTM, GRU, CNN, Random Forest) confirme la supériorité de l’architecture hybride convolution + récurrence bidirectionnelle.</p>
     </div>
 </section>
         <!-- Synthesis Section -->
         <section>
-            <h2>📋 4. Synthèse et Recommandations</h2>
+            <h2> 4. Synthèse et Recommandations</h2>
             
-            <h3>✅ Points Forts</h3>
+            <h3> Points Forts</h3>
             <table>
                 <thead>
                     <tr>
@@ -1063,7 +1063,7 @@ Dense(1)  # Sortie RUL<br><br>
                 </tbody>
             </table>
 
-            <h3>⚠️ Limites Actuelles</h3>
+            <h3> Limites Actuelles</h3>
             <table>
                 <thead>
                     <tr>
@@ -1101,7 +1101,7 @@ Dense(1)  # Sortie RUL<br><br>
                 </tbody>
             </table>
 
-            <h3>🎯 Recommandations pour la Maintenance Prédictive</h3>
+            <h3> Recommandations pour la Maintenance Prédictive</h3>
             <table>
                 <thead>
                     <tr>
@@ -1139,7 +1139,7 @@ Dense(1)  # Sortie RUL<br><br>
                 </tbody>
             </table>
 
-            <h3>🚨 Système d'Alerte Hiérarchique Proposé</h3>
+            <h3> Système d'Alerte Hiérarchique Proposé</h3>
             <table>
                 <thead>
                     <tr>
@@ -1177,7 +1177,7 @@ Dense(1)  # Sortie RUL<br><br>
                 </tbody>
             </table>
 
-            <h3>🚀 Perspectives d'Amélioration</h3>
+            <h3> Perspectives d'Amélioration</h3>
             <table>
                 <thead>
                     <tr>
@@ -1221,10 +1221,10 @@ Dense(1)  # Sortie RUL<br><br>
             </table>
 
             <div class="conclusion-box">
-                <h4>🏆 Conclusion Générale</h4>
+                <h4> Conclusion Générale</h4>
                 <p>Cette étude démontre la faisabilité d'un système complet de maintenance prédictive pour moteurs d'avion combinant <strong>diagnostic</strong> (classification des états critiques) et <strong>pronostic</strong> (prédiction du RUL).</p>
                 
-                <h4 style="margin-top: 20px;">📊 Résultats Clés</h4>
+                <h4 style="margin-top: 20px;"> Résultats Clés</h4>
                 <table>
                     <tr>
                         <td><strong>Analyse FMDS</strong></td>
@@ -1247,7 +1247,7 @@ Dense(1)  # Sortie RUL<br><br>
                 <p style="margin-top: 20px;">L'approche hybride <strong>CNN+LSTM</strong> proposée permet d'anticiper les pannes, d'optimiser la maintenance et de garantir la sécurité des vols. Les perspectives d'amélioration identifiées (généralisation multi-conditions, mécanisme d'attention, déploiement temps réel) ouvrent la voie vers un déploiement industriel robuste et scalable.</p>
             </div>
 
-            <h3>📚 Références</h3>
+            <h3> Références</h3>
             <ol>
                 <li><strong>NASA CMAPSS Dataset</strong> : <a href="https://data.nasa.gov" target="_blank">data.nasa.gov</a></li>
                 <li><strong>Saxena, A., et al. (2008)</strong>. "Damage Propagation Modeling for Aircraft Engine Run-to-Failure Simulation"</li>
