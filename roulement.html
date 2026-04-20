@@ -420,15 +420,15 @@
 
         <!-- Introduction -->
         <section>
-            <h2>📌 Introduction – Pourquoi prédire le RUL des roulements ?</h2>
+            <h2> Introduction – Pourquoi prédire le RUL des roulements ?</h2>
             
             <div class="intro-box">
-                <h3>🎯 Contexte Industriel</h3>
+                <h3> Contexte Industriel</h3>
                 <p>Les roulements représentent <strong>l'une des causes principales de défaillance</strong> dans les machines tournantes. Selon les études de fiabilité, environ <strong>40 à 50% des pannes de moteurs électriques</strong> sont attribuables aux roulements, ce qui en fait un composant critique nécessitant une surveillance particulière.</p>
             </div>
 
             <div class="key-findings">
-                <h4>📂 Dataset Utilisé : NASA C-MAPSS</h4>
+                <h4> Dataset Utilisé : NASA C-MAPSS</h4>
                 <ul>
                     <li><strong>100 unités</strong> pour l'entraînement (run-to-failure)</li>
                     <li><strong>100 unités</strong> pour le test et validation</li>
@@ -438,7 +438,7 @@
                 </ul>
             </div>
 
-            <h3>🔍 Types de Défauts de Roulements</h3>
+            <h3> Types de Défauts de Roulements</h3>
             <div class="table-container">
                 <table>
                     <thead>
@@ -484,14 +484,14 @@
 
         <!-- FMDS Analysis -->
         <section>
-            <h2>📊 1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
+            <h2> 1. Analyse FMDS (Fiabilité, Maintenabilité, Disponibilité, Sécurité)</h2>
             
             <div class="intro-box">
-                <h3>🎯 Objectif de l'Analyse FMDS</h3>
+                <h3> Objectif de l'Analyse FMDS</h3>
                 <p>L'analyse FMDS permet d'évaluer quantitativement la performance des roulements industriels à travers quatre dimensions interdépendantes : <strong>Fiabilité</strong> (capacité à fonctionner sans panne), <strong>Maintenabilité</strong> (facilité de réparation), <strong>Disponibilité</strong> (temps opérationnel) et <strong>Sécurité</strong> (fonctionnement sans danger).</p>
             </div>
 
-            <h3>📋 Indicateurs FMDS Calculés</h3>
+            <h3> Indicateurs FMDS Calculés</h3>
             <div class="table-container">
                 <table>
                     <thead>
@@ -543,7 +543,7 @@
                 </table>
             </div>
 
-            <h3>📈 Indicateurs de Fiabilité B10/B50/B90</h3>
+            <h3> Indicateurs de Fiabilité B10/B50/B90</h3>
             <div class="results-grid">
                 <div class="result-card">
                     <h4>B10 - Vie Minimale</h4>
@@ -592,7 +592,7 @@
             </div>
 
             <div class="key-findings">
-                <h4>🔍 Interprétation du Paramètre β = 2.1</h4>
+                <h4> Interprétation du Paramètre β = 2.1</h4>
                 <ul>
                     <li><strong>β > 1</strong> → Taux de défaillance <strong>croissant</strong> dans le temps</li>
                     <li>Confirme un comportement d'<strong>usure par fatigue mécanique</strong> typique des roulements</li>
@@ -604,14 +604,14 @@
 
         <!-- Diagnostic Section -->
         <section>
-            <h2>🔍 2. Diagnostic - Classification des États de Santé</h2>
+            <h2> 2. Diagnostic - Classification des États de Santé</h2>
             
             <div class="key-findings">
-                <h4>🎯 Méthodologie de Classification</h4>
+                <h4> Méthodologie de Classification</h4>
                 <p>Classification binaire des roulements en <strong>2 états de santé</strong> basés sur l'analyse vibratoire et le RUL estimé. Le modèle retenu est la <strong>Forêt Aléatoire (Random Forest)</strong>.</p>
             </div>
 
-            <h3>📋 Matrice de Décision pour la Maintenance</h3>
+            <h3> Matrice de Décision pour la Maintenance</h3>
             <div class="table-container">
                 <table>
                     <thead>
@@ -651,7 +651,7 @@
                 </table>
             </div>
 
-            <h3>🤖 Modèles de Classification Comparés (Résultats du rapport)</h3>
+            <h3> Modèles de Classification Comparés </h3>
             <div class="table-container">
                 <table>
                     <thead>
@@ -676,7 +676,7 @@
                             <td><span class="badge badge-best">1er</span></div>
                         </tr>
                         <tr>
-                            <td><span class="icon-cell">⚡</span>SVM (RBF)</div>
+                            <td><span class="icon-cell"></span>SVM (RBF)</div>
                             <td class="value-cell">89.2%</div>
                             <td class="value-cell">87.3%</div>
                             <td class="value-cell">85.1%</div>
@@ -699,7 +699,7 @@
 
             <div class="results-grid">
                 <div class="result-card">
-                    <h4>✅ Points Forts du Diagnostic (Random Forest)</h4>
+                    <h4> Points Forts du Diagnostic (Random Forest)</h4>
                     <div class="metric">
                         <span class="metric-label">Accuracy:</span>
                         <span class="metric-value best-value">92.3%</span>
@@ -722,7 +722,7 @@
                 </div>
                 
                 <div class="result-card">
-                    <h4>📈 Features Importantes</h4>
+                    <h4> Features Importantes</h4>
                     <ul style="font-size: 0.9em; line-height: 1.8;">
                         <li><strong>RMS Vibratoire</strong> : 28%</li>
                         <li><strong>Kurtosis</strong> : 22%</li>
@@ -736,7 +736,7 @@
 
         <!-- SECTION AMDEC - ROULEMENTS INDUSTRIELS (corrigée) -->
         <section>
-            <h2>📋 AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h2>
+            <h2> AMDEC – Analyse des Modes de Défaillance et de leur Criticité</h2>
             
             <div class="intro-box">
                 <p>L’<strong>AMDEC</strong> (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité) est appliquée aux roulements industriels. Les classes de santé (Normal, Dégradation débutante, Dégradation avancée, Défaillance imminente) sont définies à partir du RUL estimé par le réseau de neurones, et les signatures vibratoires sont utilisées pour le diagnostic.</p>
@@ -756,7 +756,7 @@
                     </thead>
                     <tbody>
                         <tr style="background:#f8d7da;">
-                            <td><strong>🚨 Défaillance imminente</strong><br>(RUL ≤ 20 cycles)</div>
+                            <td><strong> Défaillance imminente</strong><br>(RUL ≤ 20 cycles)</div>
                             <td>Fissures étendues, écaillage sévère, rupture de cage, grippage.</div>
                             <td>Vibrations extrêmes, bruit anormal, échauffement rapide, risque d’arrêt brutal.</div>
                             <td><strong>Très élevée</strong><br>Rappel = 88.4% (RF)<br>AUC = 0.970</div>
@@ -764,7 +764,7 @@
                             <td><strong>Arrêt immédiat</strong> – Remplacer le roulement, inspection de l’arbre et du logement.</div>
                         </tr>
                         <tr style="background:#ffe5cc;">
-                            <td><strong>⚠️ Dégradation avancée</strong><br>(20 < RUL ≤ 50 cycles)</div>
+                            <td><strong> Dégradation avancée</strong><br>(20 < RUL ≤ 50 cycles)</div>
                             <td>Fatigue avancée, début d’écaillage, usure localisée.</div>
                             <td>Vibrations modérées à élevées, tendance à la hausse du RMS, pics fréquentiels apparaissent.</div>
                             <td><strong>Élevée</strong><br>Précision = 91.2%</div>
@@ -772,7 +772,7 @@
                             <td>Planifier remplacement dans ≤ 2 semaines, surveillance renforcée.</div>
                         </tr>
                         <tr style="background:#fff3cd;">
-                            <td><strong>🟡 Dégradation débutante</strong><br>(50 < RUL ≤ 100 cycles)</div>
+                            <td><strong> Dégradation débutante</strong><br>(50 < RUL ≤ 100 cycles)</div>
                             <td>Micro‑fissures, début de fatigue superficielle, contamination lubrifiant.</div>
                             <td>Vibrations légèrement supérieures à la normale, kurtosis modéré (~3,5).</div>
                             <td><strong>Moyenne</strong><br>Détection précoce possible</div>
@@ -780,7 +780,7 @@
                             <td>Augmenter fréquence des inspections, préparer la pièce de rechange.</div>
                         </tr>
                         <tr style="background:#d4edda;">
-                            <td><strong>✅ Normal</strong><br>(RUL > 100 cycles)</div>
+                            <td><strong> Normal</strong><br>(RUL > 100 cycles)</div>
                             <td>Usure normale, fonctionnement sans défaut.</div>
                             <td>Vibrations stables, RMS bas, kurtosis ≈ 3 (gaussien).</div>
                             <td><strong>Négligeable</strong></div>
@@ -792,22 +792,22 @@
             </div>
 
             <div class="key-findings">
-                <h4>🔍 Justification des seuils et des métriques</h4>
+                <h4> Justification des seuils et des métriques</h4>
                 <p>Les seuils RUL (20, 50, 100 cycles) sont issus des indicateurs FMDS (B10 = 89 cycles, B50 = 199 cycles) et de la matrice de décision opérationnelle. Le diagnostic Random Forest atteint une <strong>précision de 91,2%</strong> et un <strong>rappel de 88,4%</strong> sur la classe défaillante, avec une AUC-ROC de 0,970. Les fausses alarmes sont limitées (~8%), ce qui est excellent pour une maintenance préventive.</p>
-                <p style="margin-top: 12px;">📊 Les features vibratoires clés (RMS, kurtosis, fréquences BPFO/BPFI) sont cohérentes avec la physique des roulements, validant la pertinence du modèle.</p>
+                <p style="margin-top: 12px;">Les features vibratoires clés (RMS, kurtosis, fréquences BPFO/BPFI) sont cohérentes avec la physique des roulements, validant la pertinence du modèle.</p>
             </div>
 
             <div class="conclusion-box">
-                <h4>✅ Conclusion AMDEC – Roulements</h4>
+                <h4> Conclusion AMDEC – Roulements</h4>
                 <p>L’AMDEC confirme la bonne adéquation entre les modèles de diagnostic/pronostic et les modes de défaillance réels des roulements. Le seuil de 20 cycles pour la classe « Défaillance imminente » est justifié par le B10 (89 cycles) et par l’erreur de prédiction du réseau de neurones (MAE ~12.1 cycles). L’approche permet de déclencher des actions de maintenance ciblées, réduisant les arrêts imprévus.</p>
             </div>
         </section>
 
         <!-- Pronostic Section (corrigée avec les vraies métriques du rapport) -->
         <section>
-            <h2>🔮 3. Pronostic - Estimation du RUL</h2>
+            <h2> 3. Pronostic - Estimation du RUL</h2>
             
-            <h3>🎯 Modèles de Régression Comparés (Rapport, tableau 5.2)</h3>
+            <h3> Modèles de Régression Comparés </h3>
             <div class="table-container">
                 <table>
                     <thead>
@@ -850,7 +850,7 @@
             </div>
 
             <div class="key-findings">
-                <h4>🔍 Analyse des Erreurs de Prédiction (Réseau de Neurones)</h4>
+                <h4> Analyse des Erreurs de Prédiction (Réseau de Neurones)</h4>
                 <ul>
                     <li><strong>R² = 0.85</strong> : 85% de la variance du RUL expliquée, très bon ajustement.</li>
                     <li><strong>RMSE = 14.8 cycles</strong> : Erreur quadratique moyenne faible, adaptée à la planification.</li>
@@ -863,10 +863,10 @@
 
         <!-- Annexes Section - conservation des mêmes images -->
         <section>
-            <h2>📚 4. Annexes - Visualisations Complètes</h2>
+            <h2> 4. Annexes - Visualisations Complètes</h2>
             
             <div class="intro-box">
-                <h3>📋 Liste des Figures</h3>
+                <h3> Liste des Figures</h3>
                 <p>Cette section présente l'ensemble des visualisations générées lors de l'analyse FMDS et de la maintenance prédictive des roulements industriels.</p>
             </div>
 
@@ -908,17 +908,17 @@
         </section>
 <!-- SECTION LIMITES ET PERSPECTIVES -->
 <section>
-    <h2>⚠️ Limites et Perspectives d’Amélioration</h2>
+    <h2> Limites et Perspectives d’Amélioration</h2>
 
     <div class="intro-box">
-        <h3>📌 Retour d’expérience sur l’étude</h3>
+        <h3> Retour d’expérience sur l’étude</h3>
         <p>Bien que les résultats obtenus soient très satisfaisants (Random Forest à 92,3%, réseau de neurones MAE = 12,1 cycles), plusieurs limites ont été identifiées. Elles ouvrent des perspectives concrètes pour une version industrielle plus robuste.</p>
     </div>
 
     <div class="results-grid">
         <!-- Limites -->
         <div class="result-card" style="border-top: 4px solid #e74c3c;">
-            <h4>❌ Limites actuelles</h4>
+            <h4> Limites actuelles</h4>
             <ul style="line-height: 1.7; margin-left: 20px;">
                 <li><strong>Données simulées :</strong> Les signaux vibratoires ont été générés sous MATLAB ; ils ne reflètent pas toutes les non‑linéarités du réel.</li>
                 <li><strong>Validation uniquement sur NASA C‑MAPSS :</strong> Pas de test sur d’autres jeux (FEMTO, IMS, etc.).</li>
@@ -930,7 +930,7 @@
 
         <!-- Perspectives -->
         <div class="result-card" style="border-top: 4px solid #27ae60;">
-            <h4>🚀 Perspectives d’amélioration</h4>
+            <h4> Perspectives d’amélioration</h4>
             <ul style="line-height: 1.7; margin-left: 20px;">
                 <li><strong>Données réelles :</strong> Tester sur des bancs d’essai industriels (FEMTO, PRONOSTIA).</li>
                 <li><strong>Optimisation des hyperparamètres :</strong> Utiliser Optuna ou GridSearch pour le réseau de neurones.</li>
@@ -943,7 +943,7 @@
     </div>
 
     <div class="key-findings">
-        <h4>📊 Feuille de route recommandée (3 phases)</h4>
+        <h4> Feuille de route recommandée (3 phases)</h4>
         <div class="table-container">
             <table>
                 <thead>
@@ -996,14 +996,14 @@
     </div>
 
     <div class="conclusion-box">
-        <h4>💡 Conclusion sur les perspectives</h4>
+        <h4> Conclusion sur les perspectives</h4>
         <p>Les limites actuelles (données simulées, validation mono‑source) sont classiques dans un projet académique. Elles ne remettent pas en cause la qualité des modèles, mais indiquent clairement les axes à creuser pour une transposition industrielle. La feuille de route proposée permet de passer d’une preuve de concept à un outil opérationnel de maintenance prédictive.</p>
     </div>
 </section>
         <!-- Conclusion -->
         <section>
             <div class="conclusion-box">
-                <h4>🏆 Conclusion Générale - Roulements Industriels</h4>
+                <h4> Conclusion Générale - Roulements Industriels</h4>
                 <p>
                     Ce projet de maintenance prédictive des roulements industriels a démontré l'efficacité d'une approche 
                     combinant <strong>analyse FMDS</strong>, <strong>diagnostic par Machine Learning</strong> et 
@@ -1024,7 +1024,7 @@
 
             <div style="text-align: center; margin: 30px 0;">
                 <a href="#" class="download-btn" onclick="window.print(); return false;">
-                    🖨️ Générer un Rapport PDF
+                     Générer un Rapport PDF
                 </a>
             </div>
         </section>
