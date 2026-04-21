@@ -22,6 +22,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -88,8 +98,8 @@
 
         h1 {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2.8rem;
+            font-weight: 800;
             background: linear-gradient(135deg, #2c3e50, #3498db);
             background-clip: text;
             -webkit-background-clip: text;
@@ -131,13 +141,11 @@
             border-color: #3498db;
         }
         .card-icon {
-            font-size: 2.2rem;
+            font-size: 3rem;
             margin-bottom: 20px;
-            font-weight: 600;
-            color: #3498db;
         }
         .method-card h3 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: #2c3e50;
             margin-bottom: 15px;
         }
@@ -146,7 +154,7 @@
             line-height: 1.5;
         }
 
-        /* Timeline Scrum */
+        /* Timeline Scrum avec parallélisme */
         .timeline {
             background: #f8fafc;
             border-radius: 28px;
@@ -155,7 +163,7 @@
             border-left: 6px solid #3498db;
         }
         .timeline h3 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             color: #1e4663;
         }
@@ -170,7 +178,7 @@
             border-radius: 20px;
             padding: 20px;
             flex: 1;
-            min-width: 160px;
+            min-width: 180px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             transition: 0.2s;
@@ -182,18 +190,30 @@
         }
         .sprint-week {
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #3498db;
             margin-bottom: 8px;
         }
         .sprint-title {
             font-weight: 700;
-            margin: 10px 0;
-            font-size: 1rem;
+            margin: 10px 0 8px;
+            font-size: 1.1rem;
         }
         .sprint-desc {
             font-size: 0.85rem;
-            color: #5d6e7e;
+            color: #4a5b6e;
+        }
+
+        /* Indicateur de parallélisme */
+        .parallel-note {
+            background: #eef2fa;
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #1e4663;
+            border-left: 4px solid #2ecc71;
         }
 
         /* Cycle en V */
@@ -214,13 +234,12 @@
         .step {
             background: #ecf5fb;
             border-radius: 40px;
-            padding: 12px 18px;
+            padding: 15px 20px;
             text-align: center;
             flex: 1;
             font-weight: 600;
             color: #1e4663;
             transition: all 0.3s;
-            font-size: 0.9rem;
         }
         .step:hover {
             background: #3498db;
@@ -228,7 +247,7 @@
             transform: translateY(-4px);
         }
 
-        /* Gantt */
+        /* Gantt image */
         .gantt-container {
             text-align: center;
             margin: 40px 0;
@@ -245,32 +264,6 @@
             transform: scale(1.02);
         }
 
-        /* Outils */
-        .tools-box {
-            background: #eef2fa;
-            border-radius: 24px;
-            padding: 25px;
-            margin-top: 30px;
-        }
-        .tools-box h3 {
-            color: #1e4663;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-        }
-        .tools-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            list-style: none;
-        }
-        .tools-list li {
-            font-weight: 500;
-            color: #2c3e50;
-        }
-        .tools-list li strong {
-            color: #3498db;
-        }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -282,7 +275,6 @@
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
         }
-
         .footer a {
             color: #a0d0f0;
             text-decoration: none;
@@ -304,11 +296,10 @@
                 padding: 25px 18px;
                 margin: 110px 20px 50px;
             }
-            h1 { font-size: 1.8rem; }
-            .method-card h3 { font-size: 1.3rem; }
+            h1 { font-size: 2rem; }
+            .method-card h3 { font-size: 1.4rem; }
             .sprint-list { flex-direction: column; }
-            .step { font-size: 0.7rem; padding: 8px 12px; }
-            .tools-list { flex-direction: column; gap: 12px; }
+            .step { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -337,51 +328,55 @@
         <!-- Section methodologie hybride -->
         <div class="method-grid">
             <div class="method-card fade-up delay-1">
-                <div class="card-icon">Scrum</div>
+                <div class="card-icon"></div>
                 <h3>Scrum (Agile)</h3>
                 <p>Sprints de 2 semaines, revues quotidiennes, adaptation continue. Ideal pour iterations rapides sur les modeles IA et l'analyse FMDS.</p>
             </div>
             <div class="method-card fade-up delay-2">
-                <div class="card-icon">Cycle V</div>
+                <div class="card-icon"></div>
                 <h3>Cycle en V</h3>
                 <p>Verification et validation a chaque phase : conception → realisation → tests. Assure la robustesse des livrables.</p>
             </div>
             <div class="method-card fade-up delay-3">
-                <div class="card-icon">Hybride</div>
+                <div class="card-icon"></div>
                 <h3>Hybride Scrum-V</h3>
                 <p>Les grandes phases suivent le cycle en V (besoins, conception, validation) tandis que le developpement iteratif utilise Scrum.</p>
             </div>
         </div>
 
-        <!-- Timeline Scrum -->
+        <!-- Timeline Scrum adaptee au Gantt (etudes en parallele) -->
         <div class="timeline fade-up delay-2">
-            <h3>Organisation des Sprints (Scrum)</h3>
+            <h3>Organisation des Sprints (Scrum) - Travail parallele sur les trois etudes</h3>
             <div class="sprint-list">
                 <div class="sprint-item">
                     <div class="sprint-week">Sprint 1 (J1-J14)</div>
                     <div class="sprint-title">Analyse FMDS & collecte donnees</div>
-                    <div class="sprint-desc">MTBF, Weibull, disponibilite, pretraitement</div>
+                    <div class="sprint-desc">MTBF, Weibull, disponibilite, pretraitement (batteries, roulements, moteurs)</div>
                 </div>
                 <div class="sprint-item">
                     <div class="sprint-week">Sprint 2 (J15-J28)</div>
                     <div class="sprint-title">Modeles diagnostic</div>
-                    <div class="sprint-desc">Random Forest, SVM, optimisation seuil (batteries)</div>
+                    <div class="sprint-desc">Random Forest, SVM, optimisation seuil (batteries, roulements, moteurs)</div>
                 </div>
                 <div class="sprint-item">
                     <div class="sprint-week">Sprint 3 (J29-J42)</div>
                     <div class="sprint-title">Pronostic RUL</div>
-                    <div class="sprint-desc">XGBoost, GRU, CNN+LSTM, comparaison</div>
+                    <div class="sprint-desc">XGBoost, GRU, CNN+LSTM, comparaison (tous les systemes)</div>
                 </div>
                 <div class="sprint-item">
                     <div class="sprint-week">Sprint 4 (J43-J56)</div>
-                    <div class="sprint-title">Generalisation</div>
-                    <div class="sprint-desc">Etude roulements + moteurs, AMDEC</div>
+                    <div class="sprint-title">Generalisation & AMDEC</div>
+                    <div class="sprint-desc">Validation croisee, matrices de confusion, AMDEC pour chaque etude</div>
                 </div>
                 <div class="sprint-item">
                     <div class="sprint-week">Sprint 5 (J57-J70)</div>
                     <div class="sprint-title">Redaction & portfolio</div>
-                    <div class="sprint-desc">Rapport final, page web, depot GitHub</div>
+                    <div class="sprint-desc">Rapport final, page web, depot GitHub, integration continue</div>
                 </div>
+            </div>
+            <div class="parallel-note">
+                Note : Les trois etudes de cas (batteries, roulements, moteurs) sont realisees en parallele a partir du Sprint 2. 
+                Les taches sont reparties entre les membres de l'equipe (Noujoud, Sami, Raouaa) pour optimiser les delais.
             </div>
         </div>
 
@@ -394,41 +389,43 @@
                 <div class="step">Conception modeles IA</div>
                 <div class="step">Developpement (sprints)</div>
                 <div class="step">Validation unitaire</div>
-                <div class="step">Validation globale</div>
+                <div class="step">Validation globale (test batteries/moteurs/roulements)</div>
                 <div class="step">Livraison & documentation</div>
             </div>
             <p style="margin-top: 30px; color:#2c3e50; font-style:italic; text-align:center;">
-                Chaque phase du cycle en V a fait l objet d une validation croisee avec les donnees de test (split par unite), garantissant l absence de fuite.
+                Chaque phase du cycle en V a fait l'objet d'une validation croisee avec les donnees de test (split par unite), garantissant l'absence de fuite.
             </p>
         </div>
 
-        <!-- Diagramme de Gantt -->
+        <!-- Diagramme de Gantt interactif -->
         <div class="gantt-container fade-up delay-4">
             <h3 style="color:#2c3e50; margin-bottom: 20px;">Diagramme de Gantt – Suivi des taches</h3>
             <img src="newgantt.png" alt="Diagramme de Gantt detaille du projet FMDS" loading="lazy">
             <p style="margin-top: 16px; font-size: 0.9rem; color: #4a627a;">
-                Planification temporelle avec dependances, jalons cles et repartition des sprints.
+                Planification temporelle avec dependances, jalons cles et repartition des sprints. 
+                Les trois etudes de cas sont conduites en parallele comme illustre.
             </p>
         </div>
 
-        <!-- Outils collaboratifs -->
-        <div class="tools-box fade-up delay-4">
-            <h3>Outils de gestion utilises</h3>
-            <ul class="tools-list">
-                <li><strong>GitHub</strong> – versionning du code et suivi des issues</li>
-                <li><strong>Trello / Notion</strong> – backlog, sprints, revues quotidiennes</li>
-                <li><strong>Google Drive</strong> – partage de rapports, figures et donnees</li>
-                <li><strong>Discord / Teams</strong> – reunions de synchronisation</li>
+        <!-- Outils collaboratifs et suivi -->
+        <div style="background: #eef2fa; border-radius: 24px; padding: 25px; margin-top: 30px;">
+            <h3 style="color: #1e4663;">Outils de gestion utilises</h3>
+            <ul style="display: flex; flex-wrap: wrap; gap: 30px; list-style: none; margin-top: 20px;">
+                <li> <strong>GitHub</strong> – versionnement du code et suivi des issues</li>
+                <li> <strong>Trello / Notion</strong> – backlog, sprints, revues quotidiennes</li>
+                <li> <strong>Google Drive</strong> – partage de rapports, figures et donnees</li>
+                <li> <strong>Discord / Teams</strong> – reunions de synchronisation</li>
             </ul>
             <p style="margin-top: 20px;">Cette organisation a permis une livraison iterative et une reactivite face aux ajustements (ex : optimisation du seuil a 0,10 pour les batteries).</p>
         </div>
 
         <div class="footer">
-            <p>2026 Projet FMDS & Maintenance Predictive | Methodologie Agile – Scrum & Cycle en V</p>
+            <p>© 2026  Projet FMDS & Maintenance Predictive | Methodologie Agile – Scrum & Cycle en V</p>
             <p><a href="https://github.com/noujoud2003/portfolio-fmds" target="_blank">Depot GitHub</a> | <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Haut de page</a></p>
         </div>
     </div>
 
+    <!-- Script pour les animations fade-up -->
     <script>
         const fadeElements = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
