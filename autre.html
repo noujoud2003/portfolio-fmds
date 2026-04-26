@@ -122,7 +122,7 @@
         /* GRID CARDS */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
         }
 
@@ -144,7 +144,7 @@
             border-left-color: #2ecc71;
         }
 
-        /* Animation différée pour chaque carte (via JS ou CSS nth-child, mais on va utiliser intersection observer plus tard) */
+        /* Animation différée */
         .card:nth-child(1) { animation-delay: 0.05s; }
         .card:nth-child(2) { animation-delay: 0.1s; }
         .card:nth-child(3) { animation-delay: 0.15s; }
@@ -153,6 +153,8 @@
         .card:nth-child(6) { animation-delay: 0.3s; }
         .card:nth-child(7) { animation-delay: 0.35s; }
         .card:nth-child(8) { animation-delay: 0.4s; }
+        .card:nth-child(9) { animation-delay: 0.45s; }
+        .card:nth-child(10) { animation-delay: 0.5s; }
 
         .card h2 {
             color: #1e4663;
@@ -209,6 +211,7 @@
             font-size: 0.85rem;
             transition: all 0.3s;
             margin-top: 5px;
+            margin-right: 10px;
         }
 
         .more-link:hover {
@@ -236,6 +239,40 @@
             background: #3498db;
             color: white;
             transform: translateX(5px);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0 10px;
+            font-size: 0.85rem;
+            background: #f8fafc;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .comparison-table th {
+            background-color: #1e4663;
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table td {
+            background-color: #ffffff;
+        }
+
+        .badge {
+            background: #2c3e50;
+            color: white;
+            border-radius: 20px;
+            padding: 3px 12px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-left: 8px;
         }
 
         /* Pied de page */
@@ -271,6 +308,10 @@
                 padding: 6px 12px;
                 font-size: 0.75rem;
             }
+            .comparison-table th, .comparison-table td {
+                padding: 6px 4px;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -291,13 +332,13 @@
     </nav>
 
     <div class="container">
-        <h1> Fondamentaux de la Maintenance Industrielle</h1>
+        <h1>⚙️ Fondamentaux de la Maintenance Industrielle</h1>
         <div class="subhead">Concepts clés, méthodes modernes & ressources opérationnelles</div>
 
         <div class="grid">
             <!-- Carte 1 : Généralités -->
             <div class="card">
-                <h2><span></span> 1. Généralités</h2>
+                <h2><span>📘</span> 1. Généralités</h2>
                 <p class="summary">La maintenance regroupe toutes les actions techniques, administratives et de management visant à maintenir ou rétablir un bien dans un état capable d’accomplir une fonction requise (AFNOR).</p>
                 <ul>
                     <li><strong>Définition & historique</strong> : Évolution du correctif → préventif → prédictif (Industrie 4.0).</li>
@@ -309,7 +350,7 @@
 
             <!-- Carte 2 : Maintenance 4.0 & GMAO -->
             <div class="card">
-                <h2><span></span> 2. Maintenance 4.0 & GMAO</h2>
+                <h2><span>💻</span> 2. Maintenance 4.0 & GMAO</h2>
                 <p class="summary">La GMAO (Gestion de Maintenance Assistée par Ordinateur) est le pivot de la maintenance 4.0 : IoT, big data, IA et cloud pour anticiper les pannes.</p>
                 <ul>
                     <li><strong>Outils leaders</strong> : IBM Maximo, SAP PM, Fiix, Mobility Work, UpKeep.</li>
@@ -325,7 +366,7 @@
 
             <!-- Carte 3 : Lean Maintenance -->
             <div class="card">
-                <h2><span></span> 3. Lean Maintenance</h2>
+                <h2><span>🔄</span> 3. Lean Maintenance</h2>
                 <p class="summary">Élimination des gaspillages (temps, stocks, sur‑maintenance) pour améliorer la valeur ajoutée, inspirée du Lean Manufacturing.</p>
                 <ul>
                     <li><strong>Outils clés</strong> : TPM (Total Productive Maintenance), 5S, RCM, Kaizen.</li>
@@ -338,7 +379,7 @@
 
             <!-- Carte 4 : Maintenance Prédictive -->
             <div class="card">
-                <h2><span></span> 4. Maintenance Prédictive</h2>
+                <h2><span>📊</span> 4. Maintenance Prédictive</h2>
                 <p class="summary">Basée sur l’analyse de données réelles (vibrations, températures, courant) pour anticiper les défaillances et planifier l’intervention au bon moment.</p>
                 <ul>
                     <li><strong>Techniques</strong> : analyse vibratoire, thermographie, ultrasons, analyse d’huile.</li>
@@ -351,7 +392,7 @@
 
             <!-- Carte 5 : PHM & Pronostic RUL -->
             <div class="card">
-                <h2><span></span> 5. PHM & Pronostic (RUL)</h2>
+                <h2><span>🔮</span> 5. PHM & Pronostic (RUL)</h2>
                 <p class="summary">Le Prognostics and Health Management (PHM) estime la durée de vie restante (Remaining Useful Life) et permet une maintenance pro-active.</p>
                 <ul>
                     <li><strong>Approches</strong> : modèles physiques, data-driven (ML/DL), hybrides.</li>
@@ -364,7 +405,7 @@
 
             <!-- Carte 6 : Management énergétique ISO 50001 -->
             <div class="card">
-                <h2><span></span> 6. ISO 50001 – Énergie</h2>
+                <h2><span>⚡</span> 6. ISO 50001 – Énergie</h2>
                 <p class="summary">Norme internationale pour un Système de Management de l’Énergie (SME), axée sur l’amélioration continue de la performance énergétique.</p>
                 <ul>
                     <li><strong>Démarche</strong> : politique énergétique, planification, audits, indicateurs EnPI.</li>
@@ -377,7 +418,7 @@
 
             <!-- Carte 7 : Perspectives (Digital Twin, IA) -->
             <div class="card">
-                <h2><span></span> 7. Perspectives & Tendances</h2>
+                <h2><span>🚀</span> 7. Perspectives & Tendances</h2>
                 <p class="summary">La maintenance se dirige vers l’autonomie grâce aux jumeaux numériques, à l’IA générative et à la maintenance prescriptive.</p>
                 <ul>
                     <li><strong>Digital Twin</strong> : simulation en temps réel, test virtuel des interventions.</li>
@@ -388,12 +429,69 @@
                 <a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank" class="more-link"> En savoir plus sur Digital Twin</a>
             </div>
 
-            <!-- Carte 8 : Annexes & ressources téléchargeables (enrichie) -->
+            <!-- ================= NOUVEAU : CARTE AMDEC DÉTAILLÉE ================= -->
+            <div class="card" id="amdec">
+                <h2><span>⚠️</span> AMDEC (FMEA) – Analyse des Modes de Défaillance</h2>
+                <p class="summary"><strong>AMDEC (Analyse des Modes de Défaillance, de leurs Effets et de leur Criticité)</strong> est une méthode rigoureuse d’analyse des risques utilisée en conception et en industrialisation. Elle permet d’identifier systématiquement les défaillances potentielles, leurs causes et leurs effets, afin de prioriser les actions préventives.</p>
+                <ul>
+                    <li><strong>Objectifs</strong> : Anticiper les pannes, améliorer la fiabilité, réduire les coûts de non-qualité, renforcer la sécurité.</li>
+                    <li><strong>Étapes clés</strong> : 
+                        <ul style="margin-top: 5px; list-style: circle; padding-left: 20px;">
+                            <li>1. Définition du système / fonction</li>
+                            <li>2. Identification des modes de défaillance</li>
+                            <li>3. Évaluation des effets et gravité (G)</li>
+                            <li>4. Détermination des causes et occurrence (O)</li>
+                            <li>5. Détection des contrôles existants (D)</li>
+                            <li>6. Calcul de la criticité : NPR = G × O × D</li>
+                            <li>7. Actions correctives et réévaluation</li>
+                        </ul>
+                    </li>
+                    <li><strong>Types d’AMDEC</strong> : AMDEC Produit (conception), AMDEC Process (fabrication), AMDEC Moyen (machine/équipement), AMDEC Fonctionnelle.</li>
+                    <li><strong>Norme associée</strong> : IEC 60812 (FMEA), AIAG & VDA FMEA Handbook.</li>
+                    <li><strong>Exemple concret</strong> : pour un moteur industriel → défaillance roulement (cause : défaut de lubrification) → effet : surchauffe, arrêt critique → NPR élevé → plan de graissage conditionnel.</li>
+                </ul>
+                <div style="margin: 15px 0;">
+                    <a href="https://fr.wikipedia.org/wiki/AMDEC" target="_blank" class="more-link">📖 En savoir plus (AMDEC)</a>
+                    <a href="https://youtu.be/yQ_ZXjgkFZ0" target="_blank" class="video-link">🎥 Comprendre l'AMDEC en détail (vidéo)</a>
+                    <a href="https://youtu.be/c_l6fQzGvJs" target="_blank" class="video-link">📊 Exemple pratique AMDEC industrie</a>
+                </div>
+                <p style="background: #eef2f9; padding: 10px; border-radius: 14px; font-size:0.85rem; margin-top: 10px;">
+                    💡 <strong>Bonus téléchargement</strong> : <a href="https://www.qualitygurus.com/wp-content/uploads/2023/01/FMEA-Template.xlsx" target="_blank" style="color:#1e4663;">Template Excel AMDEC gratuit</a> & 
+                    <a href="https://www.afnor.org/actualites/amdec-maitriser-la-methode/" target="_blank" style="color:#1e4663;">Guide AFNOR AMDEC</a>
+                </p>
+            </div>
+
+            <!-- ================= NOUVEAU : DIFFÉRENCE ENTRE 3 TYPES DE MAINTENANCE (PRÉDICTIVE, CORRECTIVE, PRÉVENTIVE) ================= -->
+            <div class="card" id="diff-types">
+                <h2><span>🔧</span> Comparaison : Prédictive vs Corrective vs Préventive</h2>
+                <p class="summary">Chaque stratégie de maintenance répond à des objectifs distincts : anticiper, subir ou prévenir. Le choix dépend de la criticité des équipements, des coûts et des contraintes opérationnelles.</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Critère</th><th>Maintenance Corrective</th><th>Maintenance Préventive</th><th>Maintenance Prédictive</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Définition</strong></td><td>Intervention après panne ou défaillance constatée.</td><td>Interventions planifiées basées sur le temps ou l’usage (calendrier, heures de fonctionnement).</td><td>Surveillance continue de l’état réel (vibrations, température, analyse) pour agir au moment optimal.</td></tr>
+                        <tr><td><strong>Objectif</strong></td><td>Rétablir la fonction au plus vite.</td><td>Réduire la probabilité de panne, éviter l’urgence.</td><td>Anticiper précisément la défaillance, optimiser la durée de vie.</td></tr>
+                        <tr><td><strong>Avantages</strong></td><td>Faible investissement initial, simple à mettre en œuvre.</td><td>Réduction des arrêts imprévus, planification des ressources.</td><td>Coût global réduit, maximisation de la disponibilité, sécurité accrue.</td></tr>
+                        <tr><td><strong>Inconvénients</strong></td><td>Arrêts non programmés, surcoûts (pièces urgentes, overtime), risque sécurité.</td><td>Risque de sur‑maintenance, interventions inutiles, gaspillage de pièces.</td><td>Investissement capteurs/IA, compétences data analytics, maturité technologique.</td></tr>
+                        <tr><td><strong>Exemples d’applications</strong></td><td>Changement d’un moteur grillé, réparation d’une fuite d’huile.</td><td>Vidange moteur tous les 500h, remplacement courroie tous les trimestres.</td><td>Analyse vibratoire pompe centrifuge, thermographie armoire électrique, IoT sur roulements.</td></tr>
+                        <tr><td><strong>Indicateurs typiques</strong></td><td>MTTR (Mean Time To Repair), coût de réparation.</td><td>Taux de respect planning, disponibilité préventive.</td><td>RUL estimé, taux de fausses alarmes, ROI prédictif.</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>Synthèse stratégique :</strong> La <strong>corrective</strong> convient aux équipements non critiques ; <strong>préventive</strong> pour des usures bien connues ; <strong>prédictive</strong> excellente pour les actifs stratégiques où l’arrêt est très coûteux (Industrie 4.0).</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://youtu.be/_LEnidCkwpg" target="_blank" class="video-link">🎥 Différence entre maintenance préventive, corrective et prédictive (vidéo)</a>
+                    <a href="https://www.prediggo.com/fr/3-types-de-maintenance-industrielle" target="_blank" class="more-link">📘 Article comparatif détaillé</a>
+                </div>
+            </div>
+
+            <!-- Carte 8 : Annexes (renommée en 9 mais reste 8e dans ordre) -->
             <div class="card" id="annexes">
-                <h2><span></span> 8. Annexes – Boîte à outils</h2>
+                <h2><span>📎</span> 9. Annexes – Boîte à outils</h2>
                 <p class="summary">Glossaire, checklists, templates Excel et normes pour passer à l’action.</p>
                 <ul>
-                    <li><strong>Glossaire essentiel</strong> : MTBF, MTTR, RUL, OEE, TPM, RCM, GMAO.</li>
+                    <li><strong>Glossaire essentiel</strong> : MTBF, MTTR, RUL, OEE, TPM, RCM, GMAO, AMDEC (NPR).</li>
                     <li><strong>Checklists audit 5S</strong> : 
                         <a href="https://citoolkit.com/wp-content/uploads/templates/5s_audit_checklist_manufacturing.pdf" target="_blank">PDF gratuit (CIToolkit)</a> & 
                         <a href="https://www.creationtech.com/wp-content/uploads/2020/11/5S1-self-assessment-Rev-A.xlsx" target="_blank">Excel interactif</a>
@@ -421,16 +519,11 @@
         <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">⬆️ Haut de page</a>
     </div>
 
-    <!-- Petit script pour assurer l'animation visible au scroll (amélioration) -->
+    <!-- Script pour révéler les cartes avec IntersectionObserver et forcer l'opacité -->
     <script>
         (function() {
-            // Force l'opacité finale après chargement (les animations CSS sont déjà actives)
             const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.style.opacity = '1';
-            });
-
-            // Optionnel : animation supplémentaire au scroll (révéler les cartes au fur et à mesure)
+            // Observer pour révéler progressive
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -439,15 +532,30 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
 
-            // On observe chaque carte (si déjà visible, elle sera déjà active)
             cards.forEach(card => {
+                // Initialisation style pour l'animation
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
             });
+
+            // Au cas où certaines cartes soient déjà visibles, on force un check manuel
+            const handleInitialVisibility = () => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                    if (rect.top < windowHeight - 100) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                        observer.unobserve(card);
+                    }
+                });
+            };
+            window.addEventListener('load', handleInitialVisibility);
+            window.addEventListener('scroll', handleInitialVisibility);
         })();
     </script>
 </body>
