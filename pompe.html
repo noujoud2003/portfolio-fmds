@@ -1105,6 +1105,109 @@ body {
             
         </ul>
     </div>
+            <!-- Section : Résultats détaillés du pronostic GRU par batterie -->
+<section>
+    <h2>📊 Résultats détaillés – Modèle GRU (test)</h2>
+    <p>Exemples de prédictions cycle par cycle pour les 5 batteries jamais vues pendant l’entraînement.  
+    Les valeurs sont extraites du fichier <code>GRU_RUL_Predictions.csv</code>.</p>
+
+    <!-- Métriques globales par batterie (résumé GRU) -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Batterie ID</th>
+                    <th>MAE (cycles)</th>
+                    <th>R²</th>
+                    <th>RMSE (cycles)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>4</strong></td><td>28.7</td><td>0.9835</td><td>39.2</td></tr>
+                <tr><td><strong>5</strong></td><td>35.1</td><td>0.9782</td><td>47.8</td></tr>
+                <tr><td><strong>7</strong></td><td>41.3</td><td>0.9650</td><td>54.5</td></tr>
+                <tr><td><strong>8</strong></td><td>44.8</td><td>0.9582</td><td>59.6</td></tr>
+                <tr><td><strong>11</strong></td><td>48.6</td><td>0.9510</td><td>65.3</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 4 (GRU) -->
+    <h3>🔋 Batterie #4 – GRU (exemples)</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite (GRU)</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>31</td><td>1077</td><td>1070.2</td><td>-6.8</td><td>6.8</td></tr>
+                <tr><td>500</td><td>608</td><td>618.5</td><td>+10.5</td><td>10.5</td></tr>
+                <tr><td>1000</td><td>108</td><td>165.3</td><td>+57.3</td><td>57.3</td></tr>
+                <tr><td>1100</td><td>8</td><td>95.2</td><td>+87.2</td><td>87.2</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 5 (GRU) -->
+    <h3>🔋 Batterie #5 – GRU (exemples)</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite (GRU)</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>57</td><td>1077</td><td>1061.4</td><td>-15.6</td><td>15.6</td></tr>
+                <tr><td>500</td><td>634</td><td>639.2</td><td>+5.2</td><td>5.2</td></tr>
+                <tr><td>1000</td><td>134</td><td>82.1</td><td>-51.9</td><td>51.9</td></tr>
+                <tr><td>1133</td><td>1</td><td>54.7</td><td>+53.7</td><td>53.7</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 7 (GRU) -->
+    <h3>🔋 Batterie #7 – GRU (exemples)</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite (GRU)</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>31</td><td>1077</td><td>1068.5</td><td>-8.5</td><td>8.5</td></tr>
+                <tr><td>500</td><td>608</td><td>613.1</td><td>+5.1</td><td>5.1</td></tr>
+                <tr><td>1000</td><td>108</td><td>48.6</td><td>-59.4</td><td>59.4</td></tr>
+                <tr><td>1107</td><td>1</td><td>32.4</td><td>+31.4</td><td>31.4</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 8 (GRU) -->
+    <h3>🔋 Batterie #8 – GRU (exemples)</h3>
+    <div class="table-container">
+        </table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite (GRU)</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>28</td><td>1077</td><td>1073.1</td><td>-3.9</td><td>3.9</td></tr>
+                <tr><td>500</td><td>605</td><td>616.5</td><td>+11.5</td><td>11.5</td></tr>
+                <tr><td>1000</td><td>105</td><td>173.2</td><td>+68.2</td><td>68.2</td></tr>
+                <tr><td>1104</td><td>1</td><td>52.3</td><td>+51.3</td><td>51.3</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 11 (GRU) -->
+    <h3>🔋 Batterie #11 – GRU (exemples)</h3>
+    <div class="table-container">
+        </table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite (GRU)</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>31</td><td>1077</td><td>1064.2</td><td>-12.8</td><td>12.8</td></tr>
+                <tr><td>500</td><td>608</td><td>592.5</td><td>-15.5</td><td>15.5</td></tr>
+                <tr><td>1000</td><td>108</td><td>196.4</td><td>+88.4</td><td>88.4</td></tr>
+                <tr><td>1107</td><td>1</td><td>50.1</td><td>+49.1</td><td>49.1</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="note">
+        <strong>📌 Interprétation (GRU) :</strong> Le GRU est également performant (R² global = 0,9745, MAE = 38,4 cycles). 
+        On observe des erreurs légèrement plus élevées qu’avec XGBoost, surtout en fin de vie. 
+        Toutefois, la classification critique après optimisation du seuil reste fiable (recall 95,6% grâce au seuil à 0,10).
+    </div>
+</section>
 
     <!-- Synthèse finale -->
     <div class="conclusion-box" style="background: #e8f5e9; border-left: 5px solid #2e7d32;">
