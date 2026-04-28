@@ -1267,6 +1267,42 @@ body {
                     <td>Solution industrialisable</td>
                     <td><span class="badge badge-warning"> Long terme</span></td>
                 </tr>
+                <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Associe chaque lien du sommaire à la section correspondante grâce au texte du titre
+        const liens = {
+            '1. Introduction': 'Introduction',
+            '2. Analyse FMDS': 'Analyse FMDS',
+            '3. Diagnostic – Classification': 'Diagnostic',
+            '4. Pronostic – Prédiction RUL': 'Pronostic',
+            '5. Conclusion & Perspectives': 'Conclusion'
+        };
+        
+        // Pour chaque lien, trouver la section qui commence par le même titre
+        for (const [texteLien, texteSection] of Object.entries(liens)) {
+            const lien = document.querySelector(`.sommaire a[href*="${texteLien.split(' ')[0]}"]`);
+            if (!lien) continue;
+            
+            // Chercher la section dont le premier h2 ou h3 contient le texte cherché
+            const sections = document.querySelectorAll('section');
+            let targetSection = null;
+            for (const section of sections) {
+                const firstHeading = section.querySelector('h2, h3');
+                if (firstHeading && firstHeading.innerText.includes(texteSection)) {
+                    targetSection = section;
+                    break;
+                }
+            }
+            
+            if (targetSection) {
+                lien.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        }
+    });
+</script>
             </tbody>
         </table>
     </div>
