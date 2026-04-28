@@ -956,6 +956,111 @@ body {
         <img src="XGB_Optimized_RUL_Courbes_Par_Batterie.png" alt="Courbes par batterie XGBoost" class="figure-large">
         <p class="image-caption"><strong>Figure 5b :</strong> Prédictions XGBoost pour 5 batteries de test – le modèle suit fidèlement la dégradation, avec des MAE individuels compris entre 22,6 et 41,5 cycles.</p>
     </div>
+    <!-- Section : Résultats détaillés du pronostic par batterie -->
+<section>
+    <h2>📊 Résultats détaillés par batterie (test)</h2>
+    <p>Exemples de prédictions cycle par cycle pour les 5 batteries jamais vues pendant l’entraînement.  
+    Les valeurs sont extraites du fichier <code>XGB_Optimized_RUL_Predictions.csv</code>.</p>
+
+    <!-- Métriques globales par batterie (résumé) -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Batterie ID</th>
+                    <th>MAE (cycles)</th>
+                    <th>R²</th>
+                    <th>RMSE (cycles)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>4</strong></td><td>22.59</td><td>0.9900</td><td>33.14</td></tr>
+                <tr><td><strong>5</strong></td><td>27.30</td><td>0.9860</td><td>40.09</td></tr>
+                <tr><td><strong>7</strong></td><td>34.42</td><td>0.9753</td><td>47.70</td></tr>
+                <tr><td><strong>8</strong></td><td>38.42</td><td>0.9745</td><td>52.03</td></tr>
+                <tr><td><strong>11</strong></td><td>41.53</td><td>0.9652</td><td>58.81</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 4 -->
+    <h3>🔋 Batterie #4 (exemples)</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite</th><th>Écart (prédite - réelle)</th><th>Erreur absolue</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>31</td><td>1077</td><td>1073.09</td><td>-3.91</td><td>3.91</td></tr>
+                <tr><td>500</td><td>608</td><td>613.58</td><td>+5.58</td><td>5.58</td></tr>
+                <tr><td>1000</td><td>108</td><td>179.71</td><td>+71.71</td><td>71.71</td></tr>
+                <tr><td>1100</td><td>8</td><td>109.69</td><td>+101.69</td><td>101.69</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 5 -->
+    <h3>🔋 Batterie #5 (exemples)</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>57</td><td>1077</td><td>1055.89</td><td>-21.11</td><td>21.11</td></tr>
+                <tr><td>500</td><td>634</td><td>632.63</td><td>-1.37</td><td>1.37</td></tr>
+                <tr><td>1000</td><td>134</td><td>66.51</td><td>-67.49</td><td>67.49</td></tr>
+                <tr><td>1133</td><td>1</td><td>62.28</td><td>+61.28</td><td>61.28</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 7 -->
+    <h3>🔋 Batterie #7 (exemples)</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>31</td><td>1077</td><td>1072.74</td><td>-4.26</td><td>4.26</td></tr>
+                <tr><td>500</td><td>608</td><td>603.60</td><td>-4.40</td><td>4.40</td></tr>
+                <tr><td>1000</td><td>108</td><td>39.54</td><td>-68.46</td><td>68.46</td></tr>
+                <tr><td>1107</td><td>1</td><td>27.13</td><td>+26.13</td><td>26.13</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 8 -->
+    <h3>🔋 Batterie #8 (exemples)</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>28</td><td>1077</td><td>1076.85</td><td>-0.15</td><td>0.15</td></tr>
+                <tr><td>500</td><td>605</td><td>612.08</td><td>+7.08</td><td>7.08</td></tr>
+                <tr><td>1000</td><td>105</td><td>190.72</td><td>+85.72</td><td>85.72</td></tr>
+                <tr><td>1104</td><td>1</td><td>45.61</td><td>+44.61</td><td>44.61</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Batterie 11 -->
+    <h3>🔋 Batterie #11 (exemples)</h3>
+    <div class="table-container">
+        <table>
+            <thead><tr><th>Cycle</th><th>RUL réelle</th><th>RUL prédite</th><th>Écart</th><th>Erreur absolue</th></tr></thead>
+            <tbody>
+                <tr><td>31</td><td>1077</td><td>1071.68</td><td>-5.32</td><td>5.32</td></tr>
+                <tr><td>500</td><td>608</td><td>580.94</td><td>-27.06</td><td>27.06</td></tr>
+                <tr><td>1000</td><td>108</td><td>228.02</td><td>+120.02</td><td>120.02</td></tr>
+                <tr><td>1107</td><td>1</td><td>41.69</td><td>+40.69</td><td>40.69</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="note">
+        <strong>📌 Interprétation :</strong> Le modèle est très précis en début de vie (erreur < 6 cycles). 
+        L’erreur augmente lorsque la RUL réelle devient très faible (< 50 cycles), ce qui est attendu. 
+        Malgré une forte erreur absolue en fin de vie, le seuil de classification à 0,10 garantit que les batteries critiques sont détectées (recall 95,6%).
+    </div>
+</section>
     
 
     <!-- ==================== PARTIE GRU (pour comparaison) ==================== -->
